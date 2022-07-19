@@ -1,5 +1,5 @@
 export default {
-  base: "/notes/",
+  base: "/",
   title: "Notes",
   themeConfig: {
     logo: "/logo.png",
