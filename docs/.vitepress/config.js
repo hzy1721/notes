@@ -8,7 +8,13 @@ export default {
     ],
     sidebar: [
       {
-        text: 'NestJS',
+        text: '浏览器',
+        items: [
+          { text: '跨域', link: '/browser/cross-origin' }
+        ]
+      },
+      {
+        text: 'Nest',
         items: [
           { text: 'NestJS Fundamentals Course', link: '/nest/fundamentals-course' },
         ]
