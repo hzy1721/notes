@@ -31,10 +31,10 @@ flex 是一种新的排版上下文，语法更直观、使用更方便。
 - `space-around`：两侧边缘间距是中间间距的一半
 - `space-evenly`：两侧边缘有间距，所有间距等长
 
-<img src="assets/justify-content.png" style="zoom: 50%" />
+<img src="./assets/justify-content.png" style="zoom: 50%" />
 
 ## align-items
 
 `align-items` 控制交叉轴上的对齐方式：
 
-<img src="assets/align-items.png" style="zoom: 50%" />
+<img src="./assets/align-items.png" style="zoom: 50%" />
