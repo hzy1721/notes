@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as i,a as l}from"./app.7ac5e822.js";const h=JSON.parse('{"title":"\u751F\u547D\u5468\u671F","description":"","frontmatter":{},"headers":[],"relativePath":"vue/lifecycle.md"}'),a={name:"vue/lifecycle.md"},o=l("",3),r=[o];function c(n,_,s,d,p,f){return i(),t("div",null,r)}var m=e(a,[["render",c]]);export{h as __pageData,m as default};
