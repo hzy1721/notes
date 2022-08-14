@@ -1,15 +1,5 @@
 # Object
 
-JavaScript 有 8 种数据类型，包括 7 种**原始类型**和**对象**：
-1. `Number`
-2. `BigInt`
-3. `String`
-4. `Boolean`
-5. `null`
-6. `undefined`
-7. `Symbol`
-8. `Object`
-
 对象是原始类型的**键值对**，键只能是 `String` 或 `Symbol`，值可以是任意类型。
 
 ## 创建对象
@@ -118,6 +108,11 @@ JavaScript 有 8 种数据类型，包括 7 种**原始类型**和**对象**：
 - `Object.getOwnPropertyNames()`：字符串自有属性
 - `Obejct.getOwnPropertySymbols()`：Symbol 自有属性
 - `Reflect.ownKeys()`：自有属性
+
+枚举顺序：
+- 语法符合非负整数的字符串属性，按照数值顺序从小到大
+- 剩余字符串属性，按照添加的先后顺序
+- 符号属性，按照添加的先后顺序
 
 ## 如何判断空对象
 

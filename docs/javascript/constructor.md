@@ -34,6 +34,23 @@ console.log(user); // { name: "Jack", isAdmin: false }
 
 构造函数的本质就是一个普通函数，结合 `new` 操作符的功能实现同一类型对象的创建。`new` 操作可以应用于任何函数 (除箭头函数)，都会执行以上的步骤。
 
+手写 `new`：
+```js
+function newOperator(func, ...args) {
+  if (typeof func !== 'function') {
+    console.error(`Uncaught TypeError: ${func} is not a constructor`);
+    return;
+  }
+  const proto = func.prototype;
+  if (typeof proto !== 'object') {
+    proto = Objec.prototype;
+  }
+  const obj = Object.create(proto);
+  const ret = func.apply(obj, args);
+  return ret instanceof Object ? ret : obj;
+}
+```
+
 ## return
 
 如果构造函数提供了 `return` 语句：

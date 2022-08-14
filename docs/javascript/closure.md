@@ -17,11 +17,11 @@
 
 对于**变量**来说，词法环境预先读取所有声明的变量，设为未初始化 (Uninitialized) 状态，在遇到声明之前不能引用，就像该变量不存在一样。遇到声明语句后，变量可以被读取和修改。
 
-![](assets/prototype/closure_variable.png)
+![](assets/closure_variable.png)
 
 对于**函数**来说，词法环境会预先**读取并初始化**所有声明的函数，允许调用下方声明的函数。
 
-![](assets/prototype/closure_function.png)
+![](assets/closure_function.png)
 
 访问变量时，首先搜索当前作用域的词法环境，其次是外部以及更外部，直到全局。如果都没找到，严格模式下报错，非严格模式下会声明一个全局变量 (奇怪的行为)。
 
@@ -31,7 +31,7 @@
 
 不管这个函数被传递到什么地方调用，调用时的外部词法环境永远是声明时的外部环境，与调用时的外部环境无关，保证了函数的可用性。
 
-![](assets/prototype/closure_outer.png)
+![](assets/closure_outer.png)
 
 ## 垃圾收集
 

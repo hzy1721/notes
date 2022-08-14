@@ -56,7 +56,7 @@ let promise = new Promise(function (resolve, reject) {
   - `value`：调用 `resolve(value)` 后
   - `error`：调用 `reject(error)` 后
 
-<img src="./assets/prototype/promise-object.png" style="zoom: 50%" />
+<img src="./assets/promise-object.png" style="zoom: 50%" />
 
 为了能在异步代码执行成功或出错后做一些操作，可以使用 `then` 和 `catch` 方法。
 
@@ -86,7 +86,7 @@ promise.then(alert); // 1 秒后显示 "done!"
 
 可以在一个 `promise` 上多次调用 `then`，进行彼此间独立的多个操作，无先后顺序。
 
-<img src="./assets/prototype/multi_then.png" style="zoom: 50%" />
+<img src="./assets/multi_then.png" style="zoom: 50%" />
 
 ### catch
 
@@ -135,7 +135,7 @@ new Promise(function (resolve, reject) {
 
 1 -> 2 -> 4 会被依次 alert。
 
-<img src="./assets/prototype/promise-chain.png" style="zoom: 50%" />
+<img src="./assets/promise-chain.png" style="zoom: 50%" />
 
 也可以返回一个 `promise`，包装延时代码，实现延时返回。
 
@@ -225,7 +225,6 @@ Promise.allSettled(urls.map((url) => fetch(url))).then((results) => {
     }
   });
 });
-
 // [
 //   {status: 'fulfilled', value: response},
 //   {status: 'fulfilled', value: response},
@@ -324,5 +323,5 @@ async function f() {
 async function f() {
   let response = await fetch("http://no-such-url");
 }
-f().catch(alert); // TypeError: failed to fetch // (*)
+f().catch(alert); // TypeError: failed to fetch
 ```

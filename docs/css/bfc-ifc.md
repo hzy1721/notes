@@ -10,6 +10,8 @@ CSS 有 3 种定位方式：
   - grid 排版上下文
 - 浮动 (Floats)
 - 绝对定位 (Absolute positioning)
+  - `absolute`
+  - `fixed`
 
 ## 块级/行级盒子
 

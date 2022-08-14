@@ -43,7 +43,7 @@ function Rabbit() {}
 console.log(Rabbit.prototype); // { constructor: Rabbit }
 ```
 
-![](assets/prototype/Rabbit.png)
+![](assets/Rabbit.png)
 
 `constructor` 的值可以被所有 `Rabbit` 创建出的对象访问，因此可以使用与一个对象相同的构造函数创建另一个对象。
 
@@ -62,7 +62,7 @@ JavaScript 编程中使用的对象绝大部分都直接或间接继承自 `Obje
 
 其他内建类型，比如 `Array`、`Date`、`Function` 等，都提供了自己的原型方法，而这些原型对象 (`Array.prototype` 等) 自身也是对象，它们的原型为 `Object.prototype`。
 
-![](assets/prototype/Object.prototype.png)
+![](assets/Object.prototype.png)
 
 ## Object.create
 

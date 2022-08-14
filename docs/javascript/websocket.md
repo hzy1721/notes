@@ -56,7 +56,7 @@ socket.onerror = function(error) {
 
 WebSocket 建立连接时，首先使用 HTTP 询问服务端是否支持 WebSocket，如果支持则后续使用 WebSocket 进行通信。
 
-<img src="./assets/prototype/websocket.png" style="zoom: 50%" />
+<img src="./assets/websocket.png" style="zoom: 50%" />
 
 假如要连接到 `wss://javascript.info/chat`，HTTP 请求报文如下：
 ```text
