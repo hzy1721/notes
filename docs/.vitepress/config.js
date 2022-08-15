@@ -6,6 +6,10 @@ export default {
     socialLinks: [{ icon: "github", link: "https://github.com/hzy1721/notes" }],
     sidebar: [
       {
+        text: "HTML",
+        items: [{ text: "SVG", link: "/html/svg" }],
+      },
+      {
         text: "CSS",
         items: [
           { text: "优先级", link: "/css/priority" },
@@ -18,6 +22,8 @@ export default {
           { text: "几何图形", link: "/css/shape" },
           { text: "文本溢出省略", link: "/css/text-overflow" },
           { text: "三栏布局", link: "/css/three-column" },
+          { text: "transform", link: "/css/transform" },
+          { text: "单位", link: "/css/unit" },
         ],
       },
       {
@@ -38,6 +44,8 @@ export default {
           { text: "ES6 新特性", link: "/javascript/es6" },
           { text: "WebSocket", link: "/javascript/websocket" },
           { text: "数组", link: "/javascript/array" },
+          { text: "性能优化", link: "/javascript/performance" },
+          { text: "手撕题", link: "/javascript/code" },
         ],
       },
       {
@@ -51,6 +59,7 @@ export default {
           { text: "IndexedDB", link: "/browser/indexeddb" },
           { text: "事件", link: "/browser/event" },
           { text: "事件委托", link: "/browser/event-delegation" },
+          { text: "回流和重绘", link: "/browser/reflow-repaint" },
         ],
       },
       {
@@ -67,6 +76,10 @@ export default {
         items: [{ text: "TCP", link: "/network/tcp" }],
       },
       {
+        text: "安全",
+        items: [{ text: "Web 安全", link: "/security/web" }],
+      },
+      {
         text: "Vue",
         items: [
           { text: "生命周期", link: "/vue/lifecycle" },
@@ -74,7 +87,26 @@ export default {
           { text: "响应式系统", link: "/vue/reactive" },
           { text: "内置指令", link: "/vue/built-in-directives" },
           { text: "渲染", link: "/vue/render" },
+          { text: "首屏渲染优化", link: "/vue/first-paint" },
         ],
+      },
+      {
+        text: "Vue Router",
+        items: [
+          { text: "历史模式", link: "/vue-router/history-mode" },
+          { text: "实现原理", link: "/vue-router/implementation" },
+        ],
+      },
+      {
+        text: "算法",
+        items: [
+          { text: "排序", link: "/algorithm/sort" },
+          { text: "二叉树遍历", link: "/algorithm/binary-tree" },
+        ],
+      },
+      {
+        text: "LeetCode",
+        items: [{ text: "3. 无重复字符的最长子串", link: "/leetcode/3" }],
       },
       {
         text: "Nest",

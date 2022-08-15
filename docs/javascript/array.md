@@ -27,12 +27,13 @@ arr.length = 0; // 清空数组
 
 ## 创建数组
 
-```js
-const arr1 = [1, 2, 3]; // [1, 2, 3]
-const arr2 = new Array(1, 2, 3); // [1, 2, 3]
-const arr3 = new Array(4); // { length: 4 }
-arr3[0]; // undefined
-```
+- 字面量 `[1, 2, 3]`
+- `new Array(1, 2, 3)`
+- `Array.from(obj)`
+  - 类数组对象
+  - 可迭代对象
+- `Array.of(1, 2, 3)`
+  - 相比 `Array()` 行为统一，没有重载
 
 ## 访问元素
 
@@ -68,19 +69,20 @@ arr.splice(start[, deleteCount, elem1, ..., elemN])
 
 ## 搜索元素
 
-```js
-let result = arr.find(function(item, index, array) {
-  // 如果返回 true，则返回 item 并停止迭代
-  // 没有搜索到，则返回 undefined
-});
-let result = arr.findIndex(function(item, index, array) {
-  // 如果返回 true，则返回 index 并停止迭代
-  // 没有搜索到，则返回 -1
-});
-let result = arr.findLastIndex(function(item, index, array) {
-  // 从右向左搜索
-});
-```
+- `find`
+  - 返回满足条件的元素
+  - 没找到返回 `undefined`
+- `findLast`
+- `findIndex`
+  - 返回满足条件的索引
+  - 没找到返回 `-1`
+- `findLastIndex`
+- `includes(value, start = 0)`
+  - 返回是否找到的布尔值
+- `some(cb)`
+  - 有一个元素满足条件返回 `true`
+- `every(cb)`
+  - 所有元素满足条件返回 `true`
 
 ## 过滤元素
 
@@ -111,6 +113,28 @@ for (let el of arr) {
 arr.forEach(function(item, index, array) {
   // ... do something with item
 });
+```
+
+ES6 新增遍历数组的三个方法，返回迭代器对象，使用 `for...of` 遍历。
+
+```js
+for (let index of ['a', 'b'].keys()) {
+  console.log(index);
+}
+// 0
+// 1
+
+for (let elem of ['a', 'b'].values()) {
+  console.log(elem);
+}
+// 'a'
+// 'b'
+
+for (let [index, elem] of ['a', 'b'].entries()) {
+  console.log(index, elem);
+}
+// 0 "a"
+// 1 "b"
 ```
 
 ## 切片
@@ -164,6 +188,8 @@ function compare(a, b) {
 }
 ```
 
+*ES2019* 规定，`sort()` 的默认排序算法必须是**稳定**的，已经被各大浏览器实现。
+
 ## 翻转
 
 ```js
@@ -184,4 +210,80 @@ let str = arr.join(';');     // Bilbo;Gandalf;Nazgul
 
 ```js
 Array.isArray(arr) // true
+```
+
+## 扩展运算符
+
+扩展 (spread) 运算符 `...` 可以将数组转换为参数序列。
+
+`...[1, 2, 3]` 等价于 `1, 2, 3`。
+
+## copyWithin
+
+```js
+copyWithin(target, start = 0, end = this.length)
+```
+
+把 `[start, end)` 的元素复制到 `target` 开始的位置。
+
+```js
+[1, 2, 3, 4, 5].copyWithin(0, 3)
+// [4, 5, 3, 4, 5]
+```
+
+## fill
+
+```js
+fill(value, start = 0, end = this.length)
+```
+
+把 `[start, end)` 区域的元素填充为 `value`。
+
+## flat
+
+```js
+flat(layer = 1)
+```
+
+把嵌套的数组拉平，传入拉平的层数，默认一层，如果想全部拉平，传入 `Infinity`。
+
+```js
+flatMap(cb)
+```
+
+类似于 `map`，但是不改变原数组，把返回值组成的数组拉平一层。
+
+## 不改变原数组/返回新数组
+
+- `toReversed()`
+  - 对应 `reverse()`
+- `toSorted(compareFn)`
+  - 对应 `sort()`
+- `toSpliced(start, deleteCount, ...items)`
+  - 对应 `splice()`
+- `with(index, value)`
+  - 对应 `splice(index, 1, value)`
+
+## group
+
+- `group`
+  - 返回对象
+  - key 会转换为字符串
+- `groupToMap`
+  - 返回 `Map`
+  - key 不做转换，可以是对象
+
+```js
+const array = [1, 2, 3, 4, 5];
+array.group((num, index, array) => {
+  return num % 2 === 0 ? 'even': 'odd';
+});
+// { odd: [1, 3, 5], even: [2, 4] }
+
+const odd  = { odd: true };
+const even = { even: true };
+array.groupToMap((num, index, array) => {
+  return num % 2 === 0 ? even: odd;
+});
+//  Map { {odd: true}: [1, 3, 5], {even: true}: [2, 4] }
 ```
