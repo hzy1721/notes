@@ -1,90 +1,103 @@
 # 防抖和节流
 
-## 每隔一段时间执行一次
+浏览器的部分事件触发频率很高，超出了应用需求，以相同频率执行事件处理函数会造成不必要的性能开销。比如 `resize`、`scroll`、`keypress`、`mousemove` 等。
 
-```js
-var outerPane = $details.find(".details-pane-outer"),
-    didScroll = false;
- 
-$(window).scroll(function() {
-    didScroll = true;
-});
- 
-setInterval(function() {
-    if ( didScroll ) {
-        didScroll = false;
-        // Check your page position and then
-        // Load in more results
-    }
-}, 250);
-```
+**防抖 (debounce)** 和**节流 (throttle)** 可以让高频调用的函数在内部以更低的频率执行，既不影响需求的实现，又提高了性能。
 
-## 防抖 (debounce)
+![](assets/debounce-throttle.png)
 
-如果一个事件短时间内连续多次触发，则只执行一次处理函数。
+## 防抖
+
+设定一个最短执行间隔，如果小于最短间隔连续多次调用，最终只执行一次。
+
+应用场景：
+
+- 输入框 `input` 事件，用于表单校验、实时请求等
+- 窗口 `resize` 事件，调整完成后再重新渲染
 
 有两种执行模式：
-- `leading`：第一个事件触发时立即执行处理函数，直到足够长的停顿后再次触发事件才会重新执行处理函数
-- `trailing`：如果距离上一次触发事件的时间过短，则重置间隔时间，直到足够长的停顿后才执行处理函数
+
+- `leading`
+  - 定时器设置为：最短间隔后把定时器变量设为 `null`
+  - 每次调用都重置定时器 (没到期就停止再重新开始，到期就直接开始)
+  - 如果定时器变量为 `null` (表示定时器已到期，间隔足够长)，执行一次
+    ![](assets/debounce_leading.webp)
+- `trailing`
+  - 定时器设置为：最短间隔后执行函数
+  - 每次调用都重置定时器
+  - 如果间隔足够长，则定时器已到期，函数执行了一次；否则定时器还没到期就被重置
+    ![](assets/debounce_trailing.webp)
 
 ```js
-Function.prototype.debounce = function (threshold, execAsap) {
-    var func = this, // reference to original function
-        timeout; // handle to setTimeout async task (detection period)
-    // return the new debounced function which executes the original function only once
-    // until the detection period expires
-    return function debounced () {
-        var obj = this, // reference to original context object
-            args = arguments; // arguments at execution time
-        // this is the detection function. it will be executed if/when the threshold expires
-        function delayed () {
-            // if we're executing at the end of the detection period
-            if (!execAsap)
-                func.apply(obj, args); // execute now
-            // clear timeout handle
-            timeout = null; 
-        };
-        // stop any current detection period
-        if (timeout)
-            clearTimeout(timeout);
-        // otherwise, if we're not already waiting and we're executing at the beginning of the detection period
-        else if (execAsap)
-            func.apply(obj, args); // execute now
-        // reset the detection period
-        timeout = setTimeout(delayed, threshold || 100); 
-    };
+function debounce(func, wait = 0, leading = false) {
+  let timeout = null;
+  return function () {
+    const args = arguments;
+    clearTimeout(timeout); // 传无效参数不会有影响
+    if (leading) {
+      const callNow = !timeout;
+      timeout = setTimeout(() => {
+        timeout = null;
+      }, wait);
+      if (callNow) {
+        func.apply(this, args);
+      }
+    } else {
+      timeout = setTimeout(() => {
+        func.apply(this, args);
+      }, wait);
+    }
+  };
 }
 ```
 
-最常用的是 Lodash 提供的 `_.debounce`：
+### Lodash
 
 ```js
-_.debounce(func, [wait=0], [options={}])
+_.debounce(func, [(wait = 0)], [(options = {})]);
 ```
-
-还可以取消防抖：
 
 ```js
-var debounced_version = _.debounce(doSomething, 200);
-$(window).on('scroll', debounced_version);
-// 如果需要的话
-debounced_version.cancel();
+window.onscroll = _.debounce(scrollHandler, 200); // 200ms
+scrollHandler.cancel(); // 如果需要的话，可以取消防抖，每次调用都执行
 ```
 
-## 节流 (throttle)
+## 节流
 
-无论事件触发频繁与否，保证每隔一段时间执行一次 (最少一次，最多一次)。
+设定一个最短执行间隔 (与防抖的最短间隔**含义不同**)，每个间隔内最多执行一次。
 
-与防抖类似，有 `leading` 和 `trailing` 两种模式。
+应用场景：
 
-可以使用 Lodash 的 `_.throttle`：
+- 页面 `scroll` 事件，实现滚动加载
+- 搜索框 `input` 事件，实现搜索联想
+
+执行过程：
+
+- 定时器设置为：最短间隔后把定时器变量设为 `null`
+- 如果定时器变量不为 `null`，说明间隔足够长，定时器已过期，重置定时器并执行一次函数
 
 ```js
-_.throttle(func, [wait=0], [options={}])
+function throttle(func, wait = 0) {
+  let timeout = null;
+  return function () {
+    if (!timeout) {
+      timeout = setTimeout(() => {
+        timeout = null;
+      }, wait);
+      func.apply(this, arguments);
+    }
+  };
+}
 ```
 
-## requestAnimationFrame
+### Lodash
 
-等价于 `_.throttle(func, 16)`，但是精确度更高。
+```js
+_.throttle(func, [(wait = 0)], [(options = {})]);
+```
+
+### requestAnimationFrame
+
+相当于 `throttle(func, 16)`，但是精确度更高。Lodash 的内部实现采用了该函数。
 
 需要重新计算和渲染元素，并且想要保证变化的平滑性，可以使用该方法。

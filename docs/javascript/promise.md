@@ -181,7 +181,7 @@ new Promise((resolve, reject) => {
 
 没有被 `catch` 捕获的错误会中止脚本的执行，在控制台报错。
 
-## 类方法
+## 静态方法
 
 `Promise` 类提供了一些实用的静态方法。
 

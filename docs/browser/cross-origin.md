@@ -4,19 +4,30 @@
 
 跨域问题与浏览器的同源策略 (**same-origin policy**) 密切相关。
 
+同源策略由 NetScape 于 1995 年引入浏览器，目前所有浏览器都实行这个策略。
+
+目的是为了保证用户信息安全，防止恶意网站窃取用户数据 (比如 Cookie)。
+
 同源指的是两个 URL 的协议 (**protocol**)、主机名 (**host**)、端口 (**port**) 都相同。
 
 比如 `https://juejin.cn:443`：
+
 - 协议：https
 - 主机名：juejin.cn (此处是域名，也可以是 IP 地址)
 - 端口：443 (HTTPS 端口，在浏览器中省略)
 
 当前页面请求一个不同源的 URL 则构成跨域，有很多场景可能用到跨域资源：
-- `<link>` 引入 CSS、`<script>` 引入 JavaScript 脚本
-- `<img>` 引入图片、`<audio>` 引入音频、`<video>` 引入视频
-- `@font-face` 引入字体
-- `<iframe>` 引入外部页面
+
 - AJAX 请求，比如 `XMLHttpRequest` 和 `Fetch`
+- `<script>` 引入 JavaScript 脚本、`<link>` 引入 CSS、`@font-face` 引入字体
+- `<img>` 引入图片、`<audio>` 引入音频、`<video>` 引入视频
+- `<iframe>` 引入外部页面
+
+跨域请求有 3 个限制：
+
+- AJAX 无法请求非同源 URL
+- 无法读取非同源 Cookie、localStorage、IndexedDB
+- 无法读取非同源 DOM (`iframe` 或 `window.open`)
 
 实现跨域请求主要有 2 种方法：`JSONP` 和 `CORS`。
 
@@ -31,25 +42,27 @@ CORS 支持全部 HTTP 请求，通信过程由浏览器完成、对用户透明
 ### CORS 的两种请求
 
 根据是否需要发送预检请求 (preflight) 可以将 CORS 请求分为 2 类：
+
 - 简单请求 (simple request)
 - 非简单请求 (not-so-simple request)
 
 #### 简单请求
 
 满足以下 2 个条件的请求为简单请求：
+
 - 请求方法是以下 3 种方法之一：
-    - `HEAD`
-    - `GET`
-    - `POST`
+  - `GET`
+  - `HEAD`
+  - `POST`
 - HTTP Header 只包含以下几种字段：
-    - `Accept`
-    - `Accept-Language`
-    - `Content-Language`
-    - `Last-Event-ID`
-    - `Content-Type` (只支持以下 3 个值)
-        - `application/x-www-form-urlencoded`
-        - `multipart/form-data`
-        - `text/plain`
+  - `Accept`
+  - `Accept-Language`
+  - `Content-Language`
+  - `Last-Event-ID`
+  - `Content-Type` (只支持以下 3 个值)
+    - `application/x-www-form-urlencoded`
+    - `multipart/form-data`
+    - `text/plain`
 
 对于简单请求，浏览器在 Request Header 中添加一个 `Origin` 字段，表明当前页面的 URL：
 
@@ -60,6 +73,7 @@ Origin: http://localhost:5173
 如果服务端没有配置 CORS 或 `Origin` 的值不在允许的 URL 列表中，则会返回一个正常的 HTTP 响应，不包含额外的 Response Header。浏览器发现响应头没有 `Access-Control-Allow-Origin` 字段，说明这次跨域请求不被服务端支持，则抛出一个错误。
 
 对于服务端支持的 `Origin`，响应头可能包含以下额外字段：
+
 ```text
 Access-Control-Allow-Origin: http://localhost:5173
 Access-Control-Allow-Credentials: true
@@ -70,12 +84,12 @@ Content-Type: text/html; charset=utf-8
 - `Access-Control-Allow-Origin`：服务端允许请求的 URL，取值为 `Origin` 的值或一个星号 `*`，表示允许所有 URL
 - `Access-Control-Allow-Credentials`：CORS 请求默认不发送 Cookie，设为 `true` 表示服务端允许发送 Cookie，**不能**设为 `false`，如果不允许 Cookie，不包含这个字段即可
 - `Access-Control-Expose-Headers`：可选字段，CORS 请求默认只能拿到响应头的 6 个基本字段，可以在此处指定允许访问的其他字段
-    - `Cache-Control`
-    - `Content-Language`
-    - `Content-Type`
-    - `Expires`
-    - `Last-Modified`
-    - `Pragma`
+  - `Cache-Control`
+  - `Content-Language`
+  - `Content-Type`
+  - `Expires`
+  - `Last-Modified`
+  - `Pragma`
 
 ##### Cookie
 
@@ -133,6 +147,7 @@ Access-Control-Max-Age: 1728000
 - `<iframe>`
 
 JSONP 的工作流程如下：
+
 1. 声明一个回调函数，参数是将要请求的数据，函数内可以对数据进行后续的处理。
 2. 构造 `<script>` 元素，将 `src` 属性设为接口地址，并带上回调函数名的 query param。
 3. `<script>` 元素加入 DOM，自动请求接口，返回的 JS 脚本会包含对回调函数的调用，传入的参数就是希望从后端获取的数据。
@@ -149,8 +164,12 @@ JSONP 的工作流程如下：
 
 ```js
 userCallback({
-  id: '123',
-  name: 'Test User',
-  email: 'test@example.com'
+  id: "123",
+  name: "Test User",
+  email: "test@example.com",
 });
 ```
+
+## WebSocket
+
+WebSocket 协议不执行同源策略，允许跨域。但是一般不会为了跨域就把 HTTP 请求换成 WebSocket 通信。

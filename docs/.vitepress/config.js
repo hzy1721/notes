@@ -12,6 +12,7 @@ export default {
       {
         text: "CSS",
         items: [
+          { text: "选择器", link: "/css/selector" },
           { text: "优先级", link: "/css/priority" },
           { text: "定位", link: "/css/position" },
           { text: "BFC/IFC", link: "/css/bfc-ifc" },
@@ -24,6 +25,7 @@ export default {
           { text: "三栏布局", link: "/css/three-column" },
           { text: "transform", link: "/css/transform" },
           { text: "单位", link: "/css/unit" },
+          { text: "自适应", link: "/css/responsive" },
         ],
       },
       {
@@ -32,6 +34,7 @@ export default {
           { text: "let 和 const", link: "/javascript/let-const" },
           { text: "数据类型", link: "/javascript/data-type" },
           { text: "Object", link: "/javascript/object" },
+          { text: "可迭代对象", link: "/javascript/iterable" },
           { text: "对象拷贝", link: "/javascript/copy" },
           { text: "构造函数", link: "/javascript/constructor" },
           { text: "原型", link: "/javascript/prototype" },
@@ -39,12 +42,14 @@ export default {
           { text: "闭包", link: "/javascript/closure" },
           { text: "this", link: "/javascript/this" },
           { text: "箭头函数", link: "/javascript/arrow" },
-          { text: "Promise", link: "/javascript/promise" },
-          { text: "防抖和节流", link: "/javascript/debounce-throttle" },
           { text: "ES6 新特性", link: "/javascript/es6" },
           { text: "WebSocket", link: "/javascript/websocket" },
           { text: "数组", link: "/javascript/array" },
           { text: "性能优化", link: "/javascript/performance" },
+          { text: "防抖和节流", link: "/javascript/debounce-throttle" },
+          { text: "EventBus", link: "/javascript/eventbus" },
+          { text: "Promise", link: "/javascript/promise" },
+          { text: "手写 Promise 静态方法", link: "/javascript/promise-static" },
           { text: "手撕题", link: "/javascript/code" },
         ],
       },
@@ -65,19 +70,28 @@ export default {
       {
         text: "HTTP",
         items: [
+          { text: "版本", link: "/http/version" },
           { text: "报文结构", link: "/http/message" },
+          { text: "方法", link: "/http/method" },
           { text: "请求头", link: "/http/request-headers" },
           { text: "状态码", link: "/http/status-code" },
           { text: "缓存", link: "/http/cache" },
+          { text: "HTTPS", link: "/http/https" },
         ],
       },
       {
         text: "网络基础",
-        items: [{ text: "TCP", link: "/network/tcp" }],
+        items: [
+          { text: "协议栈", link: "/network/stack" },
+          { text: "TCP", link: "/network/tcp" },
+        ],
       },
       {
         text: "安全",
-        items: [{ text: "Web 安全", link: "/security/web" }],
+        items: [
+          { text: "Web 安全", link: "/security/web" },
+          { text: "加密", link: "/security/encryption" },
+        ],
       },
       {
         text: "Vue",
@@ -88,6 +102,7 @@ export default {
           { text: "内置指令", link: "/vue/built-in-directives" },
           { text: "渲染", link: "/vue/render" },
           { text: "首屏渲染优化", link: "/vue/first-paint" },
+          { text: "Vite", link: "/vue/vite" },
         ],
       },
       {

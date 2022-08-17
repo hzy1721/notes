@@ -4,8 +4,9 @@ HTTP 缓存指的是保存某个请求的响应报文，后续有相同请求直
 
 缓存有很多优点：
 
-- 减少请求所需时间，直接从缓存读取比请求服务器要快得多
-- 降低服务器负载，服务器无需处理被缓存的请求
+- 减少响应时间，直接从缓存读取比请求服务器要快得多，优化用户体验
+- 降低服务器负载，服务器无需处理被缓存的请求，提升网站性能
+- 减少冗余的数据传输，节省带宽
 
 ## 缓存类型
 
@@ -109,8 +110,9 @@ Cache-Control: max-age=3600
 
 但是，使用最后修改时间来判断资源是否已经改变有以下问题：
 
-- 从文件系统中读取文件修改时间时，时间的格式往往比较复杂、难以解析
-- 如果是分布式服务端，难以同步文件修改的时间
+- 部分文件会周期性修改，但是内容不一定变化
+- 部分文件修改非常频繁，以秒为粒度的 `Last-Modified` 无法准确描述
+- 一些文件系统无法精确得到文件的修改事件
 
 `ETag` 是一种解决方案。
 
@@ -125,11 +127,13 @@ Cache-Control: max-age=3600
 
 如果 `ETag` 和 `Last-Modified` 同时存在，优先使用 `ETag`。尽管 `Last-Modified` 不如 `ETag` 好用，但是 `Last-Modified` 还有缓存之外的其他用途，包括 CMS (Content Management System)、爬虫等。所以最好把 `Last-Modified` 和 `ETag` 都加上。
 
-### force revalidation
+浏览器调试工具中可以看到缓存有 2 种：from memory/disk cache。如果响应有 `ETag`，就会被写入磁盘。
 
-如果想要每次请求都从服务端验证资源是否修改，设置 `Cache-Control: no-cache`。
+## no-cache
 
-如果请求头还包含 `If-Modified-Since` 或 `If-None-Match`，客户端会在资源未更新时收到 `304 Not Modified`，资源已更新时收到 `200 OK`。
+`Cache-Control: no-cache` 表示每次请求都验证缓存的有效性，也就是不使用强缓存，每次都协商缓存。
+
+如果请求头包含 `If-Modified-Since` 或 `If-None-Match`，客户端会在资源未更新时收到 `304 Not Modified`，资源已更新时收到 `200 OK`。
 
 `no-cache` 不禁止响应报文的缓存，只是要求每次都验证资源有效性。
 
@@ -141,13 +145,21 @@ Cache-Control: max-age=3600
 
 `no-store` 由于禁止存储报文，会造成很多负面影响，最好使用 `no-cache, private` 来代替。
 
+## public
+
+`Cache-Control: public` 表示资源可以被所有客户端缓存，包括用户浏览器和代理服务器。
+
+## private
+
+`Cache-Control: private` 表示资源只能被用户浏览器缓存，不能被代理服务器缓存。
+
 ## 强缓存
 
 本地缓存命中且未过期，直接返回本地缓存的资源。
 
 ## 协商缓存
 
-未命中缓存或缓存过期，带上 `If-Modified-Since` 或 `If-None-Match` 请求服务端。
+缓存已过期，带上 `If-Modified-Since` 或 `If-None-Match` 请求服务端。
 
 如果资源未修改，则返回 `304 Not Modified`，重新设置缓存有效时间，返回本地缓存资源。
 
