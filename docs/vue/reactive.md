@@ -2,16 +2,9 @@
 
 响应式系统是 Vue 的一大特色功能，无需手动 *setState*，当依赖改变时自动重新计算响应式变量的值。
 
-Vue 相关的面试题可以分为 2 类：
-- 如何使用 Vue
-    - Vue 提供的 API
-- Vue 的实现原理
-    - 组件机制
-    - 模版编译为渲染函数
-    - 虚拟 DOM 渲染为真实 DOM
-    - 响应式系统
+![](assets/vue-principle.webp)
 
-理解响应式系统的工作原理有助于我们更好地使用响应式 API (包括 `ref`、`reactive`、`computed`、`watch/watchEffect` 等) 开发应用，避免 bug 和性能问题。
+![](assets/vue-binding.webp)
 
 ## 响应式本质
 

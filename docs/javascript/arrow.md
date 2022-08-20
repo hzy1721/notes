@@ -1,6 +1,7 @@
 # 箭头函数
 
 ES6 引入的一种定义函数的新方式，有以下优点：
+
 - 用箭头 `=>` 代替 `function` 关键字，语法更简洁
 - 只有一个参数可以省略圆括号，函数体只有一条语句可以省略花括号，简化了回调函数的写法
 
@@ -12,8 +13,8 @@ ES6 引入的一种定义函数的新方式，有以下优点：
 const user = {
   sayHi() {
     console.log(this);
-  }
-}
+  },
+};
 user.sayHi(); // user
 
 const sayHello = user.sayHi;
@@ -25,21 +26,33 @@ const user = {
   sayHi() {
     const arrow = () => console.log(this);
     arrow();
-  }
-}
+  },
+};
 user.sayHi(); // user
 
 const group = {
   title: "Our Group",
   students: ["John", "Pete", "Alice"],
   showList() {
-    this.students.forEach(
-      student => console.log(this.title + ': ' + student)
+    this.students.forEach((student) =>
+      console.log(this.title + ": " + student)
     );
-  }
+  },
 };
 group.showList();
 // Our Group: John
 // Our Group: Pete
 // Our Group: Alice
 ```
+
+## 不能用做构造函数
+
+对箭头函数使用 `new` 会报错。
+
+## 没有 arguments
+
+函数内访问不到 `arguments`，可以用 rest 参数代替。
+
+## 不能用做生成器函数
+
+函数内不能使用 `yield`。

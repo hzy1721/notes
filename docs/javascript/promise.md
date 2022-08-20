@@ -111,6 +111,10 @@ new Promise((resolve, reject) => {
   .then((result) => alert(result)); // <-- .then 显示 "value"
 ```
 
+### 永远 pending
+
+如果 promise 内部既没有调用 `resolve` 也没有调用 `reject`，这个 promise 将永远处于 `pending` 状态，`then/catch/finally` 都不会被调用。
+
 ## Promise 链
 
 `then` 的返回值会被包装成一个新的 `promise`，因此可以链式地调用 `then`，实现异步代码的串行处理。

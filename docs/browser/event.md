@@ -5,10 +5,10 @@
 鼠标事件：
 
 - `click`
-- `contextmenu`
+- `mouseenter`/`mouseleave`
 - `mouseover`/`mouseout`
 - `mousedown`/`mouseup`
-- `mouseover`
+- `contextmenu`
 
 键盘事件：
 

@@ -26,6 +26,7 @@ export default {
           { text: "transform", link: "/css/transform" },
           { text: "单位", link: "/css/unit" },
           { text: "自适应", link: "/css/responsive" },
+          { text: "CSS 动画", link: "/css/animation" },
         ],
       },
       {
@@ -33,9 +34,7 @@ export default {
         items: [
           { text: "let 和 const", link: "/javascript/let-const" },
           { text: "数据类型", link: "/javascript/data-type" },
-          { text: "Object", link: "/javascript/object" },
           { text: "可迭代对象", link: "/javascript/iterable" },
-          { text: "对象拷贝", link: "/javascript/copy" },
           { text: "构造函数", link: "/javascript/constructor" },
           { text: "原型", link: "/javascript/prototype" },
           { text: "判断类型", link: "/javascript/check-type" },
@@ -44,19 +43,31 @@ export default {
           { text: "箭头函数", link: "/javascript/arrow" },
           { text: "ES6 新特性", link: "/javascript/es6" },
           { text: "WebSocket", link: "/javascript/websocket" },
+          { text: "对象", link: "/javascript/object" },
           { text: "数组", link: "/javascript/array" },
+          { text: "Set", link: "/javascript/set" },
+          { text: "Map", link: "/javascript/map" },
           { text: "性能优化", link: "/javascript/performance" },
           { text: "防抖和节流", link: "/javascript/debounce-throttle" },
           { text: "EventBus", link: "/javascript/eventbus" },
+          { text: "事件循环", link: "/javascript/event-loop" },
           { text: "Promise", link: "/javascript/promise" },
-          { text: "手写 Promise 静态方法", link: "/javascript/promise-static" },
+          { text: "对象拷贝", link: "/javascript/copy" },
           { text: "手撕题", link: "/javascript/code" },
+        ],
+      },
+      {
+        text: "手写代码",
+        items: [
+          { text: "手写 Promise 静态方法", link: "/code/promise-static" },
+          { text: "手写 Promise", link: "/code/promise" },
+          { text: "柯里化", link: "/code/currying" },
+          { text: "轮播图", link: "/code/slideshow" },
         ],
       },
       {
         text: "浏览器",
         items: [
-          { text: "事件循环", link: "/browser/event-loop" },
           { text: "跨域", link: "/browser/cross-origin" },
           { text: "输入 URL 后发生了什么", link: "/browser/after-input-url" },
           { text: "Cookie", link: "/browser/cookie" },
@@ -65,6 +76,7 @@ export default {
           { text: "事件", link: "/browser/event" },
           { text: "事件委托", link: "/browser/event-delegation" },
           { text: "回流和重绘", link: "/browser/reflow-repaint" },
+          { text: "拖拽事件", link: "/browser/drag" },
         ],
       },
       {
@@ -87,6 +99,24 @@ export default {
         ],
       },
       {
+        text: "算法",
+        items: [
+          { text: "排序", link: "/algorithm/sort" },
+          { text: "链表", link: "/algorithm/list" },
+          { text: "二叉树", link: "/algorithm/binary-tree" },
+          {
+            text: "二叉树层序遍历",
+            link: "/algorithm/binary-tree-level-order",
+          },
+          { text: "二叉树 DFS", link: "/algorithm/binary-tree-dfs" },
+          { text: "平衡二叉树", link: "/algorithm/avl" },
+        ],
+      },
+      {
+        text: "操作系统基础",
+        items: [{ text: "进程和线程", link: "/os/process-thread" }],
+      },
+      {
         text: "安全",
         items: [
           { text: "Web 安全", link: "/security/web" },
@@ -99,10 +129,13 @@ export default {
           { text: "生命周期", link: "/vue/lifecycle" },
           { text: "组件通信", link: "/vue/communication" },
           { text: "响应式系统", link: "/vue/reactive" },
+          { text: "Object.defineProperty", link: "/vue/defineproperty" },
+          { text: "Proxy", link: "/vue/proxy" },
           { text: "内置指令", link: "/vue/built-in-directives" },
           { text: "渲染", link: "/vue/render" },
           { text: "首屏渲染优化", link: "/vue/first-paint" },
           { text: "Vite", link: "/vue/vite" },
+          { text: "手写题", link: "/vue/code" },
         ],
       },
       {
@@ -113,11 +146,16 @@ export default {
         ],
       },
       {
-        text: "算法",
-        items: [
-          { text: "排序", link: "/algorithm/sort" },
-          { text: "二叉树遍历", link: "/algorithm/binary-tree" },
-        ],
+        text: "Vuex",
+        items: [{ text: "原理", link: "/vuex/principle" }],
+      },
+      {
+        text: "Dexie",
+        items: [{ text: "liveQuery", link: "/dexie/livequery" }],
+      },
+      {
+        text: "设计",
+        items: [{ text: "高并发", link: "/design/high-concurrency" }],
       },
       {
         text: "LeetCode",

@@ -1,8 +1,11 @@
 # Cookie
 
-HTTP Cookie 是由服务器发送给浏览器的少量数据，浏览器会保存这些数据，在后续发送给相同服务器的请求报文中带上这些数据，从而使服务器能够辨别哪些请求来自同一个浏览器。本质上是为了给无状态的 HTTP 提供记录状态的功能。
+HTTP Cookie 是由服务器发送给浏览器的少量数据，浏览器会保存这些数据，在后续发送给相同服务器的请求报文中带上这些数据，从而使服务器能够辨别哪些请求来自同一个浏览器。
 
-Cookie 主要用于 3 个方面：
+本质上是为了给无状态的 HTTP 提供记录状态的功能。
+
+用途：
+
 - 会话管理 (Session Management)
   - 登录、购物车、游戏分数等服务器需要存储的状态信息
 - 个性化 (Personalization)
@@ -10,25 +13,98 @@ Cookie 主要用于 3 个方面：
 - 跟踪 (Tracking)
   - 记录和分析用户的行为
 
-Cookie 曾经是在浏览器存储数据的唯一手段，所以经常被用于本地的通用存储 (类似于现在的 localStorage)。但是 Cookie 的特点是会随着每次请求而发送，带来了额外的网络开销，对于移动端尤其不能接受。而且目前已经有了专门的存储 API (Web Storage API 和 IndexedDB)，不应该继续使用 Cookie 作为本地存储的手段。
+## Set-Cookie
 
-`Set-Cookie` reponse header:
-
-```text
-Set-Cookie: <name>=<value>; Expires=<date>; Max-Age=<seconds>
-```
-
-- `Secure`：只使用 HTTPS 发送 Cookie，从不使用 HTTP；可以防止中间人攻击
-- `HttpOnly`：JavaScript 无法通过 Document.cookie 访问该 Cookie；可以防止 XSS 攻击
-- `Domain`：设置后可以访问子域名，不设置只能访问发送 Cookie 的服务器域名 (不包含子域名)，因此设置之后更宽松
-- `Path`：只有发送到这些路径下的请求才带上 Cookie，也匹配子目录
-- `SameSite`：是否可以通过跨站请求发送 Cookie
-  - `Strict`：只能发送到设置 Cookie 的服务器
-  - `Lax`：同 Strict，也适用于导航到源服务器，默认行为
-  - `None`：允许跨站点请求，但是必须设置 `Secure`
-
-`Cookie` request header:
+服务端使用 `Set-Cookie` 响应头设置客户端的 Cookie：
 
 ```text
-Cookie: <name1>=<value1>; <name2>=<value2>
+Set-Cookie: <cookie-name>=<cookie-value>
 ```
+
+可以写在一行、用分号 `;` 分隔，也可以写在多个 `Set-Cookie` 里。
+
+还有一些对 Cookie 的设置也写在 `Set-Cookie` 里，用分号 `;` 分隔：
+
+- `Expires`：过期时间，GMT 格式，到期 Cookie 被删除
+  - 默认是 Session Cookie
+- `Max-Age`：有效时间，以秒为单位，到期 Cookie 被删除
+- `Secure`：只使用 HTTPS 发送 Cookie，可以防止中间人攻击
+- `HttpOnly`：JS 无法通过 `document.cookie` 访问 Cookie，可以防止 XSS 攻击
+- `Domain`：Cookie 应该被发送到哪些域名
+  - 默认：设置 Cookie 的域名，**不包括**子域名
+  - 设置为服务端域名：包含子域名
+    - 比如设置 `Domain=mozilla.org`，也会向 `developer.mozilla.org` 发送 Cookie
+- `Path`：Cookie 应该被发送到哪些路径
+  - 默认：请求的路径
+  - 设置为某个路径：包括子路径
+    - 比如设置 `Path=/docs`，也会匹配 `/docs/`、`/docs/web`、`/docs/web/http` 等
+- `SameSite`：是否通过跨站请求发送 Cookie，可以防止 CSRF 攻击
+  - `Strict`：只在 Cookie 设置的站点发送
+  - `Lax` (默认)：同 Strict，但是允许从外部站点跳转到源站点时发送 Cookie
+    - 安全 HTTP 方法：`GET`、`HEAD`、`OPTIONS`
+    - 执行顶级导航 (更改浏览器地址栏中的 URL)，而不是 iframe 或 AJAX 请求
+  - `None`：允许跨站请求发送 Cookie，必须设置 `Secure`，否则失效
+
+## Cookie
+
+客户端请求与 Cookie 相同的服务端时，会在 `Cookie` 请求头带上这些 Cookie：
+
+```text
+Cookie: <cookie-name>=<cookie-value>
+```
+
+可以是一行，也可以是多行。
+
+## document.cookie
+
+```js
+document.cookie = "yummy_cookie=choco"; // 添加 Cookie
+document.cookie = "tasty_cookie=strawberry"; // 添加 Cookie
+console.log(document.cookie); // 访问所有 Cookie
+// yummy_cookie=choco; tasty_cookie=strawberry
+```
+
+限制：
+
+- 每个键值对的大小不能超过 4KB
+- 每个域名的 Cookie 数量上限大约为 20 个
+
+## 第三方 Cookie
+
+由请求的页面以外的其他域设置的 Cookie，称为第三方 Cookie。通常用于跟踪和广告。
+
+浏览器允许禁止第三方 Cookie。
+
+## Session
+
+通过 Cookie 发送和保存 Session ID，可以实现会话管理。
+
+![](assets/session.png)
+
+与用 Cookie 保存所有用户数据相比，Session 只用 Cookie 保存一个 Session ID，剩余数据保存在服务端，使用 Session ID 索引，更加灵活、方便、安全。一般用于**短时间**用户认证和授权。
+
+## Token
+
+Token 是一种**无状态**的认证和授权机制，相比 Session 对服务器的负担更小。
+
+### Access Token
+
+Access Token 用于请求接口时的身份认证。
+
+![](assets/token.png)
+
+1. 登录后从服务端获取 token，保存在浏览器中。
+2. 后续请求接口都带上 token。
+3. 服务端解析 token，检查是否为有效 token，有效则返回响应。
+
+### Refresh Token
+
+Access Token 的有效期通常较短，Refresh Token 用于重新获取 Access Token (刷新)，通常有效期较长。
+
+![](assets/refresh-token.png)
+
+如果 Refresh Token 也过期了，就只能重新登录了。
+
+## JWT
+
+JWT (JSON Web Token) 是一种**跨域**认证和授权方案。

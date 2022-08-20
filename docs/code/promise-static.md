@@ -8,7 +8,7 @@ Promise.all = function (iterable) {
   const total = promises.length;
   const results = new Array(total);
   let count = 0;
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     promises.forEach((promise, index) => {
       Promise.resolve(promise)
         .then((result) => {
@@ -31,7 +31,7 @@ Promise.allSettled = function (iterable) {
   const total = promises.length;
   const results = new Array(total);
   let count = 0;
-  return new Promise(function (resolve) {
+  return new Promise((resolve) => {
     promises.forEach((promise, index) => {
       Promise.resove(promise)
         .then((result) => {
@@ -60,7 +60,7 @@ Promise.allSettled = function (iterable) {
 
 ```js
 Promise.race = function (iterable) {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     for (let promise of iterable) {
       Promise.resolve(promise).then(resolve).catch(reject);
     }
@@ -76,7 +76,7 @@ Promise.any = function (iterable) {
   const total = promises.length;
   const errors = new Array(total);
   let count = 0;
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     promises.forEach((promise, index) => {
       Promise.resolve(promise)
         .then(resolve)
@@ -95,7 +95,7 @@ Promise.any = function (iterable) {
 
 ```js
 Promise.resolve = function (value) {
-  return new Promise(function (resolve) {
+  return new Promise((resolve) => {
     resolve(value);
   });
 };
@@ -105,7 +105,7 @@ Promise.resolve = function (value) {
 
 ```js
 Promise.reject = function (value) {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     reject(value);
   });
 };

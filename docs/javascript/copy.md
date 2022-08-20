@@ -22,16 +22,6 @@ Object.assign(target, ...sources)
 
 按照常规方式读写属性，**无法**拷贝访问器属性，只会将 getter 返回的值设置到 `target` 上。
 
-### _.clone
-
-```js
-_.clone(value)
-```
-
-lodash 提供的浅拷贝函数，`value` 是被拷贝的对象，返回值是拷贝后的新对象。
-
-拷贝对象的**可枚举自有属性**。
-
 ### 扩展语法 (spread syntax)
 
 `ES2018` 引入，使用三个点 `...` 把对象的**自有属性**展开。
@@ -70,29 +60,19 @@ function assign(target, ...sources) {
 }
 ```
 
+### _.clone
+
+```js
+_.clone(value)
+```
+
+lodash 提供的浅拷贝函数，`value` 是被拷贝的对象，返回值是拷贝后的新对象。
+
+拷贝对象的**可枚举自有属性**。
+
 ## 深拷贝 (deep copy)
 
-### _.cloneDeep
-
-```js
-_.cloneDeep(value)
-```
-
 lodash 提供的深拷贝函数，递归拷贝所有对象的**可枚举自有属性**。
-
-### JSON.stringify
-
-```js
-const target = JSON.parse(JSON.stringify(source));
-```
-
-先把 `source` 的**可枚举自有属性**序列化为字符串，然后再反序列化为新的对象。
-
-由于 JSON 只是 JS 的子集，不能表示所有的 JS 值，这个方法有很多局限性：
-- 只支持：普通对象、数组、字符串、有限数值、`true`、`false`、`null`
-- `Number` 类型中的 `NaN`、`Infinity`、`-Infinity` 会被序列化为 `null`
-- `Date` 对象会被序列化为 ISO 字符串，但是 `JSON.parse` 无法解析回 `Date` 对象，只会保持原来的字符串类型
-- `Function`、`RegExp`、`Error` 对象与 `undefined` 无法被序列化或恢复
 
 ### 手写递归
 
@@ -109,6 +89,13 @@ function cloneDeep(source) {
   if (source instanceof RegExp) {
     return new RegExp(source);
   }
+  if (Array.isArray(source)) {
+    const target = [];
+    for (let value of source) {
+      target.push(cloneDeep(value));
+    }
+    return target;
+  }
   const target = {};
   for (let key in source) {
     if (source.hasOwnProperty(key)) {
@@ -118,3 +105,23 @@ function cloneDeep(source) {
   return target;
 }
 ```
+
+### _.cloneDeep
+
+```js
+_.cloneDeep(value)
+```
+
+### JSON.stringify
+
+```js
+const target = JSON.parse(JSON.stringify(source));
+```
+
+先把 `source` 的**可枚举自有属性**序列化为字符串，然后再反序列化为新的对象。
+
+由于 JSON 只是 JS 的子集，不能表示所有的 JS 值，这个方法有很多局限性：
+- 只支持：普通对象、数组、字符串、有限数值、`true`、`false`、`null`
+- `Number` 类型中的 `NaN`、`Infinity`、`-Infinity` 会被序列化为 `null`
+- `Date` 对象会被序列化为 ISO 字符串，但是 `JSON.parse` 无法解析回 `Date` 对象，只会保持原来的字符串类型
+- `Function`、`RegExp`、`Error` 对象与 `undefined` 无法被序列化或恢复

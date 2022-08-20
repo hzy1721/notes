@@ -4,14 +4,15 @@
 
 ## 宏任务 (Macrotask)
 
-- 执行脚本文件代码 (`<script>`)
+- `<script>` 脚本
 - 事件处理程序
-- `setTimeout(f)`
+- `setTimeout(func)`
+- `setInterval(func)`
 
 ## 微任务 (Microtask)
 
 - Promise 的 `then/catch/finally` 处理程序
-- `queueMicrotask(f)`
+- `queueMicrotask(func)`
 
 ## 事件循环
 
