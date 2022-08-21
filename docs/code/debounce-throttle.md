@@ -54,12 +54,8 @@ function debounce(func, wait = 0, leading = false) {
 ### Lodash
 
 ```js
-_.debounce(func, [(wait = 0)], [(options = {})]);
-```
-
-```js
-window.onscroll = _.debounce(scrollHandler, 200); // 200ms
-scrollHandler.cancel(); // 如果需要的话，可以取消防抖，每次调用都执行
+debounced = _.debounce(func, [(wait = 0)], [(options = {})]);
+debounced.cancel();
 ```
 
 ## 节流
@@ -93,7 +89,8 @@ function throttle(func, wait = 0) {
 ### Lodash
 
 ```js
-_.throttle(func, [(wait = 0)], [(options = {})]);
+throttled = _.throttle(func, [(wait = 0)], [(options = {})]);
+throttled.cancel();
 ```
 
 ### requestAnimationFrame

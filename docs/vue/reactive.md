@@ -1,112 +1,201 @@
 # 响应式系统
 
-响应式系统是 Vue 的一大特色功能，无需手动 *setState*，当依赖改变时自动重新计算响应式变量的值。
+## 响应式数据
 
-![](assets/vue-principle.webp)
+```js
+// 全局变量保存对象属性的依赖集合
+const bucket = new WeakMap();
 
-![](assets/vue-binding.webp)
+const obj = new Proxy(data, {
+  // 拦截读取操作
+  get(target, key) {
+    // 把副作用函数添加到 target[key] 的依赖集合中
+    track(target, key);
+    // 返回属性值
+    return target[key];
+  },
+  // 拦截设置操作
+  set(target, key, newVal) {
+    // 设置属性值
+    target[key] = newVal;
+    // 把副作用函数从依赖集合中取出并执行
+    trigger(target, key);
+  },
+});
 
-## 响应式本质
+function track(target, key) {
+  // 没有 activeEffect，直接 return
+  if (!activeEffect) {
+    return;
+  }
+  // 取出 target 对应的 Map
+  let depsMap = bucket.get(target);
+  // 不存在就新建一个 Map
+  if (!depsMap) {
+    bucket.set(target, (depsMap = new Map()));
+  }
+  // 取出 target[key] 对应的 Set
+  let deps = depsMap.get(key);
+  // 不存在就新建一个 Set
+  if (!deps) {
+    depsMap.set(key, (deps = new Set()));
+  }
+  // 把当前激活的副作用函数添加到依赖集合 deps 中
+  deps.add(activeEffect);
+  // 把当前副作用函数所在的依赖集合添加到 activeEffect.deps 数组中
+  activeEffect.deps.push(deps);
+}
 
-利用 JavaScript 提供的能力拦截对象属性的访问和修改：
-- 访问器属性的 `getter/setter`
-- `Proxy`
+function trigger(target, key) {
+  // 取出 target 对应的 Map
+  const depsMap = bucket.get(target);
+  // 不存在直接 return
+  if (!depsMap) {
+    return;
+  }
+  // 取出 target[key] 对应的 Set
+  const effects = depsMap.get(key);
 
-Vue 2 使用 getter/setter，Vue 3 的 reactive 使用 Proxy、ref 使用 getter/setter。
+  // 新建一个集合保存需要执行的副作用函数，避免无限递归循环
+  const effectsToRun = new Set();
+  effects &&
+    effects.forEach((effectFn) => {
+      // 如果与当前正在执行的副作用函数相同，则不触发执行
+      if (effectFn !== activeEffect) {
+        effectsToRun.add(effectFn);
+      }
+    });
+  effectsToRun.forEach((effectFn) => {
+    // 如果副作用函数存在调度器，则调用该调度器，并将副作用函数作为参数传递
+    if (effectFn.options.scheduler) {
+      effectFn.options.scheduler(effectFn);
+    } else {
+      // 否则直接执行副作用函数
+      effectFn();
+    }
+  });
+}
+```
 
-以下是 Vue 3 中 reactive 和 ref 的核心实现思路：
-- 访问属性时调用 `track` 函数建立响应式变量与依赖之间的**订阅**关系
-- 修改属性时调用 `trigger` 函数触发以该属性为依赖的**所有**响应式变量的重新计算
+## 注册副作用函数
+
+```js
+// 全局变量保存当前激活的副作用函数
+let activeEffect;
+// 副作用函数栈，实现 effect 嵌套
+const effectStack = [];
+
+function effect(fn, options = {}) {
+  const effectFn = () => {
+    // 调用 cleanup 完成清除工作，实现分支切换
+    cleanup(effectFn);
+    // 调用 effect 注册副作用函数时，把副作用函数赋值给 activeEffect
+    activeEffect = effectFn;
+    // 调用副作用函数前把当前副作用函数压入栈中
+    effectStack.push(effectFn);
+    // 将 fn 的执行结果保存到 res 中
+    const res = fn();
+    // 当前副作用函数执行完毕后，把当前副作用函数弹出栈
+    effectStack.pop();
+    // 并把 activeEffect 还原为之前的值
+    activeEffect = effectStack[effectStack.length - 1];
+    // 将 res 作为 effectFn 的返回值，实现懒计算
+    return res;
+  };
+  // 把 options 挂载到 effectFn 上
+  effectFn.options = options;
+  // 存储所有与副作用函数相关的依赖集合
+  effectFn.deps = [];
+  // 只有非 lazy 的时候才执行
+  if (!options.lazy) {
+    // 执行副作用函数
+    effectFn();
+  }
+  // 将副作用函数作为返回值返回
+  return effectFn;
+}
+
+function cleanup(effectFn) {
+  // 遍历 effectFn.deps 数组
+  for (let i = 0; i < effectFn.deps.length; ++i) {
+    // deps 是依赖集合
+    const deps = effectFn.deps;
+    // 把 effectFn 从依赖集合中移除
+    deps.delete(effectFn);
+  }
+  // 最后需要重置 effectFn.deps 数组
+  effectFn.deps.length = 0;
+}
+```
+
+## 连续多次修改只更新一次
+
+```js
+// 定义一个任务队列
+const jobQueue = new Set();
+// 使用 Promise.resolve() 创建一个 promise 实例，用于将一个任务添加到微任务队列
+const p = Promise.resolve();
+
+// 代表是否正在刷新队列
+let isFlushing = false;
+function flushJob() {
+  // 如果队列正在刷新，则什么都不做
+  if (isFlushing) {
+    return;
+  }
+  // 设置为 true，代表正在刷新
+  isFlushing = true;
+  // 在微任务队列中刷新 jobQueue 队列
+  p.then(() => {
+    jobQueue.forEach((job) => job());
+  }).finally(() => {
+    // 结束后重置 isFlushing
+    isFlushing = false;
+  });
+}
+
+effect(
+  () => {
+    console.log(obj.foo);
+  },
+  {
+    scheduler(fn) {
+      // 每次调度时，将副作用函数添加到 jobQueue 队列中
+      jobQueue.add(fn);
+      // 调用 flushJob 刷新队列
+      flushJob();
+    },
+  }
+);
+```
+
+## reactive 和 ref
 
 ```js
 function reactive(obj) {
   return new Proxy(obj, {
     get(target, key) {
-      track(target, key)
-      return target[key]
+      track(target, key);
+      return target[key];
     },
     set(target, key, value) {
-      trigger(target, key)
-      target[key] = value
-    }
-  })
+      trigger(target, key);
+      target[key] = value;
+    },
+  });
 }
 
 function ref(value) {
   const refObject = {
     get value() {
-      track(refObject, 'value')
-      return value
+      track(refObject, "value");
+      return value;
     },
     set value(newValue) {
-      trigger(refObject, 'value')
-      value = newValue
-    }
-  }
-  return refObject
+      trigger(refObject, "value");
+      value = newValue;
+    },
+  };
+  return refObject;
 }
-```
-
-## 响应式流程
-
-1. 假如需要声明一个响应式变量 `A2`，依赖于 `A0` 和 `A1`。首先需要将 A2 的计算过程包装成一个**函数**，这个函数会产生**副作用**，那就是计算并更新 A2 的值。
-
-```js
-let A2
-
-function update() {
-  A2 = A0 + A1
-}
-```
-
-2. 将 A0 和 A1 通过 getter/setter 或 Proxy 包装成响应式对象，使我们能够拦截对 A0 和 A1 的读写操作，从而在其中添加 track 和 trigger 函数。Vue 3 可以使用 ref。
-
-```js
-A0 = ref(0)
-A1 = ref(1)
-```
-
-根据 ref 的定义，会在读取 value 时跟踪副作用函数 `update`，修改 value 时重新执行 update。
-
-以下是 track 和 trigger 的具体实现。在 track 中把副作用函数加入到依赖属性的订阅列表中，使用全局变量 `activeEffect` 保证订阅操作只发生一次 (如果不显式设置 activeEffect，则调用 track 不会进行订阅，这也是为什么每次访问属性都会调用 track 但不会造成重复订阅)。在 trigger 中获取属性的订阅列表，依次重新执行。
-
-```js
-let activeEffect
-
-function track(target, key) {
-  if (activeEffect) {
-    const effects = getSubscribersForProperty(target, key)
-    effects.add(activeEffect)
-  }
-}
-```
-
-```js
-function trigger(target, key) {
-  const effects = getSubscribersForProperty(target, key)
-  effects.forEach((effect) => effect())
-}
-```
-
-对 A2 来说，是把 update 函数添加到 A0 和 A1 的订阅者集合里，当修改 A0 或 A1 时，会重新执行 A0 或 A1 的所有订阅者函数 (包括 update)，从而实现 A2 的响应式更新。
-
-3. 最后一步就是**注册**这个副作用函数，设置 `activeEffect` 为副作用函数 `update`，并执行一次副作用函数 (结果作为响应式变量的初始值)，保证每个依赖属性的 `track` 被调用一次并建立订阅关系。
-
-```js
-function whenDepsChange(update) {
-  const effect = () => {
-    activeEffect = effect
-    update()
-    activeEffect = null
-  }
-  effect()
-}
-```
-
-用 Vue 3 的语法来写就是：
-
-```js
-const A0 = ref(0)
-const A1 = ref(1)
-const A2 = computed(() => A0.value + A1.value)
 ```

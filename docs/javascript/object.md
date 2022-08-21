@@ -103,7 +103,7 @@
 ## 枚举属性
 
 开发中经常需要枚举对象的属性，有以下几种方法：
-- `for...in` 循环：可枚举属性
+- `for...in` 循环：字符串可枚举属性
 - `Object.keys()`：字符串可枚举自有属性
 - `Object.getOwnPropertyNames()`：字符串自有属性
 - `Obejct.getOwnPropertySymbols()`：Symbol 自有属性

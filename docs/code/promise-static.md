@@ -33,7 +33,7 @@ Promise.allSettled = function (iterable) {
   let count = 0;
   return new Promise((resolve) => {
     promises.forEach((promise, index) => {
-      Promise.resove(promise)
+      Promise.resolve(promise)
         .then((result) => {
           results[index] = {
             status: "fulfilled",

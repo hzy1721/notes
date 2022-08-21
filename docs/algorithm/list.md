@@ -2,20 +2,18 @@
 
 ## 判断是否有环
 
-```js
-class Solution {
-public:
-    bool hasCycle(ListNode *head) {
-        ListNode *slow = head, *fast = head;
-        while (slow && fast && fast->next) {
-            slow = slow->next;
-            fast = fast->next->next;
-            if (slow == fast)
-                return true;
-        }
-        return false;
+```ts
+function hasCycle(head: ListNode | null): boolean {
+  let slow = head, fast = head;
+  while (slow && fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow === fast) {
+      return true;
     }
-};
+  }
+  return false;
+}
 ```
 
 ## 两个链表的交点

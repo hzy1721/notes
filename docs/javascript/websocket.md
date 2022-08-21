@@ -79,8 +79,8 @@ Sec-WebSocket-Version: 13
 服务端同意切换为 WebSocket 时的响应报文：
 ```text
 101 Switching Protocols
-Upgrade: websocket
 Connection: Upgrade
+Upgrade: websocket
 Sec-WebSocket-Accept: hsBlbuDTkk24srzEOTBUlZAlC2g=
 ```
 
