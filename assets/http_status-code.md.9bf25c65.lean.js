@@ -1,0 +1,1 @@
+import{_ as l,c as i,o as e,a as u}from"./app.15131e7b.js";const x=JSON.parse('{"title":"\u72B6\u6001\u7801","description":"","frontmatter":{},"headers":[],"relativePath":"http/status-code.md"}'),t={name:"http/status-code.md"},o=u("",3),a=[o];function r(n,d,c,s,_,h){return e(),i("div",null,a)}var m=l(t,[["render",r]]);export{x as __pageData,m as default};

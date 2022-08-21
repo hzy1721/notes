@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as l}from"./app.15131e7b.js";var p="/assets/event-bus.307c81b0.png";const v=JSON.parse('{"title":"EventBus","description":"","frontmatter":{},"headers":[],"relativePath":"code/eventbus.md"}'),o={name:"code/eventbus.md"},e=l("",6),t=[e];function c(r,F,y,D,A,C){return a(),n("div",null,t)}var u=s(o,[["render",c]]);export{v as __pageData,u as default};

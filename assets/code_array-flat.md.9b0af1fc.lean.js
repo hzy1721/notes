@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as l}from"./app.15131e7b.js";const i=JSON.parse('{"title":"\u6570\u7EC4\u6241\u5E73\u5316","description":"","frontmatter":{},"headers":[],"relativePath":"code/array-flat.md"}'),p={name:"code/array-flat.md"},o=l("",3),e=[o];function t(r,c,F,y,D,A){return n(),a("div",null,e)}var d=s(p,[["render",t]]);export{i as __pageData,d as default};
