@@ -170,6 +170,14 @@ userCallback({
 });
 ```
 
+## 代理服务器
+
+配置与前端**同源**的代理服务器，负责转发请求和响应。
+
+![](assets/cross-origin-proxy.png)
+
+原理是代理服务器和后端之间不存在跨域问题 (跨域只存在于**浏览器**)。
+
 ## WebSocket
 
 WebSocket 协议不执行同源策略，允许跨域。但是一般不会为了跨域就把 HTTP 请求换成 WebSocket 通信。

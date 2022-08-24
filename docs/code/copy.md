@@ -86,27 +86,48 @@ lodash 提供的深拷贝函数，递归拷贝所有对象的**可枚举自有�
 ### 手写递归
 
 ```js
-function cloneDeep(source) {
+const ctorTypeSet = new Set([
+  "[object Date]",
+  "[object Error]",
+  "[object RegExp]",
+]);
+
+function cloneDeep(source, seen = new Map()) {
   if (typeof source !== "object" || source === null) {
     return source;
   }
-  if (source instanceof Date) {
-    return new Date(source);
+  if (seen.has(source)) {
+    return seen.get(source);
   }
-  if (source instanceof RegExp) {
-    return new RegExp(source);
-  }
-  if (Array.isArray(source)) {
-    const target = [];
+  let target;
+  if (ctorTypeSet.has(Object.prototype.toString.call(source))) {
+    target = new source.constructor(source);
+    seen.set(source, target);
+  } else if (Array.isArray(source)) {
+    target = [];
+    seen.set(source, target);
     for (const value of source) {
-      target.push(cloneDeep(value));
+      target.push(cloneDeep(value, seen));
     }
-    return target;
-  }
-  const target = {};
-  for (const key in source) {
-    if (source.hasOwnProperty(key)) {
-      target[key] = cloneDeep(source[key]);
+  } else if (source instanceof Set) {
+    target = new Set();
+    seen.set(source, target);
+    for (const key of source) {
+      target.add(cloneDeep(key, seen));
+    }
+  } else if (source instanceof Map) {
+    target = new Map();
+    seen.set(source, target);
+    for (const [key, value] of source) {
+      target.set(key, cloneDeep(value, seen));
+    }
+  } else {
+    target = Object.create(Object.getPrototypeOf(source));
+    seen.set(source, target);
+    for (const key in source) {
+      if (source.hasOwnProperty(key)) {
+        target[key] = cloneDeep(source[key], seen);
+      }
     }
   }
   return target;

@@ -5,48 +5,156 @@ const PENDING = "pending";
 const FULFILLED = "fulfilled";
 const REJECTED = "rejected";
 
-function MyPromise(func) {
-  this.state = PENDING;
-  this.result = undefined;
+const checkObjectType = (value) => {
+  return (
+    (typeof value === "object" && value !== null) || typeof value === "function"
+  );
+};
 
-  this.fulfulledCallbacks = [];
-  this.rejectedCallbacks = [];
-
-  const resolve = (value) => {
-    if (value instanceof MyPromise) {
-      return value.then(resolve, reject);
+const resolvePromise = (promise, res, resolve, reject) => {
+  if (promise === res) {
+    throw new TypeError("Chaining cycle detected for promise #<Promise>");
+  }
+  let settled = false;
+  if (checkObjectType(res)) {
+    try {
+      const then = res.then;
+      if (typeof then === "function") {
+        then.call(
+          res,
+          (value) => {
+            if (settled) {
+              return;
+            }
+            settled = true;
+            resolvePromise(promise, value, resolve, reject);
+          },
+          (reason) => {
+            if (settled) {
+              return;
+            }
+            settled = true;
+            reject(reason);
+          }
+        );
+      } else {
+        resolve(res);
+      }
+    } catch (error) {
+      if (settled) {
+        return;
+      }
+      settled = true;
+      reject(error);
     }
-    if (this.state === PENDING) {
-      this.state = FULFILLED;
-      this.result = value;
-    }
-  };
-}
-
-MyPromise.prototype.then = function (onFulfilled, onRejected) {
-  onFulfilled =
-    typeof onFulfilled === "function" ? onFulfilled : (value) => value;
-  onRejected =
-    typeof onRejected === "function" ? onRejected : (error) => throw error;
-  if (this.state === FULFILLED) {
-    queueMicrotask(() => {
-      onFulfilled(this.result);
-    });
-  } else if (this.state === REJECTED) {
-    queueMicrotask(() => {
-      onRejected(this.result);
-    });
-  } else if (this.state === PENDING) {
-    this.fulfilledCallbacks.push(onFulfilled);
-    this.rejectedCallbacks.push(onRejected);
+  } else {
+    resolve(res);
   }
 };
 
-MyPromise.prototype.catch = function (onRejected) {
-  this.then(null, onRejected);
+class MyPromise {
+  constructor(executor) {
+    this.status = PENDING;
+    this.value = undefined;
+    this.reason = undefined;
+
+    this.onFulfilledCallbacks = [];
+    this.onRejectedCallbacks = [];
+
+    const resolve = (value) => {
+      if (value instanceof MyPromise) {
+        value.then(resolve, reject);
+      } else if (this.status === PENDING) {
+        this.status = FULFILLED;
+        this.value = value;
+        this.onFulfilledCallbacks.forEach((cb) => cb());
+      }
+    };
+
+    const reject = (reason) => {
+      if (this.status === PENDING) {
+        this.status = REJECTED;
+        this.reason = reason;
+        this.onRejectedCallbacks.forEach((cb) => cb());
+      }
+    };
+
+    try {
+      executor(resolve, reject);
+    } catch (error) {
+      reject(error);
+    }
+  }
+
+  then(onFulfilled, onRejected) {
+    onFulfilled =
+      typeof onFulfilled === "function" ? onFulfilled : (value) => value;
+    onRejected =
+      typeof onRejected === "function"
+        ? onRejected
+        : (reason) => {
+            throw reason;
+          };
+    const promise = new MyPromise((resolve, reject) => {
+      const dispatchCallback = (cb, arg) => {
+        queueMicrotask(() => {
+          try {
+            const res = cb(arg);
+            resolvePromise(promise, res, resolve, reject);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      };
+      if (this.status === FULFILLED) {
+        dispatchCallback(onFulfilled, this.value);
+      }
+      if (this.status === REJECTED) {
+        dispatchCallback(onRejected, this.reason);
+      }
+      if (this.status === PENDING) {
+        this.onFulfilledCallbacks.push(() => {
+          dispatchCallback(onFulfilled, this.value);
+        });
+        this.onRejectedCallbacks.push(() => {
+          dispatchCallback(onRejected, this.reason);
+        });
+      }
+    });
+    return promise;
+  }
+
+  catch(onRejected) {
+    return this.then(null, onRejected);
+  }
+
+  finally(onFinally) {
+    return this.then(
+      (value) => {
+        onFinally();
+        return new MyPromise((resolve) => resolve(value));
+      },
+      (reason) => {
+        onFinally();
+        return new MyPromise((resolve, reject) => reject(reason));
+      }
+    );
+  }
+}
+
+MyPromise.deferred = () => {
+  const result = {};
+  result.promise = new MyPromise((resolve, reject) => {
+    result.resolve = resolve;
+    result.reject = reject;
+  });
+  return result;
 };
 
-MyPromise.prototype.finally = function (onFinally) {
-  this.then(onFinally, onFinally);
-};
+module.exports = MyPromise;
+```
+
+```sh
+pnpm add -g promises-aplus-tests
+promises-aplus-tests MyPromise
 ```

@@ -62,6 +62,10 @@ obj instanceof Class;
 - 只支持对象，不支持原始类型
 - 考虑继承导致无法精确判断对象的类型
 
+## obj.constructor
+
+通过 `obj.constructor` 访问构造函数。
+
 ## Object.prototype.toString()
 
 `Object.prototype.toString()` 是把对象转换为字符串的默认方法，也能揭示值的类型。

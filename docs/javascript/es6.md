@@ -9,8 +9,6 @@ ES6 又称 ES2015，是 ECMAScript 的 2015 年版本，也是 ES5 的下一个�
 - 变量解构 (Destructuring)
 - 新增运算符
   - 扩展运算符 `...`
-- 类语法 `class`
-- 模块 `module`
 - `Symbol`
 - `Set` 和 `Map`
 - `Promise`
@@ -18,6 +16,8 @@ ES6 又称 ES2015，是 ECMAScript 的 2015 年版本，也是 ES5 的下一个�
 - `Reflect`
 - `Iterator` 和 `for ... of`
 - `Generator`
+- 类语法 `class`
+- 模块 `module`
 - 扩展 `Number`
 - 扩展 `String`
 - 扩展 `Object`

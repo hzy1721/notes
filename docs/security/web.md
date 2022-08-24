@@ -129,9 +129,9 @@ CSRF 有以下几种类型：
   - 校验 `Origin` 和 `Referer`
   - 先访问过页面，才接受请求
   - 使用与用户绑定的 token，并设置过期时间
+- SameSite Cookie
 - `X-Frame-Options: DENY/SAMEORIGIN`
 - 不要在一个接口内既返回数据又修改数据
-- SameSite Cookie
 - Node 中间件
 
 ## Injection (注入)

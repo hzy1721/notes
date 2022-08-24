@@ -13,30 +13,38 @@
 调整 4 条边框的宽度就能得到不同形状的三角形。
 
 ```css
-width: 0;
-height: 0;
-border-style: solid;
-border-color: transparent;
-border-bottom-color: green;
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: green;
+}
 ```
 
 ### 等腰三角形
 
 ```css
-border-width: 0 100px 200px 100px; // 锐角
-border-width: 0 100px 100px 100px; // 钝角
+.triangle {
+  border-width: 0 100px 200px 100px; // 锐角
+  border-width: 0 100px 100px 100px; // 钝角
+}
 ```
 
 ### 等边三角形
 
 ```css
-border-width: 0 100px 173px 100px; // sqrt(3)
+.triangle {
+  border-width: 0 100px 173px 100px; // sqrt(3)
+}
 ```
 
 ### 直角三角形
 
 ```css
-border-width: 0 100px 100px 0;
+.triangle {
+  border-width: 0 100px 100px 0;
+}
 ```
 
 ## 椭圆

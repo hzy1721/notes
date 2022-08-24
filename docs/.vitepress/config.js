@@ -14,7 +14,7 @@ export default {
         items: [
           { text: "选择器", link: "/css/selector" },
           { text: "优先级", link: "/css/priority" },
-          { text: "定位", link: "/css/position" },
+          { text: "position", link: "/css/position" },
           { text: "BFC/IFC", link: "/css/bfc-ifc" },
           { text: "flex 布局", link: "/css/flex" },
           { text: "隐藏元素", link: "/css/hide" },
@@ -43,6 +43,7 @@ export default {
           { text: "箭头函数", link: "/javascript/arrow" },
           { text: "ES6 新特性", link: "/javascript/es6" },
           { text: "WebSocket", link: "/javascript/websocket" },
+          { text: "BigInt", link: "/javascript/bigint" },
           { text: "Symbol", link: "/javascript/symbol" },
           { text: "对象", link: "/javascript/object" },
           { text: "数组", link: "/javascript/array" },
@@ -60,13 +61,16 @@ export default {
         items: [
           { text: "防抖和节流", link: "/code/debounce-throttle" },
           { text: "Promise 静态方法", link: "/code/promise-static" },
-          { text: "Promise", link: "/code/promise" },
+          { text: "手写 Promise", link: "/code/promise" },
           { text: "柯里化", link: "/code/currying" },
           { text: "并发请求", link: "/code/concurrent-requests" },
           { text: "数组扁平化", link: "/code/array-flat" },
           { text: "有序数组去重", link: "/code/sorted-array-unique" },
           { text: "EventBus", link: "/code/eventbus" },
           { text: "深拷贝和浅拷贝", link: "/code/copy" },
+          { text: "手写 new", link: "/code/new" },
+          { text: "JSON 节点路径", link: "/code/json-node-path" },
+          { text: "手写 setInterval", link: "/code/setinterval" },
           { text: "轮播图", link: "/code/slideshow" },
         ],
       },
@@ -82,6 +86,7 @@ export default {
           { text: "事件委托", link: "/browser/event-delegation" },
           { text: "回流和重绘", link: "/browser/reflow-repaint" },
           { text: "拖拽事件", link: "/browser/drag" },
+          { text: "不同标签页通信", link: "/browser/tab-communication" },
         ],
       },
       {
@@ -101,6 +106,7 @@ export default {
         items: [
           { text: "协议栈", link: "/network/stack" },
           { text: "TCP", link: "/network/tcp" },
+          { text: "DNS", link: "/network/dns" },
         ],
       },
       {
@@ -108,6 +114,7 @@ export default {
         items: [
           { text: "排序", link: "/algorithm/sort" },
           { text: "链表", link: "/algorithm/list" },
+          { text: "栈队", link: "/algorithm/stack-queue" },
           { text: "二叉树", link: "/algorithm/binary-tree" },
           {
             text: "二叉树层序遍历",
@@ -155,6 +162,8 @@ export default {
         items: [
           { text: "历史模式", link: "/vue-router/history-mode" },
           { text: "实现原理", link: "/vue-router/implementation" },
+          { text: "window.location", link: "/vue-router/window-location" },
+          { text: "window.history", link: "/vue-router/window-history" },
         ],
       },
       {
@@ -177,6 +186,14 @@ export default {
         ],
       },
       {
+        text: "软件工程",
+        items: [{ text: "TDD", link: "/se/tdd" }],
+      },
+      {
+        text: "杂项",
+        items: [{ text: "UTF-8", link: "/misc/utf-8" }],
+      },
+      {
         text: "Nest",
         items: [
           {
@@ -184,10 +201,6 @@ export default {
             link: "/nest/fundamentals-course",
           },
         ],
-      },
-      {
-        text: "软件工程",
-        items: [{ text: "TDD", link: "/se/tdd" }],
       },
     ],
   },
