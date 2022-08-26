@@ -1,1 +1,0 @@
-import{_ as e,c as o,o as c,a}from"./app.6786f447.js";const f=JSON.parse('{"title":"\u9AD8\u5E76\u53D1","description":"","frontmatter":{},"headers":[],"relativePath":"design/high-concurrency.md"}'),d={name:"design/high-concurrency.md"},i=a("",2),t=[i];function r(n,l,_,s,h,p){return c(),o("div",null,t)}var g=e(d,[["render",r]]);export{f as __pageData,g as default};

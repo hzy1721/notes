@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as l}from"./app.c79f66e9.js";const i=JSON.parse('{"title":"\u5E76\u53D1\u8BF7\u6C42","description":"","frontmatter":{},"headers":[],"relativePath":"code/concurrent-requests.md"}'),p={name:"code/concurrent-requests.md"},o=l("",2),e=[o];function t(c,r,F,y,D,A){return a(),n("div",null,e)}var u=s(p,[["render",t]]);export{i as __pageData,u as default};

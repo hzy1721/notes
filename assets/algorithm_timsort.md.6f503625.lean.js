@@ -1,0 +1,1 @@
+import{_ as t,c as o,o as r,a as e}from"./app.c79f66e9.js";const b=JSON.parse('{"title":"Timsort","description":"","frontmatter":{},"headers":[],"relativePath":"algorithm/timsort.md"}'),d={name:"algorithm/timsort.md"},n=e("",8),a=[n];function s(l,i,h,c,p,_){return r(),o("div",null,a)}var g=t(d,[["render",s]]);export{b as __pageData,g as default};
