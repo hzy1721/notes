@@ -1,4 +1,4 @@
-# 计算属性
+# 计算属性实现
 
 ```js
 function computed(getter) {

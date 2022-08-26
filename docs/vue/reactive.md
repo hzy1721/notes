@@ -1,25 +1,36 @@
-# 响应式系统
+# 响应式实现
 
 ## 响应式数据
 
 ```js
 // 全局变量保存对象属性的依赖集合
 const bucket = new WeakMap();
+const ITERATE_KEY = Symbol();
 
 const obj = new Proxy(data, {
   // 拦截读取操作
-  get(target, key) {
+  get(target, key, receiver) {
     // 把副作用函数添加到 target[key] 的依赖集合中
     track(target, key);
     // 返回属性值
-    return target[key];
+    return Reflect.get(target, key, receiver);
+  },
+  has(target, key) {
+    track(target, key);
+    return Reflect.has(target, key);
+  },
+  ownKeys(target) {
+    // 将副作用函数与 ITERATE_KEY 关联
+    track(target, ITERATE_KEY);
+    return Reflect.ownKeys(target);
   },
   // 拦截设置操作
-  set(target, key, newVal) {
+  set(target, key, newVal, receiver) {
     // 设置属性值
-    target[key] = newVal;
+    const res = Reflect.set(target, key, newVal, receiver);
     // 把副作用函数从依赖集合中取出并执行
     trigger(target, key);
+    return res;
   },
 });
 
@@ -55,9 +66,12 @@ function trigger(target, key) {
   }
   // 取出 target[key] 对应的 Set
   const effects = depsMap.get(key);
+  // 取出与 ITERATE_KEY 相关联的副作用函数
+  const iterateEffects = depsMap.get(ITERATE_KEY);
 
   // 新建一个集合保存需要执行的副作用函数，避免无限递归循环
   const effectsToRun = new Set();
+  // 将与 key 相关联的副作用函数添加到 effectsToRun
   effects &&
     effects.forEach((effectFn) => {
       // 如果与当前正在执行的副作用函数相同，则不触发执行
@@ -65,6 +79,14 @@ function trigger(target, key) {
         effectsToRun.add(effectFn);
       }
     });
+  // 将与 ITERATE_KEY 相关联的副作用函数也添加到 effectsToRun
+  iterateEffects &&
+    iterateEffects.forEach((effectFn) => {
+      if (effectFn !== activeEffect) {
+        effectsToRun.add(effectFn);
+      }
+    });
+  
   effectsToRun.forEach((effectFn) => {
     // 如果副作用函数存在调度器，则调用该调度器，并将副作用函数作为参数传递
     if (effectFn.options.scheduler) {

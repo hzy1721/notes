@@ -8,77 +8,76 @@
 
 ## 快速排序
 
-```cpp
-class Solution {
-private:
-    int partition(vector<int> &nums, int lo, int hi) {
-        swap(nums[lo], nums[lo + rand() % (hi - lo + 1)]);
-        int pivot = nums[lo];
-        while (lo < hi) {
-            while (lo < hi && pivot <= nums[hi])
-                --hi;
-            nums[lo] = nums[hi];
-            while (lo < hi && nums[lo] <= pivot)
-                ++lo;
-            nums[hi] = nums[lo];
-        }
-        nums[lo] = pivot;
-        return lo;
+```ts
+function partition(nums: number[], lo: number, hi: number): number {
+  const randIdx = Math.floor(Math.random() * (hi - lo + 1)) + lo;
+  [nums[lo], nums[randIdx]] = [nums[randIdx], nums[lo]];
+  const pivot = nums[lo];
+  while (lo < hi) {
+    while (lo < hi && pivot <= nums[hi]) {
+      --hi;
     }
+    nums[lo] = nums[hi];
+    while (lo < hi && nums[lo] <= pivot) {
+      ++lo;
+    }
+    nums[hi] = nums[lo];
+  }
+  nums[lo] = pivot;
+  return lo;
+}
 
-    void quickSort(vector<int> &nums, int lo, int hi) {
-        if (lo >= hi)
-            return;
-        int mi = partition(nums, lo, hi);
-        quickSort(nums, lo, mi - 1);
-        quickSort(nums, mi + 1, hi);
-    }
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        int n = nums.size();
-        quickSort(nums, 0, n - 1);
-        return nums;
-    }
-};
+function quickSort(nums: number[], lo: number, hi: number) {
+  if (lo >= hi) return;
+  const mi = partition(nums, lo, hi);
+  quickSort(nums, lo, mi - 1);
+  quickSort(nums, mi + 1, hi);
+}
+
+function sortArray(nums: number[]): number[] {
+  quickSort(nums, 0, nums.length - 1);
+  return nums;
+}
 ```
 
 ## 归并排序
 
-```cpp
-class Solution {
-private:
-    void merge(vector<int> &nums, int lo, int mi, int hi) {
-        vector<int> temp(hi - lo);
-        int i = lo, j = mi, k = 0;
-        while (i < mi && j < hi) {
-            if (nums[i] <= nums[j])
-                temp[k++] = nums[i++];
-            else
-                temp[k++] = nums[j++];
-        }
-        while (i < mi)
-            temp[k++] = nums[i++];
-        while (j < hi)
-            temp[k++] = nums[j++];
-        for (i = lo, k = 0; i < hi; ++i, ++k)
-            nums[i] = temp[k];
+```ts
+function merge(nums: number[], lo: number, mi: number, hi: number) {
+  const temp = new Array(hi - lo);
+  let i = lo,
+    j = mi,
+    k = 0;
+  while (i < mi && j < hi) {
+    if (nums[i] <= nums[j]) {
+      temp[k++] = nums[i++];
+    } else {
+      temp[k++] = nums[j++];
     }
+  }
+  while (i < mi) {
+    temp[k++] = nums[i++];
+  }
+  while (j < hi) {
+    temp[k++] = nums[j++];
+  }
+  for (i = lo, k = 0; i < hi; ++i, ++k) {
+    nums[i] = temp[k];
+  }
+}
 
-    void mergeSort(vector<int> &nums, int lo, int hi) {
-        if (lo + 1 >= hi)
-            return;
-        int mi = (lo + hi) / 2;
-        mergeSort(nums, lo, mi);
-        mergeSort(nums, mi, hi);
-        merge(nums, lo, mi, hi);
-    }
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        int n = nums.size();
-        mergeSort(nums, 0, n);
-        return nums;
-    }
-};
+function mergeSort(nums: number[], lo: number, hi: number) {
+  if (lo + 1 >= hi) return;
+  const mi = Math.floor((lo + hi) / 2);
+  mergeSort(nums, lo, mi);
+  mergeSort(nums, mi, hi);
+  merge(nums, lo, mi, hi);
+}
+
+function sortArray(nums: number[]): number[] {
+  mergeSort(nums, 0, nums.length);
+  return nums;
+}
 ```
 
 ## 堆排序
@@ -197,26 +196,24 @@ public:
 
 ## 插入排序
 
-```cpp
-class Solution {
-private:
-    void insertionSort(vector<int> &nums) {
-        int n = nums.size();
-        for (int i = 1; i < n; ++i) {
-            int target = nums[i], j = i - 1;
-            while (j >= 0 && target < nums[j]) {
-                nums[j + 1] = nums[j];
-                --j;
-            }
-            nums[j + 1] = target;
-        }
+```ts
+function insertionSort(nums: number[]) {
+  const n = nums.length;
+  for (let i = 1; i < n; ++i) {
+    const target = nums[i];
+    let j = i - 1;
+    while (j >= 0 && nums[j] > target) {
+      nums[j + 1] = nums[j];
+      --j;
     }
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        insertionSort(nums);
-        return nums;
-    }
-};
+    nums[j + 1] = target;
+  }
+}
+
+function sortArray(nums: number[]): number[] {
+  insertionSort(nums);
+  return nums;
+}
 ```
 
 ## 计数排序

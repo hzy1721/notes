@@ -6,6 +6,92 @@ export default {
     socialLinks: [{ icon: "github", link: "https://github.com/hzy1721/notes" }],
     sidebar: [
       {
+        text: "Vue",
+        items: [
+          { text: "生命周期", link: "/vue/lifecycle" },
+          { text: "内置指令", link: "/vue/built-in-directives" },
+          { text: "组件通信", link: "/vue/communication" },
+          { text: "动态组件", link: "/vue/dynamic-component" },
+          { text: "Object.defineProperty", link: "/vue/defineproperty" },
+          { text: "内部方法", link: "/vue/internal-methods" },
+          { text: "Proxy", link: "/vue/proxy" },
+          { text: "Reflect", link: "/vue/reflect" },
+          { text: "响应式实现", link: "/vue/reactive" },
+          { text: "计算属性实现", link: "/vue/computed" },
+          { text: "watch 实现", link: "/vue/watch" },
+          { text: "对象响应式方案", link: "/vue/object-reactivity" },
+          { text: "原始值响应式方案", link: "/vue/primitive-reactivity" },
+          { text: "渲染", link: "/vue/render" },
+          { text: "首屏渲染优化", link: "/vue/first-paint" },
+          { text: "手写题", link: "/vue/code" },
+        ],
+      },
+      {
+        text: "算法",
+        items: [
+          { text: "排序", link: "/algorithm/sort" },
+          { text: "Timsort", link: "/algorithm/timsort" },
+          { text: "字符串", link: "/algorithm/string" },
+          { text: "链表", link: "/algorithm/list" },
+          { text: "栈队", link: "/algorithm/stack-queue" },
+          { text: "二叉树", link: "/algorithm/binary-tree" },
+          {
+            text: "二叉树层序遍历",
+            link: "/algorithm/binary-tree-level-order",
+          },
+          { text: "二叉树 DFS", link: "/algorithm/binary-tree-dfs" },
+          { text: "平衡二叉树", link: "/algorithm/avl" },
+        ],
+      },
+      {
+        text: "LeetCode",
+        items: [
+          { text: "1. 两数之和", link: "/leetcode/1" },
+          { text: "买卖股票的最佳时机", link: "/leetcode/stock" },
+        ],
+      },
+      {
+        text: "手写题",
+        items: [
+          { text: "防抖和节流", link: "/code/debounce-throttle" },
+          { text: "Promise 静态方法", link: "/code/promise-static" },
+          { text: "手写 Promise", link: "/code/promise" },
+          { text: "柯里化", link: "/code/currying" },
+          { text: "并发请求", link: "/code/concurrent-requests" },
+          { text: "数组扁平化", link: "/code/array-flat" },
+          { text: "有序数组去重", link: "/code/sorted-array-unique" },
+          { text: "EventBus", link: "/code/eventbus" },
+          { text: "深拷贝和浅拷贝", link: "/code/copy" },
+          { text: "手写 new", link: "/code/new" },
+          { text: "JSON 节点路径", link: "/code/json-node-path" },
+          { text: "手写 setInterval", link: "/code/setinterval" },
+          { text: "轮播图", link: "/code/slideshow" },
+        ],
+      },
+      {
+        text: "智力题",
+        items: [
+          { text: "智力题 (1)", link: "/iq/1" },
+          { text: "智力题 (2)", link: "/iq/2" },
+        ],
+      },
+      {
+        text: "安全",
+        items: [
+          { text: "Web 安全", link: "/security/web" },
+          { text: "加密", link: "/security/encryption" },
+          { text: "JWT", link: "/security/jwt" },
+        ],
+      },
+      {
+        text: "Vite",
+        items: [
+          { text: "前端构建工具", link: "/vite/build-tool" },
+          { text: "Vite 简介", link: "/vite/intro" },
+          { text: "Vite 架构", link: "/vite/arch" },
+        ],
+      },
+      {
         text: "HTML",
         items: [{ text: "SVG", link: "/html/svg" }],
       },
@@ -17,6 +103,8 @@ export default {
           { text: "position", link: "/css/position" },
           { text: "BFC/IFC", link: "/css/bfc-ifc" },
           { text: "flex 布局", link: "/css/flex" },
+          { text: "grid 布局", link: "/css/grid" },
+          { text: "table 布局", link: "/css/table" },
           { text: "隐藏元素", link: "/css/hide" },
           { text: "calc()", link: "/css/calc" },
           { text: "水平/垂直居中", link: "/css/center" },
@@ -36,6 +124,7 @@ export default {
           { text: "数据类型", link: "/javascript/data-type" },
           { text: "可迭代对象", link: "/javascript/iterable" },
           { text: "构造函数", link: "/javascript/constructor" },
+          { text: "class", link: "/javascript/class" },
           { text: "原型", link: "/javascript/prototype" },
           { text: "判断类型", link: "/javascript/check-type" },
           { text: "闭包", link: "/javascript/closure" },
@@ -54,24 +143,6 @@ export default {
           { text: "Promise", link: "/javascript/promise" },
           { text: "手撕题", link: "/javascript/code" },
           { text: "fetch", link: "/javascript/fetch" },
-        ],
-      },
-      {
-        text: "手写题",
-        items: [
-          { text: "防抖和节流", link: "/code/debounce-throttle" },
-          { text: "Promise 静态方法", link: "/code/promise-static" },
-          { text: "手写 Promise", link: "/code/promise" },
-          { text: "柯里化", link: "/code/currying" },
-          { text: "并发请求", link: "/code/concurrent-requests" },
-          { text: "数组扁平化", link: "/code/array-flat" },
-          { text: "有序数组去重", link: "/code/sorted-array-unique" },
-          { text: "EventBus", link: "/code/eventbus" },
-          { text: "深拷贝和浅拷贝", link: "/code/copy" },
-          { text: "手写 new", link: "/code/new" },
-          { text: "JSON 节点路径", link: "/code/json-node-path" },
-          { text: "手写 setInterval", link: "/code/setinterval" },
-          { text: "轮播图", link: "/code/slideshow" },
         ],
       },
       {
@@ -110,51 +181,11 @@ export default {
         ],
       },
       {
-        text: "算法",
-        items: [
-          { text: "排序", link: "/algorithm/sort" },
-          { text: "链表", link: "/algorithm/list" },
-          { text: "栈队", link: "/algorithm/stack-queue" },
-          { text: "二叉树", link: "/algorithm/binary-tree" },
-          {
-            text: "二叉树层序遍历",
-            link: "/algorithm/binary-tree-level-order",
-          },
-          { text: "二叉树 DFS", link: "/algorithm/binary-tree-dfs" },
-          { text: "平衡二叉树", link: "/algorithm/avl" },
-        ],
-      },
-      {
         text: "操作系统基础",
         items: [
           { text: "进程和线程", link: "/os/process-thread" },
           { text: "进程通信", link: "/os/ipc" },
           { text: "线程通信", link: "/os/thread-communication" },
-        ],
-      },
-      {
-        text: "安全",
-        items: [
-          { text: "Web 安全", link: "/security/web" },
-          { text: "加密", link: "/security/encryption" },
-          { text: "JWT", link: "/security/jwt" },
-        ],
-      },
-      {
-        text: "Vue",
-        items: [
-          { text: "生命周期", link: "/vue/lifecycle" },
-          { text: "组件通信", link: "/vue/communication" },
-          { text: "Object.defineProperty", link: "/vue/defineproperty" },
-          { text: "Proxy", link: "/vue/proxy" },
-          { text: "响应式系统", link: "/vue/reactive" },
-          { text: "计算属性", link: "/vue/computed" },
-          { text: "watch", link: "/vue/watch" },
-          { text: "内置指令", link: "/vue/built-in-directives" },
-          { text: "渲染", link: "/vue/render" },
-          { text: "首屏渲染优化", link: "/vue/first-paint" },
-          { text: "Vite", link: "/vue/vite" },
-          { text: "手写题", link: "/vue/code" },
         ],
       },
       {
@@ -177,13 +208,6 @@ export default {
       {
         text: "设计",
         items: [{ text: "高并发", link: "/design/high-concurrency" }],
-      },
-      {
-        text: "LeetCode",
-        items: [
-          { text: "1. 两数之和", link: "/leetcode/1" },
-          { text: "3. 无重复字符的最长子串", link: "/leetcode/3" },
-        ],
       },
       {
         text: "软件工程",

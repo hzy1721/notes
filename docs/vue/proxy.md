@@ -8,21 +8,21 @@
 let proxy = new Proxy(target, handler);
 ```
 
-| 内部方法                | Handler 方法               | 何时触发                                                                                                                                                                                                                                                                                                                    |
-| ----------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `[[Get]]`               | `get`                      | 读取属性                                                                                                                                                                                                                                                                                                                    |
-| `[[Set]]`               | `set`                      | 写入属性                                                                                                                                                                                                                                                                                                                    |
-| `[[HasProperty]]`       | `has`                      | `in`  操作符                                                                                                                                                                                                                                                                                                                |
-| `[[Delete]]`            | `deleteProperty`           | `delete`  操作符                                                                                                                                                                                                                                                                                                            |
-| `[[Call]]`              | `apply`                    | 函数调用                                                                                                                                                                                                                                                                                                                    |
-| `[[Construct]]`         | `construct`                | `new`  操作符                                                                                                                                                                                                                                                                                                               |
-| `[[GetPrototypeOf]]`    | `getPrototypeOf`           | [Object.getPrototypeOf](https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf)                                                                                                                                                                                                |
-| `[[SetPrototypeOf]]`    | `setPrototypeOf`           | [Object.setPrototypeOf](https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf)                                                                                                                                                                                                |
-| `[[IsExtensible]]`      | `isExtensible`             | [Object.isExtensible](https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/isExtensible)                                                                                                                                                                                                    |
-| `[[PreventExtensions]]` | `preventExtensions`        | [Object.preventExtensions](https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions)                                                                                                                                                                                          |
-| `[[DefineOwnProperty]]` | `defineProperty`           | [Object.defineProperty](https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty), [Object.defineProperties](https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties)                                                              |
-| `[[GetOwnProperty]]`    | `getOwnPropertyDescriptor` | [Object.getOwnPropertyDescriptor](https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor), `for..in`, `Object.keys/values/entries`                                                                                                                                   |
-| `[[OwnPropertyKeys]]`   | `ownKeys`                  | [Object.getOwnPropertyNames](https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames), [Object.getOwnPropertySymbols](https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols), `for..in`, `Object.keys/values/entries` |
+| 内部方法                | Proxy 处理函数             |
+| ----------------------- | -------------------------- |
+| `[[GetPrototypeOf]]`    | `getPrototypeOf`           |
+| `[[SetPrototypeOf]]`    | `setPrototypeOf`           |
+| `[[IsExtensible]]`      | `isExtensible`             |
+| `[[PreventExtensions]]` | `preventExtensions`        |
+| `[[GetOwnProperty]]`    | `getOwnPropertyDescriptor` |
+| `[[DefineOwnProperty]]` | `defineProperty`           |
+| `[[HasProperty]]`       | `has`                      |
+| `[[Get]]`               | `get`                      |
+| `[[Set]]`               | `set`                      |
+| `[[Delete]]`            | `deleteProperty`           |
+| `[[OwnPropertyKeys]]`   | `ownKeys`                  |
+| `[[Call]]`              | `apply`                    |
+| `[[Construct]]`         | `construct`                |
 
 ## get
 
