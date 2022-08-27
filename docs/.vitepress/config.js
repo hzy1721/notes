@@ -16,10 +16,9 @@ export default {
           { text: "内部方法", link: "/vue/internal-methods" },
           { text: "Proxy", link: "/vue/proxy" },
           { text: "Reflect", link: "/vue/reflect" },
-          { text: "响应式实现", link: "/vue/reactive" },
+          { text: "对象响应式方案", link: "/vue/reactive-object" },
           { text: "计算属性实现", link: "/vue/computed" },
           { text: "watch 实现", link: "/vue/watch" },
-          { text: "对象响应式方案", link: "/vue/object-reactivity" },
           { text: "原始值响应式方案", link: "/vue/primitive-reactivity" },
           { text: "渲染", link: "/vue/render" },
           { text: "首屏渲染优化", link: "/vue/first-paint" },
@@ -65,6 +64,7 @@ export default {
           { text: "手写 new", link: "/code/new" },
           { text: "JSON 节点路径", link: "/code/json-node-path" },
           { text: "手写 setInterval", link: "/code/setinterval" },
+          { text: "DOM 转对象", link: "/code/dom-to-object" },
           { text: "轮播图", link: "/code/slideshow" },
         ],
       },
@@ -76,10 +76,19 @@ export default {
         ],
       },
       {
+        text: "系统设计",
+        items: [
+          { text: "IaaS/PaaS/SaaS", link: "/design/iaas-paas-saas" },
+          { text: "高并发", link: "/design/high-concurrency" },
+        ],
+      },
+      {
         text: "安全",
         items: [
           { text: "Web 安全", link: "/security/web" },
           { text: "加密", link: "/security/encryption" },
+          { text: "Session", link: "/security/session" },
+          { text: "Token", link: "/security/token" },
           { text: "JWT", link: "/security/jwt" },
         ],
       },
@@ -126,6 +135,7 @@ export default {
           { text: "构造函数", link: "/javascript/constructor" },
           { text: "class", link: "/javascript/class" },
           { text: "原型", link: "/javascript/prototype" },
+          { text: "继承", link: "/javascript/inheritance" },
           { text: "判断类型", link: "/javascript/check-type" },
           { text: "闭包", link: "/javascript/closure" },
           { text: "this", link: "/javascript/this" },
@@ -204,10 +214,6 @@ export default {
       {
         text: "Dexie",
         items: [{ text: "liveQuery", link: "/dexie/livequery" }],
-      },
-      {
-        text: "设计",
-        items: [{ text: "高并发", link: "/design/high-concurrency" }],
       },
       {
         text: "软件工程",

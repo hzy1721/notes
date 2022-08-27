@@ -25,11 +25,6 @@ Set-Cookie: <cookie-name>=<cookie-value>
 
 还有一些对 Cookie 的设置也写在 `Set-Cookie` 里，用分号 `;` 分隔：
 
-- `Expires`：过期时间，GMT 格式，到期 Cookie 被删除
-  - 默认是 Session Cookie
-- `Max-Age`：有效时间，以秒为单位，到期 Cookie 被删除
-- `Secure`：只使用 HTTPS 发送 Cookie，可以防止中间人攻击
-- `HttpOnly`：JS 无法通过 `document.cookie` 访问 Cookie，可以防止 XSS 攻击
 - `Domain`：Cookie 应该被发送到哪些域名
   - 默认：设置 Cookie 的域名，**不包括**子域名
   - 设置为服务端域名：包含子域名
@@ -38,6 +33,11 @@ Set-Cookie: <cookie-name>=<cookie-value>
   - 默认：请求的路径
   - 设置为某个路径：包括子路径
     - 比如设置 `Path=/docs`，也会匹配 `/docs/`、`/docs/web`、`/docs/web/http` 等
+- `Expires`：过期时间，GMT 格式，到期 Cookie 被删除
+  - 默认是 Session Cookie
+- `Max-Age`：有效时间，以秒为单位，到期 Cookie 被删除
+- `Secure`：只使用 HTTPS 发送 Cookie，可以防止中间人攻击
+- `HttpOnly`：JS 无法通过 `document.cookie` 访问 Cookie，可以防止 XSS 攻击
 - `SameSite`：是否通过跨站请求发送 Cookie，可以防止 CSRF 攻击
   - `Strict`：只在 Cookie 设置的站点发送
   - `Lax` (默认)：同 Strict，但是允许从外部站点跳转到源站点时发送 Cookie
@@ -74,37 +74,3 @@ console.log(document.cookie); // 访问所有 Cookie
 由请求的页面以外的其他域设置的 Cookie，称为第三方 Cookie。通常用于跟踪和广告。
 
 浏览器允许禁止第三方 Cookie。
-
-## Session
-
-通过 Cookie 发送和保存 Session ID，可以实现会话管理。
-
-![](assets/session.png)
-
-与用 Cookie 保存所有用户数据相比，Session 只用 Cookie 保存一个 Session ID，剩余数据保存在服务端，使用 Session ID 索引，更加灵活、方便、安全。一般用于**短时间**用户认证和授权。
-
-## Token
-
-Token 是一种**无状态**的认证和授权机制，相比 Session 对服务器的负担更小。
-
-### Access Token
-
-Access Token 用于请求接口时的身份认证。
-
-![](assets/token.png)
-
-1. 登录后从服务端获取 token，保存在浏览器中。
-2. 后续请求接口都带上 token。
-3. 服务端解析 token，检查是否为有效 token，有效则返回响应。
-
-### Refresh Token
-
-Access Token 的有效期通常较短，Refresh Token 用于重新获取 Access Token (刷新)，通常有效期较长。
-
-![](assets/refresh-token.png)
-
-如果 Refresh Token 也过期了，就只能重新登录了。
-
-## JWT
-
-JWT (JSON Web Token) 是一种**跨域**认证和授权方案。

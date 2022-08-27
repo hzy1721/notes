@@ -48,3 +48,15 @@ class Button {
   };
 }
 ```
+
+## extends
+
+`class` 使用 `extends` 让一个类继承另一个类。
+
+```js
+class Rabbit extends Animal { ... }
+```
+
+本质就是把 `Rabbit.prototype.[[Prototype]]` 设置为 `Animal.prototype`。
+
+<img src="./assets/class-extends.png" width="70%" />
