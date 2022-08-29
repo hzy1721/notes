@@ -1,0 +1,1 @@
+import{_ as l,c as i,o as e,a as t}from"./app.cab6bfd9.js";const h=JSON.parse('{"title":"\u751F\u547D\u5468\u671F","description":"","frontmatter":{},"headers":[],"relativePath":"vue/lifecycle.md"}'),o={name:"vue/lifecycle.md"},c=t("",3),d=[c];function a(u,r,n,s,_,p){return e(),i("div",null,d)}var m=l(o,[["render",a]]);export{h as __pageData,m as default};

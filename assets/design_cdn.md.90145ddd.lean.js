@@ -1,0 +1,1 @@
+import{_ as l,c as i,o as e,a as t}from"./app.cab6bfd9.js";const N=JSON.parse('{"title":"CDN","description":"","frontmatter":{},"headers":[],"relativePath":"design/cdn.md"}'),a={name:"design/cdn.md"},n=t("",14),r=[n];function o(p,s,_,c,u,d){return e(),i("div",null,r)}var S=l(a,[["render",o]]);export{N as __pageData,S as default};
