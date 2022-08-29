@@ -80,3 +80,17 @@ One more counter: <input type="button" value="2" data-counter>
   });
 </script>
 ```
+
+## 负面影响
+
+输入事件由渲染器进程的合成器线程处理，页面合成后，合成器线程会给绑定了事件处理程序的区域打上 “Non-fast Scrollable Region” 的标记，当该区域发生事件后，将事件发送给主线程。
+
+![](assets/non-fast-scrollable-region.png)
+
+如果事件发生在区域外，合成器线程不会等待主线程，而是会继续合成新帧。
+
+使用事件委托会导致最外层的大面积父元素被标记为 “Non-fast Scrollable Region”，即使事件发生在那些不需要处理的元素上，合成器线程也要每次都跟主线程沟通，消除了合成器线程平滑滚动的优势。
+
+![](assets/event-delegation-drawback.png)
+
+为了缓冲事件委托带来的副作用，可以在注册事件处理函数时设置 `{ passive: true }`，提示浏览器在处理事件时可以继续合成新帧。

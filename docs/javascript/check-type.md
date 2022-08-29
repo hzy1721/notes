@@ -48,10 +48,10 @@ obj instanceof Class;
 
 1. 如果 `Class` 有静态方法 `Symbol.hasInstance`，就直接调用。
 2. 大部分 `Class` 没有这个方法，就检查 `Class.prototype` 是否等于 `obj` 原型链中的一个。
+   - 等价于 `Class.prototype.isPrototypeOf(obj)`
+   - 检查 `Class.prototype` 是否在 `obj` 的原型链上
 
 <img src="./assets/instanceof.png" style="zoom: 50%" />
-
-还有一个等价方法：`objA.isPrototypeOf(objB)`，如果 `objA` 在 `objB` 的原型链中，则返回 `true`。
 
 优点：
 

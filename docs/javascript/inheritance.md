@@ -59,10 +59,14 @@ Object.assign(
 
 ## class extends
 
-ES6 引入的最直观的继承语法，与 “完整继承” 的原理相同。
+ES6 引入的最直观的继承语法。
 
 ```js
 class SubType extends SuperType { ... }
 ```
 
 <img src="./assets/class-extends.png" width="70%" />
+
+- 数据属性：在子类 constructor 中执行父类 constructor
+- 访问器属性和实例方法：`Rabbit.prototype.[[Prototype]]` 设置为 `Animal.prototype`
+- 静态属性和静态方法：`Rabbit.[[Prototype]]` 设置为 `Animal`

@@ -1,8 +1,6 @@
 # 对象响应式方案
 
-## 响应式数据
-
-### 全局变量
+## 全局变量
 
 ```js
 // 全局变量保存对象属性的依赖集合
@@ -18,7 +16,7 @@ const reactiveMap = new Map();
 let shouldTrack = true;
 ```
 
-### 重写数组方法
+## 重写数组方法
 
 ```js
 const arrayInstrumentations = {};
@@ -51,7 +49,7 @@ const arrayInstrumentations = {};
 });
 ```
 
-### reactive 实现
+## reactive 实现
 
 ```js
 function reactive(obj) {
@@ -165,7 +163,7 @@ function createReactive(obj, isShallow = false, isReadonly = false) {
 }
 ```
 
-### track 函数
+## track 函数
 
 ```js
 function track(target, key) {
@@ -190,7 +188,7 @@ function track(target, key) {
 }
 ```
 
-### trigger 函数
+## trigger 函数
 
 ```js
 function trigger(target, key, type, newVal) {
