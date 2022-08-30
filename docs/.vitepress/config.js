@@ -33,6 +33,7 @@ export default {
         items: [
           { text: "排序", link: "/algorithm/sort" },
           { text: "Timsort", link: "/algorithm/timsort" },
+          { text: "数组", link: "/algorithm/array" },
           { text: "字符串", link: "/algorithm/string" },
           { text: "链表", link: "/algorithm/list" },
           { text: "栈队", link: "/algorithm/stack-queue" },
@@ -43,15 +44,10 @@ export default {
           },
           { text: "二叉树 DFS", link: "/algorithm/binary-tree-dfs" },
           { text: "平衡二叉树", link: "/algorithm/avl" },
-        ],
-        collapsible: true,
-        collapsed: true,
-      },
-      {
-        text: "LeetCode",
-        items: [
-          { text: "1. 两数之和", link: "/leetcode/1" },
-          { text: "买卖股票的最佳时机", link: "/leetcode/stock" },
+          { text: "括号", link: "/algorithm/bracket" },
+          { text: "买卖股票的最佳时机", link: "/algorithm/stock" },
+          { text: "两数之和", link: "/algorithm/1" },
+          { text: "Excel 表", link: "/algorithm/excel" },
         ],
         collapsible: true,
         collapsed: true,
@@ -75,6 +71,10 @@ export default {
           {
             text: "点击 button 把 input 内容 alert",
             link: "/code/alert-input",
+          },
+          {
+            text: "n 个异步操作按序执行",
+            link: "/code/async-serial-execution",
           },
           { text: "轮播图", link: "/code/slideshow" },
         ],
@@ -126,13 +126,17 @@ export default {
       },
       {
         text: "HTML",
-        items: [{ text: "SVG", link: "/html/svg" }],
+        items: [
+          { text: "iframe", link: "/html/iframe" },
+          { text: "SVG", link: "/html/svg" },
+        ],
         collapsible: true,
         collapsed: true,
       },
       {
         text: "CSS",
         items: [
+          { text: "盒子模型", link: "/css/box-model" },
           { text: "选择器", link: "/css/selector" },
           { text: "优先级", link: "/css/priority" },
           { text: "position", link: "/css/position" },
@@ -182,6 +186,8 @@ export default {
           { text: "事件循环", link: "/javascript/event-loop" },
           { text: "Promise", link: "/javascript/promise" },
           { text: "手撕题", link: "/javascript/code" },
+          { text: "AJAX", link: "/javascript/ajax" },
+          { text: "XMLHttpRequest", link: "/javascript/xhr" },
           { text: "fetch", link: "/javascript/fetch" },
         ],
         collapsible: true,
@@ -263,7 +269,10 @@ export default {
       },
       {
         text: "杂项",
-        items: [{ text: "UTF-8", link: "/misc/utf-8" }],
+        items: [
+          { text: "动态/静态/弱/强类型", link: "/misc/type-category" },
+          { text: "UTF-8", link: "/misc/utf-8" },
+        ],
         collapsible: true,
         collapsed: true,
       },

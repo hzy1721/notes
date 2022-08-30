@@ -14,6 +14,7 @@ const TriggerType = {
 const reactiveMap = new Map();
 // 一个标记变量，代表是否进行追踪。默认值为 true，即允许追踪
 let shouldTrack = true;
+const MAP_KEY_ITERATE_KEY = Symbol();
 ```
 
 ## 重写数组方法
@@ -210,7 +211,14 @@ function trigger(target, key, type, newVal) {
     });
 
   // 当操作类型为 ADD 或 DELETE 时，需要触发与 ITERATE_KEY 相关联的副作用函数重新执行
-  if (type === TriggerType.ADD || type === TriggerType.DELETE) {
+  if (
+    type === TriggerType.ADD ||
+    type === TriggerType.DELETE ||
+    // 如果操作类型是 SET，并且目标对象是 Map 类型的数据，
+    // 也应该触发那些与 ITERATE_KEY 相关联的副作用函数重新执行
+    (type === TriggerType.SET &&
+      Object.prototype.toString.call(target) === "[object Map]")
+  ) {
     // 取出与 ITERATE_KEY 相关联的副作用函数
     const iterateEffects = depsMap.get(ITERATE_KEY);
     // 将与 ITERATE_KEY 相关联的副作用函数也添加到 effectsToRun
@@ -222,8 +230,24 @@ function trigger(target, key, type, newVal) {
       });
   }
 
-  // 当操作类型为 ADD 并且目标对象是数组时，应该取出并执行那些与 length 属性相关联的副作用函数
+  if (
+    // 操作类型为 ADD 或 DELETE
+    (type === TriggerType.ADD || type === TriggerType.DELETE) &&
+    // 并且是 Map 类型的数据
+    Object.prototype.toString.call(target) === "[object Map]"
+  ) {
+    // 则取出那些与 MAP_KEY_ITERATE_KEY 相关联的副作用函数并执行
+    const iterateEffects = depsMap.get(MAP_KEY_ITERATE_KEY);
+    iterateEffects &&
+      iterateEffects.forEach((effectFn) => {
+        if (effectFn !== activeEffect) {
+          effectsToRun.add(effectFn);
+        }
+      });
+  }
+
   if (type === TriggerType.ADD && Array.isArray(target)) {
+    // 当操作类型为 ADD 并且目标对象是数组时，应该取出并执行那些与 length 属性相关联的副作用函数
     // 取出与 length 相关联的副作用函数
     const lengthEffects = depsMap.get("length");
     // 将这些副作用函数添加到 effectsToRun 中，待执行

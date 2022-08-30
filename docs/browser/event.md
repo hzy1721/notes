@@ -54,7 +54,8 @@ element.addEventListener(event, handler[, capture]);
 - `options`：
   - `once`：是否触发 1 次后被移除
   - `capture`：是否在捕获阶段执行处理函数
-  - `passive`：设为 true 不会调用 preventDefault()
+  - `passive`：设为 true 表示处理函数不会调用 preventDefault()
+    - 如果调用了，会被忽略并在控制台打印警告
 
 移除处理程序：
 

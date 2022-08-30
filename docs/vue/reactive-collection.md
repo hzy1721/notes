@@ -65,7 +65,92 @@ const mutableInstrumentations = {
       trigger(target, key, TriggerType.SET);
     }
   },
+  forEach(callback, thisArg) {
+    // wrap 函数用来把可代理的值转换为响应式数据
+    const wrap = (val) => (typeof val === "object" ? reactive(val) : val);
+    // 取得原始数据对象
+    const target = this.raw;
+    // 与 ITERATE_KEY 建立响应联系
+    track(target, ITERATE_KEY);
+    // 通过原始数据对象调用 forEach 方法，并把 callback 传递过去
+    target.forEach((v, k) => {
+      // 手动调用 callback，用 wrap 函数包裹 value 和 key 后再传给 callback，这样就实现了深响应
+      callback.call(thisArg, wrap(v), wrap(k), this);
+    });
+  },
+  [Symbol.iterator]: iterationMethod,
+  entries: iterationMethod,
+  values: valuesIterationMethod,
 };
+
+// 抽离为独立的函数，便于复用
+function iterationMethod() {
+  const target = this.raw;
+  // 获取原始迭代器方法
+  const it = target[Symbol.iterator]();
+  const wrap = (val) =>
+    typeof val === "object" && val !== null ? reactive(val) : val;
+  // 调用 track 函数建立响应联系
+  track(target, ITERATE_KEY);
+  // 返回自定义的迭代器
+  return {
+    next() {
+      // 调用原始迭代器的 next 方法获取 value 和 done
+      const { value, done } = it.next();
+      return {
+        // 如果 value 不是 undefined，则进行包装
+        value: value ? [wrap(value[0]), wrap(value[1])] : value,
+        done,
+      };
+    },
+    // 实现可迭代协议
+    [Symbol.iterator]() {
+      return this;
+    },
+  };
+}
+
+function valuesIterationMethod() {
+  const target = this.raw;
+  // 通过 target.values 获取原始迭代器方法
+  const it = target.values();
+  const wrap = (val) => (typeof val === "object" ? reactive(val) : val);
+  track(target, ITERATE_KEY);
+  return {
+    next() {
+      const { value, done } = it.next();
+      return {
+        // 只需要包装 value 即可
+        value: wrap(value),
+        done,
+      };
+    },
+    [Symbol.iterator]() {
+      return this;
+    },
+  };
+}
+
+function keysIterationMethod() {
+  const target = this.raw;
+  // 获取原始迭代器方法
+  const it = target.keys();
+  const wrap = (val) => (typeof val === "object" ? reactive(val) : val);
+  // 调用 track 函数追踪依赖，在副作用函数与 MAP_KEY_ITERATE_KEY 之间建立响应联系
+  track(target, MAP_KEY_ITERATE_KEY);
+  return {
+    next() {
+      const { value, done } = it.next();
+      return {
+        value: wrap(value),
+        done,
+      };
+    },
+    [Symbol.iterator]() {
+      return this;
+    },
+  };
+}
 ```
 
 ## reactive 实现
