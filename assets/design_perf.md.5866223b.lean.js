@@ -1,1 +1,0 @@
-import{_ as i,c as e,o as l,a}from"./app.cab6bfd9.js";const m=JSON.parse('{"title":"\u524D\u7AEF\u6027\u80FD\u4F18\u5316","description":"","frontmatter":{},"headers":[],"relativePath":"design/perf.md"}'),t={name:"design/perf.md"},r=a("",2),_=[r];function o(s,n,c,d,p,f){return l(),e("div",null,_)}var T=i(t,[["render",o]]);export{m as __pageData,T as default};
