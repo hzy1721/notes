@@ -2,30 +2,28 @@
 
 ## 层序遍历
 
-```cpp
-class Solution {
-public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> ans;
-        vector<int> layerNodes;
-        queue<TreeNode *> nodeQueue;
-        if (root)
-            nodeQueue.push(root);
-        while (!nodeQueue.empty()) {
-            layerNodes.clear();
-            int len = nodeQueue.size();
-            for (int i = 0; i < len; ++i) {
-                TreeNode *curr = nodeQueue.front();
-                nodeQueue.pop();
-                layerNodes.push_back(curr->val);
-                if (curr->left)
-                    nodeQueue.push(curr->left);
-                if (curr->right)
-                    nodeQueue.push(curr->right);
-            }
-            ans.push_back(layerNodes);
-        }
-        return ans;
+```ts
+function levelOrder(root: TreeNode | null): number[][] {
+  const res: number[][] = [];
+  const queue: TreeNode[] = [];
+  if (root) {
+    queue.push(root);
+  }
+  while (queue.length > 0) {
+    const len = queue.length;
+    const layer: number[] = [];
+    for (let i = 0; i < len; ++i) {
+      const node = queue.shift();
+      layer.push(node.val);
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
     }
-};
+    res.push(layer);
+  }
+  return res;
+}
 ```
