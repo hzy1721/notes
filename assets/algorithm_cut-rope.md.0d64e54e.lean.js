@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as p}from"./app.b22b3ef2.js";const i=JSON.parse('{"title":"\u526A\u7EF3\u5B50","description":"","frontmatter":{},"headers":[],"relativePath":"algorithm/cut-rope.md"}'),l={name:"algorithm/cut-rope.md"},o=p("",2),e=[o];function t(c,r,F,y,D,C){return n(),a("div",null,e)}var d=s(l,[["render",t]]);export{i as __pageData,d as default};
