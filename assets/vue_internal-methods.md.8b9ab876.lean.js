@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as d,a as o}from"./app.e29b80a0.js";const h=JSON.parse('{"title":"\u5185\u90E8\u65B9\u6CD5","description":"","frontmatter":{},"headers":[],"relativePath":"vue/internal-methods.md"}'),r={name:"vue/internal-methods.md"},c=o("",8),n=[c];function a(p,s,l,i,y,_){return d(),e("div",null,n)}var f=t(r,[["render",a]]);export{h as __pageData,f as default};

@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as l}from"./app.e29b80a0.js";const i=JSON.parse('{"title":"\u591A\u6570\u5143\u7D20","description":"","frontmatter":{},"headers":[],"relativePath":"algorithm/majority.md"}'),p={name:"algorithm/majority.md"},o=l("",2),e=[o];function t(c,r,F,y,D,C){return a(),n("div",null,e)}var _=s(p,[["render",t]]);export{i as __pageData,_ as default};
