@@ -1,5 +1,29 @@
 # 括号
 
+## 括号匹配
+
+```ts
+const bracketMap = new Map([
+  [")", "("],
+  ["]", "["],
+  ["}", "{"],
+]);
+
+function isValid(s: string): boolean {
+  const stack: string[] = [];
+  for (const c of s) {
+    if (c === "(" || c === "[" || c === "{") {
+      stack.push(c);
+    } else {
+      if (stack.length === 0 || stack.pop() !== bracketMap.get(c)) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
+}
+```
+
 ## 括号生成
 
 ```ts
