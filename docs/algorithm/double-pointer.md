@@ -19,3 +19,26 @@ function maxArea(height: number[]): number {
   return res;
 }
 ```
+
+## 颜色分类
+
+```ts
+function sortColors(nums: number[]): void {
+  let p0 = 0,
+    p1 = 0;
+  const n = nums.length;
+  for (let i = 0; i < n; ++i) {
+    if (nums[i] === 0) {
+      [nums[p0], nums[i]] = [nums[i], nums[p0]];
+      if (p0 < p1) {
+        [nums[p1], nums[i]] = [nums[i], nums[p1]];
+      }
+      ++p0;
+      ++p1;
+    } else if (nums[i] === 1) {
+      [nums[p1], nums[i]] = [nums[i], nums[p1]];
+      ++p1;
+    }
+  }
+}
+```

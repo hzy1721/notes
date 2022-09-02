@@ -92,3 +92,47 @@ function mergeTrees(
   return root1;
 }
 ```
+
+## 二叉树展开为链表
+
+前序遍历
+
+```ts
+function flatten(root: TreeNode | null): void {
+  const dummyHead = new TreeNode();
+  let prev = dummyHead;
+  function preorder(root: TreeNode | null) {
+    if (root) {
+      prev.right = root;
+      const leftChild = root.left;
+      const rightChild = root.right;
+      root.left = null;
+      prev = root;
+      preorder(leftChild);
+      preorder(rightChild);
+    }
+  }
+  preorder(root);
+}
+```
+
+空间 O(1)
+
+```ts
+function flatten(root: TreeNode | null): void {
+  let curr = root;
+  while (curr) {
+    if (curr.left) {
+      const next = curr.left;
+      let prev = next;
+      while (prev.right) {
+        prev = prev.right;
+      }
+      prev.right = curr.right;
+      curr.left = null;
+      curr.right = next;
+    }
+    curr = curr.right;
+  }
+}
+```

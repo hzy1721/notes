@@ -66,3 +66,42 @@ function maxSubArray(nums: number[]): number {
   return res;
 }
 ```
+
+## 跳跃游戏
+
+```ts
+function canJump(nums: number[]): boolean {
+  const n = nums.length;
+  const dp = new Array<boolean>(n).fill(false);
+  dp[0] = true;
+  for (let i = 1; i < n; ++i) {
+    for (let j = i - 1; j >= 0; --j) {
+      if (dp[j] && j + nums[j] >= i) {
+        dp[i] = true;
+        break;
+      }
+    }
+  }
+  return dp[n - 1];
+}
+```
+
+## 单词拆分
+
+```ts
+function wordBreak(s: string, wordDict: string[]): boolean {
+  const set = new Set(wordDict);
+  const n = s.length;
+  const dp = new Array<boolean>(n + 1).fill(false);
+  dp[0] = true;
+  for (let i = 1; i <= n; ++i) {
+    for (let j = 0; j < i; ++j) {
+      if (dp[j] && set.has(s.slice(j, i))) {
+        dp[i] = true;
+        break;
+      }
+    }
+  }
+  return dp[n];
+}
+```
