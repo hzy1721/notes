@@ -28,6 +28,34 @@ function levelOrder(root: TreeNode | null): number[][] {
 }
 ```
 
+## 右视图
+
+```ts
+function rightSideView(root: TreeNode | null): number[] {
+  const res: number[] = [];
+  const queue: TreeNode[] = [];
+  if (root) {
+    queue.push(root);
+  }
+  while (queue.length > 0) {
+    const len = queue.length;
+    let last = 0;
+    for (let i = 0; i < len; ++i) {
+      const node = queue.shift();
+      last = node.val;
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+    res.push(last);
+  }
+  return res;
+}
+```
+
 ## 锯齿形层序遍历
 
 双端队列 (deque) 实现奇数层从左往右、偶数层从右往左。

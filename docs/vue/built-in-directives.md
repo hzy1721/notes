@@ -18,3 +18,13 @@
 有了 `key`，Vue 就可以**最高效**地重新排列元素、新增/删除元素，避免不必要的操作。
 
 在组件上设置 `key` 也可以用于强制重新创建组件，触发生命周期钩子，或者触发过渡效果。
+
+## v-model
+
+表单输入元素：绑定 `value` 属性和 `input` 事件。
+
+- `<input>`
+- `<select>`
+- `<textarea>`
+
+组件：绑定 `modelValue` 属性和 `update:modelValue` 事件。

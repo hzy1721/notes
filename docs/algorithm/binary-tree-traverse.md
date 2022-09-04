@@ -24,10 +24,38 @@ function inorderTraversal(root: TreeNode | null): number[] {
 
 ## 后序遍历
 
+```ts
+function postorderTraversal(root: TreeNode | null): number[] {
+  const res: number[] = [];
+  const stack: TreeNode[] = [];
+  let curr = root;
+  let prev: TreeNode | null = null;
+  while (curr || stack.length > 0) {
+    while (curr) {
+      stack.push(curr);
+      curr = curr.left;
+    }
+    curr = stack.pop();
+    if (curr.right && curr.right !== prev) {
+      stack.push(curr);
+      curr = curr.right;
+    } else {
+      res.push(curr.val);
+      prev = curr;
+      curr = null;
+    }
+  }
+  return res;
+}
+```
+
 ## 从前序/中序遍历序列构造二叉树
 
 ```ts
-function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
+function buildTree(
+  preorder: number[],
+  inorder: number[]
+): TreeNode | null {
   const map = new Map<number, number>();
   for (const [i, num] of inorder.entries()) {
     map.set(num, i);
@@ -45,8 +73,18 @@ function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
     const root = new TreeNode(rootVal);
     const mid = map.get(rootVal);
     const leftLen = mid - inLeft;
-    root.left = build(preLeft + 1, preLeft + leftLen, inLeft, mid - 1);
-    root.right = build(preLeft + leftLen + 1, preRight, mid + 1, inRight);
+    root.left = build(
+      preLeft + 1,
+      preLeft + leftLen,
+      inLeft,
+      mid - 1
+    );
+    root.right = build(
+      preLeft + leftLen + 1,
+      preRight,
+      mid + 1,
+      inRight
+    );
     return root;
   }
   return build(0, preorder.length - 1, 0, inorder.length - 1);

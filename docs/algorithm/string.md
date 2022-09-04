@@ -5,10 +5,10 @@
 ```ts
 function lengthOfLongestSubstring(s: string): number {
   const set = new Set<string>();
-  let j = 0;
   const n = s.length;
+  let j = 0;
   let res = 0;
-  for (let i = 0; i < n; ++i) {
+  for (let i = 0; i < n && j < n; ++i) {
     if (i > 0) {
       set.delete(s[i - 1]);
     }
@@ -27,13 +27,10 @@ function lengthOfLongestSubstring(s: string): number {
 ```ts
 function longestPalindrome(s: string): string {
   const n = s.length;
-  const dp = new Array(n).fill(0).map(() => new Array(n).fill(false));
-  for (let i = 0; i < n; ++i) {
-    dp[i][i] = true;
-  }
-  let maxLen = 1,
+  const dp = new Array(n).fill(0).map(() => new Array(n));
+  let maxLen = 0,
     maxIdx = 0;
-  for (let len = 2; len <= n; ++len) {
+  for (let len = 1; len <= n; ++len) {
     for (let i = 0; i < n; ++i) {
       const j = i + len - 1;
       if (j >= n) {
@@ -42,7 +39,7 @@ function longestPalindrome(s: string): string {
       if (s[i] !== s[j]) {
         dp[i][j] = false;
       } else {
-        if (j - i < 3) {
+        if (len <= 3) {
           dp[i][j] = true;
         } else {
           dp[i][j] = dp[i + 1][j - 1];
@@ -55,5 +52,40 @@ function longestPalindrome(s: string): string {
     }
   }
   return s.slice(maxIdx, maxIdx + maxLen);
+}
+```
+
+## 回文子串数量
+
+```ts
+
+```
+
+## 最长公共子序列
+
+```ts
+function longestCommonSubsequence(
+  text1: string,
+  text2: string
+): number {
+  const m = text1.length;
+  const n = text2.length;
+  const dp = new Array(m + 1).fill(0).map(() => new Array(n + 1));
+  for (let i = 0; i <= m; ++i) {
+    dp[i][0] = 0;
+  }
+  for (let j = 0; j <= n; ++j) {
+    dp[0][j] = 0;
+  }
+  for (let i = 1; i <= m; ++i) {
+    for (let j = 1; j <= n; ++j) {
+      if (text1[i - 1] === text2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+  return dp[m][n];
 }
 ```

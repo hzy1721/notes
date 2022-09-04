@@ -2,6 +2,8 @@
 
 ## 爬楼梯
 
+迭代
+
 ```ts
 function climbStairs(n: number): number {
   if (n <= 2) {
@@ -16,5 +18,16 @@ function climbStairs(n: number): number {
     f2 = f3;
   }
   return f3;
+}
+```
+
+递归
+
+```ts
+function climbStairs(n: number): number {
+  if (n <= 2) {
+    return n;
+  }
+  return climbStairs(n - 1) + climbStairs(n - 2);
 }
 ```

@@ -3,7 +3,12 @@
 ## 合并有序数组
 
 ```ts
-function merge(nums1: number[], m: number, nums2: number[], n: number): void {
+function merge(
+  nums1: number[],
+  m: number,
+  nums2: number[],
+  n: number
+): void {
   let i = m - 1,
     j = n - 1,
     k = m + n - 1;
@@ -50,6 +55,25 @@ function findDisappearedNumbers(nums: number[]): number[] {
     if (nums[i] <= n) {
       res.push(i + 1);
     }
+  }
+  return res;
+}
+```
+
+## 最长递增子序列
+
+```ts
+function lengthOfLIS(nums: number[]): number {
+  const n = nums.length;
+  const dp = new Array(n).fill(1);
+  let res = 0;
+  for (let i = 0; i < n; ++i) {
+    for (let j = i - 1; j >= 0; --j) {
+      if (nums[i] > nums[j]) {
+        dp[i] = Math.max(dp[i], dp[j] + 1);
+      }
+    }
+    res = Math.max(res, dp[i]);
   }
   return res;
 }

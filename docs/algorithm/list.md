@@ -164,7 +164,10 @@ function addTwoNumbers(
 ## 删除倒数第 N 个结点
 
 ```ts
-function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
+function removeNthFromEnd(
+  head: ListNode | null,
+  n: number
+): ListNode | null {
   const dummyHead = new ListNode(0, head);
   let p1 = dummyHead,
     p2 = head;
@@ -176,6 +179,64 @@ function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
     p2 = p2.next;
   }
   p1.next = p1.next.next;
+  return dummyHead.next;
+}
+```
+
+## 排序链表
+
+```ts
+function sortList(head: ListNode | null): ListNode | null {
+  return mergeSort(head, null);
+}
+
+function mergeSort(
+  head: ListNode | null,
+  tail: ListNode | null
+): ListNode | null {
+  if (!head) {
+    return null;
+  }
+  if (head.next === tail) {
+    head.next = null;
+    return head;
+  }
+  let slow = head,
+    fast = head;
+  while (fast !== tail) {
+    slow = slow.next;
+    fast = fast.next;
+    if (fast !== tail) {
+      fast = fast.next;
+    }
+  }
+  const left = mergeSort(head, slow);
+  const right = mergeSort(slow, tail);
+  return merge(left, right);
+}
+
+function merge(
+  head1: ListNode | null,
+  head2: ListNode | null
+): ListNode | null {
+  if (!head1 || !head2) {
+    return head1 ?? head2;
+  }
+  const dummyHead = new ListNode();
+  let p1 = head1,
+    p2 = head2,
+    p3 = dummyHead;
+  while (p1 && p2) {
+    if (p1.val <= p2.val) {
+      p3.next = p1;
+      p1 = p1.next;
+    } else {
+      p3.next = p2;
+      p2 = p2.next;
+    }
+    p3 = p3.next;
+  }
+  p3.next = p1 ?? p2;
   return dummyHead.next;
 }
 ```

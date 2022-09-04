@@ -67,6 +67,25 @@ function maxSubArray(nums: number[]): number {
 }
 ```
 
+## 最大子数组积
+
+```ts
+function maxProduct(nums: number[]): number {
+  let prevMax = 1,
+    prevMin = 1;
+  let currMax = 1,
+    currMin = 1;
+  let res = -Infinity;
+  for (const num of nums) {
+    currMax = Math.max(prevMax * num, prevMin * num, num);
+    currMin = Math.min(prevMax * num, prevMin * num, num);
+    res = Math.max(res, currMax);
+    [prevMax, prevMin] = [currMax, currMin];
+  }
+  return res;
+}
+```
+
 ## 跳跃游戏
 
 ```ts
