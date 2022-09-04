@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as l}from"./app.048909d3.js";const i=JSON.parse('{"title":"\u8F6E\u64AD\u56FE","description":"","frontmatter":{},"headers":[],"relativePath":"code/slideshow.md"}'),p={name:"code/slideshow.md"},o=l("",4),e=[o];function t(c,F,r,D,y,C){return a(),n("div",null,e)}var d=s(p,[["render",t]]);export{i as __pageData,d as default};

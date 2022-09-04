@@ -1,0 +1,1 @@
+import{_ as e,c as a,o as t,a as c}from"./app.87442856.js";const A=JSON.parse('{"title":"AJAX","description":"","frontmatter":{},"headers":[],"relativePath":"js/ajax.md"}'),o={name:"js/ajax.md"},r=c("",6),s=[r];function p(n,d,_,i,f,h){return t(),a("div",null,s)}var m=e(o,[["render",p]]);export{A as __pageData,m as default};

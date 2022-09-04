@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as e}from"./app.87442856.js";const D=JSON.parse('{"title":"never","description":"","frontmatter":{},"headers":[],"relativePath":"ts/never.md"}'),l={name:"ts/never.md"},o=e("",5),p=[o];function r(t,c,i,F,_,y){return n(),a("div",null,p)}var A=s(l,[["render",r]]);export{D as __pageData,A as default};
