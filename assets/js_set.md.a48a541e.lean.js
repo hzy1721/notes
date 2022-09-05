@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as d,a as l}from"./app.18330815.js";const h=JSON.parse('{"title":"Set","description":"","frontmatter":{},"headers":[{"level":3,"title":"WeakSet","slug":"weakset"}],"relativePath":"js/set.md"}'),c={name:"js/set.md"},t=l("",13),a=[t];function i(s,r,u,n,p,_){return d(),o("div",null,a)}var k=e(c,[["render",i]]);export{h as __pageData,k as default};
