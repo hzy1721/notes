@@ -57,7 +57,9 @@ DFS
 function exist(board: string[][], word: string): boolean {
   const m = board.length;
   const n = board[0].length;
-  const vis = new Array(m).fill(0).map(() => new Array(n).fill(false));
+  const vis = new Array(m)
+    .fill(0)
+    .map(() => new Array(n).fill(false));
   function dfs(x: number, y: number, pos: number): boolean {
     if (pos === word.length) {
       return true;
@@ -91,5 +93,41 @@ function exist(board: string[][], word: string): boolean {
     }
   }
   return false;
+}
+```
+
+## 岛屿数量
+
+DFS
+
+```ts
+function numIslands(grid: string[][]): number {
+  const m = grid.length;
+  const n = grid[0].length;
+  function dfs(x: number, y: number) {
+    if (x < 0 || x >= m || y < 0 || y >= n || grid[x][y] !== '1') {
+      return;
+    }
+    grid[x][y] = '0';
+    const steps = [
+      [-1, 0],
+      [1, 0],
+      [0, -1],
+      [0, 1],
+    ];
+    for (const [dx, dy] of steps) {
+      dfs(x + dx, y + dy);
+    }
+  }
+  let res = 0;
+  for (let i = 0; i < m; ++i) {
+    for (let j = 0; j < n; ++j) {
+      if (grid[i][j] === '1') {
+        res += 1;
+        dfs(i, j);
+      }
+    }
+  }
+  return res;
 }
 ```

@@ -24,7 +24,10 @@ function minDepth(root: TreeNode | null): number {
 ## 路径和
 
 ```ts
-function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
+function hasPathSum(
+  root: TreeNode | null,
+  targetSum: number
+): boolean {
   if (!root) {
     return false;
   }
@@ -35,5 +38,29 @@ function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
     hasPathSum(root.left, targetSum - root.val) ||
     hasPathSum(root.right, targetSum - root.val)
   );
+}
+```
+
+## 根节点到叶节点数字之和
+
+```ts
+function sumNumbers(root: TreeNode | null): number {
+  let res = 0;
+  let sum = 0;
+  function dfs(root: TreeNode | null) {
+    if (!root) {
+      return;
+    }
+    sum = sum * 10 + root.val;
+    if (!root.left && !root.right) {
+      res += sum;
+    } else {
+      dfs(root.left);
+      dfs(root.right);
+    }
+    sum = Math.floor(sum / 10);
+  }
+  dfs(root);
+  return res;
 }
 ```
