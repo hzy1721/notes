@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as l,a as i}from"./app.18330815.js";const h=JSON.parse('{"title":"\u8BED\u4E49\u5316\u6807\u7B7E","description":"","frontmatter":{},"headers":[],"relativePath":"html/semantics.md"}'),c={name:"html/semantics.md"},o=i("",4),d=[o];function a(s,r,n,_,m,g){return l(),t("div",null,d)}var u=e(c,[["render",a]]);export{h as __pageData,u as default};

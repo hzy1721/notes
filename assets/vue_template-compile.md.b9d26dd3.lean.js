@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as l,a as o}from"./app.18330815.js";const D=JSON.parse('{"title":"\u6A21\u677F\u7F16\u8BD1","description":"","frontmatter":{},"headers":[],"relativePath":"vue/template-compile.md"}'),e={name:"vue/template-compile.md"},n=o("",9),p=[n];function t(c,r,A,i,y,C){return l(),a("div",null,p)}var u=s(e,[["render",t]]);export{D as __pageData,u as default};

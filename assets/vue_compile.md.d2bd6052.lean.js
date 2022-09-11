@@ -1,0 +1,1 @@
+import{_ as e,c as i,o as l,a}from"./app.8072bc65.js";const m=JSON.parse('{"title":"\u7F16\u8BD1\u8FC7\u7A0B","description":"","frontmatter":{},"headers":[],"relativePath":"vue/compile.md"}'),t={name:"vue/compile.md"},_=a("",2),o=[_];function r(c,s,n,d,p,u){return l(),i("div",null,o)}var f=e(t,[["render",r]]);export{m as __pageData,f as default};
