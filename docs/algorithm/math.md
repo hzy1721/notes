@@ -17,3 +17,17 @@ function reverse(x: number): number {
   return res;
 }
 ```
+
+## rand7 实现 rand10
+
+`(randX() - 1) * Y + randY()` 可以等概率的生成 [1, X \* Y] 范围的随机数
+
+```ts
+function rand10(): number {
+  let num = 1;
+  do {
+    num = (rand7() - 1) * 7 + rand7();
+  } while (num > 40);
+  return ((num - 1) % 10) + 1;
+}
+```

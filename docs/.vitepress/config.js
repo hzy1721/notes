@@ -8,6 +8,21 @@ export default {
     ],
     sidebar: [
       {
+        text: 'React',
+        items: [
+          { text: '生命周期', link: '/react/lifecycle' },
+          { text: 'Hooks', link: '/react/hooks' },
+        ],
+        collapsible: true,
+        collapsed: true,
+      },
+      {
+        text: 'Next',
+        items: [],
+        collapsible: true,
+        collapsed: true,
+      },
+      {
         text: 'Vue',
         items: [
           { text: '生命周期', link: '/vue/lifecycle' },
