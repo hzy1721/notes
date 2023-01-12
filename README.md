@@ -2,6 +2,12 @@
 
 Tech notes built with VitePress.
 
+## install
+
+```sh
+yarn
+```
+
 ## dev server
 
 ```sh
