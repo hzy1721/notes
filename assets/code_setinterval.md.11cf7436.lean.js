@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as l}from"./app.68ea3551.js";const C=JSON.parse('{"title":"手写 setInterval","description":"","frontmatter":{},"headers":[],"relativePath":"code/setinterval.md"}'),p={name:"code/setinterval.md"},o=l("",2),e=[o];function t(c,r,F,y,D,A){return a(),n("div",null,e)}const d=s(p,[["render",t]]);export{C as __pageData,d as default};

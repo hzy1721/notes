@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as l}from"./app.8072bc65.js";const i=JSON.parse('{"title":"\u8FDE\u8FDE\u770B","description":"","frontmatter":{},"headers":[],"relativePath":"algorithm/link-game.md"}'),p={name:"algorithm/link-game.md"},o=l("",6),e=[o];function c(t,r,F,y,D,C){return a(),n("div",null,e)}var d=s(p,[["render",c]]);export{i as __pageData,d as default};

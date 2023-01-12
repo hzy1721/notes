@@ -1,0 +1,1 @@
+import{_ as l,c as i,o as e,a as t}from"./app.68ea3551.js";const h=JSON.parse('{"title":"生命周期","description":"","frontmatter":{},"headers":[],"relativePath":"vue/lifecycle.md"}'),o={name:"vue/lifecycle.md"},c=t("",3),d=[c];function a(u,r,n,s,_,p){return e(),i("div",null,d)}const m=l(o,[["render",a]]);export{h as __pageData,m as default};
