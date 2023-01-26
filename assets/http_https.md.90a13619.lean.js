@@ -1,1 +1,0 @@
-import{_ as l,c as i,o as e,a as t}from"./app.68ea3551.js";const L=JSON.parse('{"title":"HTTPS","description":"","frontmatter":{},"headers":[],"relativePath":"http/https.md"}'),p={name:"http/https.md"},s=t("",30),S=[s];function a(n,o,r,T,c,h){return e(),i("div",null,S)}const d=l(p,[["render",a]]);export{L as __pageData,d as default};

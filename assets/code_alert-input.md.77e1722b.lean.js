@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as l}from"./app.caf90d25.js";const C=JSON.parse('{"title":"点击 button 把 input 内容 alert","description":"","frontmatter":{},"headers":[],"relativePath":"code/alert-input.md"}'),p={name:"code/alert-input.md"},o=l("",2),t=[o];function e(c,r,D,F,y,i){return a(),n("div",null,t)}const u=s(p,[["render",e]]);export{C as __pageData,u as default};

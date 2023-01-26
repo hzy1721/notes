@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as l}from"./app.caf90d25.js";const i=JSON.parse('{"title":"ThisType","description":"","frontmatter":{},"headers":[],"relativePath":"ts/thistype.md"}'),p={name:"ts/thistype.md"},o=l("",3),t=[o];function e(c,r,y,F,D,C){return n(),a("div",null,t)}const d=s(p,[["render",e]]);export{i as __pageData,d as default};

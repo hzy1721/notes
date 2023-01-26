@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,a as l}from"./app.68ea3551.js";const i=JSON.parse('{"title":"数组扁平化","description":"","frontmatter":{},"headers":[],"relativePath":"code/array-flat.md"}'),p={name:"code/array-flat.md"},o=l("",3),e=[o];function t(c,r,F,y,D,A){return n(),a("div",null,e)}const d=s(p,[["render",t]]);export{i as __pageData,d as default};

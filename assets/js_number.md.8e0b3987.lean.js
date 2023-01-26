@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as l}from"./app.caf90d25.js";const F=JSON.parse('{"title":"Number","description":"","frontmatter":{},"headers":[],"relativePath":"js/number.md"}'),o={name:"js/number.md"},p=l("",14),e=[p];function t(c,r,y,D,C,i){return n(),a("div",null,e)}const d=s(o,[["render",t]]);export{F as __pageData,d as default};
