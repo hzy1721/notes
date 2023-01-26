@@ -126,6 +126,7 @@ export default {
           { text: '协议栈', link: '/network/stack' },
           { text: 'TCP', link: '/network/tcp' },
           { text: 'UDP', link: '/network/udp' },
+          { text: 'TCP 和 UDP 的区别', link: '/network/tcp-udp-diff' },
           { text: 'DNS', link: '/network/dns' },
           { text: '常用命令', link: '/network/commands' },
         ],
@@ -207,6 +208,7 @@ export default {
           },
           { text: '二叉树 DFS', link: '/algorithm/binary-tree-dfs' },
           { text: '二叉搜索树', link: '/algorithm/bst' },
+          { text: '字典树', link: '/algorithm/trie' },
           { text: '平衡二叉树', link: '/algorithm/avl' },
           { text: '哈希表', link: '/algorithm/hash-table' },
           { text: '动态规划', link: '/algorithm/dp' },
@@ -234,6 +236,7 @@ export default {
       {
         text: '系统设计',
         items: [
+          { text: '图片加载优化', link: '/design/image-loading' },
           { text: 'Web 性能指标', link: '/design/web-vitals' },
           { text: '前端性能优化', link: '/design/perf' },
           { text: 'CDN', link: '/design/cdn' },
@@ -294,7 +297,7 @@ export default {
           },
           { text: 'UTF-8', link: '/misc/utf-8' },
           { text: 'TDD', link: '/misc/tdd' },
-          { text: 'Dexie', link: '/misc/dexie' }
+          { text: 'Dexie', link: '/misc/dexie' },
         ],
         collapsible: true,
         collapsed: true,

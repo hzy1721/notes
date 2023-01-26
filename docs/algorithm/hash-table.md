@@ -23,11 +23,12 @@ function groupAnagrams(strs: string[]): string[][] {
 function longestConsecutive(nums: number[]): number {
   const set = new Set(nums);
   let res = 0;
-  for (const num of nums) {
+  for (let num of nums) {
     if (!set.has(num - 1)) {
-      let cnt = 1;
-      for (let i = num + 1; set.has(i); ++i) {
+      let cnt = 0;
+      while (set.has(num)) {
         ++cnt;
+        ++num;
       }
       res = Math.max(res, cnt);
     }

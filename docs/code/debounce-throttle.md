@@ -27,33 +27,37 @@
     ![](assets/debounce_trailing.webp)
 
 ```js
-function debounce(func, wait = 0, leading = false) {
+const debounce = (func, wait = 0, leading = false) => {
+  // 定时器
   let timeout = null;
+  // 必须是 function 函数，不能是箭头函数
+  // 防抖后的函数也应该保持正确的 this
   return function () {
+    // 保存 arguments，因为可能在 setTimeout 中执行 func
     const args = arguments;
-    clearTimeout(timeout); // 传无效参数不会有影响
+    // 清除定时器
+    clearTimeout(timeout);
+    // leading 表示一开始就执行一次，直到足够长的间隔后才执行下一次
     if (leading) {
+      // 如果间隔足够长 (定时器被清除)，则执行一次
       const callNow = !timeout;
+      // 重设定时器，到期清除定时器
       timeout = setTimeout(() => {
         timeout = null;
       }, wait);
       if (callNow) {
+        // 执行
         func.apply(this, args);
       }
     } else {
+      // trailing 表示等待足够长的间隔后才执行一次
+      // 一段时间后执行，如果在间隔内触发了函数，则会被开头的 clearTimeout 取消执行
       timeout = setTimeout(() => {
         func.apply(this, args);
       }, wait);
     }
   };
 }
-```
-
-### Lodash
-
-```js
-debounced = _.debounce(func, [(wait = 0)], [(options = {})]);
-debounced.cancel();
 ```
 
 ## 节流
@@ -71,24 +75,21 @@ debounced.cancel();
 - 如果定时器变量不为 `null`，说明间隔足够长，定时器已过期，重置定时器并执行一次函数
 
 ```js
-function throttle(func, wait = 0) {
+const throttle = (func, wait = 0) => {
+  // 定时器
   let timeout = null;
   return function () {
+    // 如果在间隔外，则执行一次
     if (!timeout) {
+      // 重设定时器，到期清除定时器
       timeout = setTimeout(() => {
         timeout = null;
       }, wait);
+      // 执行
       func.apply(this, arguments);
     }
   };
 }
-```
-
-### Lodash
-
-```js
-throttled = _.throttle(func, [(wait = 0)], [(options = {})]);
-throttled.cancel();
 ```
 
 ### requestAnimationFrame
@@ -96,3 +97,15 @@ throttled.cancel();
 相当于 `throttle(func, 16)`，但是精确度更高。Lodash 的内部实现采用了该函数。
 
 需要重新计算和渲染元素，并且想要保证变化的平滑性，可以使用该方法。
+
+## Lodash
+
+```js
+debounced = _.debounce(func, [(wait = 0)], [(options = {})]);
+debounced.cancel();
+```
+
+```js
+throttled = _.throttle(func, [(wait = 0)], [(options = {})]);
+throttled.cancel();
+```

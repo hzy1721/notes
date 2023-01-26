@@ -71,16 +71,16 @@ function maxSubArray(nums: number[]): number {
 
 ```ts
 function maxProduct(nums: number[]): number {
-  let prevMax = 1,
-    prevMin = 1;
-  let currMax = 1,
-    currMin = 1;
+  let prevMin = 1;
+  let prevMax = 1;
+  let currMin = 1;
+  let currMax = 1;
   let res = -Infinity;
   for (const num of nums) {
-    currMax = Math.max(prevMax * num, prevMin * num, num);
-    currMin = Math.min(prevMax * num, prevMin * num, num);
+    currMin = Math.min(prevMin * num, prevMax * num, num);
+    currMax = Math.max(prevMin * num, prevMax * num, num);
     res = Math.max(res, currMax);
-    [prevMax, prevMin] = [currMax, currMin];
+    [prevMin, prevMax] = [currMin, currMax];
   }
   return res;
 }
@@ -115,7 +115,7 @@ function wordBreak(s: string, wordDict: string[]): boolean {
   dp[0] = true;
   for (let i = 1; i <= n; ++i) {
     for (let j = 0; j < i; ++j) {
-      if (dp[j] && set.has(s.slice(j, i))) {
+      if (dp[j] && set.has(s.substring(j, i))) {
         dp[i] = true;
         break;
       }

@@ -186,46 +186,11 @@ function removeNthFromEnd(
 ## 排序链表
 
 ```ts
-function sortList(head: ListNode | null): ListNode | null {
-  return mergeSort(head, null);
-}
-
-function mergeSort(
-  head: ListNode | null,
-  tail: ListNode | null
-): ListNode | null {
-  if (!head) {
-    return null;
-  }
-  if (head.next === tail) {
-    head.next = null;
-    return head;
-  }
-  let slow = head,
-    fast = head;
-  while (fast !== tail) {
-    slow = slow.next;
-    fast = fast.next;
-    if (fast !== tail) {
-      fast = fast.next;
-    }
-  }
-  const left = mergeSort(head, slow);
-  const right = mergeSort(slow, tail);
-  return merge(left, right);
-}
-
-function merge(
-  head1: ListNode | null,
-  head2: ListNode | null
-): ListNode | null {
-  if (!head1 || !head2) {
-    return head1 ?? head2;
-  }
+function merge(head1: ListNode | null, head2: ListNode | null) {
+  let p1 = head1;
+  let p2 = head2;
   const dummyHead = new ListNode();
-  let p1 = head1,
-    p2 = head2,
-    p3 = dummyHead;
+  let p3 = dummyHead;
   while (p1 && p2) {
     if (p1.val <= p2.val) {
       p3.next = p1;
@@ -238,5 +203,28 @@ function merge(
   }
   p3.next = p1 ?? p2;
   return dummyHead.next;
+}
+
+function mergeSort(head: ListNode | null, tail: ListNode | null) {
+  if (head === tail) {
+    return null;
+  }
+  if (head.next === tail) {
+    head.next = null;
+    return head;
+  }
+  let slow = head;
+  let fast = head;
+  while (fast !== tail) {
+    slow = slow.next;
+    fast = fast.next === tail ? fast.next : fast.next.next;
+  }
+  const left = mergeSort(head, slow);
+  const right = mergeSort(slow, tail);
+  return merge(left, right);
+}
+
+function sortList(head: ListNode | null): ListNode | null {
+  return mergeSort(head, null);
 }
 ```

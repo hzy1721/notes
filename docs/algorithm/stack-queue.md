@@ -1,5 +1,36 @@
 # 栈队
 
+## 最小栈
+
+```ts
+class MinStack {
+  stack: number[] = [];
+  minStack: number[] = [];
+
+  push(val: number): void {
+    this.stack.push(val);
+    let minVal = val;
+    if (this.minStack.length) {
+      minVal = Math.min(this.minStack[this.minStack.length - 1], val);
+    }
+    this.minStack.push(minVal);
+  }
+
+  pop(): void {
+    this.stack.pop();
+    this.minStack.pop();
+  }
+
+  top(): number {
+    return this.stack[this.stack.length - 1];
+  }
+
+  getMin(): number {
+    return this.minStack[this.minStack.length - 1];
+  }
+}
+```
+
 ## 两个栈实现队列
 
 ```ts

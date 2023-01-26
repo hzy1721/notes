@@ -30,25 +30,27 @@ function search(nums: number[], target: number): number {
 
 ```ts
 function searchRange(nums: number[], target: number): number[] {
-  const left = binarySearch(nums, target, true);
+  const binarySearch = (nums: number[], target: number, lower = true) => {
+    const check = (num: number) => {
+      return lower ? num >= target : num > target;
+    };
+    let lo = 0;
+    let hi = nums.length - 1;
+    while (lo <= hi) {
+      const mi = Math.floor((lo + hi) / 2);
+      if (check(nums[mi])) {
+        hi = mi - 1;
+      } else {
+        lo = mi + 1;
+      }
+    }
+    return lo;
+  };
+  const left = binarySearch(nums, target);
   if (left === nums.length || nums[left] !== target) {
     return [-1, -1];
   }
   const right = binarySearch(nums, target, false);
   return [left, right - 1];
-}
-
-function binarySearch(nums: number[], target: number, lower: boolean): number {
-  let lo = 0,
-    hi = nums.length - 1;
-  while (lo <= hi) {
-    const mi = Math.floor((lo + hi) / 2);
-    if (target < nums[mi] || (lower && target <= nums[mi])) {
-      hi = mi - 1;
-    } else {
-      lo = mi + 1;
-    }
-  }
-  return lo;
 }
 ```
