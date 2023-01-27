@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as l,a as o}from"./app.7747c6a9.js";const D=JSON.parse('{"title":"模板编译","description":"","frontmatter":{},"headers":[],"relativePath":"vue/template-compile.md"}'),e={name:"vue/template-compile.md"},n=o("",9),t=[n];function p(c,r,i,A,y,C){return l(),a("div",null,t)}const u=s(e,[["render",p]]);export{D as __pageData,u as default};

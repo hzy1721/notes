@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,a as l}from"./app.caf90d25.js";const i=JSON.parse('{"title":"剪绳子","description":"","frontmatter":{},"headers":[],"relativePath":"algorithm/cut-rope.md"}'),p={name:"algorithm/cut-rope.md"},o=l("",2),t=[o];function e(c,r,F,y,D,C){return n(),a("div",null,t)}const d=s(p,[["render",e]]);export{i as __pageData,d as default};

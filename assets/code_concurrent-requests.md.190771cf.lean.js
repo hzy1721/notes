@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as l}from"./app.caf90d25.js";const i=JSON.parse('{"title":"并发请求","description":"","frontmatter":{},"headers":[],"relativePath":"code/concurrent-requests.md"}'),p={name:"code/concurrent-requests.md"},o=l("",2),e=[o];function t(c,r,F,y,D,A){return a(),n("div",null,e)}const u=s(p,[["render",t]]);export{i as __pageData,u as default};

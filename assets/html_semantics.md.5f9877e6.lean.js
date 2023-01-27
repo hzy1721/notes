@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as l,a as i}from"./app.7747c6a9.js";const h=JSON.parse('{"title":"语义化标签","description":"","frontmatter":{},"headers":[],"relativePath":"html/semantics.md"}'),c={name:"html/semantics.md"},o=i("",4),d=[o];function a(s,r,n,_,m,g){return l(),t("div",null,d)}const u=e(c,[["render",a]]);export{h as __pageData,u as default};

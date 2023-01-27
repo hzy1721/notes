@@ -1,1 +1,0 @@
-import{_ as e,c as s,o as t,a}from"./app.caf90d25.js";const i="/assets/http_message.19963607.png",T=JSON.parse('{"title":"报文结构","description":"","frontmatter":{},"headers":[],"relativePath":"http/message.md"}'),o={name:"http/message.md"},l=a("",7),r=[l];function _(n,p,c,d,h,u){return t(),s("div",null,r)}const f=e(o,[["render",_]]);export{T as __pageData,f as default};

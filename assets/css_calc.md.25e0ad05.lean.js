@@ -1,1 +1,0 @@
-import{_ as c,c as e,o as l,a as o}from"./app.caf90d25.js";const m=JSON.parse('{"title":"calc()","description":"","frontmatter":{},"headers":[],"relativePath":"css/calc.md"}'),i={name:"css/calc.md"},d=o("",5),a=[d];function t(s,r,n,_,u,p){return l(),e("div",null,a)}const S=c(i,[["render",t]]);export{m as __pageData,S as default};
