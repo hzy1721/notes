@@ -124,3 +124,68 @@ function wordBreak(s: string, wordDict: string[]): boolean {
   return dp[n];
 }
 ```
+
+## 最大正方形
+
+```ts
+function maximalSquare(matrix: string[][]): number {
+  const m = matrix.length;
+  const n = matrix[0].length;
+  const dp: number[][] = new Array(m).fill(0).map(() => new Array(n));
+  let maxSide = 0;
+  for (let i = 0; i < m; ++i) {
+    dp[i][0] = matrix[i][0] === '1' ? 1 : 0;
+    maxSide = Math.max(maxSide, dp[i][0]);
+  }
+  for (let j = 1; j < n; ++j) {
+    dp[0][j] = matrix[0][j] === '1' ? 1 : 0;
+    maxSide = Math.max(maxSide, dp[0][j]);
+  }
+  for (let i = 1; i < m; ++i) {
+    for (let j = 1; j < n; ++j) {
+      if (matrix[i][j] === '1') {
+        dp[i][j] =
+          Math.min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]) + 1;
+      } else {
+        dp[i][j] = 0;
+      }
+      maxSide = Math.max(maxSide, dp[i][j]);
+    }
+  }
+  return maxSide * maxSide;
+}
+```
+
+## 完全平方数
+
+```ts
+function numSquares(n: number): number {
+  const dp = new Array<number>(n + 1);
+  dp[0] = 0;
+  for (let i = 1; i <= n; ++i) {
+    dp[i] = Infinity;
+    for (let j = 1; j * j <= i; ++j) {
+      dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
+    }
+  }
+  return dp[n];
+}
+```
+
+## 零钱兑换
+
+```ts
+function coinChange(coins: number[], amount: number): number {
+  const n = coins.length;
+  coins.sort((a, b) => a - b);
+  const dp = new Array<number>(amount + 1);
+  dp[0] = 0;
+  for (let i = 1; i <= amount; ++i) {
+    dp[i] = Infinity;
+    for (let j = 0; j < n && coins[j] <= i; ++j) {
+      dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+    }
+  }
+  return dp[amount] === Infinity ? -1 : dp[amount];
+}
+```

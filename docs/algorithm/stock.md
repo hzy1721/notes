@@ -114,23 +114,19 @@ public:
 
 这道题的解法也可以类比 III，每天记录 3 个状态：当天买入的利润，当天卖出的利润，当天什么都不干的利润。买入利润需要从前一天什么都不干的利润转移 (确保不在冷冻期)，什么都不干的利润从前一天卖出的利润转移。最终的最大利润为最后一天卖出的利润和什么都不干的利润的最大值，因为前期卖出的最大利润可以通过什么都不干的利润转移到最后一天。
 
-```cpp
-class Solution {
-public:
-    int maxProfit(vector<int>& prices) {
-        int n = prices.size();
-        int buy = -prices[0], sell = 0, hot = 0;
-        for (int i = 1; i < n; ++i) {
-            int buy2 = max(buy, hot - prices[i]);
-            int sell2 = buy + prices[i];
-            int hot2 = max(hot, sell);
-            buy = buy2;
-            sell = sell2;
-            hot = hot2;
-        }
-        return max(sell, hot);
-    }
-};
+```ts
+function maxProfit(prices: number[]): number {
+  let buy = -Infinity;
+  let sell = 0;
+  let hot = 0;
+  for (const price of prices) {
+    const buy2 = Math.max(buy, hot - price);
+    const sell2 = buy + price;
+    const hot2 = Math.max(sell, hot);
+    [buy, sell, hot] = [buy2, sell2, hot2];
+  }
+  return Math.max(sell, hot);
+}
 ```
 
 - 时间复杂度：O(n)

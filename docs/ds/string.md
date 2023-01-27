@@ -109,3 +109,28 @@ function addStrings(num1: string, num2: string): string {
   return arr3.reverse().join('');
 }
 ```
+
+## 字符串解码
+
+```ts
+function decodeString(s: string): string {
+  const stack: [number, string][] = [[1, '']];
+  let num = 0;
+  for (const c of s) {
+    if (!isNaN(Number(c))) {
+      num = num * 10 + Number(c);
+    } else if (c === '[') {
+      stack.push([num, '']);
+      num = 0;
+    } else if (c === ']') {
+      const [times, str] = stack.pop();
+      for (let j = 0; j < times; ++j) {
+        stack[stack.length - 1][1] += str;
+      }
+    } else {
+      stack[stack.length - 1][1] += c;
+    }
+  }
+  return stack[0][1];
+}
+```
