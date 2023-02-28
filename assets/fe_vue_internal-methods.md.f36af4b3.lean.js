@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as d,a as o}from"./app.e3dff596.js";const h=JSON.parse('{"title":"内部方法","description":"","frontmatter":{},"headers":[],"relativePath":"fe/vue/internal-methods.md"}'),r={name:"fe/vue/internal-methods.md"},c=o("",8),n=[c];function a(p,s,l,i,y,_){return d(),e("div",null,n)}const f=t(r,[["render",a]]);export{h as __pageData,f as default};

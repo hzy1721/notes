@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as l}from"./app.e3dff596.js";const i=JSON.parse('{"title":"接雨水","description":"","frontmatter":{},"headers":[],"relativePath":"code/algorithm/trapping-rain.md"}'),p={name:"code/algorithm/trapping-rain.md"},o=l("",7),t=[o];function e(c,r,F,y,D,C){return a(),n("div",null,t)}const h=s(p,[["render",e]]);export{i as __pageData,h as default};

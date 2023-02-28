@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as l}from"./app.7747c6a9.js";const i=JSON.parse('{"title":"连连看","description":"","frontmatter":{},"headers":[],"relativePath":"algorithm/link-game.md"}'),p={name:"algorithm/link-game.md"},o=l("",6),e=[o];function t(c,r,F,y,D,C){return a(),n("div",null,e)}const f=s(p,[["render",t]]);export{i as __pageData,f as default};

@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as t,a}from"./app.e3dff596.js";const m=JSON.parse('{"title":"数据类型","description":"","frontmatter":{},"headers":[],"relativePath":"fe/js/data-type.md"}'),c={name:"fe/js/data-type.md"},d=a("",3),i=[d];function l(n,r,s,_,p,f){return t(),o("div",null,i)}const u=e(c,[["render",l]]);export{m as __pageData,u as default};

@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as l}from"./app.7747c6a9.js";const A=JSON.parse('{"title":"多数元素","description":"","frontmatter":{},"headers":[],"relativePath":"algorithm/majority.md"}'),o={name:"algorithm/majority.md"},p=l("",2),e=[p];function t(c,r,y,F,D,C){return a(),n("div",null,e)}const _=s(o,[["render",t]]);export{A as __pageData,_ as default};
