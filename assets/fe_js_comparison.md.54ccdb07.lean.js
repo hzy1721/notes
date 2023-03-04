@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as c,a as d}from"./app.1db0b35b.js";const f=JSON.parse('{"title":"值的比较","description":"","frontmatter":{},"headers":[],"relativePath":"fe/js/comparison.md"}'),t={name:"fe/js/comparison.md"},a=d("",6),n=[a];function r(s,i,_,l,p,u){return c(),o("div",null,n)}const h=e(t,[["render",r]]);export{f as __pageData,h as default};

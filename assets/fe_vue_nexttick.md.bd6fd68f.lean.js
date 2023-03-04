@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,a as o}from"./app.e3dff596.js";const d=JSON.parse('{"title":"nextTick","description":"","frontmatter":{},"headers":[],"relativePath":"fe/vue/nexttick.md"}'),e={name:"fe/vue/nexttick.md"},l=o("",8),p=[l];function t(c,r,i,F,D,y){return n(),a("div",null,p)}const A=s(e,[["render",t]]);export{d as __pageData,A as default};

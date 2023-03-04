@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as l}from"./app.1db0b35b.js";const i=JSON.parse('{"title":"JSON 节点路径","description":"","frontmatter":{},"headers":[],"relativePath":"code/fe/json-node-path.md"}'),p={name:"code/fe/json-node-path.md"},o=l("",2),e=[o];function t(c,r,F,y,D,C){return a(),n("div",null,e)}const d=s(p,[["render",t]]);export{i as __pageData,d as default};

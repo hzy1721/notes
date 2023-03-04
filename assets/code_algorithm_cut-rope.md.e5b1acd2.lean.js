@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as l}from"./app.1db0b35b.js";const i=JSON.parse('{"title":"剪绳子","description":"","frontmatter":{},"headers":[],"relativePath":"code/algorithm/cut-rope.md"}'),p={name:"code/algorithm/cut-rope.md"},o=l("",2),e=[o];function t(c,r,F,y,D,C){return n(),a("div",null,e)}const d=s(p,[["render",t]]);export{i as __pageData,d as default};

@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as a,a as c}from"./app.1db0b35b.js";const m=JSON.parse('{"title":"localStorage","description":"","frontmatter":{},"headers":[],"relativePath":"fe/browser/localstorage.md"}'),t={name:"fe/browser/localstorage.md"},l=c("",6),r=[l];function d(s,i,_,n,p,g){return a(),o("div",null,r)}const S=e(t,[["render",d]]);export{m as __pageData,S as default};
