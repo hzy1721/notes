@@ -189,3 +189,111 @@ function coinChange(coins: number[], amount: number): number {
   return dp[amount] === Infinity ? -1 : dp[amount];
 }
 ```
+
+## 正则表达式匹配
+
+```ts
+function isMatch(s: string, p: string): boolean {
+  const m = s.length;
+  const n = p.length;
+  const dp: boolean[][] = new Array(m + 1)
+    .fill(0)
+    .map(() => new Array(n + 1).fill(false));
+  dp[0][0] = true;
+  const canMatch = (i: number, j: number): boolean => {
+    if (i === 0) {
+      return false;
+    }
+    const c1 = s[i - 1];
+    const c2 = p[j - 1];
+    return c1 === c2 || c2 === '.';
+  };
+  for (let i = 0; i <= m; ++i) {
+    for (let j = 1; j <= n; ++j) {
+      if (p[j - 1] === '*') {
+        dp[i][j] = dp[i][j - 2];
+        if (canMatch(i, j - 1)) {
+          dp[i][j] ||= dp[i - 1][j];
+        }
+      } else {
+        if (canMatch(i, j)) {
+          dp[i][j] = dp[i - 1][j - 1];
+        }
+      }
+    }
+  }
+  return dp[m][n];
+}
+```
+
+## 最长有效括号
+
+```ts
+function longestValidParentheses(s: string): number {
+  const n = s.length;
+  const dp: number[] = new Array(n).fill(0);
+  let res = 0;
+  for (let i = 1; i < n; ++i) {
+    if (s[i] === ')') {
+      if (s[i - 1] === '(') {
+        dp[i] = (dp[i - 2] ?? 0) + 2;
+      } else if (s[i - dp[i - 1] - 1] === '(') {
+        dp[i] = dp[i - 1] + 2;
+        dp[i] += i - dp[i - 1] >= 2 ? dp[i - dp[i - 1] - 2] : 0;
+      }
+      res = Math.max(res, dp[i]);
+    }
+  }
+  return res;
+}
+```
+
+## 编辑距离
+
+```ts
+function minDistance(word1: string, word2: string): number {
+  const m = word1.length;
+  const n = word2.length;
+  const dp: number[][] = new Array(m + 1)
+    .fill(0)
+    .map(() => new Array(n + 1));
+  for (let i = 0; i <= m; ++i) {
+    dp[i][0] = i;
+  }
+  for (let j = 1; j <= n; ++j) {
+    dp[0][j] = j;
+  }
+  for (let i = 1; i <= m; ++i) {
+    for (let j = 1; j <= n; ++j) {
+      const top = dp[i - 1][j] + 1;
+      const left = dp[i][j - 1] + 1;
+      const topLeft =
+        dp[i - 1][j - 1] + (word1[i - 1] !== word2[j - 1] ? 1 : 0);
+      dp[i][j] = Math.min(top, left, topLeft);
+    }
+  }
+  return dp[m][n];
+}
+```
+
+## 戳气球
+
+```ts
+function maxCoins(nums: number[]): number {
+  const n = nums.length;
+  nums.unshift(1);
+  nums.push(1);
+  const dp: number[][] = new Array(n + 2)
+    .fill(0)
+    .map(() => new Array(n + 2).fill(0));
+  for (let i = n - 1; i >= 0; --i) {
+    for (let j = i + 1; j < n + 2; ++j) {
+      for (let k = i + 1; k < j; ++k) {
+        const prod = nums[i] * nums[k] * nums[j];
+        dp[i][j] = Math.max(dp[i][j], prod + dp[i][k] + dp[k][j]);
+      }
+    }
+  }
+  return dp[0][n + 1];
+}
+```

@@ -1,6 +1,8 @@
 ---
 layout: home
 
+title: 首页
+
 hero:
   name: Notes
   text: 前端面试笔记

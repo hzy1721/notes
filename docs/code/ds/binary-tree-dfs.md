@@ -90,3 +90,22 @@ function lowestCommonAncestor(
   return res;
 }
 ```
+
+## 二叉树中的最大路径和
+
+```ts
+function maxPathSum(root: TreeNode | null): number {
+  let res = -Infinity;
+  const maxRootPath = (root: TreeNode | null): number => {
+    if (!root) {
+      return 0;
+    }
+    const left = Math.max(0, maxRootPath(root.left));
+    const right = Math.max(0, maxRootPath(root.right));
+    res = Math.max(res, left + root.val + right);
+    return root.val + Math.max(left, right);
+  };
+  maxRootPath(root);
+  return res;
+}
+```

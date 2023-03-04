@@ -86,3 +86,41 @@ function findAnagrams(s: string, p: string): number[] {
   return res;
 }
 ```
+
+## 最小覆盖子串
+
+```ts
+function minWindow(s: string, t: string): string {
+  const map = new Map<string, number>();
+  for (const c of t) {
+    map.set(c, (map.get(c) ?? 0) + 1);
+  }
+  const n = s.length;
+  let cnt = map.size;
+  let j = 0;
+  let st = 0;
+  let ed = n + 1;
+  for (let i = 0; i < n; ++i) {
+    if (i > 0 && map.has(s[i - 1])) {
+      map.set(s[i - 1], map.get(s[i - 1]) + 1);
+      if (map.get(s[i - 1]) === 1) {
+        ++cnt;
+      }
+    }
+    while (j < n && cnt > 0) {
+      if (map.has(s[j])) {
+        map.set(s[j], map.get(s[j]) - 1);
+        if (map.get(s[j]) === 0) {
+          --cnt;
+        }
+      }
+      ++j;
+    }
+    if (cnt === 0 && j - i < ed - st) {
+      st = i;
+      ed = j;
+    }
+  }
+  return ed === n + 1 ? '' : s.substring(st, ed);
+}
+```
