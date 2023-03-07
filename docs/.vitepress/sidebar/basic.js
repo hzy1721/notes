@@ -31,6 +31,12 @@ export default [
     collapsed: true,
   },
   {
+    text: 'CSAPP',
+    items: [{ text: '浮点数标准', link: '/basic/csapp/floating-point' }],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '杂项',
     items: [
       {

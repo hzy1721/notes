@@ -1,6 +1,6 @@
 # 快速排序
 
-## 第 K 个最大元素
+## 数组中的第K个最大元素
 
 ```ts
 function findKthLargest(nums: number[], k: number): number {

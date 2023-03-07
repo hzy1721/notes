@@ -26,7 +26,7 @@ function search(nums: number[], target: number): number {
 }
 ```
 
-## 查找第一个位置和最后一个位置
+## 在排序数组中查找元素的第一个和最后一个位置
 
 ```ts
 function searchRange(nums: number[], target: number): number[] {

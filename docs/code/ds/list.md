@@ -1,6 +1,6 @@
 # 链表
 
-## 合并有序链表
+## 合并两个有序链表
 
 ```ts
 function mergeTwoLists(
@@ -30,12 +30,12 @@ function mergeTwoLists(
 }
 ```
 
-## 是否有环
+## 环形链表
 
 ```ts
 function hasCycle(head: ListNode | null): boolean {
-  let slow = head,
-    fast = head;
+  let slow = head;
+  let fast = head;
   while (slow && fast && fast.next) {
     slow = slow.next;
     fast = fast.next.next;
@@ -44,31 +44,6 @@ function hasCycle(head: ListNode | null): boolean {
     }
   }
   return false;
-}
-```
-
-## 环的入口
-
-```ts
-function detectCycle(head: ListNode | null): ListNode | null {
-  let slow = head,
-    fast = head;
-  while (slow && fast && fast.next) {
-    slow = slow.next;
-    fast = fast.next.next;
-    if (slow === fast) {
-      break;
-    }
-  }
-  if (!fast || !fast.next) {
-    return null;
-  }
-  let res = head;
-  while (res !== slow) {
-    res = res.next;
-    slow = slow.next;
-  }
-  return res;
 }
 ```
 
@@ -132,7 +107,7 @@ function isPalindrome(head: ListNode | null): boolean {
 }
 ```
 
-## 链表相加
+## 两数相加
 
 ```ts
 function addTwoNumbers(
@@ -161,7 +136,7 @@ function addTwoNumbers(
 }
 ```
 
-## 删除倒数第 N 个结点
+## 删除链表的倒数第 N 个结点
 
 ```ts
 function removeNthFromEnd(
@@ -180,6 +155,31 @@ function removeNthFromEnd(
   }
   p1.next = p1.next.next;
   return dummyHead.next;
+}
+```
+
+## 环形链表 II
+
+```ts
+function detectCycle(head: ListNode | null): ListNode | null {
+  let slow = head,
+    fast = head;
+  while (slow && fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow === fast) {
+      break;
+    }
+  }
+  if (!fast || !fast.next) {
+    return null;
+  }
+  let res = head;
+  while (res !== slow) {
+    res = res.next;
+    slow = slow.next;
+  }
+  return res;
 }
 ```
 

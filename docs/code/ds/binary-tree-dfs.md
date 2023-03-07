@@ -1,5 +1,34 @@
 # 二叉树 DFS
 
+## 二叉树的最近公共祖先
+
+```ts
+function lowestCommonAncestor(
+  root: TreeNode | null,
+  p: TreeNode | null,
+  q: TreeNode | null
+): TreeNode | null {
+  let res: TreeNode | null = null;
+  const dfs = (root: TreeNode | null): [boolean, boolean] => {
+    if (!root || res) {
+      return [false, false];
+    }
+    let rootP = root === p;
+    let rootQ = root === q;
+    const [leftP, leftQ] = dfs(root.left);
+    const [rightP, rightQ] = dfs(root.right);
+    const hasP = rootP || leftP || rightP;
+    const hasQ = rootQ || leftQ || rightQ;
+    if (hasP && hasQ && !res) {
+      res = root;
+    }
+    return [hasP, hasQ];
+  };
+  dfs(root);
+  return res;
+}
+```
+
 ## 最小深度
 
 ```ts
@@ -58,54 +87,6 @@ function sumNumbers(root: TreeNode | null): number {
     sum = Math.floor(sum / 10);
   }
   dfs(root);
-  return res;
-}
-```
-
-## 最近公共祖先
-
-```ts
-function lowestCommonAncestor(
-  root: TreeNode | null,
-  p: TreeNode | null,
-  q: TreeNode | null
-): TreeNode | null {
-  let res: TreeNode | null = null;
-  const dfs = (root: TreeNode | null): [boolean, boolean] => {
-    if (!root || res) {
-      return [false, false];
-    }
-    let rootP = root === p;
-    let rootQ = root === q;
-    const [leftP, leftQ] = dfs(root.left);
-    const [rightP, rightQ] = dfs(root.right);
-    const hasP = rootP || leftP || rightP;
-    const hasQ = rootQ || leftQ || rightQ;
-    if (hasP && hasQ && !res) {
-      res = root;
-    }
-    return [hasP, hasQ];
-  };
-  dfs(root);
-  return res;
-}
-```
-
-## 二叉树中的最大路径和
-
-```ts
-function maxPathSum(root: TreeNode | null): number {
-  let res = -Infinity;
-  const maxRootPath = (root: TreeNode | null): number => {
-    if (!root) {
-      return 0;
-    }
-    const left = Math.max(0, maxRootPath(root.left));
-    const right = Math.max(0, maxRootPath(root.right));
-    res = Math.max(res, left + root.val + right);
-    return root.val + Math.max(left, right);
-  };
-  maxRootPath(root);
   return res;
 }
 ```

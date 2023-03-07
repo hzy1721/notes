@@ -1,6 +1,6 @@
-# 二叉树
+# 二叉树递归
 
-## 是否对称
+## 对称二叉树
 
 ```ts
 function isSymmetric(root: TreeNode | null): boolean {
@@ -30,7 +30,7 @@ function isSymmetricTwo(
 }
 ```
 
-## 最大深度
+## 二叉树的最大深度
 
 ```ts
 function maxDepth(root: TreeNode | null): number {
@@ -57,7 +57,7 @@ function invertTree(root: TreeNode | null): TreeNode | null {
 }
 ```
 
-## 二叉树直径
+## 二叉树的直径
 
 ```ts
 function diameterOfBinaryTree(root: TreeNode | null): number {
@@ -93,46 +93,21 @@ function mergeTrees(
 }
 ```
 
-## 二叉树展开为链表
-
-前序遍历
+## 二叉树中的最大路径和
 
 ```ts
-function flatten(root: TreeNode | null): void {
-  const dummyHead = new TreeNode();
-  let prev = dummyHead;
-  function preorder(root: TreeNode | null) {
-    if (root) {
-      prev.right = root;
-      const leftChild = root.left;
-      const rightChild = root.right;
-      root.left = null;
-      prev = root;
-      preorder(leftChild);
-      preorder(rightChild);
+function maxPathSum(root: TreeNode | null): number {
+  let res = -Infinity;
+  const maxRootPath = (root: TreeNode | null): number => {
+    if (!root) {
+      return 0;
     }
-  }
-  preorder(root);
-}
-```
-
-空间 O(1)
-
-```ts
-function flatten(root: TreeNode | null): void {
-  let curr = root;
-  while (curr) {
-    if (curr.left) {
-      const next = curr.left;
-      let prev = next;
-      while (prev.right) {
-        prev = prev.right;
-      }
-      prev.right = curr.right;
-      curr.left = null;
-      curr.right = next;
-    }
-    curr = curr.right;
-  }
+    const left = Math.max(0, maxRootPath(root.left));
+    const right = Math.max(0, maxRootPath(root.right));
+    res = Math.max(res, left + root.val + right);
+    return root.val + Math.max(left, right);
+  };
+  maxRootPath(root);
+  return res;
 }
 ```

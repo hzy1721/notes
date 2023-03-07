@@ -1,5 +1,20 @@
 # 贪心
 
+## 跳跃游戏
+
+```ts
+function canJump(nums: number[]): boolean {
+  const n = nums.length;
+  let maxJump = 0;
+  for (let i = 0; i < n; ++i) {
+    if (i <= maxJump) {
+      maxJump = Math.max(maxJump, i + nums[i]);
+    }
+  }
+  return maxJump >= n - 1;
+}
+```
+
 ## 任务调度器
 
 ```ts

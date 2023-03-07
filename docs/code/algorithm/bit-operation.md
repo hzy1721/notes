@@ -12,27 +12,6 @@ function singleNumber(nums: number[]): number {
 }
 ```
 
-## 比特位记数
-
-```ts
-function countBits(n: number): number[] {
-  const res = new Array<number>(n + 1);
-  for (let i = 0; i <= n; ++i) {
-    res[i] = countOnes(i);
-  }
-  return res;
-}
-
-function countOnes(x: number) {
-  let ones = 0;
-  while (x) {
-    x &= x - 1;
-    ++ones;
-  }
-  return ones;
-}
-```
-
 ## 汉明距离
 
 ```ts

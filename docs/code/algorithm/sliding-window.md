@@ -22,30 +22,6 @@ function lengthOfLongestSubstring(s: string): number {
 }
 ```
 
-## 长度最小的子数组
-
-```ts
-function minSubArrayLen(target: number, nums: number[]): number {
-  const n = nums.length;
-  let sum = 0;
-  let j = 0;
-  let res = Infinity;
-  for (let i = 0; i < n; ++i) {
-    if (i > 0) {
-      sum -= nums[i - 1];
-    }
-    while (j < n && sum < target) {
-      sum += nums[j];
-      ++j;
-    }
-    if (sum >= target) {
-      res = Math.min(res, j - i);
-    }
-  }
-  return res === Infinity ? 0 : res;
-}
-```
-
 ## 找到字符串中所有字母异位词
 
 ```ts
@@ -84,6 +60,30 @@ function findAnagrams(s: string, p: string): number[] {
     }
   }
   return res;
+}
+```
+
+## 长度最小的子数组
+
+```ts
+function minSubArrayLen(target: number, nums: number[]): number {
+  const n = nums.length;
+  let sum = 0;
+  let j = 0;
+  let res = Infinity;
+  for (let i = 0; i < n; ++i) {
+    if (i > 0) {
+      sum -= nums[i - 1];
+    }
+    while (j < n && sum < target) {
+      sum += nums[j];
+      ++j;
+    }
+    if (sum >= target) {
+      res = Math.min(res, j - i);
+    }
+  }
+  return res === Infinity ? 0 : res;
 }
 ```
 

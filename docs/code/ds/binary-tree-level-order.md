@@ -1,6 +1,6 @@
 # 二叉树层序遍历
 
-## 层序遍历
+## 二叉树的层序遍历
 
 ```ts
 function levelOrder(root: TreeNode | null): number[][] {
@@ -25,6 +25,79 @@ function levelOrder(root: TreeNode | null): number[][] {
     res.push(layer);
   }
   return res;
+}
+```
+
+## 二叉树的序列化与反序列化
+
+```ts
+/*
+ * Encodes a tree to a single string.
+ */
+function serialize(root: TreeNode | null): string {
+  if (!root) {
+    return '';
+  }
+  const vals: Array<number | null> = [];
+  const q: Array<TreeNode | null> = [];
+  q.push(root);
+  while (q.length) {
+    let allNull = true;
+    const len = q.length;
+    for (let i = 0; i < len; ++i) {
+      const node = q.shift();
+      if (node) {
+        vals.push(node.val);
+        q.push(node.left);
+        q.push(node.right);
+        allNull &&= !node.left && !node.right;
+      } else {
+        vals.push(null);
+      }
+    }
+    if (allNull) {
+      break;
+    }
+  }
+  while (vals[vals.length - 1] === null) {
+    vals.pop();
+  }
+  const res = vals
+    .map(val => (val === null ? 'null' : String(val)))
+    .join(',');
+  return res;
+}
+
+/*
+ * Decodes your encoded data to tree.
+ */
+function deserialize(data: string): TreeNode | null {
+  if (!data) {
+    return null;
+  }
+  const nodes = data
+    .split(',')
+    .map(val => (val === 'null' ? null : new TreeNode(Number(val))));
+  const n = nodes.length;
+  let i = 1;
+  const root = nodes[0];
+  const q: Array<TreeNode | null> = [root];
+  while (q.length && i < n) {
+    const node = q.shift();
+    if (node) {
+      const left = nodes[i++];
+      const right = nodes[i++];
+      if (left) {
+        node.left = left;
+        q.push(left);
+      }
+      if (right) {
+        node.right = right;
+        q.push(right);
+      }
+    }
+  }
+  return root;
 }
 ```
 
@@ -159,77 +232,4 @@ public:
         return ans;
     }
 };
-```
-
-## 二叉树的序列化与反序列化
-
-```ts
-/*
- * Encodes a tree to a single string.
- */
-function serialize(root: TreeNode | null): string {
-  if (!root) {
-    return '';
-  }
-  const vals: Array<number | null> = [];
-  const q: Array<TreeNode | null> = [];
-  q.push(root);
-  while (q.length) {
-    let allNull = true;
-    const len = q.length;
-    for (let i = 0; i < len; ++i) {
-      const node = q.shift();
-      if (node) {
-        vals.push(node.val);
-        q.push(node.left);
-        q.push(node.right);
-        allNull &&= !node.left && !node.right;
-      } else {
-        vals.push(null);
-      }
-    }
-    if (allNull) {
-      break;
-    }
-  }
-  while (vals[vals.length - 1] === null) {
-    vals.pop();
-  }
-  const res = vals
-    .map(val => (val === null ? 'null' : String(val)))
-    .join(',');
-  return res;
-}
-
-/*
- * Decodes your encoded data to tree.
- */
-function deserialize(data: string): TreeNode | null {
-  if (!data) {
-    return null;
-  }
-  const nodes = data
-    .split(',')
-    .map(val => (val === 'null' ? null : new TreeNode(Number(val))));
-  const n = nodes.length;
-  let i = 1;
-  const root = nodes[0];
-  const q: Array<TreeNode | null> = [root];
-  while (q.length && i < n) {
-    const node = q.shift();
-    if (node) {
-      const left = nodes[i++];
-      const right = nodes[i++];
-      if (left) {
-        node.left = left;
-        q.push(left);
-      }
-      if (right) {
-        node.right = right;
-        q.push(right);
-      }
-    }
-  }
-  return root;
-}
 ```

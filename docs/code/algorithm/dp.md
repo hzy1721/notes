@@ -49,6 +49,37 @@ function countBits(n: number): number[] {
 }
 ```
 
+## 最长回文子串
+
+```ts
+function longestPalindrome(s: string): string {
+  const n = s.length;
+  const dp = new Array(n).fill(0).map(() => new Array(n));
+  let maxLen = 0,
+    maxIdx = 0;
+  for (let len = 1; len <= n; ++len) {
+    for (let i = 0; i < n; ++i) {
+      const j = i + len - 1;
+      if (j >= n) {
+        break;
+      }
+      if (s[i] !== s[j]) {
+        dp[i][j] = false;
+      } else if (len <= 3) {
+        dp[i][j] = true;
+      } else {
+        dp[i][j] = dp[i + 1][j - 1];
+      }
+      if (dp[i][j] && len > maxLen) {
+        maxLen = len;
+        maxIdx = i;
+      }
+    }
+  }
+  return s.slice(maxIdx, maxIdx + maxLen);
+}
+```
+
 ## 最大子数组和
 
 ```ts
@@ -67,41 +98,48 @@ function maxSubArray(nums: number[]): number {
 }
 ```
 
-## 最大子数组积
+## 不同路径
+
+组合数：C(m-1, m+n-2)
 
 ```ts
-function maxProduct(nums: number[]): number {
-  let prevMin = 1;
-  let prevMax = 1;
-  let currMin = 1;
-  let currMax = 1;
-  let res = -Infinity;
-  for (const num of nums) {
-    currMin = Math.min(prevMin * num, prevMax * num, num);
-    currMax = Math.max(prevMin * num, prevMax * num, num);
-    res = Math.max(res, currMax);
-    [prevMin, prevMax] = [currMin, currMax];
+function uniquePaths(m: number, n: number): number {
+  const dp = new Array(m).fill(0).map(() => new Array(n));
+  for (let i = 0; i < m; ++i) {
+    dp[i][0] = 1;
   }
-  return res;
+  for (let j = 1; j < n; ++j) {
+    dp[0][j] = 1;
+  }
+  for (let i = 1; i < m; ++i) {
+    for (let j = 1; j < n; ++j) {
+      dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+    }
+  }
+  return dp[m - 1][n - 1];
 }
 ```
 
-## 跳跃游戏
+## 最小路径和
 
 ```ts
-function canJump(nums: number[]): boolean {
-  const n = nums.length;
-  const dp = new Array<boolean>(n).fill(false);
-  dp[0] = true;
-  for (let i = 1; i < n; ++i) {
-    for (let j = i - 1; j >= 0; --j) {
-      if (dp[j] && j + nums[j] >= i) {
-        dp[i] = true;
-        break;
-      }
+function minPathSum(grid: number[][]): number {
+  const m = grid.length;
+  const n = grid[0].length;
+  const dp = new Array(m).fill(0).map(() => new Array(n));
+  dp[0][0] = grid[0][0];
+  for (let i = 1; i < m; ++i) {
+    dp[i][0] = dp[i - 1][0] + grid[i][0];
+  }
+  for (let j = 1; j < n; ++j) {
+    dp[0][j] = dp[0][j - 1] + grid[0][j];
+  }
+  for (let i = 1; i < m; ++i) {
+    for (let j = 1; j < n; ++j) {
+      dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
     }
   }
-  return dp[n - 1];
+  return dp[m - 1][n - 1];
 }
 ```
 
@@ -122,6 +160,25 @@ function wordBreak(s: string, wordDict: string[]): boolean {
     }
   }
   return dp[n];
+}
+```
+
+## 乘积最大子数组
+
+```ts
+function maxProduct(nums: number[]): number {
+  let prevMin = 1;
+  let prevMax = 1;
+  let currMin = 1;
+  let currMax = 1;
+  let res = -Infinity;
+  for (const num of nums) {
+    currMin = Math.min(prevMin * num, prevMax * num, num);
+    currMax = Math.max(prevMin * num, prevMax * num, num);
+    res = Math.max(res, currMax);
+    [prevMin, prevMax] = [currMin, currMax];
+  }
+  return res;
 }
 ```
 
@@ -172,6 +229,25 @@ function numSquares(n: number): number {
 }
 ```
 
+## 最长递增子序列
+
+```ts
+function lengthOfLIS(nums: number[]): number {
+  const n = nums.length;
+  const dp = new Array(n).fill(1);
+  let res = 0;
+  for (let i = 0; i < n; ++i) {
+    for (let j = i - 1; j >= 0; --j) {
+      if (nums[i] > nums[j]) {
+        dp[i] = Math.max(dp[i], dp[j] + 1);
+      }
+    }
+    res = Math.max(res, dp[i]);
+  }
+  return res;
+}
+```
+
 ## 零钱兑换
 
 ```ts
@@ -187,6 +263,30 @@ function coinChange(coins: number[], amount: number): number {
     }
   }
   return dp[amount] === Infinity ? -1 : dp[amount];
+}
+```
+
+## 回文子串
+
+```ts
+function countSubstrings(s: string): number {
+  const n = s.length;
+  const dp: boolean[][] = new Array(n).fill(0).map(() => new Array(n));
+  let res = 0;
+  for (let len = 1; len <= n; ++len) {
+    for (let i = 0; i + len <= n; ++i) {
+      const j = i + len - 1;
+      if (s[i] !== s[j]) {
+        dp[i][j] = false;
+      } else if (len <= 2) {
+        dp[i][j] = true;
+      } else {
+        dp[i][j] = dp[i + 1][j - 1];
+      }
+      res += dp[i][j] ? 1 : 0;
+    }
+  }
+  return res;
 }
 ```
 
@@ -295,5 +395,20 @@ function maxCoins(nums: number[]): number {
     }
   }
   return dp[0][n + 1];
+}
+```
+
+## 剪绳子
+
+```ts
+function cuttingRope(n: number): number {
+  const dp = new Array(n + 1).fill(0);
+  dp[0] = dp[1] = 1;
+  for (let i = 2; i <= n; ++i) {
+    for (let j = 1; j < i; ++j) {
+      dp[i] = Math.max(dp[i], Math.max(dp[i - j], i - j) * j);
+    }
+  }
+  return dp[n];
 }
 ```

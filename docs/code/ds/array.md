@@ -1,5 +1,46 @@
 # 数组
 
+## 找到所有数组中消失的数字
+
+```ts
+function findDisappearedNumbers(nums: number[]): number[] {
+  const n = nums.length;
+  for (let num of nums) {
+    num = num > n ? num - n : num;
+    if (nums[num - 1] <= n) {
+      nums[num - 1] += n;
+    }
+  }
+  const res: number[] = [];
+  for (let i = 0; i < n; ++i) {
+    if (nums[i] <= n) {
+      res.push(i + 1);
+    }
+  }
+  return res;
+}
+```
+
+## 寻找重复数
+
+```ts
+function findDuplicate(nums: number[]): number {
+  const n = nums.length - 1;
+  for (let num of nums) {
+    while (num > n) {
+      num -= n;
+    }
+    nums[num] += n;
+  }
+  for (let i = 1; i <= n; ++i) {
+    if (nums[i] > 2 * n) {
+      return i;
+    }
+  }
+  return 1;
+}
+```
+
 ## 合并有序数组
 
 ```ts
@@ -22,59 +63,5 @@ function merge(
   while (j >= 0) {
     nums1[k--] = nums2[j--];
   }
-}
-```
-
-## 移动零
-
-```ts
-function moveZeroes(nums: number[]): void {
-  let i = 0;
-  for (const num of nums) {
-    if (num !== 0) {
-      nums[i++] = num;
-    }
-  }
-  nums.fill(0, i);
-}
-```
-
-## 数组中消失的数字
-
-```ts
-function findDisappearedNumbers(nums: number[]): number[] {
-  const n = nums.length;
-  for (let num of nums) {
-    num = num > n ? num - n : num;
-    if (nums[num - 1] <= n) {
-      nums[num - 1] += n;
-    }
-  }
-  const res: number[] = [];
-  for (let i = 0; i < n; ++i) {
-    if (nums[i] <= n) {
-      res.push(i + 1);
-    }
-  }
-  return res;
-}
-```
-
-## 最长递增子序列
-
-```ts
-function lengthOfLIS(nums: number[]): number {
-  const n = nums.length;
-  const dp = new Array(n).fill(1);
-  let res = 0;
-  for (let i = 0; i < n; ++i) {
-    for (let j = i - 1; j >= 0; --j) {
-      if (nums[i] > nums[j]) {
-        dp[i] = Math.max(dp[i], dp[j] + 1);
-      }
-    }
-    res = Math.max(res, dp[i]);
-  }
-  return res;
 }
 ```

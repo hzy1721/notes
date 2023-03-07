@@ -1,4 +1,4 @@
-# LRU
+# LRU 缓存
 
 ```ts
 class DListNode {

@@ -1,6 +1,6 @@
 # 分治
 
-## 合并 K 个升序链表
+## 合并K个升序链表
 
 ```ts
 const mergeTwoLists = (

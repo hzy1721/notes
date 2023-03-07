@@ -35,6 +35,7 @@ export default [
       { text: '几何图形', link: '/fe/css/shape' },
       { text: '文本溢出省略', link: '/fe/css/text-overflow' },
       { text: '三栏布局', link: '/fe/css/three-column' },
+      { text: '上中下布局', link: '/fe/css/top-middle-bottom' },
       { text: 'transform', link: '/fe/css/transform' },
       { text: '单位', link: '/fe/css/unit' },
       { text: '自适应', link: '/fe/css/responsive' },
