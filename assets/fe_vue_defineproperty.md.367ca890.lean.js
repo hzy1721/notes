@@ -1,1 +1,0 @@
-import{_ as e,c as o,o as s,a as t}from"./app.1db0b35b.js";const y=JSON.parse('{"title":"Object.defineProperty","description":"","frontmatter":{},"headers":[],"relativePath":"fe/vue/defineproperty.md"}'),a={name:"fe/vue/defineproperty.md"},c=t("",5),l=[c];function n(r,d,p,i,_,f){return s(),o("div",null,l)}const b=e(a,[["render",n]]);export{y as __pageData,b as default};

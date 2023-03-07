@@ -1,1 +1,0 @@
-import{_ as c,c as e,o as l,a as o}from"./app.1db0b35b.js";const f=JSON.parse('{"title":"calc()","description":"","frontmatter":{},"headers":[],"relativePath":"fe/css/calc.md"}'),i={name:"fe/css/calc.md"},d=o("",5),a=[d];function t(s,r,n,_,u,p){return l(),e("div",null,a)}const m=c(i,[["render",t]]);export{f as __pageData,m as default};

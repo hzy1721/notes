@@ -1,1 +1,0 @@
-import{_ as t,c as d,o as e,a as r}from"./app.1db0b35b.js";const P=JSON.parse('{"title":"TCP 和 UDP 的区别","description":"","frontmatter":{},"headers":[],"relativePath":"basic/network/tcp-udp-diff.md"}'),a={name:"basic/network/tcp-udp-diff.md"},c=r("",2),o=[c];function _(s,n,i,p,h,f){return e(),d("div",null,o)}const l=t(a,[["render",_]]);export{P as __pageData,l as default};

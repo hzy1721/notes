@@ -1,1 +1,0 @@
-import{_ as e,c as o,o as c,a}from"./app.1db0b35b.js";const u=JSON.parse('{"title":"高并发","description":"","frontmatter":{},"headers":[],"relativePath":"fe/design/high-concurrency.md"}'),t={name:"fe/design/high-concurrency.md"},d=a("",2),i=[d];function r(n,l,_,s,h,f){return c(),o("div",null,i)}const g=e(t,[["render",r]]);export{u as __pageData,g as default};
