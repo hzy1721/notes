@@ -76,20 +76,10 @@ export default [
     collapsed: true,
   },
   {
-    text: '算法：设计',
-    items: [{ text: 'LRU', link: '/code/algorithm/lru' }],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
     text: '算法：其他',
-    items: [{ text: '摩尔投票法', link: '/code/algorithm/moore' }],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: '算法：非官方',
     items: [
+      { text: 'LRU', link: '/code/algorithm/lru' },
+      { text: '摩尔投票法', link: '/code/algorithm/moore' },
       { text: '数飞机', link: '/code/algorithm/count-plane' },
       { text: '连连看', link: '/code/algorithm/link-game' },
     ],

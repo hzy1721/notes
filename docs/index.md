@@ -16,7 +16,4 @@ hero:
     - theme: alt
       text: 基础
       link: /basic/
-    - theme: alt
-      text: 面试
-      link: /interview/
 ---

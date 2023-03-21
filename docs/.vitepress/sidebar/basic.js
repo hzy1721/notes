@@ -48,4 +48,14 @@ export default [
     collapsible: true,
     collapsed: true,
   },
+  {
+    text: '智力题',
+    items: [
+      { text: '智力题 (1)', link: '/basic/iq/1' },
+      { text: '智力题 (2)', link: '/basic/iq/2' },
+      { text: '智力题 (3)', link: '/basic/iq/3' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
 ];
