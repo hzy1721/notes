@@ -36,9 +36,9 @@ function mergeTwoLists(
 function hasCycle(head: ListNode | null): boolean {
   let slow = head;
   let fast = head;
-  while (slow && fast && fast.next) {
+  while (fast) {
     slow = slow.next;
-    fast = fast.next.next;
+    fast = fast.next?.next;
     if (slow === fast) {
       return true;
     }

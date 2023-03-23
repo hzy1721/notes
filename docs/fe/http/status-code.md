@@ -8,7 +8,7 @@ HTTP 状态码可以分为 5 类：
 
 - 100 Continue
   - 继续请求或忽略响应
-- **101 Switching Protocols**
+- 101 Switching Protocols
   - WebSocket 连接建立时会用到
 - 103 Early Hints
   - 预加载资源

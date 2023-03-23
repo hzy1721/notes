@@ -67,25 +67,25 @@ function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
 }
 ```
 
-## 根节点到叶节点数字之和
+## 求根节点到叶节点数字之和
 
 ```ts
 function sumNumbers(root: TreeNode | null): number {
   let res = 0;
-  let sum = 0;
-  function dfs(root: TreeNode | null) {
+  let num = 0;
+  const dfs = (root: TreeNode | null) => {
     if (!root) {
       return;
     }
-    sum = sum * 10 + root.val;
+    num = num * 10 + root.val;
     if (!root.left && !root.right) {
-      res += sum;
+      res += num;
     } else {
       dfs(root.left);
       dfs(root.right);
     }
-    sum = Math.floor(sum / 10);
-  }
+    num = Math.floor(num / 10);
+  };
   dfs(root);
   return res;
 }

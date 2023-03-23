@@ -4,6 +4,7 @@ export default [
     items: [
       { text: '生命周期', link: '/fe/react/lifecycle' },
       { text: 'Hooks', link: '/fe/react/hooks' },
+      { text: '组件封装注意事项', link: '/fe/react/component' },
     ],
     collapsible: true,
     collapsed: true,
@@ -94,6 +95,7 @@ export default [
     text: '浏览器',
     items: [
       { text: '跨域', link: '/fe/browser/cross-origin' },
+      { text: 'CORS', link: '/fe/browser/cors' },
       {
         text: '输入 URL 后发生了什么',
         link: '/fe/browser/after-input-url',
@@ -120,7 +122,7 @@ export default [
       { text: '版本', link: '/fe/http/version' },
       { text: '报文结构', link: '/fe/http/message' },
       { text: '方法', link: '/fe/http/method' },
-      { text: '请求头', link: '/fe/http/request-headers' },
+      { text: '请求/响应头', link: '/fe/http/headers' },
       { text: '状态码', link: '/fe/http/status-code' },
       { text: '缓存', link: '/fe/http/cache' },
       { text: 'HTTPS', link: '/fe/http/https' },
@@ -152,6 +154,12 @@ export default [
       { text: 'Token', link: '/fe/security/token' },
       { text: 'JWT', link: '/fe/security/jwt' },
     ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: 'DevOps',
+    items: [{ text: '上线流程', link: '/fe/devops/deploy' }],
     collapsible: true,
     collapsed: true,
   },

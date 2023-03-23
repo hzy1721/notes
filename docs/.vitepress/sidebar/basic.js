@@ -37,6 +37,12 @@ export default [
     collapsed: true,
   },
   {
+    text: '设计模式',
+    items: [{ text: '设计模式', link: '/basic/design-pattern/overview' }],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '杂项',
     items: [
       {

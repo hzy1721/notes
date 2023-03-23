@@ -31,70 +31,50 @@ function levelOrder(root: TreeNode | null): number[][] {
 ## 二叉树的序列化与反序列化
 
 ```ts
-/*
- * Encodes a tree to a single string.
- */
 function serialize(root: TreeNode | null): string {
   if (!root) {
     return '';
   }
+  const queue: Array<TreeNode | null> = [];
+  queue.push(root);
   const vals: Array<number | null> = [];
-  const q: Array<TreeNode | null> = [];
-  q.push(root);
-  while (q.length) {
-    let allNull = true;
-    const len = q.length;
-    for (let i = 0; i < len; ++i) {
-      const node = q.shift();
-      if (node) {
-        vals.push(node.val);
-        q.push(node.left);
-        q.push(node.right);
-        allNull &&= !node.left && !node.right;
-      } else {
-        vals.push(null);
-      }
-    }
-    if (allNull) {
-      break;
+  while (queue.length) {
+    const node = queue.shift();
+    if (node) {
+      vals.push(node.val);
+      queue.push(node.left);
+      queue.push(node.right);
+    } else {
+      vals.push(null);
     }
   }
   while (vals[vals.length - 1] === null) {
     vals.pop();
   }
-  const res = vals
-    .map(val => (val === null ? 'null' : String(val)))
-    .join(',');
-  return res;
+  return vals.map(String).join(',');
 }
 
-/*
- * Decodes your encoded data to tree.
- */
 function deserialize(data: string): TreeNode | null {
   if (!data) {
     return null;
   }
-  const nodes = data
+  const nodes: Array<TreeNode | null> = data
     .split(',')
-    .map(val => (val === 'null' ? null : new TreeNode(Number(val))));
-  const n = nodes.length;
+    .map(str => (str === 'null' ? null : new TreeNode(Number(str))));
   let i = 1;
   const root = nodes[0];
-  const q: Array<TreeNode | null> = [root];
-  while (q.length && i < n) {
-    const node = q.shift();
-    if (node) {
-      const left = nodes[i++];
-      const right = nodes[i++];
-      if (left) {
-        node.left = left;
-        q.push(left);
-      }
-      if (right) {
-        node.right = right;
-        q.push(right);
-      }
+  const queue: Array<TreeNode | null> = [root];
+  while (queue.length && i < nodes.length) {
+    const node = queue.shift();
+    const left = nodes[i++];
+    const right = nodes[i++];
+    if (left) {
+      node.left = left;
+      queue.push(left);
+    }
+    if (right) {
+      node.right = right;
+      queue.push(right);
     }
   }
   return root;
