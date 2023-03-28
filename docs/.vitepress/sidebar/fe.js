@@ -4,7 +4,21 @@ export default [
     items: [
       { text: '生命周期', link: '/fe/react/lifecycle' },
       { text: 'Hooks', link: '/fe/react/hooks' },
+      {
+        text: 'build your own react',
+        link: '/fe/react/build-your-own-react',
+      },
       { text: '组件封装注意事项', link: '/fe/react/component' },
+      { text: 'React/Vue 对比', link: '/fe/react/react-vs-vue' },
+      { text: 'React Router', link: '/fe/react/react-router' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: 'webpack',
+    items: [
+      { text: 'entry', link: '/fe/webpack/entry' },
     ],
     collapsible: true,
     collapsed: true,
@@ -41,6 +55,7 @@ export default [
       { text: '单位', link: '/fe/css/unit' },
       { text: '自适应', link: '/fe/css/responsive' },
       { text: 'CSS 动画', link: '/fe/css/animation' },
+      { text: 'CSS 3 新增内容', link: '/fe/css/css-3' },
     ],
     collapsible: true,
     collapsed: true,

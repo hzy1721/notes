@@ -98,6 +98,7 @@ export default [
       { text: '有序数组去重', link: '/code/fe/sorted-array-unique' },
       { text: 'EventBus', link: '/code/fe/eventbus' },
       { text: '深拷贝和浅拷贝', link: '/code/fe/copy' },
+      { text: '深拷贝', link: '/code/fe/clone-deep' },
       { text: '手写 new', link: '/code/fe/new' },
       { text: 'JSON 节点路径', link: '/code/fe/json-node-path' },
       { text: '手写 setInterval', link: '/code/fe/setinterval' },
