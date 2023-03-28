@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,d as l}from"./app.e4b9fdbe.js";const C=JSON.parse('{"title":"手写 bind","description":"","frontmatter":{},"headers":[],"relativePath":"code/fe/bind.md"}'),o={name:"code/fe/bind.md"},p=l("",2),t=[p];function e(c,r,F,y,D,i){return a(),n("div",null,t)}const d=s(o,[["render",e]]);export{C as __pageData,d as default};

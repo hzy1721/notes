@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,d as l}from"./app.e4b9fdbe.js";const C=JSON.parse('{"title":"手写 class 继承","description":"","frontmatter":{},"headers":[],"relativePath":"code/fe/class-extends.md"}'),p={name:"code/fe/class-extends.md"},o=l("",2),e=[o];function t(c,r,y,F,D,A){return n(),a("div",null,e)}const _=s(p,[["render",t]]);export{C as __pageData,_ as default};

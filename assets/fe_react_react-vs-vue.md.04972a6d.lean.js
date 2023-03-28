@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as a,d as r}from"./app.89737b9a.js";const p=JSON.parse('{"title":"React/Vue 对比","description":"","frontmatter":{},"headers":[],"relativePath":"fe/react/react-vs-vue.md"}'),c={name:"fe/react/react-vs-vue.md"},d=r("",2),_=[d];function o(s,n,h,i,u,f){return a(),e("div",null,_)}const v=t(c,[["render",o]]);export{p as __pageData,v as default};
