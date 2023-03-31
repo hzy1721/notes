@@ -8,9 +8,9 @@ function mergeTwoLists(
   list2: ListNode | null
 ): ListNode | null {
   const dummyHead = new ListNode();
-  let p1 = list1,
-    p2 = list2,
-    p3 = dummyHead;
+  let p1 = list1;
+  let p2 = list2;
+  let p3 = dummyHead;
   while (p1 && p2) {
     if (p1.val <= p2.val) {
       p3.next = p1;
@@ -57,8 +57,8 @@ function getIntersectionNode(
   if (!headA || !headB) {
     return null;
   }
-  let currA = headA,
-    currB = headB;
+  let currA = headA;
+  let currB = headB;
   while (currA !== currB) {
     currA = currA ? currA.next : headB;
     currB = currB ? currB.next : headA;
@@ -71,8 +71,8 @@ function getIntersectionNode(
 
 ```ts
 function reverseList(head: ListNode | null): ListNode | null {
-  let prev: ListNode | null = null,
-    curr = head;
+  let prev: ListNode | null = null;
+  let curr = head;
   while (curr) {
     [curr.next, prev, curr] = [prev, curr, curr.next];
   }
@@ -84,8 +84,8 @@ function reverseList(head: ListNode | null): ListNode | null {
 
 ```ts
 function isPalindrome(head: ListNode | null): boolean {
-  let slow = head,
-    fast = head;
+  let slow = head;
+  let fast = head;
   while (fast) {
     slow = slow.next;
     fast = fast.next;
@@ -115,9 +115,9 @@ function addTwoNumbers(
   l2: ListNode | null
 ): ListNode | null {
   const dummyHead = new ListNode();
-  let p1 = l1,
-    p2 = l2,
-    p3 = dummyHead;
+  let p1 = l1;
+  let p2 = l2;
+  let p3 = dummyHead;
   let carry = 0;
   while (p1 || p2) {
     let sum = carry;
@@ -144,8 +144,8 @@ function removeNthFromEnd(
   n: number
 ): ListNode | null {
   const dummyHead = new ListNode(0, head);
-  let p1 = dummyHead,
-    p2 = head;
+  let p1 = dummyHead;
+  let p2 = head;
   for (let i = 0; i < n; ++i) {
     p2 = p2.next;
   }
@@ -162,8 +162,8 @@ function removeNthFromEnd(
 
 ```ts
 function detectCycle(head: ListNode | null): ListNode | null {
-  let slow = head,
-    fast = head;
+  let slow = head;
+  let fast = head;
   while (slow && fast && fast.next) {
     slow = slow.next;
     fast = fast.next.next;

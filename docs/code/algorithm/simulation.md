@@ -67,3 +67,46 @@ function spiralOrder(matrix: number[][]): number[] {
   return res;
 }
 ```
+
+## 高精度减法
+
+```ts
+function minusTwoNumbers(a: string, b: string): string {
+  let neg = false;
+  if (a.length < b.length || (a.length === b.length && a < b)) {
+    [a, b] = [b, a];
+    neg = true;
+  }
+  const num1 = a.split('').map(Number).reverse();
+  const num2 = b.split('').map(Number).reverse();
+  let borrow = 0;
+  const m = num1.length;
+  const res = new Array(m);
+  for (let i = 0; i < m; ++i) {
+    let diff = num1[i] - borrow - (num2[i] ?? 0);
+    borrow = 0;
+    if (diff < 0) {
+      borrow = 1;
+      diff += 10;
+    }
+    res[i] = diff;
+  }
+  while (res[res.length - 1] === 0) {
+    res.pop();
+  }
+  if (!res.length) {
+    res.push(0);
+  }
+  return (neg ? '-' : '') + res.reverse().join('');
+}
+```
+
+`BigInt`
+
+```ts
+function minusTwoNumbers(a: string, b: string): string {
+  const num1 = BigInt(a);
+  const num2 = BigInt(b);
+  return String(num1 - num2);
+}
+```

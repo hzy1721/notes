@@ -19,6 +19,11 @@ export default [
     text: 'webpack',
     items: [
       { text: 'entry', link: '/fe/webpack/entry' },
+      { text: 'output', link: '/fe/webpack/output' },
+      { text: 'module', link: '/fe/webpack/module' },
+      { text: 'resolve', link: '/fe/webpack/resolve' },
+      { text: 'optimization', link: '/fe/webpack/optimization' },
+      { text: 'plugins', link: '/fe/webpack/plugins' },
     ],
     collapsible: true,
     collapsed: true,
@@ -54,7 +59,8 @@ export default [
       { text: 'transform', link: '/fe/css/transform' },
       { text: '单位', link: '/fe/css/unit' },
       { text: '自适应', link: '/fe/css/responsive' },
-      { text: 'CSS 动画', link: '/fe/css/animation' },
+      { text: 'transition', link: '/fe/css/transition' },
+      { text: 'animation', link: '/fe/css/animation' },
       { text: 'CSS 3 新增内容', link: '/fe/css/css-3' },
     ],
     collapsible: true,
@@ -86,7 +92,6 @@ export default [
       { text: 'Timsort', link: '/fe/js/timsort' },
       { text: 'Set', link: '/fe/js/set' },
       { text: 'Map', link: '/fe/js/map' },
-      { text: '事件循环', link: '/fe/js/event-loop' },
       { text: 'Promise', link: '/fe/js/promise' },
       { text: '手撕题', link: '/fe/js/code' },
       { text: 'AJAX', link: '/fe/js/ajax' },
@@ -109,12 +114,13 @@ export default [
   {
     text: '浏览器',
     items: [
-      { text: '跨域', link: '/fe/browser/cross-origin' },
-      { text: 'CORS', link: '/fe/browser/cors' },
       {
-        text: '输入 URL 后发生了什么',
+        text: '输入 URL',
         link: '/fe/browser/after-input-url',
       },
+      { text: '事件循环', link: '/fe/browser/event-loop' },
+      { text: '跨域', link: '/fe/browser/cross-origin' },
+      { text: 'CORS', link: '/fe/browser/cors' },
       { text: 'Cookie', link: '/fe/browser/cookie' },
       { text: 'localStorage', link: '/fe/browser/localstorage' },
       { text: 'IndexedDB', link: '/fe/browser/indexeddb' },
@@ -126,7 +132,16 @@ export default [
         text: '不同标签页通信',
         link: '/fe/browser/tab-communication',
       },
+      { text: 'Web Worker', link: '/fe/browser/web-worker' },
       { text: 'Service Worker', link: '/fe/browser/service-worker' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: 'Node',
+    items: [
+      { text: '事件循环', link: '/fe/node/event-loop' }
     ],
     collapsible: true,
     collapsed: true,
