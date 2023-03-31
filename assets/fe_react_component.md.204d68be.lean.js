@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as l,d as a}from"./app.e6616afd.js";const m=JSON.parse('{"title":"组件封装注意事项","description":"","frontmatter":{},"headers":[],"relativePath":"fe/react/component.md"}'),i={name:"fe/react/component.md"},o=a("",2),r=[o];function n(_,c,p,s,d,u){return l(),t("div",null,r)}const f=e(i,[["render",n]]);export{m as __pageData,f as default};
