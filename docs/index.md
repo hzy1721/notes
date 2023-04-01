@@ -7,7 +7,7 @@ hero:
   name: Notes
   text: 前端面试笔记
   actions:
-    - theme: brand
+    - theme: alt
       text: 算法
       link: /code/
     - theme: alt

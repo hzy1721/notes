@@ -1,12 +1,8 @@
 # 生命周期
 
-![](assets/react-lifecycle.png)
+![](./assets/react-lifecycle.png)
 
-React 组件的生命周期可以分为 3 个阶段：
-
-- 挂载 (mount)
-- 更新 (update)
-- 卸载 (unmount)
+![](./assets/react-lifecycle-hooks.png)
 
 ## 挂载
 
