@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,d as l}from"./app.e6616afd.js";const F=JSON.parse('{"title":"Number","description":"","frontmatter":{},"headers":[],"relativePath":"fe/js/number.md"}'),o={name:"fe/js/number.md"},p=l("",14),e=[p];function t(c,r,y,D,C,i){return n(),a("div",null,e)}const d=s(o,[["render",t]]);export{F as __pageData,d as default};

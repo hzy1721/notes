@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as e,d as o}from"./app.e6616afd.js";const h=JSON.parse('{"title":"animation","description":"","frontmatter":{},"headers":[],"relativePath":"fe/css/animation.md"}'),n={name:"fe/css/animation.md"},t=o("",4),c=[t];function d(l,s,r,_,m,p){return e(),a("div",null,c)}const u=i(n,[["render",d]]);export{h as __pageData,u as default};
