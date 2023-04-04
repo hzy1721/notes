@@ -8,7 +8,6 @@ export default {
   base: '/',
   title: 'Notes',
   themeConfig: {
-    logo: '/logo.png',
     nav: [
       { text: '算法', link: '/code/' },
       {

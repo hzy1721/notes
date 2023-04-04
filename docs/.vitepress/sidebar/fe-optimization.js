@@ -12,6 +12,23 @@ export default [
     collapsed: true,
   },
   {
+    text: '响应式',
+    items: [],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '计算优化',
+    items: [
+      {
+        text: '高频事件',
+        link: '/fe/optimization/compute/frequent-event',
+      },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '系统设计',
     items: [
       {

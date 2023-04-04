@@ -29,6 +29,34 @@ export default [
     collapsed: true,
   },
   {
+    text: '工具函数',
+    items: [
+      { text: 'clone/cloneDeep', link: '/fe/framework/util/clone' },
+      { text: 'once', link: '/fe/framework/util/once' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: 'Lodash',
+    items: [
+      {
+        text: 'clone/cloneDeep',
+        link: '/fe/framework/lodash/clone',
+      },
+      {
+        text: 'baseClone',
+        link: '/fe/framework/lodash/base-clone',
+      },
+      {
+        text: 'isBuffer',
+        link: '/fe/framework/lodash/is-buffer',
+      },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: 'DevOps',
     items: [{ text: '上线流程', link: '/fe/framework/devops/deploy' }],
     collapsible: true,
@@ -52,11 +80,20 @@ export default [
       { text: '内部方法', link: '/fe/framework/vue/internal-methods' },
       { text: 'Proxy', link: '/fe/framework/vue/proxy' },
       { text: 'Reflect', link: '/fe/framework/vue/reflect' },
-      { text: '注册副作用函数', link: '/fe/framework/vue/register-effect' },
+      {
+        text: '注册副作用函数',
+        link: '/fe/framework/vue/register-effect',
+      },
       { text: '响应式对象', link: '/fe/framework/vue/reactive-object' },
       { text: '响应式数组', link: '/fe/framework/vue/reactive-array' },
-      { text: '响应式集合', link: '/fe/framework/vue/reactive-collection' },
-      { text: '响应式原始值', link: '/fe/framework/vue/reactive-primitive' },
+      {
+        text: '响应式集合',
+        link: '/fe/framework/vue/reactive-collection',
+      },
+      {
+        text: '响应式原始值',
+        link: '/fe/framework/vue/reactive-primitive',
+      },
       { text: '计算属性实现', link: '/fe/framework/vue/computed' },
       { text: 'watch 实现', link: '/fe/framework/vue/watch' },
       { text: '编译过程', link: '/fe/framework/vue/compile' },
@@ -82,7 +119,10 @@ export default [
     text: 'Vue Router',
     items: [
       { text: '历史模式', link: '/fe/framework/vue-router/history-mode' },
-      { text: '实现原理', link: '/fe/framework/vue-router/implementation' },
+      {
+        text: '实现原理',
+        link: '/fe/framework/vue-router/implementation',
+      },
       {
         text: 'window.location',
         link: '/fe/framework/vue-router/window-location',

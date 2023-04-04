@@ -89,9 +89,6 @@ export default [
   {
     text: '前端手写题',
     items: [
-      { text: '防抖和节流', link: '/code/fe/debounce-throttle' },
-      { text: 'Promise 静态方法', link: '/code/fe/promise-static' },
-      { text: '手写 Promise', link: '/code/fe/promise' },
       { text: '柯里化', link: '/code/fe/currying' },
       { text: '并发请求', link: '/code/fe/concurrent-requests' },
       { text: '数组扁平化', link: '/code/fe/array-flat' },
