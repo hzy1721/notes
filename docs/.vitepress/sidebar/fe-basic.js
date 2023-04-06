@@ -55,7 +55,7 @@ export default [
     text: 'JS - 对象',
     items: [
       { text: '对象', link: '/fe/basic/js/object' },
-      { text: '枚举属性', link: '/fe/basic/js/enumerate-prop' },
+      { text: '遍历属性', link: '/fe/basic/js/enumerate-prop' },
       { text: '构造函数', link: '/fe/basic/js/constructor' },
       { text: '原型', link: '/fe/basic/js/prototype' },
       { text: '继承', link: '/fe/basic/js/inheritance' },
@@ -114,6 +114,9 @@ export default [
       { text: 'DataView', link: '/fe/basic/js/binary/data-view' },
       { text: 'TextDecoder', link: '/fe/basic/js/binary/text-decoder' },
       { text: 'TextEncoder', link: '/fe/basic/js/binary/text-encoder' },
+      { text: 'Blob', link: '/fe/basic/js/binary/blob' },
+      { text: 'File', link: '/fe/basic/js/binary/file' },
+      { text: 'FileReader', link: '/fe/basic/js/binary/file-reader' },
     ],
     collapsible: true,
     collapsed: true,
@@ -122,6 +125,7 @@ export default [
     text: 'JS - 其他',
     items: [
       { text: 'let 和 const', link: '/fe/basic/js/let-const' },
+      { text: 'JSON', link: '/fe/basic/js/json' },
       { text: 'ES6 新特性', link: '/fe/basic/js/es6' },
     ],
     collapsible: true,

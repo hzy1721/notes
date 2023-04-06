@@ -1,5 +1,7 @@
 # isBuffer
 
+是否为 Node Buffer。
+
 ```js
 const freeGlobal =
   typeof global === 'object' &&

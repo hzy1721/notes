@@ -38,25 +38,6 @@ export default [
     collapsed: true,
   },
   {
-    text: 'Lodash',
-    items: [
-      {
-        text: 'clone/cloneDeep',
-        link: '/fe/framework/lodash/clone',
-      },
-      {
-        text: 'baseClone',
-        link: '/fe/framework/lodash/base-clone',
-      },
-      {
-        text: 'isBuffer',
-        link: '/fe/framework/lodash/is-buffer',
-      },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
     text: 'DevOps',
     items: [{ text: '上线流程', link: '/fe/framework/devops/deploy' }],
     collapsible: true,

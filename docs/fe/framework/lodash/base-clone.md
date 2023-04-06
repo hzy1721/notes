@@ -29,13 +29,13 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
   // 是否拷贝 Symbol 属性
   const isFull = bitmask & CLONE_SYMBOLS_FLAG;
 
-  // 有自定义拷贝函数
+  // 自定义拷贝函数
   if (customizer) {
     result = object
       ? customizer(value, key, object, stack)
       : customizer(value);
   }
-  // 已经算出结果了：直接返回
+  // 已经算出结果直接返回
   if (result !== undefined) {
     return result;
   }
@@ -49,6 +49,7 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
   const isArr = Array.isArray(value);
   // 获取字符串表示
   const tag = getTag(value);
+  
   // >>>>> 数组 >>>>>
   if (isArr) {
     // 创建长度相同的空数组
@@ -61,11 +62,11 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
     // 是否为函数
     const isFunc = typeof value === 'function';
 
-    // 是 Buffer
+    // >>>>> Node Buffer >>>>>
     if (isBuffer(value)) {
       return cloneBuffer(value, isDeep);
     }
-    // Object/Arguments/函数且没有父对象
+    // >>>>> 普通对象/arguments/裸函数 >>>>>
     if (tag == objectTag || tag == argsTag || (isFunc && !object)) {
       // 创建设置好原型的空对象
       result = isFlat || isFunc ? {} : initCloneObject(value);
@@ -76,24 +77,27 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
           : copySymbols(value, Object.assign(result, value));
       }
     } else {
+      // >>>>> 函数/不可拷贝 >>>>>
       if (isFunc || !cloneableTags[tag]) {
         return object ? value : {};
       }
+      // 初始化
       result = initCloneByTag(value, tag, isDeep);
     }
   }
-  // Check for circular references and return its corresponding clone.
+
   stack || (stack = new Stack());
   const stacked = stack.get(value);
-  // 循环引用直接返回缓存的值
+  // 循环引用直接返回
   if (stacked) {
     return stacked;
   }
-  // 加入栈种
+  // 保存映射
   stack.set(value, result);
 
-  // Map
+  // >>>>> Map >>>>>
   if (tag == mapTag) {
+    // 遍历元素
     value.forEach((subValue, key) => {
       result.set(
         key,
@@ -103,8 +107,9 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
     return result;
   }
 
-  // Set
+  // >>>>> Set >>>>>
   if (tag == setTag) {
+    // 遍历元素
     value.forEach(subValue => {
       result.add(
         baseClone(subValue, bitmask, customizer, subValue, value, stack)
@@ -113,8 +118,9 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
     return result;
   }
 
-  // TypedArray
+  // >>>>> TypedArray >>>>>
   if (isTypedArray(value)) {
+    // 直接返回
     return result;
   }
 
@@ -125,14 +131,14 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
     : isFlat
     ? keysIn
     : keys;
-
   const props = isArr ? undefined : keysFunc(value);
+
   arrayEach(props || value, (subValue, key) => {
     if (props) {
       key = subValue;
       subValue = value[key];
     }
-    // Recursively populate clone (susceptible to call stack limits).
+    // 赋值
     assignValue(
       result,
       key,
@@ -141,4 +147,38 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
   });
   return result;
 }
+```
+
+## 常量
+
+```js
+const CLONE_DEEP_FLAG = 1;
+const CLONE_FLAT_FLAG = 2;
+const CLONE_SYMBOLS_FLAG = 4;
+
+const argsTag = '[object Arguments]';
+const arrayTag = '[object Array]';
+const boolTag = '[object Boolean]';
+const dateTag = '[object Date]';
+const errorTag = '[object Error]';
+const mapTag = '[object Map]';
+const numberTag = '[object Number]';
+const objectTag = '[object Object]';
+const regexpTag = '[object RegExp]';
+const setTag = '[object Set]';
+const stringTag = '[object String]';
+const symbolTag = '[object Symbol]';
+const weakMapTag = '[object WeakMap]';
+
+const arrayBufferTag = '[object ArrayBuffer]';
+const dataViewTag = '[object DataView]';
+const float32Tag = '[object Float32Array]';
+const float64Tag = '[object Float64Array]';
+const int8Tag = '[object Int8Array]';
+const int16Tag = '[object Int16Array]';
+const int32Tag = '[object Int32Array]';
+const uint8Tag = '[object Uint8Array]';
+const uint8ClampedTag = '[object Uint8ClampedArray]';
+const uint16Tag = '[object Uint16Array]';
+const uint32Tag = '[object Uint32Array]';
 ```
