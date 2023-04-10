@@ -15,6 +15,12 @@
 - 有修饰符 `g`：返回所有匹配结果的数组 `res`
 - 无匹配项：返回 `null`
 
+## str.matchAll
+
+## str.split
+
+## str.search
+
 ## str.replace
 
 `String.prototype.replace(regexp, replacement)`
@@ -29,3 +35,5 @@
 | `$n`      | 第 n 个分组        |
 | `$<name>` | `name` 分组        |
 | `$$`      | 字符 `$`           |
+
+## str.replaceAll

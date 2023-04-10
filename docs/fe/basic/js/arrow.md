@@ -1,58 +1,19 @@
 # 箭头函数
 
-ES6 引入的一种定义函数的新方式，有以下优点：
+ES6 引入的定义函数的新方式。
+
+特点：
+
+- 没有 `this`
+  - 调用时内部的 `this` 为外部的 `this` (声明时所在作用域的 `this`)
+- 没有 `arguments`
+  - 可以用 rest 参数代替
+- 不能作为构造函数
+  - 使用 `new` 会报错
+- 不能作为生成器函数
+  - 函数内不能使用 `yield`
+
+优点：
 
 - 用箭头 `=>` 代替 `function` 关键字，语法更简洁
 - 只有一个参数可以省略圆括号，函数体只有一条语句可以省略花括号，简化了回调函数的写法
-
-## 没有 this
-
-普通函数调用时的 `this` 指向调用该函数的对象，而箭头函数调用时的 `this` 始终为函数**定义时**所在函数的 `this`，即使箭头函数被传入另一个函数在内部调用。
-
-```js
-const user = {
-  sayHi() {
-    console.log(this);
-  },
-};
-user.sayHi(); // user
-
-const sayHello = user.sayHi;
-sayHello(); // undefined 或 window
-```
-
-```js
-const user = {
-  sayHi() {
-    const arrow = () => console.log(this);
-    arrow();
-  },
-};
-user.sayHi(); // user
-
-const group = {
-  title: "Our Group",
-  students: ["John", "Pete", "Alice"],
-  showList() {
-    this.students.forEach((student) =>
-      console.log(this.title + ": " + student)
-    );
-  },
-};
-group.showList();
-// Our Group: John
-// Our Group: Pete
-// Our Group: Alice
-```
-
-## 不能用做构造函数
-
-对箭头函数使用 `new` 会报错。
-
-## 没有 arguments
-
-函数内访问不到 `arguments`，可以用 rest 参数代替。
-
-## 不能用做生成器函数
-
-函数内不能使用 `yield`。

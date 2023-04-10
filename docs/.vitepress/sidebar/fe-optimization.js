@@ -2,7 +2,15 @@ export default [
   {
     text: '安全',
     items: [
-      { text: 'Web 安全', link: '/fe/optimization/security/web' },
+      { text: 'XSS', link: '/fe/optimization/security/xss' },
+      { text: 'CSRF', link: '/fe/optimization/security/csrf' },
+      { text: 'SSRF', link: '/fe/optimization/security/ssrf' },
+      { text: 'DoS', link: '/fe/optimization/security/dos' },
+      { text: '注入', link: '/fe/optimization/security/injection' },
+      {
+        text: '中间人',
+        link: '/fe/optimization/security/man-in-the-middle',
+      },
       { text: '加密', link: '/fe/optimization/security/encryption' },
       { text: 'Session', link: '/fe/optimization/security/session' },
       { text: 'Token', link: '/fe/optimization/security/token' },
@@ -23,6 +31,17 @@ export default [
       {
         text: '高频事件',
         link: '/fe/optimization/compute/frequent-event',
+      },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '加载优化',
+    items: [
+      {
+        text: '图片压缩',
+        link: '/fe/optimization/load/image-compression',
       },
     ],
     collapsible: true,

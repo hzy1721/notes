@@ -3,6 +3,7 @@ import feFrameworkSidebar from './sidebar/fe-framework';
 import feOptimizationSidebar from './sidebar/fe-optimization';
 import feBasicSidebar from './sidebar/fe-basic';
 import basicSidebar from './sidebar/basic';
+import feFieldSidebar from './sidebar/fe-field';
 
 export default {
   base: '/',
@@ -16,6 +17,7 @@ export default {
           { text: '框架', link: '/fe/framework/' },
           { text: '优化', link: '/fe/optimization/' },
           { text: '基础', link: '/fe/basic/' },
+          { text: '领域', link: '/fe/field/' },
         ],
       },
       { text: '基础', link: '/basic/' },
@@ -28,6 +30,7 @@ export default {
       '/fe/framework/': feFrameworkSidebar,
       '/fe/optimization/': feOptimizationSidebar,
       '/fe/basic/': feBasicSidebar,
+      '/fe/field': feFieldSidebar,
       '/basic/': basicSidebar,
     },
   },

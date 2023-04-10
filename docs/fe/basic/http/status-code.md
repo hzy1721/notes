@@ -4,7 +4,7 @@ HTTP 状态码可以分为 5 类：
 
 ## 1xx：Informational
 
-指示一些信息
+提示一些信息
 
 - 100 Continue
   - 继续请求或忽略响应

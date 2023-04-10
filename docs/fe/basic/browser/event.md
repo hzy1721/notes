@@ -1,6 +1,6 @@
 # 事件
 
-## 捕获
+## 捕获 (capture)
 
 事件传播有 3 个阶段：
 
@@ -8,21 +8,21 @@
 - 目标 (target)
 - 冒泡 (bubbling)
 
-<img src="https://s2.loli.net/2022/08/02/GHcwO74JatRhyTN.png" width="80%" />
+<img src="./assets/event-phase.png" width="80%" />
 
-使用 `on<event>` 或 `addEventListener(event, func)` 设置的处理函数都在冒泡阶段执行。
+`on<event>` 和 `addEventListener(event, func)` 默认在冒泡阶段触发。
 
-`addEventListener(event, func, { capture: true })` 将会使 `func` 在捕获阶段执行。
+`addEventListener(event, func, { capture: true })` 会使 `func` 在捕获阶段触发。
 
 简写：`addEventListener(event, func, true)`
 
-删除处理函数时也需要指定捕获阶段：`removeEventListener(event, func, true)`
+删除时也需要指定捕获阶段：`removeEventListener(event, func, true)`
 
-- `event.eventPhase`：当前事件传播的阶段
+事件对象属性 `event.eventPhase` 表示当前事件传播的阶段。
 
-## 冒泡
+## 冒泡 (bubble)
 
-冒泡 (bubbling)：首先运行**直接元素**的处理函数，然后是父元素，依此类推直到根元素。
+冒泡：首先触发**最深层元素**的处理函数，然后是父元素，依此类推直到根元素。
 
 几乎所有事件都会冒泡，除了 `focus` 等少数事件。
 
@@ -84,16 +84,16 @@ event 对象属性：
 class Menu {
   handleEvent(event) {
     // mousedown -> onMousedown
-    let method = "on" + event.type[0].toUpperCase() + event.type.slice(1);
+    let method = 'on' + event.type[0].toUpperCase() + event.type.slice(1);
     this[method](event);
   }
 
   onMousedown() {
-    elem.innerHTML = "Mouse button pressed";
+    elem.innerHTML = 'Mouse button pressed';
   }
 
   onMouseup() {
-    elem.innerHTML += "...and released.";
+    elem.innerHTML += '...and released.';
   }
 }
 ```

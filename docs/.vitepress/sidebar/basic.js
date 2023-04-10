@@ -43,6 +43,12 @@ export default [
     collapsed: true,
   },
   {
+    text: '测试',
+    items: [{ text: '测试方法', link: '/basic/test/test-method' }],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '杂项',
     items: [
       {

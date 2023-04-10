@@ -110,3 +110,24 @@ function minusTwoNumbers(a: string, b: string): string {
   return String(num1 - num2);
 }
 ```
+
+## 比较版本号
+
+```ts
+function compareVersion(version1: string, version2: string): number {
+  const tokens1 = version1.split('.').map(Number);
+  const tokens2 = version2.split('.').map(Number);
+  const m = tokens1.length;
+  const n = tokens2.length;
+  for (let i = 0; i < Math.max(m, n); ++i) {
+    const t1 = tokens1[i] ?? 0;
+    const t2 = tokens2[i] ?? 0;
+    if (t1 < t2) {
+      return -1;
+    } else if (t1 > t2) {
+      return 1;
+    }
+  }
+  return 0;
+}
+```

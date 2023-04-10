@@ -78,6 +78,7 @@ export default [
     text: 'JS - 数组/Set/Map',
     items: [
       { text: '数组', link: '/fe/basic/js/array' },
+      { text: '数组方法', link: '/fe/basic/js/array-method' },
       { text: 'Timsort', link: '/fe/basic/js/timsort' },
       { text: 'Set', link: '/fe/basic/js/set' },
       { text: 'Map', link: '/fe/basic/js/map' },
@@ -102,6 +103,7 @@ export default [
       { text: '正则表达式', link: '/fe/basic/regexp/regexp' },
       { text: '字符串方法', link: '/fe/basic/regexp/string-method' },
       { text: 'RegExp 方法', link: '/fe/basic/regexp/regexp-method' },
+      { text: '常用正则', link: '/fe/basic/regexp/common-regexp' },
     ],
     collapsible: true,
     collapsed: true,
@@ -126,6 +128,9 @@ export default [
     items: [
       { text: 'let 和 const', link: '/fe/basic/js/let-const' },
       { text: 'JSON', link: '/fe/basic/js/json' },
+      { text: 'URL 编码', link: '/fe/basic/js/encode-url' },
+      { text: 'URL 对象', link: '/fe/basic/js/url' },
+      { text: 'MutationObserver', link: '/fe/basic/js/mutation-observer' },
       { text: 'ES6 新特性', link: '/fe/basic/js/es6' },
     ],
     collapsible: true,

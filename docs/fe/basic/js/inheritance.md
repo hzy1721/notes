@@ -1,9 +1,23 @@
 # 继承
 
-父类的属性可以分为两类：
+父类属性可以分为 2 类：
 
-- 自有属性/实例属性：在构造函数内设置的属性
-- 继承属性/原型链：`SuperType.prototype` 以及相应的原型链
+- 自有属性：在构造函数内设置的属性
+- 继承属性：`SuperType.prototype` 以及相应的原型链
+
+## class extends
+
+ES6 引入的类语法。
+
+```js
+class SubType extends SuperType { ... }
+```
+
+<img src="./assets/class-extends.png" width="70%" />
+
+- 数据属性：在子类 constructor 中执行父类 constructor
+- 访问器属性和实例方法：`Rabbit.prototype.[[Prototype]]` 设置为 `Animal.prototype`
+- 静态属性和静态方法：`Rabbit.[[Prototype]]` 设置为 `Animal`
 
 ## 继承实例属性
 
@@ -56,17 +70,3 @@ Object.assign(
   AnotherSuperType.prototype
 );
 ```
-
-## class extends
-
-ES6 引入的最直观的继承语法。
-
-```js
-class SubType extends SuperType { ... }
-```
-
-<img src="./assets/class-extends.png" width="70%" />
-
-- 数据属性：在子类 constructor 中执行父类 constructor
-- 访问器属性和实例方法：`Rabbit.prototype.[[Prototype]]` 设置为 `Animal.prototype`
-- 静态属性和静态方法：`Rabbit.[[Prototype]]` 设置为 `Animal`

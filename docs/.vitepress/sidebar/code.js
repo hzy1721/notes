@@ -82,6 +82,7 @@ export default [
       { text: '摩尔投票法', link: '/code/algorithm/moore' },
       { text: '数飞机', link: '/code/algorithm/count-plane' },
       { text: '连连看', link: '/code/algorithm/link-game' },
+      { text: '时分针夹角', link: '/code/algorithm/clock-angle' },
     ],
     collapsible: true,
     collapsed: true,
@@ -91,7 +92,6 @@ export default [
     items: [
       { text: '柯里化', link: '/code/fe/currying' },
       { text: '并发请求', link: '/code/fe/concurrent-requests' },
-      { text: '数组扁平化', link: '/code/fe/array-flat' },
       { text: '有序数组去重', link: '/code/fe/sorted-array-unique' },
       { text: 'EventBus', link: '/code/fe/eventbus' },
       { text: '深拷贝和浅拷贝', link: '/code/fe/copy' },
