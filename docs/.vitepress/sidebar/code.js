@@ -90,20 +90,15 @@ export default [
   {
     text: '前端手写题',
     items: [
+      { text: '比较数组完全相同', link: '/code/fe/array-equal' },
       { text: '柯里化', link: '/code/fe/currying' },
       { text: '并发请求', link: '/code/fe/concurrent-requests' },
       { text: '有序数组去重', link: '/code/fe/sorted-array-unique' },
       { text: 'EventBus', link: '/code/fe/eventbus' },
-      { text: '深拷贝和浅拷贝', link: '/code/fe/copy' },
-      { text: '深拷贝', link: '/code/fe/clone-deep' },
       { text: '手写 new', link: '/code/fe/new' },
       { text: 'JSON 节点路径', link: '/code/fe/json-node-path' },
       { text: '手写 setInterval', link: '/code/fe/setinterval' },
       { text: 'DOM 转对象', link: '/code/fe/dom-to-object' },
-      {
-        text: '点击 button 把 input 内容 alert',
-        link: '/code/fe/alert-input',
-      },
       {
         text: 'n 个异步操作按序执行',
         link: '/code/fe/async-serial-execution',

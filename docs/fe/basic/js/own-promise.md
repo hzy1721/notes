@@ -1,56 +1,9 @@
 # 手写 Promise
 
 ```js
-const PENDING = "pending";
-const FULFILLED = "fulfilled";
-const REJECTED = "rejected";
-
-const checkObjectType = (value) => {
-  return (
-    (typeof value === "object" && value !== null) || typeof value === "function"
-  );
-};
-
-const resolvePromise = (promise, res, resolve, reject) => {
-  if (promise === res) {
-    throw new TypeError("Chaining cycle detected for promise #<Promise>");
-  }
-  let settled = false;
-  if (checkObjectType(res)) {
-    try {
-      const then = res.then;
-      if (typeof then === "function") {
-        then.call(
-          res,
-          (value) => {
-            if (settled) {
-              return;
-            }
-            settled = true;
-            resolvePromise(promise, value, resolve, reject);
-          },
-          (reason) => {
-            if (settled) {
-              return;
-            }
-            settled = true;
-            reject(reason);
-          }
-        );
-      } else {
-        resolve(res);
-      }
-    } catch (error) {
-      if (settled) {
-        return;
-      }
-      settled = true;
-      reject(error);
-    }
-  } else {
-    resolve(res);
-  }
-};
+const PENDING = 'pending';
+const FULFILLED = 'fulfilled';
+const REJECTED = 'rejected';
 
 class MyPromise {
   constructor(executor) {
@@ -61,21 +14,21 @@ class MyPromise {
     this.onFulfilledCallbacks = [];
     this.onRejectedCallbacks = [];
 
-    const resolve = (value) => {
+    const resolve = value => {
       if (value instanceof MyPromise) {
         value.then(resolve, reject);
       } else if (this.status === PENDING) {
         this.status = FULFILLED;
         this.value = value;
-        this.onFulfilledCallbacks.forEach((cb) => cb());
+        this.onFulfilledCallbacks.forEach(cb => cb());
       }
     };
 
-    const reject = (reason) => {
+    const reject = reason => {
       if (this.status === PENDING) {
         this.status = REJECTED;
         this.reason = reason;
-        this.onRejectedCallbacks.forEach((cb) => cb());
+        this.onRejectedCallbacks.forEach(cb => cb());
       }
     };
 
@@ -88,11 +41,11 @@ class MyPromise {
 
   then(onFulfilled, onRejected) {
     onFulfilled =
-      typeof onFulfilled === "function" ? onFulfilled : (value) => value;
+      typeof onFulfilled === 'function' ? onFulfilled : value => value;
     onRejected =
-      typeof onRejected === "function"
+      typeof onRejected === 'function'
         ? onRejected
-        : (reason) => {
+        : reason => {
             throw reason;
           };
     const promise = new MyPromise((resolve, reject) => {
@@ -130,11 +83,11 @@ class MyPromise {
 
   finally(onFinally) {
     return this.then(
-      (value) => {
+      value => {
         onFinally();
-        return new MyPromise((resolve) => resolve(value));
+        return new MyPromise(resolve => resolve(value));
       },
-      (reason) => {
+      reason => {
         onFinally();
         return new MyPromise((resolve, reject) => reject(reason));
       }
@@ -154,7 +107,61 @@ MyPromise.deferred = () => {
 module.exports = MyPromise;
 ```
 
+## resolvePromise
+
+```js
+const isObject = value => {
+  return (
+    (typeof value === 'object' && value !== null) ||
+    typeof value === 'function'
+  );
+};
+
+const resolvePromise = (promise, res, resolve, reject) => {
+  if (promise === res) {
+    throw new TypeError('Chaining cycle detected for promise #<Promise>');
+  }
+  let settled = false;
+  if (isObject(res)) {
+    try {
+      const then = res.then;
+      if (typeof then === 'function') {
+        then.call(
+          res,
+          value => {
+            if (settled) {
+              return;
+            }
+            settled = true;
+            resolvePromise(promise, value, resolve, reject);
+          },
+          reason => {
+            if (settled) {
+              return;
+            }
+            settled = true;
+            reject(reason);
+          }
+        );
+      } else {
+        resolve(res);
+      }
+    } catch (error) {
+      if (settled) {
+        return;
+      }
+      settled = true;
+      reject(error);
+    }
+  } else {
+    resolve(res);
+  }
+};
+```
+
+## 测试
+
 ```sh
-pnpm add -g promises-aplus-tests
+npm i -g promises-aplus-tests
 promises-aplus-tests MyPromise
 ```

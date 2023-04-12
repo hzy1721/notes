@@ -104,6 +104,7 @@ export default [
       { text: '字符串方法', link: '/fe/basic/regexp/string-method' },
       { text: 'RegExp 方法', link: '/fe/basic/regexp/regexp-method' },
       { text: '常用正则', link: '/fe/basic/regexp/common-regexp' },
+      { text: '正则题目', link: '/fe/basic/regexp/regexp-exercise' },
     ],
     collapsible: true,
     collapsed: true,
@@ -126,7 +127,7 @@ export default [
   {
     text: 'JS - 其他',
     items: [
-      { text: 'let 和 const', link: '/fe/basic/js/let-const' },
+      { text: '变量声明', link: '/fe/basic/js/variable' },
       { text: 'JSON', link: '/fe/basic/js/json' },
       { text: 'URL 编码', link: '/fe/basic/js/encode-url' },
       { text: 'URL 对象', link: '/fe/basic/js/url' },
@@ -182,7 +183,7 @@ export default [
   {
     text: 'HTTP',
     items: [
-      { text: '版本', link: '/fe/basic/http/version' },
+      { text: '版本', link: '/fe/basic/http/http-version' },
       { text: '报文结构', link: '/fe/basic/http/message' },
       { text: '方法', link: '/fe/basic/http/method' },
       { text: '请求/响应头', link: '/fe/basic/http/headers' },

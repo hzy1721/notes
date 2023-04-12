@@ -20,12 +20,6 @@ export default [
     collapsed: true,
   },
   {
-    text: '响应式',
-    items: [],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
     text: '计算优化',
     items: [
       {
@@ -50,10 +44,6 @@ export default [
   {
     text: '系统设计',
     items: [
-      {
-        text: '图片加载优化',
-        link: '/fe/optimization/design/image-loading',
-      },
       { text: 'Web 性能指标', link: '/fe/optimization/design/web-vitals' },
       { text: '前端性能优化', link: '/fe/optimization/design/perf' },
       { text: 'CDN', link: '/fe/optimization/design/cdn' },

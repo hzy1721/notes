@@ -105,12 +105,12 @@
 
 ## lookahead/behind
 
-lookahead：
+lookahead (向前/右看)：
 
 - `X(?=Y)`：仅在后面是 `Y` 时匹配 `X`
 - `X(?!Y)`：仅在后面不是 `Y` 时匹配 `X`
 
-lookbehind：
+lookbehind (向后/左看)：
 
 - `(?<=Y)X`：仅在前面是 `Y` 时匹配 `X`
 - `(?<!Y)X`：仅在前面不是 `Y` 时匹配 `X`

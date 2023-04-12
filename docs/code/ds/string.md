@@ -26,54 +26,27 @@ function longestCommonSubsequence(text1: string, text2: string): number {
 }
 ```
 
-## 比较版本号
-
-```ts
-function compareVersion(version1: string, version2: string): number {
-  const tokens1 = version1.split('.');
-  const tokens2 = version2.split('.');
-  const n1 = tokens1.length;
-  const n2 = tokens2.length;
-  for (let i = 0; i < n1 || i < n2; ++i) {
-    const num1 = i < n1 ? Number(tokens1[i]) : 0;
-    const num2 = i < n2 ? Number(tokens2[i]) : 0;
-    if (num1 < num2) {
-      return -1;
-    } else if (num1 > num2) {
-      return 1;
-    }
-  }
-  return 0;
-}
-```
-
 ## 字符串相加
 
 ```ts
 function addStrings(num1: string, num2: string): string {
-  let carry = 0;
-  const arr1 = num1
-    .split('')
-    .reverse()
-    .map(char => Number(char));
-  const arr2 = num2
-    .split('')
-    .reverse()
-    .map(char => Number(char));
-  const arr3: number[] = [];
+  const arr1 = num1.split('').reverse().map(Number);
+  const arr2 = num2.split('').reverse().map(Number);
+  const res: number[] = [];
   const n1 = arr1.length;
   const n2 = arr2.length;
+  let carry = 0;
   for (let i = 0; i < n1 || i < n2; ++i) {
     let sum = carry;
-    sum += i < n1 ? arr1[i] : 0;
-    sum += i < n2 ? arr2[i] : 0;
-    arr3.push(sum % 10);
+    sum += arr1[i] ?? 0;
+    sum += arr2[i] ?? 0;
+    res.push(sum % 10);
     carry = Math.floor(sum / 10);
   }
   if (carry > 0) {
-    arr3.push(carry);
+    res.push(carry);
   }
-  return arr3.reverse().join('');
+  return res.reverse().join('');
 }
 ```
 
