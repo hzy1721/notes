@@ -70,6 +70,7 @@ export default [
       { text: 'this', link: '/fe/basic/js/this' },
       { text: '闭包', link: '/fe/basic/js/closure' },
       { text: '箭头函数', link: '/fe/basic/js/arrow' },
+      { text: '柯里化', link: '/fe/basic/js/function/currying' },
     ],
     collapsible: true,
     collapsed: true,
@@ -104,7 +105,6 @@ export default [
       { text: '字符串方法', link: '/fe/basic/regexp/string-method' },
       { text: 'RegExp 方法', link: '/fe/basic/regexp/regexp-method' },
       { text: '常用正则', link: '/fe/basic/regexp/common-regexp' },
-      { text: '正则题目', link: '/fe/basic/regexp/regexp-exercise' },
     ],
     collapsible: true,
     collapsed: true,
@@ -170,6 +170,14 @@ export default [
       },
       { text: 'Web Worker', link: '/fe/basic/browser/web-worker' },
       { text: 'Service Worker', link: '/fe/basic/browser/service-worker' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '浏览器 - DOM',
+    items: [
+      
     ],
     collapsible: true,
     collapsed: true,

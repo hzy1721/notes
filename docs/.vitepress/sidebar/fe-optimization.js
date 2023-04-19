@@ -20,22 +20,65 @@ export default [
     collapsed: true,
   },
   {
-    text: '计算优化',
+    text: '首屏 - 体积优化',
     items: [
       {
-        text: '高频事件',
-        link: '/fe/optimization/compute/frequent-event',
+        text: 'Tree Shaking',
+        link: '/fe/optimization/first-screen/tree-shaking',
+      },
+      {
+        text: '图片格式',
+        link: '/fe/optimization/first-screen/image-format',
+      },
+      {
+        text: '图片压缩',
+        link: '/fe/optimization/first-screen/image-compression',
+      },
+      {
+        text: 'CSS 压缩',
+        link: '/fe/optimization/first-screen/css-compression',
+      },
+      {
+        text: 'JS 压缩',
+        link: '/fe/optimization/first-screen/js-compression',
       },
     ],
     collapsible: true,
     collapsed: true,
   },
   {
-    text: '加载优化',
+    text: '首屏 - 加载优化',
     items: [
       {
-        text: '图片压缩',
-        link: '/fe/optimization/load/image-compression',
+        text: '路由懒加载',
+        link: '/fe/optimization/first-screen/page-lazy-loading',
+      },
+      {
+        text: '预加载',
+        link: '/fe/optimization/first-screen/preload-prefetch',
+      },
+      {
+        text: 'OSS',
+        link: '/fe/optimization/first-screen/oss',
+      },
+      {
+        text: 'CDN',
+        link: '/fe/optimization/first-screen/cdn',
+      },
+      {
+        text: '骨架屏',
+        link: '/fe/optimization/first-screen/skeleton',
+      },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '交互',
+    items: [
+      {
+        text: '高频事件',
+        link: '/fe/optimization/interaction/frequent-event',
       },
     ],
     collapsible: true,

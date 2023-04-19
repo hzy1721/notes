@@ -1,15 +1,19 @@
-# 比较数组完全相同
+# 数组
 
-## 考虑顺序
+## 比较数组完全相同
+
+### 考虑顺序
 
 ```js
 const arrayEqual = (arr1, arr2) => {
   if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
     return false;
   }
+  // 长度不同肯定不同
   if (arr1.length !== arr2.length) {
     return false;
   }
+  // 依次比较
   const n = arr1.length;
   for (let i = 0; i < n; ++i) {
     if (arr1[i] !== arr2[i]) {
@@ -20,16 +24,18 @@ const arrayEqual = (arr1, arr2) => {
 };
 ```
 
-## 不考虑顺序
+### 不考虑顺序
 
 ```js
 const arrayEqual = (arr1, arr2) => {
   if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
     return false;
   }
+  // 长度不同肯定不同
   if (arr1.length !== arr2.length) {
     return false;
   }
+  // 计算元素出现次数
   const map1 = arr1.reduce(
     (map, ele) => map.set(ele, (map.get(ele) ?? 0) + 1),
     new Map()
@@ -38,6 +44,7 @@ const arrayEqual = (arr1, arr2) => {
     (map, ele) => map.set(ele, (map.get(ele) ?? 0) + 1),
     new Map()
   );
+  // 比较出现次数
   for (const [ele, cnt] of map1) {
     if (cnt !== map2.get(ele)) {
       return false;

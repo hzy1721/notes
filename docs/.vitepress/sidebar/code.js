@@ -90,8 +90,9 @@ export default [
   {
     text: '前端手写题',
     items: [
-      { text: '比较数组完全相同', link: '/code/fe/array-equal' },
-      { text: '柯里化', link: '/code/fe/currying' },
+      { text: '数组', link: '/code/fe/array' },
+      { text: 'URL', link: '/code/fe/url' },
+      { text: '正则', link: '/code/fe/regexp' },
       { text: '并发请求', link: '/code/fe/concurrent-requests' },
       { text: '有序数组去重', link: '/code/fe/sorted-array-unique' },
       { text: 'EventBus', link: '/code/fe/eventbus' },
