@@ -1,22 +1,25 @@
 # ES6 新特性
 
-ES6 又称 ES2015，是 ECMAScript 的 2015 年版本，也是 ES5 的下一个版本。从 ES2015 开始，以年份作为版本号，每年一个新版本，目前最新的是 ES2022 (ES13)。
+- ES6 又称 ES2015，是 ECMAScript 的 2015 年版本，也是 ES5 的下一个版本
+- 从 ES2015 开始，以年份作为版本号，每年一个新版本
 
 ## ES6 (ES2015)
 
+- ES Module
 - `let/const`
-  - 代替了有缺陷的 `var`
 - 变量解构 (Destructuring)
-- 新增运算符
-  - 扩展运算符 `...`
+- 扩展运算符 `...`
+- 模板字符串
 - `Symbol`
-- `Set` 和 `Map`
+- 类语法 `class`
+- 箭头函数
+- rest 参数
+- `Set/Map`
 - `Promise`
+- 可迭代对象和 `for ... of`
+- 生成器 generator
 - `Proxy`
 - `Reflect`
-- `Iterator` 和 `for ... of`
-- `Generator`
-- 类语法 `class`
 - 模块 `module`
 - 扩展 `Number`
 - 扩展 `String`

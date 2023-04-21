@@ -1,21 +1,21 @@
-# Cookie
+# cookie
 
-HTTP Cookie 是服务器发送给浏览器的少量数据，浏览器保存这些数据，后续发送给相同服务器的请求中带上这些数据，从而使服务器知道哪些请求来自同一个浏览器。本质是为了给无状态的 HTTP 提供记录状态的功能。
+cookie 是服务端发送给浏览器的少量数据，浏览器保存这些数据，后续发送给相同服务器的请求中带上这些数据，从而使服务器知道哪些请求来自同一个浏览器。
+
+本质是为了给无状态的 HTTP 提供记录状态的功能。
 
 ![](./assets/cookie.png)
 
-## Set-Cookie 响应头
+## Set-Cookie
 
-服务端发送包含 `Set-Cookie` 响应头的报文来设置浏览器的 Cookie。
+设置 cookie 的响应头。
 
-```
+```http
 Set-Cookie: key1=value1;key2=value2
 
 Set-Cookie: key1=value1
 Set-Cookie: key2=value2
 ```
-
-Cookie 设置也写在 `Set-Cookie` 里，用分号 `;` 分隔：
 
 ### 发送目标
 
@@ -45,11 +45,11 @@ Cookie 设置也写在 `Set-Cookie` 里，用分号 `;` 分隔：
     - 执行顶级导航 (更改浏览器地址栏中的 URL)，而不是 iframe 或 AJAX 请求
   - `None`：允许跨站请求发送 Cookie，必须设置 `Secure`，否则失效
 
-## Cookie 请求头
+## Cookie
 
-浏览器请求与 Cookie 的 `Domain/Path` 匹配的 URL 时，会在 `Cookie` 请求头带上 Cookie：
+请求与 `Domain/Path` 匹配的 URL 时，会在 `Cookie` 请求头带上 cookie。
 
-```
+```http
 Cookie: key1=value1;key2=value2
 
 Cookie: key1=value1
@@ -58,14 +58,14 @@ Cookie: key2=value2
 
 ## document.cookie
 
-JS 通过 `document.cookie` 读写非 `HttpOnly` 的 Cookie。
+JS 通过 `document.cookie` 读写非 `HttpOnly` 的 cookie。
 
 ```js
-// 添加 Cookie
-document.cookie = "yummy_cookie=choco";
-// 多次赋值会添加 Cookie，不会覆盖
-document.cookie = "tasty_cookie=strawberry"; 
-// 访问所有 Cookie
+// 添加 cookie
+document.cookie = 'yummy_cookie=choco';
+// 多次赋值会添加 cookie，不会覆盖
+document.cookie = 'tasty_cookie=strawberry';
+// 读取所有 cookie
 console.log(document.cookie);
 // yummy_cookie=choco; tasty_cookie=strawberry
 ```
@@ -73,7 +73,7 @@ console.log(document.cookie);
 ## 限制
 
 - 每个键值对不能超过 4KB
-- 每个域名的 Cookie 数量上限大约为 20 个
+- 每个域名的 cookie 上限大约 20 个
 
 ## 用途
 
@@ -86,6 +86,5 @@ console.log(document.cookie);
 
 ## 第三方 Cookie
 
-由请求的页面以外的其他域设置的 Cookie，称为第三方 Cookie。通常用于跟踪和广告。
-
-浏览器允许禁止第三方 Cookie。
+- 由请求的页面以外的其他域设置的 Cookie，称为第三方 Cookie，通常用于跟踪和广告
+- 浏览器允许禁止第三方 Cookie

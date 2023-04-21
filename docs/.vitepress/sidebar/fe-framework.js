@@ -13,11 +13,19 @@ export default [
       },
       { text: 'lazy', link: '/fe/framework/react/lazy' },
       { text: 'Suspense', link: '/fe/framework/react/suspense' },
+      { text: '减少渲染次数', link: '/fe/framework/react/reduce-render' },
+      { text: 'React/Vue 对比', link: '/fe/framework/react/react-vs-vue' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: 'React - 原理',
+    items: [
       {
         text: 'build your own react',
         link: '/fe/framework/react/build-your-own-react',
       },
-      { text: 'React/Vue 对比', link: '/fe/framework/react/react-vs-vue' },
     ],
     collapsible: true,
     collapsed: true,
@@ -42,6 +50,12 @@ export default [
       { text: 'clone/cloneDeep', link: '/fe/framework/util/clone' },
       { text: 'once', link: '/fe/framework/util/once' },
     ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: 'Koa',
+    items: [],
     collapsible: true,
     collapsed: true,
   },

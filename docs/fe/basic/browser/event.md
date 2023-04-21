@@ -8,7 +8,7 @@
 - 目标 (target)
 - 冒泡 (bubbling)
 
-<img src="./assets/event-phase.png" width="80%" />
+<img src="./assets/event-phase.png" width="75%" />
 
 `on<event>` 和 `addEventListener(event, func)` 默认在冒泡阶段触发。
 
@@ -72,8 +72,8 @@ element.removeEventListener(event, handler[, options]);
 event 对象属性：
 
 - `type`：事件名，String
-- `target`：触发事件的最内层元素
-- `currentTarget`：执行处理程序的当前元素，与 this 相同
+- `target`：触发事件的**最内层**元素
+- `currentTarget`：执行处理程序的**当前**元素，与 this 相同
 - ...... (每种类型的事件都有自己独有的一组属性)
 
 ### 事件处理对象

@@ -27,6 +27,33 @@ const Didact = {
 };
 ```
 
+## 数据结构
+
+```ts
+interface Element {
+  type: string;
+  props: {
+    children: Element[];
+    [key: string]: any;
+  };
+}
+
+interface Fiber {
+  type: string;
+  props: {
+    children: Element[];
+    [key: string]: any;
+  };
+  // 额外字段
+  dom: HTMLElement;
+  alternate: Fiber;
+  parent: Fiber;
+  child: Fiber;
+  sibling: Fiber;
+  effectTag: 'PLACEMENT' | 'UPDATE' | 'DELETION';
+}
+```
+
 ## createElement
 
 类似 `React.createElement`，把 JSX 标签和属性转换为 element (vdom)。
@@ -62,21 +89,21 @@ function createTextElement(text) {
 类似 `ReactDOM.render`，把 fiber 渲染到 DOM 元素上。
 
 ```js
-// 正在渲染的 fiber
+// 正在渲染的根 fiber
 let wipRoot = null;
-// 当前渲染好的 fiber
+// 当前渲染好的根 fiber
 let currentRoot = null;
 // 需要删除的 fiber 列表
 let deletions = null;
-// 下一个执行的操作
+// 下一个渲染的 fiber
 let nextUnitOfWork = null;
 
 function render(element, container) {
   wipRoot = {
-    dom: container,
     props: {
       children: [element],
     },
+    dom: container,
     alternate: currentRoot,
   };
   deletions = [];
@@ -89,8 +116,9 @@ function render(element, container) {
 类似 `React.useState`，定义状态的 hook。
 
 ```js
-// 正在构建的 fiber
+// 正在渲染的 fiber
 let wipFiber = null;
+// 当前 fiber 拥有 hook 的索引
 let hookIndex = null;
 
 function useState(initial) {
@@ -99,13 +127,13 @@ function useState(initial) {
     wipFiber.alternate &&
     wipFiber.alternate.hooks &&
     wipFiber.alternate.hooks[hookIndex];
-  // 新 hook
+  // 创建新 hook
   const hook = {
     state: oldHook ? oldHook.state : initial,
     queue: [],
   };
 
-  // 执行更新操作
+  // 执行队列中的操作
   const actions = oldHook ? oldHook.queue : [];
   actions.forEach(action => {
     hook.state = action(hook.state);
@@ -114,14 +142,14 @@ function useState(initial) {
   const setState = action => {
     // 加入操作队列
     hook.queue.push(action);
-    // 触发重新渲染
+    // 触发重新渲染，类似 render 函数
     wipRoot = {
       dom: currentRoot.dom,
       props: currentRoot.prpos,
       alternate: currentRoot,
     };
-    nextUnitOfWork = wipRoot;
     deletions = [];
+    nextUnitOfWork = wipRoot;
   };
 
   // 加入 hooks 列表
@@ -145,10 +173,12 @@ function workLoop(deadline) {
     shouldYield = deadline.timeRemaining() < 1;
   }
 
+  // 所有 fiber 渲染完成，更新到 DOM 上
   if (!nextUnitOfWork && wipRoot) {
     commitRoot();
   }
 
+  // 死循环
   requestIdleCallback(workLoop);
 }
 
@@ -157,20 +187,28 @@ requestIdleCallback(workLoop);
 
 ## performUnitOfWork
 
-创建/更新一个 fiber 对应的 DOM 元素。
+- 对比旧 fiber 和新 element，确定操作类型 (新增/更新/删除)，保存在 `effectTag` 属性中
+  - 新增操作：创建新 fiber，如果是 HTML 标签创建对应的 DOM 元素
+  - 更新操作：创建新 fiber，复用旧 fiber 的 DOM 元素
+  - 删除操作：加入 `deletions` 列表
+- 建立 fiber 之间的 `parent/child/sibling` 连接
 
 ```js
 function performUnitOfWork(fiber) {
-  // 组件还是 HTML 标签
+  // 函数组件还是 HTML 标签
   const isFunctionComponent = fiber.type instanceof Function;
   if (isFunctionComponent) {
     updateFunctionComponent(fiber);
   } else {
     updateHostComponent(fiber);
   }
+
+  // 递归处理子 fiber (DFS)
   if (fiber.child) {
     return fiber.child;
   }
+
+  // 回溯处理兄弟 fiber
   let nextFiber = fiber;
   while (nextFiber) {
     if (nextFiber.sibling) {
@@ -184,9 +222,9 @@ function updateFunctionComponent(fiber) {
   // 正在渲染的 fiber
   wipFiber = fiber;
   // hooks 数组
-  hookIndex = 0;
   wipFiber.hooks = [];
-  // element 数组
+  hookIndex = 0;
+  // 渲染子元素
   const children = [fiber.type(fiber.props)];
   reconcileChildren(fiber, children);
 }
@@ -196,6 +234,7 @@ function updateHostComponent(fiber) {
   if (!fiber.dom) {
     fiber.dom = createDom(fiber);
   }
+  // 渲染子元素
   reconcileChildren(fiber, fiber.props.children);
 }
 
@@ -205,7 +244,6 @@ function createDom(fiber) {
     element.type === 'TEXT_ELEMENT'
       ? document.createTextNode('')
       : document.createElement(fiber.type);
-
   // 设置属性
   const isProperty = key => key !== 'children';
   Object.keys(fiber.props)
@@ -216,6 +254,8 @@ function createDom(fiber) {
 ```
 
 ## reconcileChildren
+
+对比旧 fiber 和新 element，创建新 fiber。
 
 ```js
 function reconcileChildren(wipFiber, elements) {
@@ -228,7 +268,7 @@ function reconcileChildren(wipFiber, elements) {
     const element = elements[index];
     let newFiber = null;
 
-    // 新 element 和旧 fiber 的类型是否相同
+    // 对比类型
     const sameType = oldFiber && element && element.type === oldFiber.type;
 
     // 类型相同：只需要更新已有 DOM
@@ -238,11 +278,12 @@ function reconcileChildren(wipFiber, elements) {
         type: oldFiber.type,
         props: element.props,
         dom: oldFiber.dom,
-        parent: wipFiber,
         alternate: oldFiber,
+        parent: wipFiber,
         effectTag: 'UPDATE',
       };
     }
+
     // 类型不同：需要创建新 element 的 DOM
     // dom 设为 null
     if (element && !sameType) {
@@ -250,11 +291,12 @@ function reconcileChildren(wipFiber, elements) {
         type: element.type,
         props: element.props,
         dom: null,
-        parent: wipFiber,
         alternate: null,
+        parent: wipFiber,
         effectTag: 'PLACEMENT',
       };
     }
+
     // 旧 fiber 存在：需要删除旧 fiber 的 DOM
     // 加入 deletions 列表
     if (oldFiber && !sameType) {
@@ -268,10 +310,10 @@ function reconcileChildren(wipFiber, elements) {
     }
 
     if (index === 0) {
-      // 第一个元素设为 child
+      // 设置 child
       wipFiber.child = newFiber;
     } else {
-      // 后续设为 sibling
+      // 设置 sibling
       prevSibling.sibling = newFiber;
     }
 
@@ -283,13 +325,17 @@ function reconcileChildren(wipFiber, elements) {
 
 ## commitRoot
 
-将 fiber 渲染到 DOM 上。
+应用 DOM 变更。
+
+- 新增操作：fiber 的 `dom` 属性添加到 `parent` fiber 的 DOM 元素下
+- 更新操作：更新已有 DOM 元素的属性 (包括事件处理函数，不包括 `children`)
+- 删除操作：移除 DOM 元素
 
 ```js
 function commitRoot() {
   // 删除
   deletions.forEach(commitWork);
-  // 创建/更新
+  // 新增/更新
   commitWork(wipRoot.child);
   // 替换当前 fiber
   currentRoot = wipRoot;
@@ -319,9 +365,9 @@ function commitWork(fiber) {
     commitDeletion(fiber, domParent);
   }
   // DFS
-  // 递归执行子元素
+  // 递归处理子 fiber
   commitWork(fiber.child);
-  // 递归执行兄弟元素
+  // 递归处理兄弟 fiber
   commitWork(fiber.sibling);
 }
 

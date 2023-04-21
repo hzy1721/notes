@@ -12,9 +12,16 @@ export default [
         link: '/fe/optimization/security/man-in-the-middle',
       },
       { text: '加密', link: '/fe/optimization/security/encryption' },
-      { text: 'Session', link: '/fe/optimization/security/session' },
-      { text: 'Token', link: '/fe/optimization/security/token' },
-      { text: 'JWT', link: '/fe/optimization/security/jwt' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '鉴权',
+    items: [
+      { text: 'session', link: '/fe/optimization/auth/session' },
+      { text: 'token', link: '/fe/optimization/auth/token' },
+      { text: 'JWT', link: '/fe/optimization/auth/jwt' },
     ],
     collapsible: true,
     collapsed: true,
@@ -22,10 +29,6 @@ export default [
   {
     text: '首屏 - 体积优化',
     items: [
-      {
-        text: 'Tree Shaking',
-        link: '/fe/optimization/first-screen/tree-shaking',
-      },
       {
         text: '图片格式',
         link: '/fe/optimization/first-screen/image-format',
@@ -35,12 +38,12 @@ export default [
         link: '/fe/optimization/first-screen/image-compression',
       },
       {
-        text: 'CSS 压缩',
-        link: '/fe/optimization/first-screen/css-compression',
+        text: 'Tree Shaking',
+        link: '/fe/optimization/first-screen/tree-shaking',
       },
       {
-        text: 'JS 压缩',
-        link: '/fe/optimization/first-screen/js-compression',
+        text: '代码压缩',
+        link: '/fe/optimization/first-screen/code-compression',
       },
     ],
     collapsible: true,
@@ -50,20 +53,16 @@ export default [
     text: '首屏 - 加载优化',
     items: [
       {
-        text: '路由懒加载',
-        link: '/fe/optimization/first-screen/page-lazy-loading',
+        text: '图片加载',
+        link: '/fe/optimization/first-screen/image-loading',
       },
       {
-        text: '预加载',
-        link: '/fe/optimization/first-screen/preload-prefetch',
+        text: '数据加载',
+        link: '/fe/optimization/first-screen/data-loading',
       },
       {
-        text: 'OSS',
-        link: '/fe/optimization/first-screen/oss',
-      },
-      {
-        text: 'CDN',
-        link: '/fe/optimization/first-screen/cdn',
+        text: '代码加载',
+        link: '/fe/optimization/first-screen/code-loading',
       },
       {
         text: '骨架屏',

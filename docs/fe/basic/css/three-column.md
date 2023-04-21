@@ -14,33 +14,31 @@
 
 两栏布局去掉右侧栏即可。
 
-## inline-block
+## flex
+
+- 左右栏固定宽度
+- 中间栏 `flex-grow` 和 `flex-shrink` 都设为 `1`
 
 ```css
 .container {
+  display: flex;
+  align-items: flex-start;
   height: 100vh;
-  font-size: 0;
 }
 
 .left {
-  display: inline-block;
-  vertical-align: top;
   width: 300px;
   height: 100%;
   background-color: #074188;
 }
 
 .middle {
-  display: inline-block;
-  vertical-align: top;
-  width: calc(100% - 600px);
+  flex: 1 0;
   height: 100%;
   background-color: #feb475;
 }
 
 .right {
-  display: inline-block;
-  vertical-align: top;
   width: 300px;
   height: 100%;
   background-color: #806f93;
@@ -48,6 +46,9 @@
 ```
 
 ## absolute
+
+- 左右栏固定宽度，绝对定位到页面两侧
+- 中间栏设置左右 `margin` 为左右栏宽度
 
 ```css
 .container {
@@ -80,28 +81,38 @@
 }
 ```
 
-## flex
+## inline-block
+
+- 三栏都设置 `display: inline-block`
+- 容器设置 `font-size: 0` 消除间隔
+- 左右栏固定宽度
+- 中间栏用 `calc()` 计算剩余宽度
 
 ```css
 .container {
-  display: flex;
-  align-items: flex-start;
   height: 100vh;
+  font-size: 0;
 }
 
 .left {
+  display: inline-block;
+  vertical-align: top;
   width: 300px;
   height: 100%;
   background-color: #074188;
 }
 
 .middle {
-  flex: 1 0;
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 600px);
   height: 100%;
   background-color: #feb475;
 }
 
 .right {
+  display: inline-block;
+  vertical-align: top;
   width: 300px;
   height: 100%;
   background-color: #806f93;
