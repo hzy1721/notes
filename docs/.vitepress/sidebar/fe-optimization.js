@@ -27,7 +27,7 @@ export default [
     collapsed: true,
   },
   {
-    text: '首屏 - 体积优化',
+    text: '首屏：体积优化',
     items: [
       {
         text: '图片格式',
@@ -50,7 +50,7 @@ export default [
     collapsed: true,
   },
   {
-    text: '首屏 - 加载优化',
+    text: '首屏：加载优化',
     items: [
       {
         text: '图片加载',

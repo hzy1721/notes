@@ -20,7 +20,7 @@ export default [
     collapsed: true,
   },
   {
-    text: 'React - 原理',
+    text: 'React：原理',
     items: [
       {
         text: 'build your own react',
@@ -94,7 +94,7 @@ export default [
     collapsed: true,
   },
   {
-    text: 'Vue - 响应式',
+    text: 'Vue：响应式',
     items: [
       {
         text: 'Object.defineProperty',

@@ -1,5 +1,24 @@
 # 正则
 
+## 模板替换
+
+把 `{someVariable}` 中的变量名替换为相应的值。
+
+```js
+const renderTemplate = (template, data) => {
+  const re = /\{\s*([\w$]*)\s*\}/;
+  while (re.test(template)) {
+    template = template.replace(re, (_, key) => {
+      if (!data.hasOwnProperty(key)) {
+        throw Error(`invalid variable ${key}`);
+      }
+      return data[key];
+    });
+  }
+  return template;
+};
+```
+
 ## 字符串替换
 
 `1abc2d5e13fgh4`

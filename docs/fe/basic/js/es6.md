@@ -5,11 +5,19 @@
 
 ## ES6 (ES2015)
 
+模块标准：
+
 - ES Module
+
+语法：
+
 - `let/const`
 - 变量解构 (Destructuring)
 - 扩展运算符 `...`
 - 模板字符串
+
+数据类型：
+
 - `Symbol`
 - 类语法 `class`
 - 箭头函数
@@ -21,11 +29,14 @@
 - `Proxy`
 - `Reflect`
 - 模块 `module`
+
+方法扩展：
+
 - 扩展 `Number`
 - 扩展 `String`
 - 扩展 `Object`
-- 扩展 `Array`
 - 扩展 `Function`
+- 扩展 `Array`
 - 扩展 `RegExp`
 
 ## ES2017

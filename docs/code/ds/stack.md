@@ -104,3 +104,32 @@ class CQueue {
   }
 }
 ```
+
+## 逆波兰表达式求值
+
+```ts
+function compute(b: number, op: string, a: number): number {
+  switch (op) {
+    case '+':
+      return a + b;
+    case '-':
+      return a - b;
+    case '*':
+      return a * b;
+    case '/':
+      return Math.trunc(a / b);
+  }
+}
+
+function evalRPN(tokens: string[]): number {
+  const stack: number[] = [];
+  for (const token of tokens) {
+    if (/^[+\-*/]$/.test(token)) {
+      stack.push(compute(stack.pop(), token, stack.pop()));
+    } else {
+      stack.push(Number(token));
+    }
+  }
+  return stack.pop();
+}
+```

@@ -1,5 +1,23 @@
 # 数组
 
+## 自定义排序
+
+左边奇数从大到小，右边偶数从小到大。
+
+```js
+arr.sort((a, b) => {
+  const aIsOdd = a % 2 === 1;
+  const bIsOdd = b % 2 === 1;
+  if (aIsOdd && bIsOdd) {
+    return b - a;
+  }
+  if (!aIsOdd && !bIsOdd) {
+    return a - b;
+  }
+  return aIsOdd ? -1 : 1;
+});
+```
+
 ## 比较数组完全相同
 
 ### 考虑顺序

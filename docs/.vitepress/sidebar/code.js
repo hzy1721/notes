@@ -22,7 +22,7 @@ export default [
       { text: '字典树', link: '/code/ds/trie' },
       { text: '平衡二叉树', link: '/code/ds/avl' },
       { text: '哈希表', link: '/code/ds/hash-table' },
-      { text: '图 - 拓扑排序', link: '/code/algorithm/topo-sort' },
+      { text: '图：拓扑排序', link: '/code/algorithm/topo-sort' },
     ],
     collapsible: true,
     collapsed: true,

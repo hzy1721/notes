@@ -10,16 +10,14 @@ function lowestCommonAncestor(
 ): TreeNode | null {
   let res: TreeNode | null = null;
   const dfs = (root: TreeNode | null): [boolean, boolean] => {
-    if (!root || res) {
+    if (res || !root) {
       return [false, false];
     }
-    let rootP = root === p;
-    let rootQ = root === q;
     const [leftP, leftQ] = dfs(root.left);
     const [rightP, rightQ] = dfs(root.right);
-    const hasP = rootP || leftP || rightP;
-    const hasQ = rootQ || leftQ || rightQ;
-    if (hasP && hasQ && !res) {
+    const hasP = root === p || leftP || rightP;
+    const hasQ = root === q || leftQ || rightQ;
+    if (!res && hasP && hasQ) {
       res = root;
     }
     return [hasP, hasQ];
