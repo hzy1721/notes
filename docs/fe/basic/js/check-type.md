@@ -21,6 +21,8 @@ typeof alert; // function
 
 ## instanceof
 
+右侧的 `prototype` 是否在左侧的原型链上。
+
 区分**对象**所属的 `class` 或构造函数，对于祖先类也成立，不支持原始类型。
 
 ```js

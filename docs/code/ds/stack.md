@@ -133,3 +133,91 @@ function evalRPN(tokens: string[]): number {
   return stack.pop();
 }
 ```
+
+## 基本计算器
+
+```ts
+function isDigit(c: string): boolean {
+  return '0' <= c && c <= '9';
+}
+
+const priorityTable = [
+  // + - * / ( ) n #
+  [1, 1, -1, -1, -1, 1, -1, 1], // +
+  [1, 1, -1, -1, -1, 1, -1, 1], // -
+  [1, 1, 1, 1, -1, 1, -1, 1], // *
+  [1, 1, 1, 1, -1, 1, -1, 1], // /
+  [-1, -1, -1, 0, -1, undefined], // (
+  [1, 1, undefined, 1, undefined, 1], // )
+  [1, 1, 1, 1, -1, 1, undefined], // n
+];
+
+const opIndex = new Map(
+  ['+', '-', '*', '/', '(', ')', 'n', '#'].map((op, index) => [op, index])
+);
+
+function isPrior(op1: string, op2: string): boolean {
+  return priorityTable[opIndex.get(op1)][opIndex.get(op2)] > 0;
+}
+
+function isEqual(op1: string, op2: string): boolean {
+  return priorityTable[opIndex.get(op1)][opIndex.get(op2)] === 0;
+}
+
+function compute(b: number, op: string, a: number): number {
+  switch (op) {
+    case '+':
+      return a + b;
+    case '-':
+      return a - b;
+    case '*':
+      return a * b;
+    case '/':
+      return Math.trunc(a / b);
+  }
+}
+
+function calculate(s: string): number {
+  s += '#';
+  const n = s.length;
+  let lastChar = '';
+  const numStack: number[] = [];
+  const opStack: string[] = [];
+  let i = 0;
+  while (i < n) {
+    const c = s[i];
+    if (c === ' ') {
+      ++i;
+      continue;
+    }
+    if (isDigit(c)) {
+      let num = 0;
+      while (i < n && isDigit(s[i])) {
+        num = num * 10 + Number(s[i]);
+        ++i;
+      }
+      --i;
+      numStack.push(num);
+    } else if (c === '-' && '+-('.includes(lastChar)) {
+      opStack.push('n');
+    } else {
+      while (opStack.length && isPrior(opStack[opStack.length - 1], c)) {
+        const op = opStack.pop();
+        if ('+-*/'.includes(op)) {
+          numStack.push(compute(numStack.pop(), op, numStack.pop()));
+        } else if (op === 'n') {
+          numStack.push(-numStack.pop());
+        }
+      }
+      if (opStack.length && isEqual(opStack[opStack.length - 1], c)) {
+        opStack.pop();
+      } else {
+        opStack.push(c);
+      }
+    }
+    lastChar = s[i];
+    ++i;
+  }
+  return numStack.pop();
+}
+```

@@ -50,7 +50,7 @@ SSL/TLS 的具体步骤如下：
 
 ClientHello 中不包含域名，如果服务器上部署了多个网站和证书，服务端会不知道该发回哪个网站的证书。2006 年，TLS 协议加入了 Server Name Indication (SNI)，允许客户端提供请求的域名。
 
-1. 服务端响应请求
+2. 服务端响应请求
 
 服务端收到 ClientHello 后，发送响应 ServerHello，包括以下内容：
 

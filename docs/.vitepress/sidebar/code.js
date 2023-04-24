@@ -93,6 +93,7 @@ export default [
       { text: '数组', link: '/code/fe/array' },
       { text: 'URL', link: '/code/fe/url' },
       { text: '正则', link: '/code/fe/regexp' },
+      { text: 'Promise', link: '/code/fe/promise' },
       { text: '并发请求', link: '/code/fe/concurrent-requests' },
       { text: '有序数组去重', link: '/code/fe/sorted-array-unique' },
       { text: 'EventBus', link: '/code/fe/eventbus' },

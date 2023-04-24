@@ -15,9 +15,16 @@
 常见的跨域请求：
 
 - AJAX 请求，比如 `XMLHttpRequest` 和 `Fetch`
-- `<script>` 引入 JavaScript 脚本、`<link>` 引入 CSS、`@font-face` 引入字体
-- `<img>` 引入图片、`<audio>` 引入音频、`<video>` 引入视频
+
+原生支持跨域：
+
+- `@font-face` 引入字体
+- `<link>` 引入 CSS
+- `<script>` 引入 JavaScript 脚本
+- `<img>` 引入图片
+- `<audio>` 引入音频、`<video>` 引入视频
 - `<iframe>` 引入外部页面
+- `<object>`、`<embed>` 引入外部资源
 
 同源策略对跨域请求做了以下限制：
 
