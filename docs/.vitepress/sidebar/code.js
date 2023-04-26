@@ -94,6 +94,8 @@ export default [
       { text: 'URL', link: '/code/fe/url' },
       { text: '正则', link: '/code/fe/regexp' },
       { text: 'Promise', link: '/code/fe/promise' },
+      { text: '布局', link: '/code/fe/layout' },
+      { text: 'deepCompare', link: '/code/fe/deep-compare' },
       { text: '并发请求', link: '/code/fe/concurrent-requests' },
       { text: '有序数组去重', link: '/code/fe/sorted-array-unique' },
       { text: 'EventBus', link: '/code/fe/eventbus' },

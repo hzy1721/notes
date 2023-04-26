@@ -38,6 +38,7 @@ export default [
     items: [
       { text: 'flex 布局', link: '/fe/basic/css/flex' },
       { text: 'grid 布局', link: '/fe/basic/css/grid' },
+      { text: '多列布局', link: '/fe/basic/css/column-layout' },
       { text: '三栏布局', link: '/fe/basic/css/three-column' },
       { text: '上中下布局', link: '/fe/basic/css/top-middle-bottom' },
     ],
@@ -101,7 +102,10 @@ export default [
       { text: 'Promise', link: '/fe/basic/js/promise' },
       { text: 'Promise 静态方法', link: '/fe/basic/js/promise-static' },
       { text: '手写 Promise', link: '/fe/basic/js/own-promise' },
-      { text: '手写 Promise 静态方法', link: '/fe/basic/js/own-promise-static' },
+      {
+        text: '手写 Promise 静态方法',
+        link: '/fe/basic/js/own-promise-static',
+      },
     ],
     collapsible: true,
     collapsed: true,
@@ -136,6 +140,7 @@ export default [
     text: 'JS：其他',
     items: [
       { text: '变量声明', link: '/fe/basic/js/variable' },
+      { text: 'Date', link: '/fe/basic/js/date' },
       { text: 'JSON', link: '/fe/basic/js/json' },
       { text: 'URL 编码', link: '/fe/basic/js/encode-url' },
       { text: 'URL 对象', link: '/fe/basic/js/url' },

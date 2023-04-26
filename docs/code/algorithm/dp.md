@@ -54,15 +54,12 @@ function countBits(n: number): number[] {
 ```ts
 function longestPalindrome(s: string): string {
   const n = s.length;
-  const dp = new Array(n).fill(0).map(() => new Array(n));
-  let maxLen = 0,
-    maxIdx = 0;
+  const dp: boolean[][] = new Array(n).fill(0).map(() => new Array(n));
+  let maxLen = 0;
+  let maxIdx = 0;
   for (let len = 1; len <= n; ++len) {
-    for (let i = 0; i < n; ++i) {
+    for (let i = 0; i + len - 1 < n; ++i) {
       const j = i + len - 1;
-      if (j >= n) {
-        break;
-      }
       if (s[i] !== s[j]) {
         dp[i][j] = false;
       } else if (len <= 3) {
@@ -76,7 +73,7 @@ function longestPalindrome(s: string): string {
       }
     }
   }
-  return s.slice(maxIdx, maxIdx + maxLen);
+  return s.substring(maxIdx, maxIdx + maxLen);
 }
 ```
 
@@ -410,5 +407,27 @@ function cuttingRope(n: number): number {
     }
   }
   return dp[n];
+}
+```
+
+## 最长公共子序列
+
+```ts
+function longestCommonSubsequence(text1: string, text2: string): number {
+  const m = text1.length;
+  const n = text2.length;
+  const dp: number[][] = new Array(m + 1)
+    .fill(0)
+    .map(() => new Array(n + 1).fill(0));
+  for (let i = 1; i <= m; ++i) {
+    for (let j = 1; j <= n; ++j) {
+      if (text1[i - 1] === text2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+  return dp[m][n];
 }
 ```
