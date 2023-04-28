@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as l,d as e}from"./app.19e8d22d.js";const D=JSON.parse('{"title":"箭头函数","description":"","frontmatter":{},"headers":[],"relativePath":"fe/basic/js/arrow.md","lastUpdated":1682050462000}'),o={name:"fe/basic/js/arrow.md"},n=e("",6),t=[n];function c(p,i,r,d,_,u){return l(),a("div",null,t)}const C=s(o,[["render",c]]);export{D as __pageData,C as default};
