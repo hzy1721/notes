@@ -20,4 +20,10 @@ export default [
     collapsible: true,
     collapsed: true,
   },
+  {
+    text: 'V8',
+    items: [],
+    collapsible: true,
+    collapsed: true,
+  },
 ];

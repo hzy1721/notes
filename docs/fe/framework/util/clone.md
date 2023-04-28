@@ -13,19 +13,23 @@
 ## clone
 
 ```js
-const clone = value => baseClone(value);
+function clone(value) {
+  return baseClone(value);
+}
 ```
 
 ## cloneDeep
 
 ```js
-const cloneDeep = value => baseClone(value, true);
+function cloneDeep(value) {
+  return baseClone(value, true);
+}
 ```
 
 ## baseClone
 
 ```js
-const baseClone = (value, isDeep = false, object, map = new Map()) => {
+function baseClone(value, isDeep = false, object, map = new Map()) {
   // 值类型直接返回
   if (!isObject(value)) {
     return value;
@@ -90,21 +94,19 @@ const baseClone = (value, isDeep = false, object, map = new Map()) => {
     return result;
   }
 
-  // 统一处理数组/类数组/对象
+  // 统一处理数组/对象
   let props = undefined;
   if (isArr) {
     props = value;
   } else {
-    if (isArrayLike(value)) {
-      props = arrayLikeKeys(value);
-    } else {
-      props = Object.keys(value);
-    }
-    props.push(...getSymbols(value));
+    // 可枚举字符串属性
+    props = Object.keys(value);
+    // 可枚举 Symbol 属性
+    props = props.concat(getSymbols(value));
   }
 
   props.forEach((subValue, key) => {
-    // 数组是遍历元素，类数组/对象是遍历 key，所以多一步转换
+    // 数组是遍历元素，对象是遍历 key，所以多一步转换
     if (!isArr) {
       key = subValue;
       subValue = value[key];
@@ -113,21 +115,24 @@ const baseClone = (value, isDeep = false, object, map = new Map()) => {
   });
 
   return result;
-};
+}
 ```
 
 ## isObject
 
 ```js
-const isObject = value =>
-  (typeof value === 'object' && value !== null) ||
-  typeof value === 'function';
+function isObject(value) {
+  const type = typeof value;
+  return (type === 'object' && value !== null) || type === 'function';
+}
 ```
 
 ## getTag
 
 ```js
-const getTag = value => Object.prototype.toString.call(value);
+function getTag(value) {
+  return Object.prototype.toString.call(value);
+}
 ```
 
 ## tag 常量
@@ -159,37 +164,37 @@ cloneable[errorTag] = cloneable[weakMapTag] = false;
 ## initCloneArray
 
 ```js
-const initCloneArray = array => {
+function initCloneArray(array) {
   const { length } = array;
   const result = new array.constructor(length);
   return result;
-};
+}
 ```
 
 ## copyArray
 
 ```js
-const copyArray = (source, array) => {
+function copyArray(source, array) {
   const { length } = source;
   for (let i = 0; i < length; ++i) {
     array[i] = source[i];
   }
   return array;
-};
+}
 ```
 
 ## initCloneObject
 
 ```js
-const initCloneObject = object => {
+function initCloneObject(object) {
   return Object.create(Object.getPrototypeOf(object));
-};
+}
 ```
 
 ## initCloneByTag
 
 ```js
-const initCloneByTag = (object, tag) => {
+function initCloneByTag(object, tag) {
   const Ctor = object.constructor;
   switch (tag) {
     case dateTag:
@@ -201,44 +206,15 @@ const initCloneByTag = (object, tag) => {
     case setTag:
       return new Ctor();
   }
-};
-```
-
-## isArrayLike
-
-```js
-const isLength = value =>
-  typeof value === 'number' &&
-  value >= 0 &&
-  value % 1 === 0 &&
-  value <= Number.MAX_SAFE_INTEGER;
-
-const isArrayLike = value => isObject(value) && isLength(value.length);
-```
-
-## arrayLikeKeys
-
-```js
-const arrayLikeKeys = value => {
-  const { length } = value;
-  const result = new Array(length);
-  for (let i = 0; i < length; ++i) {
-    result[i] = String(i);
-  }
-  for (const key in value) {
-    if (Object.prototype.hasOwnProperty.call(value, key)) {
-      result.push(key);
-    }
-  }
-  return result;
-};
+}
 ```
 
 ## getSymbols
 
 ```js
-const getSymbols = object =>
-  Object.getOwnPropertySymbols(object).filter(symbol =>
+function getSymbols(object) {
+  return Object.getOwnPropertySymbols(object).filter(symbol =>
     Object.prototype.propertyIsEnumerable.call(object, symbol)
   );
+}
 ```

@@ -3,7 +3,6 @@ export default [
     text: '数据结构',
     items: [
       { text: '数组', link: '/code/ds/array' },
-      { text: '字符串', link: '/code/ds/string' },
       { text: '链表', link: '/code/ds/list' },
       { text: '栈', link: '/code/ds/stack' },
       { text: '单调栈', link: '/code/ds/monotonic-stack' },
@@ -90,12 +89,15 @@ export default [
   {
     text: '前端手写题',
     items: [
+      { text: '函数', link: '/code/fe/function' },
       { text: '数组', link: '/code/fe/array' },
       { text: 'URL', link: '/code/fe/url' },
       { text: '正则', link: '/code/fe/regexp' },
       { text: 'Promise', link: '/code/fe/promise' },
       { text: '布局', link: '/code/fe/layout' },
+      { text: 'DOM', link: '/code/fe/dom' },
       { text: 'deepCompare', link: '/code/fe/deep-compare' },
+      { text: '事件', link: '/code/fe/event' },
       { text: '并发请求', link: '/code/fe/concurrent-requests' },
       { text: '有序数组去重', link: '/code/fe/sorted-array-unique' },
       { text: 'EventBus', link: '/code/fe/eventbus' },

@@ -54,6 +54,17 @@ export default [
     collapsed: true,
   },
   {
+    text: 'Axios',
+    items: [
+      { text: 'axios', link: '/fe/framework/axios/axios' },
+      { text: '别名函数', link: '/fe/framework/axios/alias' },
+      { text: '自定义实例', link: '/fe/framework/axios/instance' },
+      { text: '拦截器', link: '/fe/framework/axios/interceptor' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: 'Koa',
     items: [],
     collapsible: true,

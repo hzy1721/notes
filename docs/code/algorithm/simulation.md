@@ -68,6 +68,30 @@ function spiralOrder(matrix: number[][]): number[] {
 }
 ```
 
+## 字符串相加
+
+```ts
+function addStrings(num1: string, num2: string): string {
+  const arr1 = num1.split('').reverse().map(Number);
+  const arr2 = num2.split('').reverse().map(Number);
+  const res: number[] = [];
+  const n1 = arr1.length;
+  const n2 = arr2.length;
+  let carry = 0;
+  for (let i = 0; i < n1 || i < n2; ++i) {
+    let sum = carry;
+    sum += arr1[i] ?? 0;
+    sum += arr2[i] ?? 0;
+    res.push(sum % 10);
+    carry = Math.floor(sum / 10);
+  }
+  if (carry > 0) {
+    res.push(carry);
+  }
+  return res.reverse().join('');
+}
+```
+
 ## 高精度减法
 
 ```ts

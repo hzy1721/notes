@@ -19,7 +19,7 @@
 | `Object.assign`                    | 数据/字符串/Symbol/可枚举                 | 访问器/不可枚举        |
 | `_.clone`                          | 数据/字符串/Symbol/可枚举                 | 访问器/不可枚举        |
 | `Object.getOwnPropertyNames`       | 数据/访问器/字符串/可枚举/不可枚举        | Symbol                 |
-| `Object.getOwnPropertySymbols`     | 数据/访问器/Symbol/可枚举/不可枚举        | 字符串                 |
+| `Object.getOwnPropertySymbols`     | 数据/Symbol/可枚举/不可枚举               | 访问器/字符串          |
 | `Object.getOwnPropertyDescriptors` | 数据/访问器/字符串/Symbol/可枚举/不可枚举 |                        |
 | `Reflect.ownKeys`                  | 数据/访问器/字符串/Symbol/可枚举/不可枚举 |                        |
 

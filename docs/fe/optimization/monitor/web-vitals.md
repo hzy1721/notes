@@ -1,5 +1,24 @@
 # Web 性能指标
 
+## Web Vitals
+
+| 指标 | 全称                     | 含义                                       |
+| ---- | ------------------------ | ------------------------------------------ |
+| TTFB | Time To First Byte       | 接收到第一个字节                           |
+| FP   | First Paint              | 第一个像素绘制到页面上                     |
+| FCP  | First Contentful Paint   | 第一个文本/图像/svg/非白色 canvas 渲染完成 |
+| LCP  | Largest Contentful Paint | 最大内容渲染完成                           |
+| FMP  | First Meaningful Paint   | 第一个“有意义”元素渲染完成                 |
+| DCL  | Dom Content Loaded       | HTML 完全解析完成                          |
+| L    | Loaded                   | HTML 和依赖的资源都加载和解析完成          |
+| TTI  | Time To Interactive      | 可交互                                     |
+| FID  | First Input Delay        | 第一次交互到响应事件                       |
+| TBT  | Total Blocking Time      | FCP 到 TTI 之间所有长任务的时间总和        |
+| CLS  | Cumulative Layout Shift  | 位移影响的面积 x 位移距离                  |
+| SI   | Speed Index              | 页面可见部分的显示速度，以秒为单位         |
+
+## Core Web Vitals
+
 - LCP (Largest Contentful Paint)
   - 最大内容绘制
   - 测量加载性能 (Loading)

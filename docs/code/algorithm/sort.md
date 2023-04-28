@@ -28,7 +28,9 @@ function partition(nums: number[], lo: number, hi: number): number {
 }
 
 function quickSort(nums: number[], lo: number, hi: number) {
-  if (lo >= hi) return;
+  if (lo >= hi) {
+    return;
+  }
   const mi = partition(nums, lo, hi);
   quickSort(nums, lo, mi - 1);
   quickSort(nums, mi + 1, hi);
@@ -45,9 +47,9 @@ function sortArray(nums: number[]): number[] {
 ```ts
 function merge(nums: number[], lo: number, mi: number, hi: number) {
   const temp = new Array(hi - lo);
-  let i = lo,
-    j = mi,
-    k = 0;
+  let i = lo;
+  let j = mi;
+  let k = 0;
   while (i < mi && j < hi) {
     if (nums[i] <= nums[j]) {
       temp[k++] = nums[i++];
@@ -67,7 +69,9 @@ function merge(nums: number[], lo: number, mi: number, hi: number) {
 }
 
 function mergeSort(nums: number[], lo: number, hi: number) {
-  if (lo + 1 >= hi) return;
+  if (lo + 1 >= hi) {
+    return;
+  }
   const mi = Math.floor((lo + hi) / 2);
   mergeSort(nums, lo, mi);
   mergeSort(nums, mi, hi);

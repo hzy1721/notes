@@ -75,8 +75,8 @@ export default [
   {
     text: 'JS：函数',
     items: [
-      { text: 'this', link: '/fe/basic/js/this' },
-      { text: '闭包', link: '/fe/basic/js/closure' },
+      { text: 'this', link: '/fe/basic/js/function/this' },
+      { text: '闭包', link: '/fe/basic/js/function/closure' },
       { text: '箭头函数', link: '/fe/basic/js/arrow' },
       { text: '柯里化', link: '/fe/basic/js/function/currying' },
     ],

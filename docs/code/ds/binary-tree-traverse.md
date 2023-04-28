@@ -4,17 +4,17 @@
 
 ```ts
 function inorderTraversal(root: TreeNode | null): number[] {
-  const stack: TreeNode[] = [];
-  let node: TreeNode | null = root;
   const res: number[] = [];
-  while (node || stack.length > 0) {
-    while (node) {
-      stack.push(node);
-      node = node.left;
+  const stack: TreeNode[] = [];
+  let curr = root;
+  while (curr || stack.length) {
+    while (curr) {
+      stack.push(curr);
+      curr = curr.left;
     }
-    node = stack.pop();
-    res.push(node.val);
-    node = node.right;
+    curr = stack.pop();
+    res.push(curr.val);
+    curr = curr.right;
   }
   return res;
 }

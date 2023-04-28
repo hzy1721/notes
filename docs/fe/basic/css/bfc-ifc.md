@@ -25,7 +25,7 @@ CSS 有 3 种定位方式：
 ## BFC
 
 以下元素会创建一个 BFC：
-- 根元素
+- `<html>`
 - `inline-block`、浮动、绝对定位
 - flex 子项和 grid 子项
 - `overflow` 不是 `visible` 的块级盒子

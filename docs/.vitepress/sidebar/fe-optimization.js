@@ -27,6 +27,22 @@ export default [
     collapsed: true,
   },
   {
+    text: '性能',
+    items: [
+      { text: '内存泄漏', link: '/fe/optimization/issue/memory-leak' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '监控',
+    items: [
+      { text: '性能指标', link: '/fe/optimization/monitor/web-vitals' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '首屏：体积优化',
     items: [
       {
@@ -84,9 +100,23 @@ export default [
     collapsed: true,
   },
   {
+    text: '调试：DevTools',
+    items: [
+      {
+        text: 'DevTools',
+        link: '/fe/optimization/debug/devtools/devtools',
+      },
+      {
+        text: 'Performance',
+        link: '/fe/optimization/debug/devtools/performance',
+      },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '系统设计',
     items: [
-      { text: 'Web 性能指标', link: '/fe/optimization/design/web-vitals' },
       { text: '前端性能优化', link: '/fe/optimization/design/perf' },
       { text: 'CDN', link: '/fe/optimization/design/cdn' },
       {
