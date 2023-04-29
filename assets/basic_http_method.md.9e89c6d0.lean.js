@@ -1,1 +1,0 @@
-import{_ as l,c as e,o as i,d as o}from"./app.19e8d22d.js";const p=JSON.parse('{"title":"方法","description":"","frontmatter":{},"headers":[],"relativePath":"basic/http/method.md","lastUpdated":1682050462000}'),c={name:"basic/http/method.md"},d=o("",4),t=[d];function a(u,s,_,r,n,T){return i(),e("div",null,t)}const h=l(c,[["render",a]]);export{p as __pageData,h as default};
