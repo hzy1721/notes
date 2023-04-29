@@ -3,14 +3,15 @@
 ## 有效的括号
 
 ```ts
+const braceMap = new Map([
+  ['(', ')'],
+  ['{', '}'],
+  ['[', ']'],
+]);
+const leftBraces = Array.from(braceMap.keys());
+
 function isValid(s: string): boolean {
   const stack: string[] = [];
-  const braceMap = new Map([
-    ['(', ')'],
-    ['{', '}'],
-    ['[', ']'],
-  ]);
-  const leftBraces = Array.from(braceMap.keys());
   for (const c of s) {
     if (leftBraces.includes(c)) {
       stack.push(c);
@@ -63,7 +64,7 @@ function decodeString(s: string): string {
   const stack: [number, string][] = [[1, '']];
   let num = 0;
   for (const c of s) {
-    if (!isNaN(Number(c))) {
+    if ('0' <= c && c <= '9') {
       num = num * 10 + Number(c);
     } else if (c === '[') {
       stack.push([num, '']);
@@ -87,8 +88,6 @@ function decodeString(s: string): string {
 class CQueue {
   stack1: number[] = [];
   stack2: number[] = [];
-
-  constructor() {}
 
   appendTail(value: number): void {
     this.stack1.push(value);
@@ -124,7 +123,7 @@ function compute(b: number, op: string, a: number): number {
 function evalRPN(tokens: string[]): number {
   const stack: number[] = [];
   for (const token of tokens) {
-    if (/^[+\-*/]$/.test(token)) {
+    if ('+-*/'.includes(token)) {
       stack.push(compute(stack.pop(), token, stack.pop()));
     } else {
       stack.push(Number(token));
@@ -219,30 +218,5 @@ function calculate(s: string): number {
     ++i;
   }
   return numStack.pop();
-}
-```
-
-## 字符串解码
-
-```ts
-function decodeString(s: string): string {
-  const stack: [number, string][] = [[1, '']];
-  let num = 0;
-  for (const c of s) {
-    if ('0' <= c && c <= '9') {
-      num = num * 10 + Number(c);
-    } else if (c === '[') {
-      stack.push([num, '']);
-      num = 0;
-    } else if (c === ']') {
-      const [times, str] = stack.pop();
-      for (let j = 0; j < times; ++j) {
-        stack[stack.length - 1][1] += str;
-      }
-    } else {
-      stack[stack.length - 1][1] += c;
-    }
-  }
-  return stack[0][1];
 }
 ```

@@ -6,6 +6,7 @@ export default [
       { text: 'iframe', link: '/fe/basic/html/iframe' },
       { text: 'SVG', link: '/fe/basic/html/svg' },
       { text: '&lt;img&gt;', link: '/fe/basic/html/img' },
+      { text: '无障碍', link: '/fe/basic/html/accessibility' },
     ],
     collapsible: true,
     collapsed: true,
@@ -75,6 +76,7 @@ export default [
   {
     text: 'JS：函数',
     items: [
+      { text: 'Function', link: '/fe/basic/js/function/function' },
       { text: 'this', link: '/fe/basic/js/function/this' },
       { text: '闭包', link: '/fe/basic/js/function/closure' },
       { text: '箭头函数', link: '/fe/basic/js/arrow' },

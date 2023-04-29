@@ -4,13 +4,25 @@ export default [
     items: [
       { text: '生命周期', link: '/fe/framework/react/lifecycle' },
       { text: 'hooks', link: '/fe/framework/react/hooks' },
-      { text: 'context', link: '/fe/framework/react/context' },
+      { text: 'useState', link: '/fe/framework/react/use-state' },
       { text: '缓存', link: '/fe/framework/react/cache' },
-      { text: 'ref', link: '/fe/framework/react/ref' },
+      {
+        text: 'useDeferredValue',
+        link: '/fe/framework/react/use-deferred-value',
+      },
+      { text: 'useEffect', link: '/fe/framework/react/use-effect' },
       {
         text: 'useLayoutEffect',
         link: '/fe/framework/react/use-layout-effect',
       },
+      { text: 'ref', link: '/fe/framework/react/ref' },
+      {
+        text: 'useImperativeHandle',
+        link: '/fe/framework/react/use-imperative-handle',
+      },
+      { text: 'context', link: '/fe/framework/react/context' },
+      { text: 'useId', link: '/fe/framework/react/use-id' },
+      { text: '调试', link: '/fe/framework/react/debug' },
       { text: 'lazy', link: '/fe/framework/react/lazy' },
       { text: 'Suspense', link: '/fe/framework/react/suspense' },
       { text: '减少渲染次数', link: '/fe/framework/react/reduce-render' },
