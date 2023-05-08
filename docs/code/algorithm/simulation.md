@@ -125,7 +125,7 @@ function minusTwoNumbers(a: string, b: string): string {
 }
 ```
 
-`BigInt`
+### BigInt
 
 ```ts
 function minusTwoNumbers(a: string, b: string): string {

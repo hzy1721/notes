@@ -18,8 +18,9 @@ export default [
       { text: '二叉树递归', link: '/code/ds/binary-tree-recursive' },
       { text: '二叉树 DFS', link: '/code/ds/binary-tree-dfs' },
       { text: '二叉搜索树', link: '/code/ds/bst' },
-      { text: '字典树', link: '/code/ds/trie' },
       { text: '平衡二叉树', link: '/code/ds/avl' },
+      { text: 'N 叉树', link: '/code/ds/n-ary-tree' },
+      { text: '字典树', link: '/code/ds/trie' },
       { text: '哈希表', link: '/code/ds/hash-table' },
       { text: '图：拓扑排序', link: '/code/algorithm/topo-sort' },
     ],
@@ -29,9 +30,9 @@ export default [
   {
     text: '算法：基础',
     items: [
+      { text: '位运算', link: '/code/algorithm/bit-operation' },
       { text: '模拟', link: '/code/algorithm/simulation' },
       { text: '数学', link: '/code/algorithm/math' },
-      { text: '位运算', link: '/code/algorithm/bit-operation' },
       { text: '二分查找', link: '/code/algorithm/binary-search' },
       { text: '排序算法', link: '/code/algorithm/sort' },
       { text: '排序题目', link: '/code/algorithm/sort-based' },

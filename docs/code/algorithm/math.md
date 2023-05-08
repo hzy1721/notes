@@ -56,7 +56,7 @@ function rand10(): number {
 
 ## 数字 1 的个数
 
-可以依次计算每一位上 1 出现的次数然后累加，n 最大为 $10^9$，所以最多需要累加 10 次。
+依次计算每一位上 1 出现的次数然后累加，n 最大为 $10^9$，最多需要累加 10 次。
 
 以百位为例，每隔 1000 个数，百位上的 1 都会出现 100 次，十位和个位在 [0, 99] 之间变化，因此可以得到规律：
 
@@ -66,18 +66,15 @@ function rand10(): number {
   - 12145 中百位剩余 100 <= 145 < 200，1 出现的次数为 145 - 100 + 1 = 46
   - 12345 中百位剩余 345 >= 200，1 出现的次数为 100
 
-```cpp
-class Solution {
-public:
-    int countDigitOne(int n) {
-        long long powk = 1LL;
-        int ans = 0;
-        while (powk <= n) {
-            ans += n / (powk * 10) * powk;
-            ans += min(max(n % (powk * 10) - powk + 1, 0LL), powk);
-            powk *= 10;
-        }
-        return ans;
-    }
-};
+```ts
+function countDigitOne(n: number): number {
+  let res = 0;
+  let powk = 1;
+  while (powk <= n) {
+    res += Math.floor(n / (powk * 10)) * powk;
+    res += Math.min(Math.max(0, (n % (powk * 10)) - powk + 1), powk);
+    powk *= 10;
+  }
+  return res;
+}
 ```

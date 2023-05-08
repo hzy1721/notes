@@ -9,20 +9,82 @@ function levelOrder(root: TreeNode | null): number[][] {
   if (root) {
     queue.push(root);
   }
-  while (queue.length > 0) {
-    const len = queue.length;
+  while (queue.length) {
     const layer: number[] = [];
+    const len = queue.length;
     for (let i = 0; i < len; ++i) {
-      const node = queue.shift();
-      layer.push(node.val);
-      if (node.left) {
-        queue.push(node.left);
+      const curr = queue.shift();
+      layer.push(curr.val);
+      if (curr.left) {
+        queue.push(curr.left);
       }
-      if (node.right) {
-        queue.push(node.right);
+      if (curr.right) {
+        queue.push(curr.right);
       }
     }
     res.push(layer);
+  }
+  return res;
+}
+```
+
+## 二叉树的层序遍历 II
+
+```ts
+function levelOrderBottom(root: TreeNode | null): number[][] {
+  const res: number[][] = [];
+  const queue: TreeNode[] = [];
+  if (root) {
+    queue.push(root);
+  }
+  while (queue.length) {
+    const layer: number[] = [];
+    const len = queue.length;
+    for (let i = 0; i < len; ++i) {
+      const curr = queue.shift();
+      layer.push(curr.val);
+      if (curr.left) {
+        queue.push(curr.left);
+      }
+      if (curr.right) {
+        queue.push(curr.right);
+      }
+    }
+    res.unshift(layer);
+  }
+  return res;
+}
+```
+
+## 二叉树的锯齿形层序遍历
+
+```ts
+function zigzagLevelOrder(root: TreeNode | null): number[][] {
+  const res: number[][] = [];
+  const queue: TreeNode[] = [];
+  if (root) {
+    queue.push(root);
+  }
+  let leftToRight = true;
+  while (queue.length) {
+    const layer: number[] = [];
+    const len = queue.length;
+    for (let i = 0; i < len; ++i) {
+      const curr = queue.shift();
+      if (leftToRight) {
+        layer.push(curr.val);
+      } else {
+        layer.unshift(curr.val);
+      }
+      if (curr.left) {
+        queue.push(curr.left);
+      }
+      if (curr.right) {
+        queue.push(curr.right);
+      }
+    }
+    res.push(layer);
+    leftToRight = !leftToRight;
   }
   return res;
 }
@@ -81,7 +143,7 @@ function deserialize(data: string): TreeNode | null {
 }
 ```
 
-## 右视图
+## 二叉树的右视图
 
 ```ts
 function rightSideView(root: TreeNode | null): number[] {
@@ -90,9 +152,9 @@ function rightSideView(root: TreeNode | null): number[] {
   if (root) {
     queue.push(root);
   }
-  while (queue.length > 0) {
-    const len = queue.length;
+  while (queue.length) {
     let last = 0;
+    const len = queue.length;
     for (let i = 0; i < len; ++i) {
       const node = queue.shift();
       last = node.val;
@@ -107,109 +169,4 @@ function rightSideView(root: TreeNode | null): number[] {
   }
   return res;
 }
-```
-
-## 锯齿形层序遍历
-
-双端队列 (deque) 实现奇数层从左往右、偶数层从右往左。
-
-```cpp
-class Solution {
-public:
-    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-        vector<vector<int>> ans;
-        vector<int> layerNodes;
-        deque<TreeNode *> nodeDeque;
-        if (root)
-            nodeDeque.push_back(root);
-        int layerIdx = 1;
-        while (!nodeDeque.empty()) {
-            int len = nodeDeque.size();
-            layerNodes.clear();
-            if (layerIdx % 2 == 1) {
-                for (int i = 0; i < len; ++i) {
-                    TreeNode *curr = nodeDeque.front();
-                    nodeDeque.pop_front();
-                    layerNodes.push_back(curr->val);
-                    if (curr->left)
-                        nodeDeque.push_back(curr->left);
-                    if (curr->right)
-                        nodeDeque.push_back(curr->right);
-                }
-            } else {
-                for (int i = 0; i < len; ++i) {
-                    TreeNode *curr = nodeDeque.back();
-                    nodeDeque.pop_back();
-                    layerNodes.push_back(curr->val);
-                    if (curr->right)
-                        nodeDeque.push_front(curr->right);
-                    if (curr->left)
-                        nodeDeque.push_front(curr->left);
-                }
-            }
-            ans.push_back(layerNodes);
-            ++layerIdx;
-        }
-        return ans;
-    }
-};
-```
-
-## 二叉树的层序遍历 II
-
-vector+reverse 或 deque/list+vector
-
-```cpp
-class Solution {
-public:
-    vector<vector<int>> levelOrderBottom(TreeNode* root) {
-        deque<vector<int>> ans;
-        queue<TreeNode*> nodeQueue;
-        if (root)
-            nodeQueue.push(root);
-        while (!nodeQueue.empty()) {
-            int len = nodeQueue.size();
-            vector<int> layer;
-            for (int i = 0; i < len; ++i) {
-                TreeNode *node = nodeQueue.front();
-                nodeQueue.pop();
-                layer.push_back(node->val);
-                if (node->left)
-                    nodeQueue.push(node->left);
-                if (node->right)
-                    nodeQueue.push(node->right);
-            }
-            ans.push_front(layer);
-        }
-        return {ans.begin(), ans.end()};
-    }
-};
-```
-
-## N 叉树的层序遍历
-
-```cpp
-class Solution {
-public:
-    vector<vector<int>> levelOrder(Node* root) {
-        vector<vector<int>> ans;
-        vector<int> layerNodes;
-        queue<Node *> nodeQueue;
-        if (root)
-            nodeQueue.push(root);
-        while (!nodeQueue.empty()) {
-            layerNodes.clear();
-            int len = nodeQueue.size();
-            while (len--) {
-                Node *node = nodeQueue.front();
-                nodeQueue.pop();
-                layerNodes.push_back(node->val);
-                for (Node *child : node->children)
-                    nodeQueue.push(child);
-            }
-            ans.push_back(layerNodes);
-        }
-        return ans;
-    }
-};
 ```

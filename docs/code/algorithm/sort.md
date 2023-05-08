@@ -86,116 +86,111 @@ function sortArray(nums: number[]): number[] {
 
 ## 堆排序
 
-```cpp
-class Solution {
-private:
-    void siftDown(vector<int> &nums, int start, int end) {
-        int parent = start;
-        int child = parent * 2 + 1;
-        while (child <= end) {
-            if (child + 1 <= end && nums[child] < nums[child + 1])
-                ++child;
-            if (nums[parent] >= nums[child])
-                return;
-            swap(nums[parent], nums[child]);
-            parent = child;
-            child = parent * 2 + 1;
-        }
+```ts
+function siftDown(nums: number[], lo: number, hi: number) {
+  let parent = lo;
+  let child = parent * 2 + 1;
+  while (child <= hi) {
+    if (child + 1 <= hi && nums[child] < nums[child + 1]) {
+      ++child;
     }
+    if (nums[parent] >= nums[child]) {
+      return;
+    }
+    [nums[parent], nums[child]] = [nums[child], nums[parent]];
+    parent = child;
+    child = parent * 2 + 1;
+  }
+}
 
-    void heapSort(vector<int> &nums) {
-        int n = nums.size();
-        for (int i = (n - 2) / 2; i >= 0; --i)
-            siftDown(nums, i, n - 1);
-        for (int i = n - 1; i >= 0; --i) {
-            swap(nums[0], nums[i]);
-            siftDown(nums, 0, i - 1);
-        }
-    }
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        heapSort(nums);
-        return nums;
-    }
-};
+function heapSort(nums: number[]) {
+  const n = nums.length;
+  for (let i = Math.floor((n - 2) / 2); i >= 0; --i) {
+    siftDown(nums, i, n - 1);
+  }
+  for (let i = n - 1; i >= 0; --i) {
+    [nums[0], nums[i]] = [nums[i], nums[0]];
+    siftDown(nums, 0, i - 1);
+  }
+}
+
+function sortArray(nums: number[]): number[] {
+  heapSort(nums);
+  return nums;
+}
 ```
 
 ## 希尔排序
 
-```cpp
-class Solution {
-private:
-    void shellSort(vector<int> &nums) {
-        int n = nums.size();
-        for (int gap = n / 2; gap >= 1; gap /= 2) {
-            for (int i = 0; i < gap; ++i) {
-                for (int j = i + gap; j < n; j += gap) {
-                    int target = nums[j], k = j - gap;
-                    while (k >= 0 && target < nums[k]) {
-                        nums[k + gap] = nums[k];
-                        k -= gap;
-                    }
-                    nums[k + gap] = target;
-                }
-            }
+```ts
+function shellSort(nums: number[]) {
+  const n = nums.length;
+  for (let gap = Math.floor(n / 2); gap >= 1; gap = Math.floor(gap / 2)) {
+    for (let i = 0; i < gap; ++i) {
+      for (let j = i + gap; j < n; j += gap) {
+        const target = nums[j];
+        let k = j - gap;
+        while (k >= 0 && target < nums[k]) {
+          nums[k + gap] = nums[k];
+          k -= gap;
         }
+        nums[k + gap] = target;
+      }
     }
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        shellSort(nums);
-        return nums;
-    }
-};
+  }
+}
+
+function sortArray(nums: number[]): number[] {
+  shellSort(nums);
+  return nums;
+}
 ```
 
 ## 冒泡排序
 
-```cpp
-class Solution {
-private:
-    void bubbleSort(vector<int> &nums) {
-        int n = nums.size();
-        for (int i = n; i >= 2; --i) {
-            bool noSwap = true;
-            for (int j = 0; j < i - 1; ++j) {
-                if (nums[j] > nums[j + 1]) {
-                    swap(nums[j], nums[j + 1]);
-                    noSwap = false;
-                }
-            }
-            if (noSwap)
-                break;
-        }
+```ts
+function bubbleSort(nums: number[]) {
+  const n = nums.length;
+  for (let i = n; i >= 2; --i) {
+    let noSwap = true;
+    for (let j = 0; j < i - 1; ++j) {
+      if (nums[j] > nums[j + 1]) {
+        [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
+        noSwap = false;
+      }
     }
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        bubbleSort(nums);
-        return nums;
+    if (noSwap) {
+      break;
     }
-};
+  }
+}
+
+function sortArray(nums: number[]): number[] {
+  bubbleSort(nums);
+  return nums;
+}
 ```
 
 ## 选择排序
 
-```cpp
-class Solution {
-private:
-    void selectionSort(vector<int> &nums) {
-        int n = nums.size();
-        for (int i = n; i >= 2; --i) {
-            int maxIdx = 0;
-            for (int j = 0; j < i; ++j)
-                if (nums[j] > nums[maxIdx])
-                    maxIdx = j;
-            swap(nums[maxIdx], nums[i-1]);
-        }
+```ts
+function selectionSort(nums: number[]) {
+  const n = nums.length;
+  for (let i = n; i >= 2; --i) {
+    let maxIdx = 0;
+    for (let j = 0; j < i; ++j) {
+      if (nums[j] > nums[maxIdx]) {
+        maxIdx = j;
+      }
     }
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        selectionSort(nums);
-        return nums;
-    }
-};
+    [nums[maxIdx], nums[i - 1]] = [nums[i - 1], nums[maxIdx]];
+  }
+}
+
+function sortArray(nums: number[]): number[] {
+  selectionSort(nums);
+  return nums;
+}
 ```
 
 ## 插入排序

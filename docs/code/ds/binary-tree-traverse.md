@@ -1,5 +1,25 @@
 # 二叉树遍历
 
+## 二叉树的前序遍历
+
+```ts
+function preorderTraversal(root: TreeNode | null): number[] {
+  const res: number[] = [];
+  const stack: TreeNode[] = [];
+  let curr = root;
+  while (curr || stack.length) {
+    while (curr) {
+      res.push(curr.val);
+      stack.push(curr);
+      curr = curr.left;
+    }
+    curr = stack.pop();
+    curr = curr.right;
+  }
+  return res;
+}
+```
+
 ## 二叉树的中序遍历
 
 ```ts
@@ -15,6 +35,33 @@ function inorderTraversal(root: TreeNode | null): number[] {
     curr = stack.pop();
     res.push(curr.val);
     curr = curr.right;
+  }
+  return res;
+}
+```
+
+## 二叉树的后序遍历
+
+```ts
+function postorderTraversal(root: TreeNode | null): number[] {
+  const res: number[] = [];
+  const stack: TreeNode[] = [];
+  let curr = root;
+  let prev: TreeNode | null = null;
+  while (curr || stack.length) {
+    while (curr) {
+      stack.push(curr);
+      curr = curr.left;
+    }
+    curr = stack.pop();
+    if (!curr.right || curr.right === prev) {
+      res.push(curr.val);
+      prev = curr;
+      curr = null;
+    } else {
+      stack.push(curr);
+      curr = curr.right;
+    }
   }
   return res;
 }
@@ -54,7 +101,7 @@ function buildTree(
 
 ## 二叉树展开为链表
 
-前序遍历
+### 前序遍历
 
 ```ts
 function flatten(root: TreeNode | null): void {
@@ -75,7 +122,7 @@ function flatten(root: TreeNode | null): void {
 }
 ```
 
-空间 O(1)
+### 空间 O(1)
 
 ```ts
 function flatten(root: TreeNode | null): void {
@@ -93,32 +140,5 @@ function flatten(root: TreeNode | null): void {
     }
     curr = curr.right;
   }
-}
-```
-
-## 后序遍历
-
-```ts
-function postorderTraversal(root: TreeNode | null): number[] {
-  const res: number[] = [];
-  const stack: TreeNode[] = [];
-  let curr = root;
-  let prev: TreeNode | null = null;
-  while (curr || stack.length > 0) {
-    while (curr) {
-      stack.push(curr);
-      curr = curr.left;
-    }
-    curr = stack.pop();
-    if (curr.right && curr.right !== prev) {
-      stack.push(curr);
-      curr = curr.right;
-    } else {
-      res.push(curr.val);
-      prev = curr;
-      curr = null;
-    }
-  }
-  return res;
 }
 ```
