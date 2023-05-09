@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as l,d as n}from"./app.a0163938.js";const C=JSON.parse('{"title":"lazy","description":"","frontmatter":{},"headers":[],"relativePath":"fe/react/lazy.md","lastUpdated":1683625189000}'),o={name:"fe/react/lazy.md"},e=n("",8),p=[e];function t(c,r,y,i,D,F){return l(),a("div",null,p)}const A=s(o,[["render",t]]);export{C as __pageData,A as default};
