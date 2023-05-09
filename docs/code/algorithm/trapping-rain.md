@@ -55,10 +55,10 @@ function trap(height: number[]): number {
 ```ts
 function trap(height: number[]): number {
   const n = height.length;
-  let left = 0,
-    right = n - 1;
-  let leftMax = 0,
-    rightMax = 0;
+  let left = 0;
+  let right = n - 1;
+  let leftMax = 0;
+  let rightMax = 0;
   let res = 0;
   while (left < right) {
     leftMax = Math.max(leftMax, height[left]);

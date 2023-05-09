@@ -217,85 +217,83 @@ function sortArray(nums: number[]): number[] {
 
 ## 计数排序
 
-```cpp
-class Solution {
-private:
-    void countingSort(vector<int> &nums, int minVal, int maxVal) {
-        vector<short> count(maxVal - minVal + 1, 0);
-        for (int &num : nums)
-            count[num - minVal] += 1;
-        int idx = 0;
-        for (int i = minVal; i <= maxVal; ++i) {
-            while (count[i - minVal] > 0) {
-                nums[idx++] = i;
-                count[i - minVal] -= 1;
-            }
-        }
+```ts
+function countingSort(nums: number[], minVal: number, maxVal: number) {
+  const count: number[] = new Array(maxVal - minVal + 1).fill(0);
+  for (const num of nums) {
+    count[num - minVal] += 1;
+  }
+  let idx = 0;
+  for (let i = minVal; i <= maxVal; ++i) {
+    while (count[i - minVal] > 0) {
+      nums[idx++] = i;
+      count[i - minVal] -= 1;
     }
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        countingSort(nums, -50000, 50000);
-        return nums;
-    }
-};
+  }
+}
+
+function sortArray(nums: number[]): number[] {
+  countingSort(nums, -50000, 50000);
+  return nums;
+}
 ```
 
 ## 桶排序
 
-```cpp
-class Solution {
-private:
-    void bucketSort(vector<int> &nums, int minVal, int maxVal) {
-        int n = nums.size();
-        int bucketNum = (maxVal - minVal) / n + 1;
-        vector<vector<int> > buckets(bucketNum, vector<int>());
-        for (int &num : nums)
-            buckets[(num - minVal) / n].push_back(num);
-        int idx = 0;
-        for (auto &bucket : buckets) {
-            sort(bucket.begin(), bucket.end());
-            for (int &num : bucket)
-                nums[idx++] = num;
-        }
+```ts
+function bucketSort(nums: number[], minVal: number, maxVal: number) {
+  const n = nums.length;
+  const bucketNum = Math.floor((maxVal - minVal) / n) + 1;
+  const buckets: number[][] = new Array(bucketNum).fill(0).map(() => []);
+  for (const num of nums) {
+    buckets[Math.floor((num - minVal) / n)].push(num);
+  }
+  let idx = 0;
+  for (const bucket of buckets) {
+    bucket.sort((a, b) => a - b);
+    for (const num of bucket) {
+      nums[idx++] = num;
     }
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        bucketSort(nums, -50000, 50000);
-        return nums;
-    }
-};
+  }
+}
+
+function sortArray(nums: number[]): number[] {
+  bucketSort(nums, -50000, 50000);
+  return nums;
+}
 ```
 
 ## 基数排序
 
-```cpp
-class Solution {
-private:
-    void radixSort(vector<int> &nums, int minVal, int maxVal) {
-        int newMaxVal = maxVal - minVal;
-        int maxDigit = 0;
-        while (newMaxVal) {
-            maxDigit += 1;
-            newMaxVal /= 10;
-        }
-        vector<vector<int> > buckets(10, vector<int>());
-        int div = 1;
-        for (int i = 0; i < maxDigit; ++i) {
-            for (auto &bucket : buckets)
-                bucket.clear();
-            for (int &num : nums)
-                buckets[(num - minVal) / div % 10].push_back(num);
-            int idx = 0;
-            for (auto &bucket : buckets)
-                for (int &num : bucket)
-                    nums[idx++] = num;
-            div *= 10;
-        }
+```ts
+function radixSort(nums: number[], minVal: number, maxVal: number) {
+  let newMaxVal = maxVal - minVal;
+  let maxDigit = 0;
+  while (newMaxVal) {
+    maxDigit += 1;
+    newMaxVal = Math.floor(newMaxVal / 10);
+  }
+  const buckets: number[][] = new Array(10);
+  let div = 1;
+  for (let i = 0; i < maxDigit; ++i) {
+    for (let j = 0; j < 10; ++j) {
+      buckets[j] = [];
     }
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        radixSort(nums, -50000, 50000);
-        return nums;
+    for (const num of nums) {
+      buckets[Math.floor((num - minVal) / div) % 10].push(num);
     }
-};
+    let idx = 0;
+    for (const bucket of buckets) {
+      for (const num of bucket) {
+        nums[idx++] = num;
+      }
+    }
+    div *= 10;
+  }
+}
+
+function sortArray(nums: number[]): number[] {
+  radixSort(nums, -50000, 50000);
+  return nums;
+}
 ```

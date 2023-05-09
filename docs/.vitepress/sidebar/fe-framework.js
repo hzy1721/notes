@@ -1,77 +1,9 @@
 export default [
   {
-    text: 'React',
-    items: [
-      { text: '生命周期', link: '/fe/framework/react/lifecycle' },
-      { text: 'hooks', link: '/fe/framework/react/hooks' },
-      { text: 'useState', link: '/fe/framework/react/use-state' },
-      { text: '缓存', link: '/fe/framework/react/cache' },
-      {
-        text: 'useDeferredValue',
-        link: '/fe/framework/react/use-deferred-value',
-      },
-      { text: 'useEffect', link: '/fe/framework/react/use-effect' },
-      {
-        text: 'useLayoutEffect',
-        link: '/fe/framework/react/use-layout-effect',
-      },
-      { text: 'ref', link: '/fe/framework/react/ref' },
-      {
-        text: 'useImperativeHandle',
-        link: '/fe/framework/react/use-imperative-handle',
-      },
-      { text: 'context', link: '/fe/framework/react/context' },
-      { text: 'useId', link: '/fe/framework/react/use-id' },
-      { text: '调试', link: '/fe/framework/react/debug' },
-      { text: 'lazy', link: '/fe/framework/react/lazy' },
-      { text: 'Suspense', link: '/fe/framework/react/suspense' },
-      { text: '减少渲染次数', link: '/fe/framework/react/reduce-render' },
-      { text: 'React/Vue 对比', link: '/fe/framework/react/react-vs-vue' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: 'React：原理',
-    items: [
-      {
-        text: 'build your own react',
-        link: '/fe/framework/react/build-your-own-react',
-      },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: 'webpack',
-    items: [
-      { text: 'entry', link: '/fe/framework/webpack/entry' },
-      { text: 'output', link: '/fe/framework/webpack/output' },
-      { text: 'module', link: '/fe/framework/webpack/module' },
-      { text: 'resolve', link: '/fe/framework/webpack/resolve' },
-      { text: 'optimization', link: '/fe/framework/webpack/optimization' },
-      { text: 'plugins', link: '/fe/framework/webpack/plugins' },
-      { text: 'package.json', link: '/fe/framework/webpack/package-json' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
     text: '工具函数',
     items: [
       { text: 'clone/cloneDeep', link: '/fe/framework/util/clone' },
       { text: 'once', link: '/fe/framework/util/once' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: 'Axios',
-    items: [
-      { text: 'axios', link: '/fe/framework/axios/axios' },
-      { text: '别名函数', link: '/fe/framework/axios/alias' },
-      { text: '自定义实例', link: '/fe/framework/axios/instance' },
-      { text: '拦截器', link: '/fe/framework/axios/interceptor' },
     ],
     collapsible: true,
     collapsed: true,
@@ -85,6 +17,7 @@ export default [
   {
     text: '其他',
     items: [
+      { text: 'React/Vue 对比', link: '/fe/framework/misc/react-vs-vue' },
       { text: '组件封装注意事项', link: '/fe/framework/misc/component' },
       { text: '上线流程', link: '/fe/framework/misc/deploy' },
     ],

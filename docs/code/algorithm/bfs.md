@@ -3,7 +3,7 @@
 ## 删除无效的括号
 
 ```ts
-const isValid = (s: string): boolean => {
+function isValid(s: string): boolean {
   let left = 0;
   let right = 0;
   for (const c of s) {
@@ -21,7 +21,7 @@ const isValid = (s: string): boolean => {
     }
   }
   return !left && !right;
-};
+}
 
 function removeInvalidParentheses(s: string): string[] {
   let currSet = new Set([s]);

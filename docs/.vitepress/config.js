@@ -1,4 +1,5 @@
 import codeSidebar from './sidebar/code';
+import feReactSidebar from './sidebar/fe-react';
 import feFrameworkSidebar from './sidebar/fe-framework';
 import feOptimizationSidebar from './sidebar/fe-optimization';
 import feBasicSidebar from './sidebar/fe-basic';
@@ -14,6 +15,7 @@ export default {
       {
         text: '前端',
         items: [
+          { text: 'React', link: '/fe/react/' },
           { text: '框架', link: '/fe/framework/' },
           { text: '优化', link: '/fe/optimization/' },
           { text: '基础', link: '/fe/basic/' },
@@ -22,17 +24,18 @@ export default {
       },
       { text: '基础', link: '/basic/' },
     ],
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/hzy1721/notes' },
-    ],
     sidebar: {
       '/code/': codeSidebar,
+      '/fe/react': feReactSidebar,
       '/fe/framework/': feFrameworkSidebar,
       '/fe/optimization/': feOptimizationSidebar,
       '/fe/basic/': feBasicSidebar,
       '/fe/field': feFieldSidebar,
       '/basic/': basicSidebar,
     },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/hzy1721/notes' },
+    ],
   },
   lastUpdated: true,
 };

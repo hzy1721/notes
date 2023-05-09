@@ -59,22 +59,21 @@ function maxProfit(prices: number[]): number {
 
 没有容易想到的解题思路时可以尝试用动态规划，每天记录 4 个状态：第 1 次买入的利润 buy1，第 1 次卖出的利润 sell1，第 2 次买入的利润 buy2，第 2 次卖出的利润 sell2。买入利润可以理解为买入股票价格的负值，计算卖出利润时再加上卖出股票的价格，每个状态在前一个状态的基础上进行更新。
 
-```cpp
-class Solution {
-public:
-    int maxProfit(vector<int>& prices) {
-        int n = prices.size();
-        int buy1 = -prices[0], sell1 = 0;
-        int buy2 = -prices[0], sell2 = 0;
-        for (int i = 1; i < n; ++i) {
-            buy1 = max(buy1, -prices[i]);
-            sell1 = max(sell1, buy1 + prices[i]);
-            buy2 = max(buy2, sell1 - prices[i]);
-            sell2 = max(sell2, buy2 + parices[i]);
-        }
-        return sell2;
-    }
-};
+```ts
+function maxProfit(prices: number[]): number {
+  const n = prices.length;
+  let buy1 = -prices[0];
+  let sell1 = 0;
+  let buy2 = -prices[0];
+  let sell2 = 0;
+  for (let i = 1; i < n; ++i) {
+    buy1 = Math.max(buy1, -prices[i]);
+    sell1 = Math.max(sell1, buy1 + prices[i]);
+    buy2 = Math.max(buy2, sell1 - prices[i]);
+    sell2 = Math.max(sell2, buy2 + prices[i]);
+  }
+  return sell2;
+}
 ```
 
 - 时间复杂度：O(n)
@@ -84,27 +83,25 @@ public:
 
 题目背景跟 III 很像，解法也类似，每天记录 2\*(k+1) 个状态，k 为最大交易次数，表示这一天第 0~k 次买入和卖出的利润。定义第 0 次交易是为了顺利计算 buy[1]，只会用到 sell[0] = 0。长度为 n 的数组最多有 n/2 次有效交易，因此可以在计算前尝试缩小 k 的值。
 
-```cpp
-class Solution {
-public:
-    int maxProfit(int k, vector<int>& prices) {
-        int n = prices.size();
-        k = min(k, n / 2);
-        vector<int> buy(k + 1), sell(k + 1);
-        sell[0] = 0;
-        for (int i = 1; i <= k; ++i) {
-            buy[i] = INT_MIN / 2;
-            sell[i] = INT_MIN / 2;
-        }
-        for (int i = 0; i < n; ++i) {
-            for (int j = 1; j <= k; ++j) {
-                buy[j] = max(buy[j], sell[j-1] - prices[i]);
-                sell[j] = max(sell[j], buy[j] + prices[i]);
-            }
-        }
-        return *max_element(sell.begin(), sell.end());
+```ts
+function maxProfit(k: number, prices: number[]): number {
+  const n = prices.length;
+  k = Math.min(k, Math.floor(n / 2));
+  const buy: number[] = new Array(k + 1);
+  const sell: number[] = new Array(k + 1);
+  sell[0] = 0;
+  for (let i = 1; i <= k; ++i) {
+    buy[i] = Number.MIN_SAFE_INTEGER / 2;
+    sell[i] = Number.MIN_SAFE_INTEGER / 2;
+  }
+  for (let i = 0; i < n; ++i) {
+    for (let j = 1; j <= k; ++j) {
+      buy[j] = Math.max(buy[j], sell[j - 1] - prices[i]);
+      sell[j] = Math.max(sell[j], buy[j] + prices[i]);
     }
-};
+  }
+  return Math.max(...sell);
+}
 ```
 
 - 时间复杂度：O(nk)
@@ -136,21 +133,19 @@ function maxProfit(prices: number[]): number {
 
 这道题跟 ”含冷冻期“ 很像，不限制交易次数，但是不能用贪心，因为长期的收益有可能高于手续费。每天记录 2 个状态：当前买入的利润，当天卖出的利润。计算卖出利润时需要减去手续费。
 
-```cpp
-class Solution {
-public:
-    int maxProfit(vector<int>& prices, int fee) {
-        int n = prices.size();
-        int buy = -prices[0], sell = 0;
-        for (int i = 1; i < n; ++i) {
-            int buy2 = max(buy, sell - prices[i]);
-            int sell2 = max(sell, buy + prices[i] - fee);
-            buy = buy2;
-            sell = sell2;
-        }
-        return sell;
-    }
-};
+```ts
+function maxProfit(prices: number[], fee: number): number {
+  const n = prices.length;
+  let buy = -prices[0];
+  let sell = 0;
+  for (let i = 1; i < n; ++i) {
+    const buy2 = Math.max(buy, sell - prices[i]);
+    const sell2 = Math.max(sell, buy + prices[i] - fee);
+    buy = buy2;
+    sell = sell2;
+  }
+  return sell;
+}
 ```
 
 - 时间复杂度：O(n)
