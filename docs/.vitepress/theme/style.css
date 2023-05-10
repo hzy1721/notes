@@ -1,0 +1,8 @@
+:root {
+  --vp-c-brand: #222 !important;
+}
+
+div.is-home {
+  background-image: url(/snow.jpg);
+  background-size: cover;
+}

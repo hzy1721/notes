@@ -1,0 +1,69 @@
+export default [
+  {
+    text: '浏览器',
+    items: [
+      {
+        text: '输入 URL',
+        link: '/fe/browser/after-input-url',
+      },
+      { text: '事件循环', link: '/fe/browser/event-loop' },
+      { text: '回流和重绘', link: '/fe/browser/reflow-repaint' },
+      {
+        text: '不同标签页通信',
+        link: '/fe/browser/tab-communication',
+      },
+      { text: 'Web Worker', link: '/fe/browser/web-worker' },
+      { text: 'Service Worker', link: '/fe/browser/service-worker' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '浏览器：DOM',
+    items: [
+      { text: '元素大小', link: '/fe/browser/dom/elem-size' },
+      { text: '元素坐标', link: '/fe/browser/dom/coordinates' },
+      {
+        text: '窗口和文档大小',
+        link: '/fe/browser/dom/window-size',
+      },
+      {
+        text: 'HTMLImageElement',
+        link: '/fe/browser/dom/html-image-element',
+      },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '浏览器：事件',
+    items: [
+      { text: '事件', link: '/fe/browser/event' },
+      { text: '事件委托', link: '/fe/browser/event-delegation' },
+      { text: '拖拽事件', link: '/fe/browser/drag' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '浏览器：网络',
+    items: [
+      { text: 'AJAX', link: '/fe/browser/network/ajax' },
+      { text: 'XMLHttpRequest', link: '/fe/browser/network/xhr' },
+      { text: '跨域', link: '/fe/browser/network/cross-origin' },
+      { text: 'CORS', link: '/fe/browser/network/cors' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '浏览器：存储',
+    items: [
+      { text: 'cookie', link: '/fe/browser/cookie' },
+      { text: 'localStorage', link: '/fe/browser/localstorage' },
+      { text: 'IndexedDB', link: '/fe/browser/indexeddb' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+];

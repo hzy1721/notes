@@ -1,10 +1,13 @@
 import codeSidebar from './sidebar/code';
-import feReactSidebar from './sidebar/fe-react';
-import feFrameworkSidebar from './sidebar/fe-framework';
-import feOptimizationSidebar from './sidebar/fe-optimization';
-import feBasicSidebar from './sidebar/fe-basic';
+import feReactSidebar from './sidebar/fe/react';
+import feLibrarySidebar from './sidebar/fe/library';
+import feOptimizationSidebar from './sidebar/fe/optimization';
+import feServerSidebar from './sidebar/fe/server';
+import feBasicSidebar from './sidebar/fe/basic';
+import feV8Sidebar from './sidebar/fe/v8';
+import feBrowserSidebar from './sidebar/fe/browser';
+import feNodeSidebar from './sidebar/fe/node';
 import basicSidebar from './sidebar/basic';
-import feFieldSidebar from './sidebar/fe-field';
 
 export default {
   base: '/',
@@ -15,22 +18,28 @@ export default {
       {
         text: '前端',
         items: [
-          { text: 'React', link: '/fe/react/' },
-          { text: '框架', link: '/fe/framework/' },
+          { text: 'React', link: '/fe/react-stack/' },
+          { text: '各种库', link: '/fe/library/' },
           { text: '优化', link: '/fe/optimization/' },
+          { text: '服务端', link: '/fe/server/' },
           { text: '基础', link: '/fe/basic/' },
-          { text: '领域', link: '/fe/field/' },
+          { text: 'V8', link: '/fe/v8/' },
+          { text: '浏览器', link: '/fe/browser/' },
+          { text: 'Node', link: '/fe/node/' },
         ],
       },
       { text: '基础', link: '/basic/' },
     ],
     sidebar: {
       '/code/': codeSidebar,
-      '/fe/react': feReactSidebar,
-      '/fe/framework/': feFrameworkSidebar,
+      '/fe/react-stack/': feReactSidebar,
+      '/fe/library/': feLibrarySidebar,
       '/fe/optimization/': feOptimizationSidebar,
+      '/fe/server/': feServerSidebar,
       '/fe/basic/': feBasicSidebar,
-      '/fe/field': feFieldSidebar,
+      '/fe/v8/': feV8Sidebar,
+      '/fe/browser/': feBrowserSidebar,
+      '/fe/node/': feNodeSidebar,
       '/basic/': basicSidebar,
     },
     socialLinks: [

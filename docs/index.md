@@ -5,7 +5,7 @@ title: 首页
 
 hero:
   name: Notes
-  text: 前端面试笔记
+  tagline: 一些工作笔记～
   actions:
     - theme: alt
       text: 算法
