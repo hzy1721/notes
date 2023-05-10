@@ -1,1 +1,0 @@
-import{_ as s,c as e,o as a,d as t}from"./app.a0163938.js";const D=JSON.parse('{"title":"useState","description":"","frontmatter":{},"headers":[],"relativePath":"fe/react/use-state.md","lastUpdated":1683625189000}'),n={name:"fe/react/use-state.md"},o=t("",4),l=[o];function p(c,r,i,d,_,u){return a(),e("div",null,l)}const C=s(n,[["render",p]]);export{D as __pageData,C as default};
