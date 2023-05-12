@@ -64,6 +64,12 @@ export default [
     collapsed: true,
   },
   {
+    text: '安全',
+    items: [{ text: '加密', link: '/basic/security/encryption' }],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '杂项',
     items: [
       {

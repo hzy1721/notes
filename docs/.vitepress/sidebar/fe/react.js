@@ -3,8 +3,10 @@ export default [
     text: 'React',
     items: [
       { text: '生命周期', link: '/fe/react-stack/react/lifecycle' },
-      { text: 'lazy', link: '/fe/react-stack/react/lazy' },
-      { text: '减少渲染次数', link: '/fe/react-stack/react/reduce-render' },
+      {
+        text: '版本变迁',
+        link: '/fe/react-stack/react/version-history',
+      },
     ],
     collapsible: true,
     collapsed: true,
@@ -37,7 +39,7 @@ export default [
     collapsed: true,
   },
   {
-    text: 'React：内置组件',
+    text: 'React：组件',
     items: [
       { text: 'Suspense', link: '/fe/react-stack/react/suspense' },
       { text: 'Fragment', link: '/fe/react-stack/react/fragment' },
@@ -49,7 +51,7 @@ export default [
   },
   {
     text: 'React：函数',
-    items: [],
+    items: [{ text: 'lazy', link: '/fe/react-stack/react/lazy' }],
     collapsible: true,
     collapsed: true,
   },
@@ -65,39 +67,39 @@ export default [
     collapsed: true,
   },
   {
-    text: 'webpack',
+    text: 'React：优化',
     items: [
-      { text: 'entry', link: '/fe/react-stack/webpack/entry' },
-      { text: 'output', link: '/fe/react-stack/webpack/output' },
-      { text: 'module', link: '/fe/react-stack/webpack/module' },
-      { text: 'resolve', link: '/fe/react-stack/webpack/resolve' },
-      { text: 'optimization', link: '/fe/react-stack/webpack/optimization' },
-      { text: 'plugins', link: '/fe/react-stack/webpack/plugins' },
-      { text: 'package.json', link: '/fe/react-stack/webpack/package-json' },
+      {
+        text: '减少渲染次数',
+        link: '/fe/react-stack/react/reduce-render',
+      },
     ],
     collapsible: true,
     collapsed: true,
   },
   {
-    text: 'Axios',
+    text: '状态管理',
     items: [
-      { text: 'axios', link: '/fe/react-stack/axios/axios' },
-      { text: '别名函数', link: '/fe/react-stack/axios/alias' },
-      { text: '自定义实例', link: '/fe/react-stack/axios/instance' },
-      { text: '拦截器', link: '/fe/react-stack/axios/interceptor' },
+      {
+        text: 'Zustand',
+        link: '/fe/react-stack/state/zustand',
+      },
+      {
+        text: 'Redux',
+        link: '/fe/react-stack/state/redux',
+      },
     ],
     collapsible: true,
     collapsed: true,
   },
   {
-    text: 'Redux',
-    items: [],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: 'React Router',
-    items: [],
+    text: '路由',
+    items: [
+      {
+        text: 'React Router',
+        link: '/fe/react-stack/router/react-router',
+      },
+    ],
     collapsible: true,
     collapsed: true,
   },

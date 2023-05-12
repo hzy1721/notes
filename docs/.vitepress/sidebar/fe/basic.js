@@ -152,14 +152,4 @@ export default [
     collapsible: true,
     collapsed: true,
   },
-  {
-    text: 'TypeScript',
-    items: [
-      { text: 'keyof', link: '/fe/basic/ts/keyof' },
-      { text: 'never', link: '/fe/basic/ts/never' },
-      { text: 'ThisType', link: '/fe/basic/ts/thistype' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
 ];

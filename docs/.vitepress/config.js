@@ -1,6 +1,7 @@
 import codeSidebar from './sidebar/code';
 import feReactSidebar from './sidebar/fe/react';
 import feLibrarySidebar from './sidebar/fe/library';
+import feSecuritySidebar from './sidebar/fe/security';
 import feOptimizationSidebar from './sidebar/fe/optimization';
 import feServerSidebar from './sidebar/fe/server';
 import feBasicSidebar from './sidebar/fe/basic';
@@ -20,6 +21,7 @@ export default {
         items: [
           { text: 'React', link: '/fe/react-stack/' },
           { text: '各种库', link: '/fe/library/' },
+          { text: '安全', link: '/fe/security/' },
           { text: '优化', link: '/fe/optimization/' },
           { text: '服务端', link: '/fe/server/' },
           { text: '基础', link: '/fe/basic/' },
@@ -34,6 +36,7 @@ export default {
       '/code/': codeSidebar,
       '/fe/react-stack/': feReactSidebar,
       '/fe/library/': feLibrarySidebar,
+      '/fe/security': feSecuritySidebar,
       '/fe/optimization/': feOptimizationSidebar,
       '/fe/server/': feServerSidebar,
       '/fe/basic/': feBasicSidebar,
@@ -47,4 +50,5 @@ export default {
     ],
   },
   lastUpdated: true,
+  appearance: false,
 };

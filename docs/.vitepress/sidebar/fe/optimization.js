@@ -1,33 +1,6 @@
 export default [
   {
-    text: '安全',
-    items: [
-      { text: 'XSS', link: '/fe/optimization/security/xss' },
-      { text: 'CSRF', link: '/fe/optimization/security/csrf' },
-      { text: 'SSRF', link: '/fe/optimization/security/ssrf' },
-      { text: 'DoS', link: '/fe/optimization/security/dos' },
-      { text: '注入', link: '/fe/optimization/security/injection' },
-      {
-        text: '中间人',
-        link: '/fe/optimization/security/man-in-the-middle',
-      },
-      { text: '加密', link: '/fe/optimization/security/encryption' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: '鉴权',
-    items: [
-      { text: 'session', link: '/fe/optimization/auth/session' },
-      { text: 'token', link: '/fe/optimization/auth/token' },
-      { text: 'JWT', link: '/fe/optimization/auth/jwt' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: '性能',
+    text: '性能问题',
     items: [
       { text: '内存泄漏', link: '/fe/optimization/issue/memory-leak' },
     ],
@@ -35,7 +8,7 @@ export default [
     collapsed: true,
   },
   {
-    text: '监控',
+    text: '前端监控',
     items: [
       { text: '性能指标', link: '/fe/optimization/monitor/web-vitals' },
     ],
@@ -43,7 +16,7 @@ export default [
     collapsed: true,
   },
   {
-    text: '首屏：体积优化',
+    text: '首屏优化',
     items: [
       {
         text: '图片格式',
@@ -61,13 +34,6 @@ export default [
         text: '代码压缩',
         link: '/fe/optimization/first-screen/code-compression',
       },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: '首屏：加载优化',
-    items: [
       {
         text: '图片加载',
         link: '/fe/optimization/first-screen/image-loading',
@@ -89,7 +55,7 @@ export default [
     collapsed: true,
   },
   {
-    text: '交互',
+    text: '交互优化',
     items: [
       {
         text: '高频事件',
@@ -100,7 +66,7 @@ export default [
     collapsed: true,
   },
   {
-    text: '调试：DevTools',
+    text: '调试技巧',
     items: [
       {
         text: 'DevTools',
@@ -114,19 +80,19 @@ export default [
     collapsible: true,
     collapsed: true,
   },
-  {
-    text: '系统设计',
-    items: [
-      { text: '前端性能优化', link: '/fe/optimization/design/perf' },
-      { text: 'CDN', link: '/fe/optimization/design/cdn' },
-      {
-        text: 'IaaS/PaaS/SaaS',
-        link: '/fe/optimization/design/iaas-paas-saas',
-      },
-      { text: 'RBAC', link: '/fe/optimization/design/rbac' },
-      { text: '高并发', link: '/fe/optimization/design/high-concurrency' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
+  // {
+  //   text: '系统设计',
+  //   items: [
+  //     { text: '前端性能优化', link: '/fe/optimization/design/perf' },
+  //     { text: 'CDN', link: '/fe/optimization/design/cdn' },
+  //     {
+  //       text: 'IaaS/PaaS/SaaS',
+  //       link: '/fe/optimization/design/iaas-paas-saas',
+  //     },
+  //     { text: 'RBAC', link: '/fe/optimization/design/rbac' },
+  //     { text: '高并发', link: '/fe/optimization/design/high-concurrency' },
+  //   ],
+  //   collapsible: true,
+  //   collapsed: true,
+  // },
 ];
