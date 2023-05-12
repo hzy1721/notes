@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,d as l}from"./app.7410356c.js";const i=JSON.parse('{"title":"层级关系转换","description":"","frontmatter":{},"headers":[],"relativePath":"code/fe/hierarchy.md","lastUpdated":1677593810000}'),p={name:"code/fe/hierarchy.md"},o=l("",3),e=[o];function t(D,c,F,r,y,C){return a(),n("div",null,e)}const u=s(p,[["render",t]]);export{i as __pageData,u as default};
