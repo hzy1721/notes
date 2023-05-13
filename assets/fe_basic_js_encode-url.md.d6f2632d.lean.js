@@ -1,1 +1,0 @@
-import{_ as e,c as o,o as c,d}from"./app.eb4201a6.js";const m=JSON.parse('{"title":"URL 编码","description":"","frontmatter":{},"headers":[],"relativePath":"fe/basic/js/encode-url.md","lastUpdated":1681116875000}'),l={name:"fe/basic/js/encode-url.md"},t=d("",2),a=[t];function i(n,r,s,_,u,p){return c(),o("div",null,a)}const U=e(l,[["render",i]]);export{m as __pageData,U as default};
