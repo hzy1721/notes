@@ -9,3 +9,7 @@
 ```js
 const [state, setState] = useState(initialState);
 ```
+
+## 状态上移
+
+如果需要在两个或多个组件之间共享状态数据，可以把状态定义上移到最近的公共祖先组件，然后通过 `props` 或 `Context` 将状态变量传递到需要的后代组件。

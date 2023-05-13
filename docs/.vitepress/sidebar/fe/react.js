@@ -2,6 +2,7 @@ export default [
   {
     text: 'React',
     items: [
+      { text: '组件与 JSX', link: '/fe/react-stack/react/component' },
       { text: '生命周期', link: '/fe/react-stack/react/lifecycle' },
       {
         text: '版本变迁',
@@ -78,6 +79,12 @@ export default [
     collapsed: true,
   },
   {
+    text: 'React：DOM',
+    items: [],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '状态管理',
     items: [
       {
@@ -100,6 +107,12 @@ export default [
         link: '/fe/react-stack/router/react-router',
       },
     ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '框架',
+    items: [{ text: 'Next', link: '/fe/react-stack/framework/next' }],
     collapsible: true,
     collapsed: true,
   },

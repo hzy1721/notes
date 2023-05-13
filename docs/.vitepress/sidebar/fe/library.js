@@ -58,4 +58,23 @@ export default [
     collapsible: true,
     collapsed: true,
   },
+  {
+    text: '移动端',
+    items: [
+      { text: 'H5', link: '/fe/library/mobile/h5' },
+      { text: '小程序', link: '/fe/library/mobile/miniapp' },
+      { text: '跨端', link: '/fe/library/mobile/app' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '代码检查',
+    items: [
+      { text: 'ESLint', link: '/fe/library/lint/eslint' },
+      { text: 'Prettier', link: '/fe/library/lint/prettier' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
 ];
