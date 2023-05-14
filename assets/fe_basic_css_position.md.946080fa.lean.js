@@ -1,0 +1,1 @@
+import{_ as e,c as i,o as t,d as o}from"./app.32a4a0ab.js";const h=JSON.parse('{"title":"定位","description":"","frontmatter":{},"headers":[],"relativePath":"fe/basic/css/position.md","lastUpdated":1680318810000}'),s={name:"fe/basic/css/position.md"},c=o("",5),a=[c];function l(d,n,r,_,p,u){return t(),i("div",null,a)}const m=e(s,[["render",l]]);export{h as __pageData,m as default};

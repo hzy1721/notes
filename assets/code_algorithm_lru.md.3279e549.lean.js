@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,d as l}from"./app.32a4a0ab.js";const i=JSON.parse('{"title":"LRU 缓存","description":"","frontmatter":{},"headers":[],"relativePath":"code/algorithm/lru.md","lastUpdated":1678200215000}'),p={name:"code/algorithm/lru.md"},o=l("",2),e=[o];function t(c,F,r,y,D,C){return a(),n("div",null,e)}const d=s(p,[["render",t]]);export{i as __pageData,d as default};
