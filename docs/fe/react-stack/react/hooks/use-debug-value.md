@@ -1,6 +1,4 @@
-# 调试
-
-## useDebugValue
+# useDebugValue
 
 给自定义 hook 添加 label (显示在 React DevTools 里)。
 

@@ -1,8 +1,6 @@
-# context
+# createContext
 
-向相隔一层以上的后代组件传递数据。
-
-## createContext
+context 用于向相隔一层以上的后代组件传递数据。
 
 创建 context：
 
@@ -18,16 +16,6 @@ const SomeContext = createContext(initialValue);
 
 ```jsx
 <SomeContext.Provider value={value}>{/* 后代组件 */}</SomeContext.Provider>
-```
-
-## useContext
-
-在后代组件中接收数据：
-
-```js
-import { useContext } from 'react';
-
-const value = useContext(SomeContext);
 ```
 
 ## 用途

@@ -1,5 +1,5 @@
 import codeSidebar from './sidebar/code';
-import feReactSidebar from './sidebar/fe/react';
+import feReactSidebar from './sidebar/fe/react-stack';
 import feLibrarySidebar from './sidebar/fe/library';
 import feSecuritySidebar from './sidebar/fe/security';
 import feOptimizationSidebar from './sidebar/fe/optimization';

@@ -6,7 +6,7 @@
 splice(start[, deleteCount, elem1, ..., elemN]);
 ```
 
-## 数组拍平
+## 拍平
 
 ```js
 flat(depth);
@@ -55,4 +55,14 @@ const flatArray = (array, depth = 1) => {
   }
   return res;
 };
+```
+
+## 切片
+
+返回 `[start, end)` 范围内元素组成的新数组，不会修改旧数组，支持负索引。
+
+`start` 默认是 0，`end` 默认是数组末尾。
+
+```js
+arr.slice([start], [end]);
 ```
