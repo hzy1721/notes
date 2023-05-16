@@ -8,6 +8,7 @@ import feBasicSidebar from './sidebar/fe/basic';
 import feV8Sidebar from './sidebar/fe/v8';
 import feBrowserSidebar from './sidebar/fe/browser';
 import feNodeSidebar from './sidebar/fe/node';
+import feInterviewSidebar from './sidebar/fe/interview';
 import basicSidebar from './sidebar/basic';
 
 export default {
@@ -28,6 +29,7 @@ export default {
           { text: 'V8', link: '/fe/v8/' },
           { text: '浏览器', link: '/fe/browser/' },
           { text: 'Node', link: '/fe/node/' },
+          { text: '面试', link: '/fe/interview/' },
         ],
       },
       { text: '基础', link: '/basic/' },
@@ -43,6 +45,7 @@ export default {
       '/fe/v8/': feV8Sidebar,
       '/fe/browser/': feBrowserSidebar,
       '/fe/node/': feNodeSidebar,
+      '/fe/interview/': feInterviewSidebar,
       '/basic/': basicSidebar,
     },
     socialLinks: [
