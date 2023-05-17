@@ -27,6 +27,7 @@ JSX 是类似 HTML 的标记语言，区别是：
 列表渲染：与 JS 语法相同
 
 - 必须为列表元素提供唯一的 `key`，用于 React 优化渲染
+  - `key` 也可以用于组件的强制重新渲染
 
 ```jsx
 arr.map(record => <li key={record.id}>{record.content}</li>);
