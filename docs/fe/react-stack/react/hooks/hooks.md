@@ -10,35 +10,42 @@ React 内置一些常用 hook，包括 `useState`、`useEffect`、`useContext` �
 
 ## 限制
 
-hooks 有 2 条限制：
-
 - 只在**最顶层**使用 hook，确保每次渲染以相同的顺序调用 hook
   - 函数组件或自定义 hook 的顶层作用域
   - 不能在条件判断、循环体、嵌套函数内调用 hook
-- 只在**函数组件**和**自定义 hook** 中调用 Hook，不能在普通函数中使用 hook
+- 只在**函数组件**和**自定义 hook** 中调用 Hook，不在普通函数中使用 hook
   - 确保组件的状态逻辑清晰可读
+
+## 内置 hook
+
+- 状态 hook
+  - `useState`：单个状态
+  - `useReducer`：复杂状态的管理，比如对象、数组
+- context hook
+  - `useContext`：读取 context 数据
+- ref hook
+  - `useRef`：记忆数据，修改不会触发重新渲染，通常用于引用 DOM 节点
+  - `useImperativeHandle`：自定义组件暴露的 ref
+- effect hook
+  - `useEffect`：与外界系统同步
+  - `useLayoutEffect`：浏览器重绘之前触发，可用于测量布局
+  - `useInsertionEffect`：React 更新 DOM 之前触发，可用于插入动态 CSS
+- 性能 hook
+  - `useMemo`：缓存昂贵计算
+  - `useCallback`：缓存函数定义
+  - `useTransition`：标记状态更新可以被中断
+  - `useDeferredValue`：推迟耗时的状态更新，优先更新其他状态
+- 其他 hook
+  - `useDebugValue`：自定义 hook 在 React DevTools 里的标签
+  - `useId`：给组件分配一个唯一 ID，通常用于 a11y
+  - `useSyncExternalStore`：订阅外部数据源
 
 ## 自定义 hook
 
-可以通过自定义 hook 封装属于同一功能的状态和逻辑，实现组件代码的分割和复用，避免分散在多个位置影响可读性。
+通过组合其他 hook 编写面向更具体功能的 hook，实现状态、逻辑的封装和复用。
 
-```js
-function useFriendStatus(friendID) {
-  const [isOnline, setIsOnline] = useState(null);
-
-  useEffect(() => {
-    function handleStatusChange(status) {
-      setIsOnline(status.isOnline);
-    }
-    ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);
-    return () => {
-      ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);
-    };
-  });
-
-  return isOnline;
-}
-```
-
-- `useFriendStatus` 传入好友 ID，内部完成在线状态的声明和订阅，只对外暴露实时更新的在线状态
-- 外部组件可以使用这个自定义 hook 监听指定好友的在线状态，并确保在线状态变化时，返回值能够及时更新，避免在多个需要类似功能的组件中写重复的代码
+- 与内置 hook 相同，自定义 hook 的名称必须以 `use` 开头，遵循驼峰命名法
+- 与组件包括 state、effect、event handler、JSX 不同，自定义 hook 只包括 state、effect
+- 一个 hook 的返回值可能成为另一个 hook 的参数
+- 每次编写 effect 时，可以考虑是否封装为一个自定义 hook
+- 未来 React 可能会提供新的 API 代替部分 effect，到时候就只需要修改自定义 hook，而不是所有用到该 effect 的组件

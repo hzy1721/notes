@@ -2,6 +2,10 @@
 
 ![](./assets/react-lifecycle-hooks.png)
 
+组件生命周期：mount -> update -> unmount
+
+mount/update 具体流程：
+
 1. **trigger**
    - 应用启动触发第一次渲染
    - 组件状态变化触发重新渲染

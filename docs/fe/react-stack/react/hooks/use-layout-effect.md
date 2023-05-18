@@ -1,9 +1,18 @@
 # useLayoutEffect
 
-组件完成 DOM 元素创建、绘制到屏幕之前执行的副作用函数。
-
-此时 ref 已经设置好，通常用于获取 DOM 元素的位置和宽高，然后正确绘制**弹出层**的位置。
+浏览器重绘之前触发的 effect，通常用于测量布局。
 
 ```js
-useLayoutEffect(setup, dependencies?);
+useLayoutEffect(setup, dependencies?)
 ```
+
+参数/返回值：同 `useEffect`
+
+警告：
+
+- `useLayoutEffect` 会阻塞浏览器重绘，影响性能
+
+用途：
+
+- 弹出层位置正确绘制
+  - 浏览器重绘前拿到 ref，获取位置和宽高，计算弹出层位置，设置给 CSS 属性

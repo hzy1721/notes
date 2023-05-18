@@ -1,12 +1,12 @@
 # useId
 
-生成无障碍属性的 id。
+生成唯一的 ID，通常用于无障碍属性。
 
 ```js
 const id = useId();
 ```
 
-例子：
+比如：
 
 ```js
 import { useId } from 'react';

@@ -69,6 +69,7 @@ export default [
       { text: '原型', link: '/fe/basic/js/prototype' },
       { text: '继承', link: '/fe/basic/js/inheritance' },
       { text: 'class', link: '/fe/basic/js/class' },
+      { text: 'Object 方法', link: '/fe/basic/js/object-method' },
     ],
     collapsible: true,
     collapsed: true,

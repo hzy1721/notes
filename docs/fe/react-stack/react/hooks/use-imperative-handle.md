@@ -6,29 +6,17 @@
 useImperativeHandle(ref, createHandle, dependencies?)
 ```
 
-比如不想暴露整个 `input` 元素，只想暴露两个方法。
+参数：
 
-```js
-import { forwardRef, useRef, useImperativeHandle } from 'react';
+- `ref`：通过 `forwardRef` 拿到的 ref
+- `createHandle`：返回暴露的 ref 值
+- `dependencies`：`createHandle` 用到的所有响应式数据
 
-const MyInput = forwardRef(function MyInput(props, ref) {
-  const inputRef = useRef(null);
+返回值：
 
-  useImperativeHandle(
-    ref,
-    () => {
-      return {
-        focus() {
-          inputRef.current.focus();
-        },
-        scrollIntoView() {
-          inputRef.current.scrollIntoView();
-        },
-      };
-    },
-    []
-  );
+- `undefined`
 
-  return <input {...props} ref={inputRef} />;
-});
-```
+用途：
+
+- 不想暴露整个 DOM 节点，而是节点的部分方法
+- 暴露自定义方法
