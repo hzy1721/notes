@@ -181,6 +181,12 @@ export default [
     collapsed: true,
   },
   {
+    text: 'SSR',
+    items: [],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '框架',
     items: [{ text: 'Next', link: '/fe/react-stack/framework/next' }],
     collapsible: true,

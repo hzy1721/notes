@@ -9,6 +9,7 @@ import feV8Sidebar from './sidebar/fe/v8';
 import feBrowserSidebar from './sidebar/fe/browser';
 import feNodeSidebar from './sidebar/fe/node';
 import feInterviewSidebar from './sidebar/fe/interview';
+import feMobileSidebar from './sidebar/fe/mobile';
 import basicSidebar from './sidebar/basic';
 
 export default {
@@ -18,21 +19,33 @@ export default {
     nav: [
       { text: '算法', link: '/code/' },
       {
-        text: '前端',
+        text: '前端应用',
         items: [
-          { text: 'React', link: '/fe/react-stack/' },
-          { text: '各种库', link: '/fe/library/' },
+          { text: 'React 基础', link: '/fe/react-stack/' },
+          { text: 'React 框架', link: '/fe/library/' },
+          { text: '微前端', link: '/fe/mfe/' },
+          { text: '移动端', link: '/fe/mobile/' },
+          { text: '服务端', link: '/fe/server/' },
+        ],
+      },
+      {
+        text: '前端优化',
+        items: [
           { text: '安全', link: '/fe/security/' },
           { text: '优化', link: '/fe/optimization/' },
-          { text: '服务端', link: '/fe/server/' },
-          { text: '基础', link: '/fe/basic/' },
+        ],
+      },
+      {
+        text: '前端基础',
+        items: [
+          { text: '语言', link: '/fe/basic/' },
           { text: 'V8', link: '/fe/v8/' },
           { text: '浏览器', link: '/fe/browser/' },
           { text: 'Node', link: '/fe/node/' },
           { text: '面试', link: '/fe/interview/' },
         ],
       },
-      { text: '基础', link: '/basic/' },
+      { text: '计算机基础', link: '/basic/' },
     ],
     sidebar: {
       '/code/': codeSidebar,
@@ -46,6 +59,7 @@ export default {
       '/fe/browser/': feBrowserSidebar,
       '/fe/node/': feNodeSidebar,
       '/fe/interview/': feInterviewSidebar,
+      '/fe/mobile/': feMobileSidebar,
       '/basic/': basicSidebar,
     },
     socialLinks: [

@@ -1,40 +1,37 @@
 # 快速排序
 
-## 数组中的第K个最大元素
+## 数组中的第 K 个最大元素
 
 ```ts
+function partition(nums: number[], lo: number, hi: number): number {
+  const pivot = nums[lo];
+  while (lo < hi) {
+    while (lo < hi && pivot >= nums[hi]) {
+      --hi;
+    }
+    nums[lo] = nums[hi];
+    while (lo < hi && nums[lo] >= pivot) {
+      ++lo;
+    }
+    nums[hi] = nums[lo];
+  }
+  nums[lo] = pivot;
+  return lo;
+}
+
+function topK(nums: number[], lo: number, hi: number, k: number): number {
+  const mi = partition(nums, lo, hi);
+  if (k - 1 === mi) {
+    return nums[mi];
+  } else if (k - 1 < mi) {
+    return topK(nums, lo, mi - 1, k);
+  } else {
+    return topK(nums, mi + 1, hi, k);
+  }
+}
+
 function findKthLargest(nums: number[], k: number): number {
-  const partition = (lo: number, hi: number) => {
-    const randIdx = Math.floor(Math.random() * (hi - lo + 1)) + lo;
-    [nums[lo], nums[randIdx]] = [nums[randIdx], nums[lo]];
-    const pivot = nums[lo];
-    while (lo < hi) {
-      while (lo < hi && pivot >= nums[hi]) {
-        --hi;
-      }
-      nums[lo] = nums[hi];
-      while (lo < hi && nums[lo] >= pivot) {
-        ++lo;
-      }
-      nums[hi] = nums[lo];
-    }
-    nums[lo] = pivot;
-    return lo;
-  };
-  const topK = (lo: number, hi: number, k: number): number => {
-    if (lo === hi) {
-      return nums[lo];
-    }
-    const mi = partition(lo, hi);
-    if (mi === k - 1) {
-      return nums[mi];
-    } else if (k - 1 < mi) {
-      return topK(lo, mi - 1, k);
-    } else {
-      return topK(mi + 1, hi, k);
-    }
-  };
-  return topK(0, nums.length - 1, k);
+  return topK(nums, 0, nums.length - 1, k);
 }
 ```
 
