@@ -1,1 +1,0 @@
-import{_ as e,c as o,o as c,d}from"./app.eb4dc0a0.js";const f=JSON.parse('{"title":"值比较","description":"","frontmatter":{},"headers":[],"relativePath":"fe/basic/js/comparison.md","lastUpdated":1680593177000}'),t={name:"fe/basic/js/comparison.md"},a=d("",6),s=[a];function n(i,r,_,l,p,u){return c(),o("div",null,s)}const h=e(t,[["render",n]]);export{f as __pageData,h as default};
