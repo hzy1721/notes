@@ -29,15 +29,16 @@ function productExceptSelf(nums: number[]): number[] {
 
 ```ts
 function subarraySum(nums: number[], k: number): number {
-  const sumCount = new Map<number, number>([[0, 1]]);
-  let sum = 0;
   let res = 0;
+  const map = new Map<number, number>();
+  map.set(0, 1);
+  let sum = 0;
   for (const num of nums) {
     sum += num;
-    if (sumCount.has(sum - k)) {
-      res += sumCount.get(sum - k);
+    if (map.has(sum - k)) {
+      res += map.get(sum - k);
     }
-    sumCount.set(sum, (sumCount.get(sum) ?? 0) + 1);
+    map.set(sum, (map.get(sum) ?? 0) + 1);
   }
   return res;
 }

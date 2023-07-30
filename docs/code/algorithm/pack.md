@@ -4,17 +4,18 @@
 
 ```ts
 function canPartition(nums: number[]): boolean {
-  const sum = nums.reduce((sum, num) => sum + num, 0);
-  if (sum % 2 === 1) {
+  const sum = nums.reduce((res, num) => res + num, 0);
+  if (sum % 2 == 1) {
     return false;
   }
-  const n = nums.length;
   const m = sum / 2;
   const dp = new Array<boolean>(m + 1).fill(false);
   dp[0] = true;
-  for (let i = 0; i < n; ++i) {
-    for (let j = m; j >= nums[i]; --j) {
-      dp[j] ||= dp[j - nums[i]];
+  for (const num of nums) {
+    for (let j = m; j >= num; --j) {
+      if (dp[j - num]) {
+        dp[j] = true;
+      }
     }
   }
   return dp[m];
@@ -25,16 +26,16 @@ function canPartition(nums: number[]): boolean {
 
 ```ts
 function findTargetSumWays(nums: number[], target: number): number {
-  const sum = nums.reduce((sum, num) => sum + num, 0);
-  if (sum - target < 0 || (sum - target) % 2 !== 0) {
+  const sum = nums.reduce((res, num) => res + num, 0);
+  if (sum < target || (sum - target) % 2 === 1) {
     return 0;
   }
   const neg = (sum - target) / 2;
-  const dp = new Array(neg + 1).fill(0);
+  const dp = new Array<number>(neg + 1).fill(0);
   dp[0] = 1;
   for (const num of nums) {
-    for (let i = neg; i >= num; --i) {
-      dp[i] += dp[i - num];
+    for (let j = neg; j >= num; --j) {
+      dp[j] += dp[j - num];
     }
   }
   return dp[neg];

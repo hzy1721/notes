@@ -113,14 +113,16 @@ function maxProfit(k: number, prices: number[]): number {
 
 ```ts
 function maxProfit(prices: number[]): number {
-  let buy = -Infinity;
+  let buy = -prices[0];
   let sell = 0;
   let hot = 0;
-  for (const price of prices) {
-    const buy2 = Math.max(buy, hot - price);
-    const sell2 = buy + price;
-    const hot2 = Math.max(sell, hot);
-    [buy, sell, hot] = [buy2, sell2, hot2];
+  const n = prices.length;
+  for (let i = 1; i < n; ++i) {
+    [buy, sell, hot] = [
+      Math.max(buy, hot - prices[i]),
+      buy + prices[i],
+      Math.max(sell, hot),
+    ];
   }
   return Math.max(sell, hot);
 }

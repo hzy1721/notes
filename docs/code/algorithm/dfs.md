@@ -229,52 +229,59 @@ function numIslands(grid: string[][]): number {
 ## 除法求值
 
 ```ts
+function dfs(
+  graph: Map<string, [string, number][]>,
+  vis: Map<string, boolean>,
+  curr: string,
+  target: string
+): number {
+  if (!graph.has(curr)) {
+    return -1.0;
+  }
+  if (curr === target) {
+    return 1.0;
+  }
+  if (vis.get(curr)) {
+    return -1.0;
+  }
+  vis.set(curr, true);
+  for (const [node, val] of graph.get(curr)) {
+    const res = dfs(graph, vis, node, target);
+    if (res !== -1.0) {
+      vis.set(curr, false);
+      return val * res;
+    }
+  }
+  vis.set(curr, false);
+  return -1.0;
+}
+
 function calcEquation(
   equations: string[][],
   values: number[],
   queries: string[][]
 ): number[] {
-  const map = new Map<string, [string, number][]>();
+  const graph = new Map<string, [string, number][]>();
   const vis = new Map<string, boolean>();
   const n = equations.length;
   for (let i = 0; i < n; ++i) {
     const [a, b] = equations[i];
     const val = values[i];
-    if (!map.has(a)) {
-      map.set(a, []);
+    if (!graph.has(a)) {
+      graph.set(a, []);
     }
-    map.get(a).push([b, val]);
+    graph.get(a).push([b, val]);
+    if (!graph.has(b)) {
+      graph.set(b, []);
+    }
+    graph.get(b).push([a, 1 / val]);
     vis.set(a, false);
-    if (!map.has(b)) {
-      map.set(b, []);
-    }
-    map.get(b).push([a, 1 / val]);
     vis.set(b, false);
   }
-  const dfs = (u: string, target: string): number => {
-    if (!map.has(u)) {
-      return -1.0;
-    }
-    if (u === target) {
-      return 1.0;
-    }
-    vis.set(u, true);
-    for (const [v, val] of map.get(u)) {
-      if (vis.get(v)) {
-        continue;
-      }
-      const res = dfs(v, target);
-      if (res !== -1.0) {
-        vis.set(u, false);
-        return val * res;
-      }
-    }
-    vis.set(u, false);
-    return -1.0;
-  };
   const res: number[] = [];
   for (const [c, d] of queries) {
-    res.push(dfs(c, d));
+    const quotient = dfs(graph, vis, c, d);
+    res.push(quotient);
   }
   return res;
 }

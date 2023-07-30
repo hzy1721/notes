@@ -41,18 +41,43 @@ function isValidBST(root: TreeNode | null): boolean {
 
 ## 把二叉搜索树转换为累加树
 
+- 递归
+
 ```ts
 function convertBST(root: TreeNode | null): TreeNode | null {
   let sum = 0;
-  const inorderReverse = (root: TreeNode | null) => {
+
+  const reverseInorder = (root: TreeNode | null): void => {
     if (root) {
-      inorderReverse(root.right);
+      reverseInorder(root.right);
       sum += root.val;
       root.val = sum;
-      inorderReverse(root.left);
+      reverseInorder(root.left);
     }
   };
-  inorderReverse(root);
+
+  reverseInorder(root);
+  return root;
+}
+```
+
+- 迭代
+
+```ts
+function convertBST(root: TreeNode | null): TreeNode | null {
+  const stack: TreeNode[] = [];
+  let curr = root;
+  let sum = 0;
+  while (curr || stack.length) {
+    while (curr) {
+      stack.push(curr);
+      curr = curr.right;
+    }
+    curr = stack.pop();
+    sum += curr.val;
+    curr.val = sum;
+    curr = curr.left;
+  }
   return root;
 }
 ```

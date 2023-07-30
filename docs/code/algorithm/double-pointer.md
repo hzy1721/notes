@@ -84,8 +84,8 @@ function searchMatrix(matrix: number[][], target: number): boolean {
 ```ts
 function findUnsortedSubarray(nums: number[]): number {
   const n = nums.length;
-  let left = n;
   let minVal = Infinity;
+  let left = n;
   for (let i = n - 1; i >= 0; --i) {
     if (nums[i] > minVal) {
       left = i;
@@ -95,8 +95,8 @@ function findUnsortedSubarray(nums: number[]): number {
   if (left === n) {
     return 0;
   }
-  let right = -1;
   let maxVal = -Infinity;
+  let right = -1;
   for (let i = 0; i < n; ++i) {
     if (nums[i] < maxVal) {
       right = i;

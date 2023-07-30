@@ -4,28 +4,26 @@
 
 ```ts
 function pathSum(root: TreeNode | null, targetSum: number): number {
-  const prefixSumMap = new Map<number, number>([[0, 1]]);
-  let sum = 0;
   let res = 0;
-  const dfs = (root: TreeNode | null) => {
+  let sum = 0;
+  const map = new Map<number, number>();
+  map.set(0, 1);
+
+  const dfs = (root: TreeNode | null): void => {
     if (!root) {
       return;
     }
     sum += root.val;
-    if (prefixSumMap.has(sum - targetSum)) {
-      res += prefixSumMap.get(sum - targetSum);
+    if (map.has(sum - targetSum)) {
+      res += map.get(sum - targetSum);
     }
-    const prevCount = prefixSumMap.get(sum) ?? 0;
-    prefixSumMap.set(sum, prevCount + 1);
+    map.set(sum, (map.get(sum) ?? 0) + 1);
     dfs(root.left);
     dfs(root.right);
-    if (prevCount === 0) {
-      prefixSumMap.delete(sum);
-    } else {
-      prefixSumMap.set(sum, prevCount);
-    }
+    map.set(sum, map.get(sum) - 1);
     sum -= root.val;
   };
+
   dfs(root);
   return res;
 }

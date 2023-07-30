@@ -31,7 +31,7 @@ function merge(intervals: number[][]): number[][] {
 
 ```ts
 function reconstructQueue(people: number[][]): number[][] {
-  people.sort((a, b) => (a[0] !== b[0] ? a[0] - b[0] : b[1] - a[1]));
+  people.sort(([h1, k1], [h2, k2]) => (h1 === h2 ? k2 - k1 : h1 - h2));
   const n = people.length;
   const res: number[][] = new Array(n);
   for (const [h, k] of people) {
