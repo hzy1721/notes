@@ -4,20 +4,16 @@
 
 ```ts
 function dailyTemperatures(temperatures: number[]): number[] {
-  const stack: [number, number][] = [];
   const n = temperatures.length;
-  const res: number[] = new Array(n);
+  let res = new Array(n).fill(0);
+  const stack: [number, number][] = [];
   for (let i = 0; i < n; ++i) {
-    const temp = temperatures[i];
-    while (stack.length && stack[stack.length - 1][0] < temp) {
-      const [_, prev] = stack.pop();
-      res[prev] = i - prev;
+    const temperature = temperatures[i];
+    while (stack.length && stack[stack.length - 1][0] < temperature) {
+      const [_, prevIndex] = stack.pop();
+      res[prevIndex] = i - prevIndex;
     }
-    stack.push([temp, i]);
-  }
-  while (stack.length) {
-    const [_, prev] = stack.pop();
-    res[prev] = 0;
+    stack.push([temperature, i]);
   }
   return res;
 }

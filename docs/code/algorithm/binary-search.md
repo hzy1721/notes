@@ -58,22 +58,16 @@ function searchRange(nums: number[], target: number): number[] {
 ## 寻找两个正序数组的中位数
 
 ```ts
-const findKthMinElement = (
+function findKthMinElement(
   nums1: number[],
   nums2: number[],
   k: number
-): number => {
+): number {
   const m = nums1.length;
   const n = nums2.length;
   let i = 0;
   let j = 0;
-  while (true) {
-    if (i === m) {
-      return nums2[j + k - 1];
-    }
-    if (j === n) {
-      return nums1[i + k - 1];
-    }
+  while (i < m && j < n) {
     if (k === 1) {
       return Math.min(nums1[i], nums2[j]);
     }
@@ -87,18 +81,19 @@ const findKthMinElement = (
       j = nj + 1;
     }
   }
-};
+  return i === m ? nums2[j + k - 1] : nums1[i + k - 1];
+}
 
 function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
-  const len = nums1.length + nums2.length;
-  let res = 0;
+  const m = nums1.length;
+  const n = nums2.length;
+  const len = m + n;
   if (len % 2 === 1) {
-    res = findKthMinElement(nums1, nums2, Math.floor(len / 2) + 1);
+    return findKthMinElement(nums1, nums2, Math.floor(len / 2) + 1);
   } else {
     const left = findKthMinElement(nums1, nums2, len / 2);
     const right = findKthMinElement(nums1, nums2, len / 2 + 1);
-    res = (left + right) / 2;
+    return (left + right) / 2;
   }
-  return res;
 }
 ```
