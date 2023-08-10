@@ -1,6 +1,6 @@
 # CSRF
 
-CSRF (Cross-Site Request Forgery，跨站请求伪造) 是指诱导用户发送带有 Cookie 的伪造请求，完成用户授权操作。
+跨站请求伪造 (Cross-Site Request Forgery，CSRF) 是指诱导用户访问恶意页面，从而自动发送带有 Cookie 的请求到敏感地址（比如银行卡支付地址），完成用户授权操作。
 
 CSRF 有以下类型：
 
@@ -15,12 +15,12 @@ CSRF 有以下类型：
 
 ## 防御措施
 
-- 减少在 Cookie 中存储重要信息，使用 `SameSite` Cookie
+- 减少在 Cookie 中存储重要信息，并使用 `SameSite` Cookie
+  - `Set-Cookie: SameSite=Strict`
 - 限制请求来源
   - 校验 `Origin` 和 `Referer`
   - 先访问过页面，才接受请求
   - 使用与用户绑定的 token，并设置过期时间
-- 不要在一个接口内既返回数据又修改数据
-  - 不要使用 `GET` 请求修改数据
 - `X-Frame-Options: DENY/SAMEORIGIN`
+- 不要在一个接口内既返回数据又修改数据，比如不要使用 `GET` 请求修改数据
 - Node 中间件

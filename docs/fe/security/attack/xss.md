@@ -1,8 +1,8 @@
 # XSS
 
-XSS (Cross-Site Scripting，跨站脚本) 是指在页面插入并执行恶意脚本。
+跨站脚本 (Cross-Site Scripting，XSS) 是指对用户提交内容不过滤直接转为 DOM，导致在正常页面插入恶意 `<script>`。
 
-原因主要是对用户提交的内容不过滤，直接存入数据库或转化为 DOM。
+通常由于对用户提交的内容不过滤，直接转化为页面 DOM。
 
 XSS 可以分为 4 类：
 
@@ -10,6 +10,21 @@ XSS 可以分为 4 类：
 - Reflected (反射型)
 - DOM-based (基于 DOM)
 - Mutation-based (基于浏览器差异)
+
+## 防御措施
+
+- 过滤用户上传的内容
+  - 把用户内容转为 DOM
+  - 用户上传 svg
+  - 用户自定义跳转链接
+  - 用户自定义 CSS 样式
+- 重要 Cookie 设置为 `HttpOnly`，禁止 JS 访问
+  - `Set-Cookie: HttpOnly`
+- 已有工具
+  - 主流框架默认防御 XSS，比如 React、Vue
+  - `google-closure-library`
+  - Node 可以用 `DOMPurify`
+- CSP (Content Security Policy)
 
 ## Stored
 
@@ -98,17 +113,3 @@ document.body.append(div);
 ```
 
 ![截屏2022-07-31 18.30.19.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d391c2b925cc4e02b7dc1895fcf2a568~tplv-k3u1fbpfcp-watermark.image?)
-
-## 防御措施
-
-- 做以下操作前，过滤用户内容
-  - 把用户内容转为 DOM
-  - 用户上传 svg
-  - 用户自定义跳转链接
-  - 用户自定义 CSS 样式
-- 重要 Cookie 设置为 `HttpOnly`，禁止 JS 访问
-- 使用现成工具
-  - 主流框架默认防御 XSS，比如 React、Vue
-  - `google-closure-library`
-  - Node 可以用 `DOMPurify`
-- CSP (Content Security Policy)

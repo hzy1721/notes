@@ -1,8 +1,10 @@
-# Injection (注入)
+# Injection
+
+注入 (Injection) 是指对用户提交的内容不过滤，直接用于 SQL 语句或命令行语句，造成恶意命令被执行。
 
 ## SQL 注入
 
-SQL 注入指的是直接拼接 SQL 语句和用户提供的参数，导致用户参数中的恶意 SQL 片段得到执行。
+SQL 注入指的是直接使用用户提供的参数拼接 SQL 语句，导致用户参数中的恶意 SQL 片段得到执行。
 
 ```js
 public async render(ctx) {
@@ -29,13 +31,14 @@ WHERE username = user1; DROP TABLE table;
 - 通过 `DROP` 语句删除表或数据库
 - 表数据被窃取或修改
 
-防御措施：
+### 防御措施
 
-- `PREPARE`
+- 对用户提交内容进行转义 (escape)
+- 使用 `PREPARE` 语句，允许包含未转义字符，并且一次编译、多次运行
 
 ## CLI 注入
 
-CLI 注入指的是直接拼接 CLI 命令和用户提供的参数，导致用户参数中的恶意命令得到执行。
+CLI 注入指的是直接使用用户提供的参数拼接 CLI 命令，导致用户参数中的恶意命令得到执行。
 
 ```js
 public async convertVideo(ctx) {
@@ -63,9 +66,7 @@ convert-cli test.mp4 -o option1 ; rm -rf /
   - `~/.ssh`
   - `/etc/nginx/nginx.conf`
 
-防御措施：
+### 防御措施
 
-- 最小权限原则
-  - 不要用 `sudo` 或 `root` 执行命令
-- 白名单+过滤
-  - `rm` 肯定不允许
+- 最小权限原则：不使用 `sudo` 或 `root` 执行命令
+- 命令白名单：禁止 `rm` 等敏感命令的执行

@@ -2,10 +2,10 @@ export default [
   {
     text: '攻击手段',
     items: [
-      { text: 'XSS', link: '/fe/security/attack/xss' },
-      { text: 'CSRF', link: '/fe/security/attack/csrf' },
-      { text: 'SSRF', link: '/fe/security/attack/ssrf' },
-      { text: 'DoS', link: '/fe/security/attack/dos' },
+      { text: '跨站脚本', link: '/fe/security/attack/xss' },
+      { text: '跨站请求伪造', link: '/fe/security/attack/csrf' },
+      { text: '服务端请求伪造', link: '/fe/security/attack/ssrf' },
+      { text: '拒绝服务', link: '/fe/security/attack/dos' },
       { text: '注入', link: '/fe/security/attack/injection' },
       {
         text: '中间人',
