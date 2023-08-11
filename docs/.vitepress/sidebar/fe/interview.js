@@ -1,5 +1,16 @@
 export default [
   {
+    text: '笔试题',
+    items: [
+      {
+        text: '腾讯 2021 秋招',
+        link: '/fe/interview/exam/tencent-2021-fall',
+      },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '前端手写题',
     items: [
       { text: '函数', link: '/fe/interview/code/function' },
