@@ -3,6 +3,10 @@ export default [
     text: '性能问题',
     items: [
       { text: '内存泄漏', link: '/fe/optimization/issue/memory-leak' },
+      {
+        text: '回流与重绘',
+        link: '/fe/optimization/issue/reflow-repaint',
+      },
     ],
     collapsible: true,
     collapsed: true,
