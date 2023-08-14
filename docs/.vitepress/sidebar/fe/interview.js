@@ -6,6 +6,10 @@ export default [
         text: '腾讯 2021 秋招',
         link: '/fe/interview/exam/tencent-2021-fall',
       },
+      {
+        text: '美团 2021 校招 (10)',
+        link: '/fe/interview/exam/meituan-2021-10',
+      },
     ],
     collapsible: true,
     collapsed: true,
