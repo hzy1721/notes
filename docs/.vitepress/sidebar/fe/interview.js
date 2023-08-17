@@ -17,6 +17,10 @@ export default [
   {
     text: '前端手写题',
     items: [
+      {
+        text: '防抖节流',
+        link: '/fe/optimization/interaction/frequent-event',
+      },
       { text: '函数', link: '/fe/interview/code/function' },
       { text: '数组', link: '/fe/interview/code/array' },
       { text: 'URL', link: '/fe/interview/code/url' },

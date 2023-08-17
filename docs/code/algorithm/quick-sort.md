@@ -38,10 +38,14 @@ function findKthLargest(nums: number[], k: number): number {
 ## 前 K 个高频元素
 
 ```ts
-const partition = (arr: [number, number][], lo: number, hi: number) => {
+function partition(
+  arr: [number, number][],
+  lo: number,
+  hi: number
+): number {
   const pivot = arr[lo];
   while (lo < hi) {
-    while (lo < hi && arr[hi][1] <= pivot[1]) {
+    while (lo < hi && pivot[1] >= arr[hi][1]) {
       --hi;
     }
     arr[lo] = arr[hi];
@@ -52,34 +56,30 @@ const partition = (arr: [number, number][], lo: number, hi: number) => {
   }
   arr[lo] = pivot;
   return lo;
-};
+}
 
-const topK = (
+function topK(
   arr: [number, number][],
   lo: number,
   hi: number,
   k: number
-) => {
-  if (lo === hi) {
-    return;
-  }
+): void {
   const mi = partition(arr, lo, hi);
-  if (mi < k - 1) {
-    topK(arr, mi + 1, hi, k);
-  } else if (mi > k - 1) {
+  if (k - 1 === mi) {
+    return;
+  } else if (k - 1 < mi) {
     topK(arr, lo, mi - 1, k);
+  } else {
+    topK(arr, mi + 1, hi, k);
   }
-};
+}
 
 function topKFrequent(nums: number[], k: number): number[] {
   const map = new Map<number, number>();
   for (const num of nums) {
     map.set(num, (map.get(num) ?? 0) + 1);
   }
-  const arr: [number, number][] = [];
-  for (const kv of map) {
-    arr.push(kv);
-  }
+  const arr = Array.from(map);
   topK(arr, 0, arr.length - 1, k);
   return arr.slice(0, k).map(item => item[0]);
 }

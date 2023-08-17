@@ -36,3 +36,19 @@ function longestConsecutive(nums: number[]): number {
   return res;
 }
 ```
+
+## 前 K 个高频单词
+
+```ts
+function topKFrequent(words: string[], k: number): string[] {
+  const map = new Map<string, number>();
+  for (const word of words) {
+    map.set(word, (map.get(word) ?? 0) + 1);
+  }
+  const arr = Array.from(map);
+  arr.sort((a, b) =>
+    a[1] === b[1] ? a[0].localeCompare(b[0]) : b[1] - a[1]
+  );
+  return arr.slice(0, k).map(item => item[0]);
+}
+```

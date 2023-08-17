@@ -102,23 +102,26 @@ function combinationSum(candidates: number[], target: number): number[][] {
 ```ts
 function permute(nums: number[]): number[][] {
   const res: number[][] = [];
-  const seq: number[] = [];
   const n = nums.length;
   const vis = new Array<boolean>(n).fill(false);
-  function dfs() {
-    if (seq.length === n) {
-      res.push(seq.slice());
+  const stack: number[] = [];
+
+  const dfs = () => {
+    if (stack.length === n) {
+      res.push(stack.slice());
       return;
     }
     for (let i = 0; i < n; ++i) {
-      if (vis[i]) continue;
-      vis[i] = true;
-      seq.push(nums[i]);
-      dfs();
-      seq.pop();
-      vis[i] = false;
+      if (!vis[i]) {
+        stack.push(nums[i]);
+        vis[i] = true;
+        dfs();
+        vis[i] = false;
+        stack.pop();
+      }
     }
-  }
+  };
+
   dfs();
   return res;
 }

@@ -1,6 +1,6 @@
 # transition
 
-属性值改变的动画。有 4 个相关属性：
+CSS 属性改变时自动应用动画。
 
 - `transition-property`：应用动画的属性
   - 大部分 CSS 属性可以应用动画，但不是全部
@@ -16,7 +16,7 @@
 
 简写属性：`transition: property duration timing-function delay`
 
-## 三阶贝塞尔曲线 
+## 三阶贝塞尔曲线
 
 贝塞尔曲线的阶次等于控制点的个数减一，因此三阶贝塞尔曲线需要 4 个控制点。
 
@@ -41,7 +41,7 @@ CSS 提供几条内建的曲线：
 
 ![图片](https://s2.loli.net/2022/07/19/4SJNUPiTwGzAY5K.png)
 
-## 阶跃函数 
+## 阶跃函数
 
 把动画过程分成若干个等长的间隔，进行离散的变化。
 

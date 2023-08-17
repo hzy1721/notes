@@ -62,6 +62,7 @@ export default [
     items: [
       { text: 'cookie', link: '/fe/browser/cookie' },
       { text: 'localStorage', link: '/fe/browser/localstorage' },
+      { text: 'sessionStorage', link: '/fe/browser/sessionstorage' },
       { text: 'IndexedDB', link: '/fe/browser/indexeddb' },
     ],
     collapsible: true,

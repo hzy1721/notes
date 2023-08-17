@@ -19,30 +19,40 @@
   - 如果定时器为 `null`，说明定时器到期、间隔足够长，则执行一次
   - 每次调用都销毁、重新创建定时器
 
+```js
+function debounce(func, wait = 0) {
+  let timer = null;
+  return function (...args) {
+    if (!timer) {
+      func.apply(this, args);
+    } else {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      timer = null;
+    }, wait);
+  };
+}
+```
+
 - `trailing`
   - 定时器设置为：阈值时间后执行一次
   - 每次调用都销毁、重新创建定时器
   - 如果间隔足够长，则定时器到期、执行了一次；否则定时器还没到期就被重置
 
 ```js
-const debounce = (func, wait = 0, leading = false) => {
+function debounce(func, wait = 0) {
   let timer = null;
   return function (...args) {
-    clearTimeout(timer);
-    if (leading) {
-      if (!timer) {
-        func.apply(this, args);
-      }
-      timer = setTimeout(() => {
-        timer = null;
-      }, wait);
-    } else {
-      timer = setTimeout(() => {
-        func.apply(this, args);
-      }, wait);
+    if (timer) {
+      clearTimeout(timer);
     }
+    timer = setTimeout(() => {
+      func.apply(this, args);
+      timer = null;
+    }, wait);
   };
-};
+}
 ```
 
 应用：
@@ -57,29 +67,36 @@ const debounce = (func, wait = 0, leading = false) => {
   - 定时器设置为：阈值时间后定时器设为 `null`
   - 如果定时器为 `null`，说明定时器到期、间隔足够长，可以执行一次
 
+```js
+function throttle(func, wait = 0) {
+  let timer = null;
+  return function (...args) {
+    if (!timer) {
+      func.apply(this, args);
+      timer = setTimeout(() => {
+        timer = null;
+      }, wait);
+    }
+  };
+}
+```
+
 - `trailing`
   - 定时器设置为：阈值时间后执行一次并把定时器设为 `null`
   - 如果定时器为 `null`，说明距离上次创建定时器间隔足够长，可以再次创建
 
 ```js
-const throttle = (func, wait = 0, leading = false) => {
+function throttle(func, wait = 0) {
   let timer = null;
   return function (...args) {
     if (!timer) {
-      if (leading) {
+      timer = setTimeout(() => {
         func.apply(this, args);
-        timer = setTimeout(() => {
-          timer = null;
-        }, wait);
-      } else {
-        timer = setTimeout(() => {
-          func.apply(this, args);
-          timer = null;
-        }, wait);
-      }
+        timer = null;
+      }, wait);
     }
   };
-};
+}
 ```
 
 应用：

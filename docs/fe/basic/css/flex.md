@@ -84,7 +84,9 @@ flex 是一种新的排版上下文，语法更直观、使用更方便。
 
 ## flex
 
-`flex-grow flex-shrink flex-basis` 的简写，可以指定 1/2/3 个值。默认是 `0 1 auto`。
+`flex-grow flex-shrink flex-basis` 的简写，可以指定 1/2/3 个值。
+
+默认是 `0 1 auto`。
 
 - 1 个值
   - `initial` => `0 1 auto`

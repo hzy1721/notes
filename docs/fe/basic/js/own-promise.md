@@ -6,14 +6,14 @@ const FULFILLED = 'fulfilled';
 const REJECTED = 'rejected';
 
 class MyPromise {
+  status = PENDING;
+  value = undefined;
+  reason = undefined;
+
+  onFulfilledCallbacks = [];
+  onRejectedCallbacks = [];
+
   constructor(executor) {
-    this.status = PENDING;
-    this.value = undefined;
-    this.reason = undefined;
-
-    this.onFulfilledCallbacks = [];
-    this.onRejectedCallbacks = [];
-
     const resolve = value => {
       if (value instanceof MyPromise) {
         value.then(resolve, reject);
@@ -40,15 +40,14 @@ class MyPromise {
   }
 
   then(onFulfilled, onRejected) {
-    onFulfilled =
-      typeof onFulfilled === 'function' ? onFulfilled : value => value;
-    onRejected =
-      typeof onRejected === 'function'
-        ? onRejected
-        : reason => {
-            throw reason;
-          };
-    const promise = new MyPromise((resolve, reject) => {
+    if (typeof onFulfilled !== 'function') {
+      onFulfilled = value => avlue;
+    }
+    if (typeof onRejected !== 'function') {
+      onRejected = reason => throw reason;
+    }
+
+    return new MyPromise((resolve, reject) => {
       const dispatchCallback = (cb, arg) => {
         queueMicrotask(() => {
           try {
@@ -59,12 +58,7 @@ class MyPromise {
           }
         });
       };
-      if (this.status === FULFILLED) {
-        dispatchCallback(onFulfilled, this.value);
-      }
-      if (this.status === REJECTED) {
-        dispatchCallback(onRejected, this.reason);
-      }
+
       if (this.status === PENDING) {
         this.onFulfilledCallbacks.push(() => {
           dispatchCallback(onFulfilled, this.value);
@@ -73,8 +67,13 @@ class MyPromise {
           dispatchCallback(onRejected, this.reason);
         });
       }
+      if (this.status === FULFILLED) {
+        dispatchCallback(onFulfilled, this.value);
+      }
+      if (this.status === REJECTED) {
+        dispatchCallback(onRejected, this.reason);
+      }
     });
-    return promise;
   }
 
   catch(onRejected) {
@@ -110,14 +109,14 @@ module.exports = MyPromise;
 ## resolvePromise
 
 ```js
-const isObject = value => {
+function isObject(value) {
   return (
     (typeof value === 'object' && value !== null) ||
     typeof value === 'function'
   );
-};
+}
 
-const resolvePromise = (promise, res, resolve, reject) => {
+function resolvePromise(promise, res, resolve, reject) {
   if (promise === res) {
     throw new TypeError('Chaining cycle detected for promise #<Promise>');
   }
@@ -156,7 +155,7 @@ const resolvePromise = (promise, res, resolve, reject) => {
   } else {
     resolve(res);
   }
-};
+}
 ```
 
 ## 测试

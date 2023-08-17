@@ -1,5 +1,13 @@
 # Promise
 
+## Promise 实现 sleep
+
+```js
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+```
+
 ## promisify
 
 ```js
