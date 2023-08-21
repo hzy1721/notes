@@ -22,10 +22,6 @@ function getIndexOfEncodedString(s) {
   }
   return res;
 }
-
-const line = read_line();
-const res = getIndexOfEncodedString(line);
-console.log(res);
 ```
 
 ## 2. 游戏任务标记【签到】
@@ -46,11 +42,6 @@ function markGameTask(taskId1, taskId2) {
   }
   return taskId1 === taskId2 ? 1 : 0;
 }
-
-const line = read_line();
-const [taskId1, taskId2] = line.split(' ');
-const res = markGameTask(taskId1, taskId2);
-console.log(res);
 ```
 
 ## 3. 素数对【质数】
@@ -79,11 +70,6 @@ function getPrimePairCount(sum) {
   }
   return res;
 }
-
-const line = read_line();
-const sum = Number(line);
-const res = getPrimePairCount(sum);
-console.log(res);
 ```
 
 ## 4. geohash 编码【二分】
@@ -112,9 +98,4 @@ function geohashLatitude(lat) {
   }
   return res;
 }
-
-const line = read_line();
-const lat = Number(line);
-const res = geohashLatitude(lat);
-console.log(res);
 ```

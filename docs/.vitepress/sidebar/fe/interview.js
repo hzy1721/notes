@@ -10,6 +10,10 @@ export default [
         text: '美团 2021 校招 (10)',
         link: '/fe/interview/exam/meituan-2021-10',
       },
+      {
+        text: '京东 2019 春招前端',
+        link: '/fe/interview/exam/jd-2019-spring-fe',
+      },
     ],
     collapsible: true,
     collapsed: true,
@@ -19,7 +23,11 @@ export default [
     items: [
       {
         text: '防抖节流',
-        link: '/fe/optimization/interaction/frequent-event',
+        link: '/fe/interview/code/debounce-throttle',
+      },
+      {
+        text: '深拷贝',
+        link: '/fe/interview/code/clone-deep',
       },
       { text: '函数', link: '/fe/interview/code/function' },
       { text: '数组', link: '/fe/interview/code/array' },

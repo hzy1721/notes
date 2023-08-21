@@ -1,16 +1,20 @@
-# 拷贝
+# 深拷贝
 
 支持类型：
 
 - 7 种基本类型
-- 数组、普通对象、`Arguments`、`Date`、`RegExp`、`Map`、`Set`
+- 数组
+- 普通对象、`Arguments`
+- `Set`、`Map`
+- `Date`、`RegExp`
 
 不支持类型：
 
-- `Error`、`WeakMap`
 - 其他类型
 
 ## clone
+
+浅拷贝
 
 ```js
 function clone(value) {
@@ -19,6 +23,8 @@ function clone(value) {
 ```
 
 ## cloneDeep
+
+深拷贝
 
 ```js
 function cloneDeep(value) {
@@ -35,13 +41,19 @@ function baseClone(value, isDeep = false, object, map = new Map()) {
     return value;
   }
 
-  const isFunc = typeof value === 'function';
   const tag = getTag(value);
 
-  // 没必要拷贝函数，完全可以共享
-  // 函数和不可拷贝类型：单值返回空对象，作为对象属性返回原值
-  if (isFunc || !cloneable[tag]) {
+  // 不可拷贝类型：
+  // - 单值返回空对象，表示拷贝失败
+  // - 作为对象属性返回原值，表示不予拷贝
+  if (!cloneable[tag]) {
     return object ? value : {};
+  }
+
+  // 检查循环引用
+  const cached = map.get(value);
+  if (cached) {
+    return cached;
   }
 
   let result = undefined;
@@ -61,28 +73,15 @@ function baseClone(value, isDeep = false, object, map = new Map()) {
     if (!isDeep) {
       return Object.assign(result, value);
     }
-  } else {
+  } else if (tag === setTag) {
     // 初始化其他类型
     result = initCloneByTag(value, tag);
   }
 
-  // 检查循环引用
-  const cached = map.get(value);
-  if (cached) {
-    return cached;
-  }
+  // 保存已拷贝的值
   map.set(value, result);
 
   if (tag === dateTag || tag === regexpTag) {
-    return result;
-  }
-
-  // Map/Set 浅拷贝的 value 对象也会创建一份新的，也就是多拷贝一层
-  // Map 复制元素
-  if (tag === mapTag) {
-    value.forEach((subValue, key) => {
-      result.set(key, baseClone(subValue, isDeep, value, map));
-    });
     return result;
   }
 
@@ -90,6 +89,14 @@ function baseClone(value, isDeep = false, object, map = new Map()) {
   if (tag === setTag) {
     value.forEach(subValue => {
       result.add(baseClone(subValue, isDeep, value, map));
+    });
+    return result;
+  }
+
+  // Map 复制元素
+  if (tag === mapTag) {
+    value.forEach((subValue, key) => {
+      result.set(key, baseClone(subValue, isDeep, value, map));
     });
     return result;
   }
@@ -118,24 +125,7 @@ function baseClone(value, isDeep = false, object, map = new Map()) {
 }
 ```
 
-## isObject
-
-```js
-function isObject(value) {
-  const type = typeof value;
-  return (type === 'object' && value !== null) || type === 'function';
-}
-```
-
-## getTag
-
-```js
-function getTag(value) {
-  return Object.prototype.toString.call(value);
-}
-```
-
-## tag 常量
+## 其他
 
 ```js
 const arrayTag = '[object Array]';
@@ -146,9 +136,6 @@ const regexpTag = '[object RegExp]';
 const mapTag = '[object Map]';
 const setTag = '[object Set]';
 
-const errorTag = '[object Error]';
-const weakMapTag = '[object WeakMap]';
-
 const cloneable = {};
 cloneable[arrayTag] =
   cloneable[objectTag] =
@@ -158,7 +145,15 @@ cloneable[arrayTag] =
   cloneable[mapTag] =
   cloneable[setTag] =
     true;
-cloneable[errorTag] = cloneable[weakMapTag] = false;
+
+function isObject(value) {
+  const type = typeof value;
+  return (type === 'object' && value !== null) || type === 'function';
+}
+
+function getTag(value) {
+  return Object.prototype.toString.call(value);
+}
 ```
 
 ## initCloneArray

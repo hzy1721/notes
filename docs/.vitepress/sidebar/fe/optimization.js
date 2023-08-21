@@ -59,17 +59,6 @@ export default [
     collapsed: true,
   },
   {
-    text: '交互优化',
-    items: [
-      {
-        text: '高频事件',
-        link: '/fe/optimization/interaction/frequent-event',
-      },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
     text: '调试技巧',
     items: [
       {
