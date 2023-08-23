@@ -1,6 +1,6 @@
 # Number
 
-`Number` 类型是 64 位 (8 字节) 的 IEEE-754 双精度浮点数。
+`Number` 类型是 64 位 (8 字节) 的 IEEE-754 双精度浮点数 (double)。
 
 ```js
 let billion = 1000000000;
@@ -45,19 +45,22 @@ const bin = 0b11111111; // 0b 开头的二进制
   Object.is(0, -0); // false
   ```
 
-通过隐式或显式转换把字符串转换为数字是严格的，不允许有多余的非数字字符。`parseInt` 和 `parseFloat` 可以解决这个问题。
+通过隐式或显式转换 `Number()` 把字符串转为数字是很严格的，不允许有多余的非数字字符。
 
-- 去掉首尾的空白符
-- 尝试从开头解析数字，碰到非法字符或末尾时终止
-- 返回收集到的数字，没有解析到数字返回 `NaN`
+`parseInt` 和 `parseFloat` 的转换规则更为宽松。
+
+1. 去掉首尾的空白符
+2. 尝试从**开头**解析数字，碰到非法字符或末尾时终止
+   - 无法解析数字在中间、末尾的情况
+3. 返回收集到的数字，没有解析到数字返回 `NaN`
 
 ```js
-parseInt("100px"); // 100
-parseFloat("12.5em"); // 12.5
-parseInt("12.3"); // 12
-parseFloat("12.3.4"); // 12.3
-parseInt("a123"); // NaN
-parseInt(""); // NaN
-parseInt("0xff", 16); // 第二个参数指定进制，默认是十进制
-parseInt("ff", 16); // 没有前缀也有效
+parseInt('100px'); // 100
+parseFloat('12.5em'); // 12.5
+parseInt('12.3'); // 12
+parseFloat('12.3.4'); // 12.3
+parseInt('a123'); // NaN
+parseInt(''); // NaN
+parseInt('0xff', 16); // 第二个参数指定进制，默认是十进制
+parseInt('ff', 16); // 没有前缀也有效
 ```

@@ -11,7 +11,7 @@
 不同类型原始值之间的算术运算、比较大小时，会隐式把操作数转换为 `Number` 类型。
 
 ```js
-console.log("6" / "2"); // 3
+console.log('6' / '2'); // 3
 ```
 
 显式转换：`Number(value)`
@@ -58,9 +58,10 @@ JS 对象不支持运算符重载，算术运算中的对象会隐式转换为�
 - 尝试调用 `[Symbol.toPrimitive](hint)`
   - 必须返回一个原始值，否则报错
 - 如果 hint 是 `string`，尝试调用 `toString()` 和 `valueOf()`
-- 如果 hint 是 `number` 或 `default`，尝试调用 `valueOf()` 和 `toString()`
-  - 普通对象的 `toString()` 默认返回 `[object Object]`，`valueOf()` 默认返回对象本身
+  - 普通对象的 `toString()` 默认返回 `[object Object]`
   - 如果这两个方法返回非原始值，返回值会被忽略
+- 如果 hint 是 `number` 或 `default`，尝试调用 `valueOf()` 和 `toString()`
+  - 普通对象的 `valueOf()` 默认返回对象本身
   - 如果 `valueOf()` 返回的不是原始值，`toString()` 会被使用，返回一个字符串，也就是说最终得到的值不一定与 hint 对应，只要求是原始值
 
 从对象转换为原始值后，可能还需要进一步转换，根据上述的规则进行。

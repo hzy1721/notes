@@ -60,7 +60,8 @@ replace(pattern, replacement);
 ```
 
 - `pattern`：
-  - 字符串或拥有 `Symbol.replace` 方法的对象 (比如 `RegExp`)
+  - 字符串
+  - 拥有 `Symbol.replace` 方法的对象，通常是 `RegExp`
   - 否则转为字符串
 - `replacement`：
   - 字符串：用于代替匹配结果，支持一些转义序列 (如下表)
@@ -94,7 +95,8 @@ replaceAll(pattern, replacement);
 ```
 
 - `pattern`：
-  - 字符串或拥有 `Symbol.replace` 方法的对象 (比如 `RegExp`)
+  - 字符串
+  - 拥有 `Symbol.replace` 方法的对象，通常是 `RegExp`
   - 否则转为字符串
   - 正则必须有 `g` 修饰符，否则 `TypeError`
 - `replacement`：
