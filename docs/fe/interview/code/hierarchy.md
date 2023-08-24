@@ -1,64 +1,99 @@
 # 层级关系转换
 
 ```js
-const list = [
-  { id: 1, name: '部门A', parentId: 0 },
-  { id: 2, name: '部门B', parentId: 0 },
-  { id: 3, name: '部门C', parentId: 1 },
-  { id: 4, name: '部门D', parentId: 1 },
-  { id: 5, name: '部门E', parentId: 2 },
-  { id: 6, name: '部门F', parentId: 3 },
-  { id: 16, name: '部门L', parentId: 3 },
-  { id: 7, name: '部门G', parentId: 2 },
-  { id: 8, name: '部门H', parentId: 4 },
-];
-
-function convert(list, parent = 0) {
+function convert(list) {
   const res = [];
-  for (const item of list) {
-    if (item.parentId === parent) {
-      res.push({
-        id: item.id,
-        name: item.name,
-        children: convert(list, item.id),
-      });
+  const map = new Map(list.map(node => [node.key, node]));
+  for (const node of list) {
+    const { key, parentKey } = node;
+    // 非法情况：循环引用，key 是 0
+    if (key === parentKey || key === 0) {
+      continue;
+    }
+    if (parentKey === 0) {
+      res.push(node);
+    } else if (map.has(parentKey)) {
+      const parentNode = map.get(parentKey);
+      if (!parentNode.children) {
+        parentNode.children = [];
+      }
+      parentNode.children.push(node);
     }
   }
-  return res.length > 0 ? res : undefined;
+  return res;
 }
+```
 
-console.log(JSON.stringify(convert(list)));
+```js
+const list = [
+  { key: 1, name: '部门A', parentKey: 0 },
+  { key: 2, name: '部门B', parentKey: 0 },
+  { key: 3, name: '部门C', parentKey: 1 },
+  { key: 4, name: '部门D', parentKey: 1 },
+  { key: 5, name: '部门E', parentKey: 2 },
+  { key: 6, name: '部门F', parentKey: 3 },
+  { key: 16, name: '部门L', parentKey: 3 },
+  { key: 7, name: '部门G', parentKey: 2 },
+  { key: 8, name: '部门H', parentKey: 4 },
+];
+
+const res = convert(list);
+console.log(JSON.stringify(res, null, 2));
 ```
 
 ```json
 [
   {
-    "id": 1,
+    "key": 1,
     "name": "部门A",
+    "parentKey": 0,
     "children": [
       {
-        "id": 3,
+        "key": 3,
         "name": "部门C",
+        "parentKey": 1,
         "children": [
-          { "id": 6, "name": "部门F" },
-          { "id": 16, "name": "部门L" }
+          {
+            "key": 6,
+            "name": "部门F",
+            "parentKey": 3
+          },
+          {
+            "key": 16,
+            "name": "部门L",
+            "parentKey": 3
+          }
         ]
       },
-      { 
-        "id": 4, 
-        "name": "部门D", 
+      {
+        "key": 4,
+        "name": "部门D",
+        "parentKey": 1,
         "children": [
-          { "id": 8, "name": "部门H" }
-        ] 
+          {
+            "key": 8,
+            "name": "部门H",
+            "parentKey": 4
+          }
+        ]
       }
     ]
   },
   {
-    "id": 2,
+    "key": 2,
     "name": "部门B",
+    "parentKey": 0,
     "children": [
-      { "id": 5, "name": "部门E" },
-      { "id": 7, "name": "部门G" }
+      {
+        "key": 5,
+        "name": "部门E",
+        "parentKey": 2
+      },
+      {
+        "key": 7,
+        "name": "部门G",
+        "parentKey": 2
+      }
     ]
   }
 ]
