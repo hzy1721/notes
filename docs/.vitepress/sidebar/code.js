@@ -23,6 +23,7 @@ export default [
       { text: '字典树', link: '/code/ds/trie' },
       { text: '哈希表', link: '/code/ds/hash-table' },
       { text: '图：拓扑排序', link: '/code/algorithm/topo-sort' },
+      { text: '堆', link: '/code/ds/heap' },
     ],
     collapsible: true,
     collapsed: true,

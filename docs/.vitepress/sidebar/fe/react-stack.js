@@ -8,6 +8,18 @@ export default [
         text: '版本变迁',
         link: '/fe/react-stack/react/version-history',
       },
+      {
+        text: '高阶组件',
+        link: '/fe/react-stack/react/hoc',
+      },
+      {
+        text: 'FAQ',
+        link: '/fe/react-stack/react/faq',
+      },
+      {
+        text: '前端框架',
+        link: '/fe/react-stack/react/fe-framework',
+      },
     ],
     collapsible: true,
     collapsed: true,

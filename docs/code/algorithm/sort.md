@@ -86,8 +86,10 @@ function sortArray(nums: number[]): number[] {
 
 ## 堆排序
 
+本质是堆上的选择排序。
+
 ```ts
-function siftDown(nums: number[], lo: number, hi: number) {
+function siftDown(nums: number[], lo: number, hi: number): void {
   let parent = lo;
   let child = parent * 2 + 1;
   while (child <= hi) {
@@ -103,7 +105,7 @@ function siftDown(nums: number[], lo: number, hi: number) {
   }
 }
 
-function heapSort(nums: number[]) {
+function heapSort(nums: number[]): void {
   const n = nums.length;
   for (let i = Math.floor((n - 2) / 2); i >= 0; --i) {
     siftDown(nums, i, n - 1);
@@ -240,25 +242,34 @@ function sortArray(nums: number[]): number[] {
 
 ## 桶排序
 
+稳定性：如果按顺序放入桶内，且桶内排序是稳定的，则桶排序是稳定的。
+
+桶内排序算法：由于元素不多，可以使用简单的插入排序 (稳定)，也可以使用高效的快速排序 (不稳定)。
+
 ```ts
-function bucketSort(nums: number[], minVal: number, maxVal: number) {
+function bucketSort(nums: number[]): void {
   const n = nums.length;
-  const bucketNum = Math.floor((maxVal - minVal) / n) + 1;
-  const buckets: number[][] = new Array(bucketNum).fill(0).map(() => []);
+  if (n === 0) {
+    return;
+  }
+  const minVal = Math.min(...nums);
+  const maxVal = Math.max(...nums);
+  const bucketCount = Math.ceil((maxVal - minVal + 1) / n);
+  const buckets: number[][] = new Array(bucketCount).fill(0).map(() => []);
   for (const num of nums) {
     buckets[Math.floor((num - minVal) / n)].push(num);
   }
-  let idx = 0;
+  let i = 0;
   for (const bucket of buckets) {
     bucket.sort((a, b) => a - b);
     for (const num of bucket) {
-      nums[idx++] = num;
+      nums[i++] = num;
     }
   }
 }
 
 function sortArray(nums: number[]): number[] {
-  bucketSort(nums, -50000, 50000);
+  bucketSort(nums);
   return nums;
 }
 ```

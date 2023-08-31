@@ -2,8 +2,6 @@
 
 跨站脚本 (Cross-Site Scripting，XSS) 是指对用户提交内容不过滤直接转为 DOM，导致在正常页面插入恶意 `<script>`。
 
-通常由于对用户提交的内容不过滤，直接转化为页面 DOM。
-
 XSS 可以分为 4 类：
 
 - Stored (存储型)
@@ -14,17 +12,17 @@ XSS 可以分为 4 类：
 ## 防御措施
 
 - 过滤用户上传的内容
-  - 把用户内容转为 DOM
-  - 用户上传 svg
-  - 用户自定义跳转链接
-  - 用户自定义 CSS 样式
+  - 上传内容转为 DOM
+  - 上传 svg
+  - 自定义跳转链接
+  - 自定义 CSS 样式
 - 重要 Cookie 设置为 `HttpOnly`，禁止 JS 访问
   - `Set-Cookie: HttpOnly`
+- 设置 CSP (Content Security Policy)
 - 已有工具
   - 主流框架默认防御 XSS，比如 React、Vue
   - `google-closure-library`
   - Node 可以用 `DOMPurify`
-- CSP (Content Security Policy)
 
 ## Stored
 

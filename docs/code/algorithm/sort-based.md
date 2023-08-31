@@ -45,3 +45,32 @@ function reconstructQueue(people: number[][]): number[][] {
   return res;
 }
 ```
+
+## 相对名次
+
+```ts
+function getRankPrize(rank: number): string {
+  if (rank === 1) {
+    return 'Gold Medal';
+  }
+  if (rank === 2) {
+    return 'Silver Medal';
+  }
+  if (rank === 3) {
+    return 'Bronze Medal';
+  }
+  return String(rank);
+}
+
+function findRelativeRanks(score: number[]): string[] {
+  const n = score.length;
+  const res = new Array<string>(n);
+  const scoreWithIndex = score.map((value, index) => [value, index]);
+  scoreWithIndex.sort((a, b) => b[0] - a[0]);
+  for (let i = 0; i < n; ++i) {
+    const [score, index] = scoreWithIndex[i];
+    res[index] = getRankPrize(i + 1);
+  }
+  return res;
+}
+```

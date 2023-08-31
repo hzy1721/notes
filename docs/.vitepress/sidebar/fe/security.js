@@ -16,6 +16,12 @@ export default [
     collapsed: true,
   },
   {
+    text: '安全策略',
+    items: [{ text: 'CSP', link: '/fe/security/policy/csp' }],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '鉴权',
     items: [
       { text: 'session', link: '/fe/security/auth/session' },

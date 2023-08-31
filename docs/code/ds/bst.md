@@ -81,3 +81,52 @@ function convertBST(root: TreeNode | null): TreeNode | null {
   return root;
 }
 ```
+
+## 二叉搜索树中第 K 小的元素
+
+```ts
+class TopKBst {
+  private root: TreeNode | null = null;
+  private nodeNumMap = new Map<TreeNode, number>();
+
+  constructor(root: TreeNode | null) {
+    this.root = root;
+    this.countNodeNum(root);
+  }
+
+  kthSmallest(k: number): number {
+    let curr = this.root;
+    while (curr) {
+      const leftNodeNum = this.getNodeNum(curr.left);
+      if (k - 1 === leftNodeNum) {
+        return curr.val;
+      } else if (k - 1 < leftNodeNum) {
+        curr = curr.left;
+      } else {
+        k -= leftNodeNum + 1;
+        curr = curr.right;
+      }
+    }
+    return -1;
+  }
+
+  private countNodeNum(root: TreeNode | null): number {
+    if (!root) {
+      return 0;
+    }
+    const nodeNum =
+      1 + this.countNodeNum(root.left) + this.countNodeNum(root.right);
+    this.nodeNumMap.set(root, nodeNum);
+    return nodeNum;
+  }
+
+  private getNodeNum(root: TreeNode | null): number {
+    return this.nodeNumMap.get(root) ?? 0;
+  }
+}
+
+function kthSmallest(root: TreeNode | null, k: number): number {
+  const bst = new TopKBst(root);
+  return bst.kthSmallest(k);
+}
+```
