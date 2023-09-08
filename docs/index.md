@@ -12,7 +12,7 @@ hero:
       link: /code/
     - theme: alt
       text: 前端
-      link: /fe/
+      link: /fe/library/
     - theme: alt
       text: 基础
       link: /basic/

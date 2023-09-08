@@ -167,6 +167,17 @@ export default [
     collapsed: true,
   },
   {
+    text: '路由',
+    items: [
+      {
+        text: 'React Router',
+        link: '/fe/react-stack/router/react-router',
+      },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '状态管理',
     items: [
       {
@@ -182,25 +193,8 @@ export default [
     collapsed: true,
   },
   {
-    text: '路由',
-    items: [
-      {
-        text: 'React Router',
-        link: '/fe/react-stack/router/react-router',
-      },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
     text: 'SSR',
-    items: [],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: '框架',
-    items: [{ text: 'Next', link: '/fe/react-stack/framework/next' }],
+    items: [{ text: 'Next', link: '/fe/react-stack/ssr/next' }],
     collapsible: true,
     collapsed: true,
   },

@@ -7,3 +7,7 @@ div.is-home {
   background-image: url(/snow.jpg);
   background-size: cover;
 }
+
+.VPNav > .VPNavBar .content-body {
+  transition: none;
+}

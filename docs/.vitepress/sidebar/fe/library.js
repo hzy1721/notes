@@ -1,7 +1,29 @@
 export default [
   {
-    text: '打包器',
-    items: [{ text: 'webpack', link: '/fe/library/bundler/webpack' }],
+    text: '提效工具',
+    items: [{ text: 'macOS', link: '/fe/library/tool/macos' }],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '脚手架',
+    items: [{ text: '概述', link: '/fe/library/scaffold/overview' }],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '微前端',
+    items: [],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '移动端',
+    items: [
+      { text: 'H5', link: '/fe/library/mobile/h5' },
+      { text: '小程序', link: '/fe/library/mobile/miniapp' },
+      { text: '跨端', link: '/fe/library/mobile/app' },
+    ],
     collapsible: true,
     collapsed: true,
   },
@@ -16,11 +38,8 @@ export default [
     collapsed: true,
   },
   {
-    text: '代码检查',
-    items: [
-      { text: 'ESLint', link: '/fe/library/lint/eslint' },
-      { text: 'Prettier', link: '/fe/library/lint/prettier' },
-    ],
+    text: 'webpack',
+    items: [],
     collapsible: true,
     collapsed: true,
   },
@@ -40,38 +59,19 @@ export default [
     collapsed: true,
   },
   {
-    text: '图表可视化',
-    items: [{ text: 'ECharts', link: '/fe/library/chart/echarts' }],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: '地理可视化',
+    text: '语法检查',
     items: [
-      { text: 'L7', link: '/fe/library/geo/l7' },
-      { text: 'Leaflet', link: '/fe/library/geo/leaflet' },
+      { text: 'ESLint', link: '/fe/library/lint/eslint' },
+      { text: 'Prettier', link: '/fe/library/lint/prettier' },
     ],
     collapsible: true,
     collapsed: true,
   },
   {
-    text: '图编辑器',
+    text: '前端部署',
     items: [
-      {
-        text: 'React Flow',
-        link: '/fe/library/diagram-editor/react-flow',
-      },
-      { text: 'G6', link: '/fe/library/diagram-editor/g6' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: '移动端',
-    items: [
-      { text: 'H5', link: '/fe/library/mobile/h5' },
-      { text: '小程序', link: '/fe/library/mobile/miniapp' },
-      { text: '跨端', link: '/fe/library/mobile/app' },
+      { text: '静态资源', link: '/fe/library/deploy/static' },
+      { text: '前端网关', link: '/fe/library/deploy/gateway' },
     ],
     collapsible: true,
     collapsed: true,

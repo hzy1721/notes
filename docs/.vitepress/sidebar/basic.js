@@ -73,6 +73,15 @@ export default [
     collapsed: true,
   },
   {
+    text: 'Git',
+    items: [
+      { text: '常用命令', link: '/basic/git/cmd.md' },
+      { text: 'GitLab', link: '/basic/git/gitlab.md' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '杂项',
     items: [
       {
