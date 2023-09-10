@@ -1,7 +1,10 @@
 export default [
   {
     text: '提效工具',
-    items: [{ text: 'macOS', link: '/fe/library/tool/macos' }],
+    items: [
+      { text: 'macOS', link: '/fe/library/tool/macos' },
+      { text: '前端工具', link: '/fe/library/tool/fe' },
+    ],
     collapsible: true,
     collapsed: true,
   },

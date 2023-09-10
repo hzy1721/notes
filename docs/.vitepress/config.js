@@ -1,6 +1,7 @@
 import codeSidebar from './sidebar/code';
 import feReactSidebar from './sidebar/fe/react-stack';
 import feVueSidebar from './sidebar/fe/vue-stack';
+import feFieldSidebar from './sidebar/fe/field';
 import feLibrarySidebar from './sidebar/fe/library';
 import feSecuritySidebar from './sidebar/fe/security';
 import feOptimizationSidebar from './sidebar/fe/optimization';
@@ -27,6 +28,7 @@ export default {
           { text: '优化', link: '/fe/optimization/' },
           { text: 'React', link: '/fe/react-stack/' },
           { text: 'Vue', link: '/fe/vue-stack/' },
+          { text: '方向', link: '/fe/field/' },
           { text: '语言', link: '/fe/basic/' },
           // { text: 'V8', link: '/fe/v8/' },
           { text: '浏览器', link: '/fe/browser/' },
@@ -44,6 +46,7 @@ export default {
       '/code/': codeSidebar,
       '/fe/react-stack/': feReactSidebar,
       '/fe/vue-stack/': feVueSidebar,
+      '/fe/field/': feFieldSidebar,
       '/fe/library/': feLibrarySidebar,
       '/fe/security': feSecuritySidebar,
       '/fe/optimization/': feOptimizationSidebar,

@@ -1,7 +1,15 @@
 export default [
   {
     text: '组件库',
-    items: [],
+    items: [
+      { text: '概述', link: '/fe/field/component-library/overview' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: 'PWA',
+    items: [{ text: '概述', link: '/fe/field/pwa/overview' }],
     collapsible: true,
     collapsed: true,
   },
@@ -17,12 +25,6 @@ export default [
       { text: 'Flutter', link: '/fe/field/cross-platform/flutter' },
       { text: '小程序', link: '/fe/field/cross-platform/applet' },
     ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: 'V8',
-    items: [],
     collapsible: true,
     collapsed: true,
   },
