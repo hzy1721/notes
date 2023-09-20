@@ -1,5 +1,9 @@
 # TCP
 
+## 报文格式
+
+![](assets/tcp-header.png)
+
 ## 连接建立
 
 1. 客户端、服务端都处于 CLOSED 状态
@@ -145,7 +149,3 @@ TCP 通过 4 个算法进行拥塞控制：慢开始、拥塞避免、快重传�
 ### 快恢复
 
 - 发生快重传，只是部分报文丢失，不一定是网络拥塞，将 ssthresh 设为 cwnd / 2，cwnd 设为 ssthresh，执行拥塞避免算法
-
-## 首部格式
-
-![](assets/tcp-header.png)

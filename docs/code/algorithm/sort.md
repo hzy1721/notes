@@ -8,6 +8,10 @@
 
 ## 快速排序
 
+- 每次确定一个 pivot 的位置，左侧都比它小，右侧都比它大
+- 从两边向中间遍历，直到不满足要求，则交换元素
+- 稳定性：不稳定，两侧元素交换可能破坏稳定性
+
 ```ts
 function partition(nums: number[], lo: number, hi: number): number {
   const randIdx = Math.floor(Math.random() * (hi - lo + 1)) + lo;
@@ -43,6 +47,10 @@ function sortArray(nums: number[]): number[] {
 ```
 
 ## 归并排序
+
+- 合并两个有序数组只需要双指针、线性复杂度
+- 不断分解子问题，直到数组只有一个元素、无需排序
+- 稳定性：稳定，从左到右依次排列
 
 ```ts
 function merge(nums: number[], lo: number, mi: number, hi: number) {
@@ -86,7 +94,11 @@ function sortArray(nums: number[]): number[] {
 
 ## 堆排序
 
-本质是堆上的选择排序。
+- 本质是堆上的选择排序
+- 根据大顶堆的特性，最大的元素始终是第一个元素
+- 构建大顶堆，从中间元素 (最后一个非叶节点) 到第一个元素 (根节点)，依次向下调整
+- 将最大的元素交换到末尾并排除出堆，然后向下调整，维持大顶堆的特性
+- 稳定性：不稳定，首尾元素交换可能破坏稳定性
 
 ```ts
 function siftDown(nums: number[], lo: number, hi: number): void {
@@ -124,6 +136,11 @@ function sortArray(nums: number[]): number[] {
 
 ## 希尔排序
 
+- 划定一个间隔，从 n / 2 到 1
+- 每次排序只排序符合间隔的子序列，随着间隔缩小，数组逐渐有序
+- 子序列内排序通常采用插入排序
+- 稳定性：不稳定，不同子序列内的排序可能破坏稳定性
+
 ```ts
 function shellSort(nums: number[]) {
   const n = nums.length;
@@ -150,6 +167,8 @@ function sortArray(nums: number[]): number[] {
 
 ## 冒泡排序
 
+- 稳定性：稳定，从左到右依次冒泡
+
 ```ts
 function bubbleSort(nums: number[]) {
   const n = nums.length;
@@ -175,6 +194,8 @@ function sortArray(nums: number[]): number[] {
 
 ## 选择排序
 
+- 稳定性：不稳定，元素交换可能破坏稳定性
+
 ```ts
 function selectionSort(nums: number[]) {
   const n = nums.length;
@@ -197,6 +218,8 @@ function sortArray(nums: number[]): number[] {
 
 ## 插入排序
 
+- 稳定性：稳定，从左到右依次插入
+
 ```ts
 function insertionSort(nums: number[]) {
   const n = nums.length;
@@ -218,6 +241,8 @@ function sortArray(nums: number[]): number[] {
 ```
 
 ## 计数排序
+
+- 稳定性：稳定，从左到右依次处理
 
 ```ts
 function countingSort(nums: number[], minVal: number, maxVal: number) {
@@ -242,9 +267,8 @@ function sortArray(nums: number[]): number[] {
 
 ## 桶排序
 
-稳定性：如果按顺序放入桶内，且桶内排序是稳定的，则桶排序是稳定的。
-
-桶内排序算法：由于元素不多，可以使用简单的插入排序 (稳定)，也可以使用高效的快速排序 (不稳定)。
+- 桶内排序算法：由于元素不多，可以使用简单的插入排序 (稳定)，也可以使用高效的快速排序 (不稳定)
+- 稳定性：如果按顺序放入桶内，且桶内排序是稳定的，则桶排序是稳定的
 
 ```ts
 function bucketSort(nums: number[]): void {
@@ -275,6 +299,8 @@ function sortArray(nums: number[]): number[] {
 ```
 
 ## 基数排序
+
+- 稳定性：稳定，按顺序放入桶中
 
 ```ts
 function radixSort(nums: number[], minVal: number, maxVal: number) {

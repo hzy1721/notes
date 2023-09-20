@@ -42,7 +42,7 @@ export default [
   },
   {
     text: 'webpack',
-    items: [],
+    items: [{ text: '概述', link: '/fe/library/webpack/overview' }],
     collapsible: true,
     collapsed: true,
   },

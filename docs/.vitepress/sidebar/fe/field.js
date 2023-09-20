@@ -9,7 +9,15 @@ export default [
   },
   {
     text: 'PWA',
-    items: [{ text: '概述', link: '/fe/field/pwa/overview' }],
+    items: [
+      { text: '概述', link: '/fe/field/pwa/overview' },
+      { text: '改造流程', link: '/fe/field/pwa/how-to' },
+      { text: 'manifest', link: '/fe/field/pwa/manifest' },
+      {
+        text: '应用商店',
+        link: '/fe/field/pwa/app-store',
+      },
+    ],
     collapsible: true,
     collapsed: true,
   },
