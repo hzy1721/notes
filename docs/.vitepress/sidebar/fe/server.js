@@ -1,7 +1,10 @@
 export default [
   {
     text: 'Node',
-    items: [{ text: 'Node 框架', link: '/fe/server/node/framework' }],
+    items: [
+      { text: 'Node 框架', link: '/fe/server/node/framework' },
+      { text: '洋葱模型', link: '/fe/server/node/onion' },
+    ],
     collapsible: true,
     collapsed: true,
   },

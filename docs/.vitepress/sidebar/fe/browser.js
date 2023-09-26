@@ -21,6 +21,8 @@ export default [
   {
     text: '浏览器：DOM',
     items: [
+      { text: 'Node', link: '/fe/browser/dom/node' },
+      { text: '查询元素', link: '/fe/browser/dom/query-element' },
       { text: '元素大小', link: '/fe/browser/dom/elem-size' },
       { text: '元素坐标', link: '/fe/browser/dom/coordinates' },
       {

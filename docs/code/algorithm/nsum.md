@@ -28,8 +28,8 @@ function threeSum(nums: number[]): number[][] {
       continue;
     }
     const target = -nums[i];
-    let j = i + 1,
-      k = n - 1;
+    let j = i + 1;
+    let k = n - 1;
     while (j < k) {
       if (j > i + 1 && nums[j] === nums[j - 1]) {
         ++j;

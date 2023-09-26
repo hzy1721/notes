@@ -167,6 +167,16 @@ export default [
     collapsed: true,
   },
   {
+    text: 'TypeScript',
+    items: [
+      { text: '概述', link: '/fe/react-stack/ts/overview' },
+      { text: 'createElement', link: '/fe/react-stack/ts/create-element' },
+      { text: 'React 元素', link: '/fe/react-stack/ts/react-element' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '路由',
     items: [
       {

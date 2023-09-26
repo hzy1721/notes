@@ -31,6 +31,10 @@ JSON 对象的顶层属性称为 members。对于 manifest 来说，所有属性
 | ⚠ screenshots                 | object[] | 截图                                                        |
 | ⚠❌ serviceworker             | object   | 非标准，用于 Payment Handler API                            |
 | ⚠ share_target                | object   | 接收分享数据 (Web Share Target API)                         |
+| short_name                    | string   | name 太长无法完整显示时的替代名字                           |
+| ⚠ shortcuts                   | object[] | 快捷方式                                                    |
+| start_url                     | string   | 应用启动时的 URL                                            |
+| theme_color                   | string   | 主题色，主要是操作系统相关的显示部分                        |
 
 ## display
 
@@ -228,3 +232,18 @@ JSON 对象的顶层属性称为 members。对于 manifest 来说，所有属性
   }
 }
 ```
+
+## short_name
+
+```json
+"name": "Awesome application",
+"short_name": "Awesome app"
+```
+
+## shortcuts
+
+- `name`：必选，名称
+- `short_name`：短名称
+- `description`：描述，辅助功能
+- `url`：必选，快捷方式对应的 URL
+- `icons`：icon 集合，必须包含 96x96 尺寸的 icon

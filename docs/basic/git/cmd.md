@@ -20,4 +20,6 @@ git push origin feat-XXX -f
 git rebase -i main
 git rebase --continue
 git rebase --abort
+# 重置到指定 commit 并丢弃所有更改，默认 --soft 不丢弃更改
+git reset --hard HEAD^
 ```

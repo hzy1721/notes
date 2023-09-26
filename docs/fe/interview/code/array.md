@@ -1,5 +1,48 @@
 # 数组
 
+## 手写数组拍平
+
+- 递归
+
+```js
+function flatArray(array, depth = 1) {
+  if (depth <= 0) {
+    return array;
+  }
+  const res = [];
+  for (const item of array) {
+    if (Array.isArray(item)) {
+      res.push(...flatArray(item, depth - 1));
+    } else {
+      res.push(item);
+    }
+  }
+  return res;
+}
+```
+
+- 迭代
+
+```js
+function flatArray(array, depth = 1) {
+  let pre = null;
+  let res = array;
+  while (depth > 0) {
+    pre = res;
+    res = [];
+    pre.forEach(item => {
+      if (Array.isArray(item)) {
+        res.push(...item);
+      } else {
+        res.push(item);
+      }
+    });
+    depth -= 1;
+  }
+  return res;
+}
+```
+
 ## 自定义排序
 
 左边奇数从大到小，右边偶数从小到大。
@@ -70,4 +113,29 @@ const arrayEqual = (arr1, arr2) => {
   }
   return true;
 };
+```
+
+## 对象访问路径值
+
+给定对象 `obj` 和访问路径 `a.b.c`，输出对应的值。
+
+```js
+function objPathVal(obj, path) {
+  return path
+    .split('.')
+    .reduce((prev, key) => (prev ? prev[key] : prev), obj);
+}
+
+const obj = {
+  a: {
+    b: {
+      c: 1,
+    },
+  },
+};
+console.log(objPathVal(obj, 'a.b')); // { c: 1 }
+console.log(objPathVal(obj, 'a.c')); // undefined
+console.log(objPathVal(obj, 'a.e')); // undefined
+console.log(objPathVal(obj, 'a.b.c')); // 1
+console.log(objPathVal(obj, 'a.b.c.d')); // undefined
 ```

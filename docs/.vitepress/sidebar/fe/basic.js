@@ -36,6 +36,14 @@ export default [
     collapsed: true,
   },
   {
+    text: 'CSS：选择器',
+    items: [
+      { text: '伪类选择器', link: '/fe/basic/css/selector/pseudo-class' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: 'CSS：布局',
     items: [
       { text: 'flex 布局', link: '/fe/basic/css/flex' },

@@ -84,8 +84,9 @@ export default [
   {
     text: 'Git',
     items: [
-      { text: '常用命令', link: '/basic/git/cmd.md' },
-      { text: 'GitLab', link: '/basic/git/gitlab.md' },
+      { text: '常用命令', link: '/basic/git/cmd' },
+      { text: 'GitLab', link: '/basic/git/gitlab' },
+      { text: '版本控制系统', link: '/basic/git/vcs' },
     ],
     collapsible: true,
     collapsed: true,
