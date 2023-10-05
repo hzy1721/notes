@@ -4,6 +4,10 @@
 
 在数组末尾添加元素。
 
+`push` 和 `pop` 会比较快，只需要修改最后一个元素和 `length`。
+
+`shift` 和 `unshift` 会比较慢，还需要移动剩余元素。
+
 ```js
 push();
 push(element0);
@@ -86,6 +90,10 @@ reverse();
 
 数组元素排序。
 
+默认转换为字符串，按照字符的 Unicode 值排序。其他情况需要提供比较函数。
+
+_ES2019_ 规定，`sort()` 的默认排序算法必须是**稳定**的，已被主流浏览器实现。
+
 ```js
 sort();
 sort(compareFn);
@@ -98,6 +106,8 @@ sort(compareFn);
 ## concat
 
 拼接多个数组，返回新数组，不改变原数组。
+
+如果是数组或包含 `Symbol.isConcatSpreadable` 属性的对象，拼接所有属性，否则拼接这个值。
 
 ```js
 concat();
@@ -131,6 +141,7 @@ flat(depth);
 ```
 
 - `depth`：拍平层数，默认是 1
+  - 如果想全部拉平，传入 `Infinity`
 
 ## flatMap
 
@@ -139,4 +150,41 @@ flat(depth);
 ```js
 flatMap(callbackFn);
 flatMap(callbackFn, thisArg);
+```
+
+## copyWithin
+
+```js
+copyWithin(target, (start = 0), (end = this.length));
+```
+
+把 `[start, end)` 的元素复制到 `target` 开始的位置。
+
+```js
+[1, 2, 3, 4, 5].copyWithin(0, 3);
+// [4, 5, 3, 4, 5]
+```
+
+## group
+
+- `group`
+  - 返回对象
+  - key 会转换为字符串
+- `groupToMap`
+  - 返回 `Map`
+  - key 不做转换，可以是对象
+
+```js
+const array = [1, 2, 3, 4, 5];
+array.group((num, index, array) => {
+  return num % 2 === 0 ? 'even' : 'odd';
+});
+// { odd: [1, 3, 5], even: [2, 4] }
+
+const odd = { odd: true };
+const even = { even: true };
+array.groupToMap((num, index, array) => {
+  return num % 2 === 0 ? even : odd;
+});
+//  Map { {odd: true}: [1, 3, 5], {even: true}: [2, 4] }
 ```

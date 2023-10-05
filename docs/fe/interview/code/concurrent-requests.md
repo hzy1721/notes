@@ -1,34 +1,39 @@
 # 并发请求
 
 ```js
-function sendRequests(urls, limit) {
-  const total = urls.length;
-  const results = new Array(total);
-  const num = Math.min(total, limit);
-  let nextIndex = num;
-  let count = 0;
-  return new Promise((resolve) => {
-    function request(index) {
-      fetch(urls[index])
-        .then((value) => {
-          results[index] = { status: "fulfilled", value: value };
-          console.log(urls[index], "fulfilled");
+function limitRequest(reqList, limit) {
+  // 所有请求数
+  const n = reqList.length;
+  // 请求结果
+  const res = new Array(n);
+  // 初始发起的请求数
+  const initCount = Math.min(limit, n);
+  // 当前请求
+  let idx = initCount;
+  // 已完成请求数
+  let cnt = 0;
+
+  return new Promise(resolve => {
+    const dispatchRequest = i => {
+      reqList[i]()
+        .then(result => {
+          res[i] = { status: 'fulfilled', value: result };
         })
-        .catch((error) => {
-          results[index] = { status: "rejected", reason: error };
-          console.log(urls[index], "rejected");
+        .catch(error => {
+          res[i] = { status: 'rejected', reason: error };
         })
         .finally(() => {
-          if (++count === total) {
-            resolve(results);
+          if (++cnt === n) {
+            resolve(res);
           }
-          if (nextIndex < total) {
-            request(nextIndex++);
+          if (idx < n) {
+            dispatchRequest(idx++);
           }
         });
-    }
-    for (let i = 0; i < num; ++i) {
-      request(i);
+    };
+
+    for (let i = 0; i < initCount; ++i) {
+      dispatchRequest(i);
     }
   });
 }

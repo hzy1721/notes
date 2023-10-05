@@ -97,3 +97,23 @@ function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
   }
 }
 ```
+
+## x 的平方根
+
+```ts
+function mySqrt(x: number): number {
+  let res = -1;
+  let lo = 0;
+  let hi = x;
+  while (lo <= hi) {
+    const mi = Math.floor((lo + hi) / 2);
+    if (mi * mi <= x) {
+      res = mi;
+      lo = mi + 1;
+    } else {
+      hi = mi - 1;
+    }
+  }
+  return res;
+}
+```

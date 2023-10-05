@@ -6,16 +6,15 @@
 
 一种柯里化的实现 (函数参数个数确定)：
 
-```js
-function curry(func) {
+```ts
+function curry(fn: Function): Function {
   return function curried(...args) {
-    if (args.length >= func.length) {
-      return func.apply(this, args);
-    } else {
-      return function (...args2) {
-        return curried.apply(this, args.concat(args2));
-      };
+    if (args.length >= fn.length) {
+      return fn.apply(this, args);
     }
+    return function (...rest) {
+      return curried.apply(this, args.concat(rest));
+    };
   };
 }
 ```
@@ -23,13 +22,13 @@ function curry(func) {
 可以使用 lodash 库的 `_.curry` 函数：
 
 ```js
-log(new Date(), "DEBUG", "some debug"); // log(a, b, c)
+log(new Date(), 'DEBUG', 'some debug'); // log(a, b, c)
 
 log = _.curry(log);
-log(new Date())("DEBUG")("some debug"); // log(a)(b)(c)
+log(new Date())('DEBUG')('some debug'); // log(a)(b)(c)
 
 let logNow = log(new Date());
-logNow("INFO", "message"); // [HH:mm] INFO message
-let debugNow = logNow("DEBUG");
-debugNow("message"); // [HH:mm] DEBUG message
+logNow('INFO', 'message'); // [HH:mm] INFO message
+let debugNow = logNow('DEBUG');
+debugNow('message'); // [HH:mm] DEBUG message
 ```

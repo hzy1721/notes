@@ -25,9 +25,8 @@ function debounce(func, wait = 0) {
   return function (...args) {
     if (!timer) {
       func.apply(this, args);
-    } else {
-      clearTimeout(timer);
     }
+    clearTimeout(timer);
     timer = setTimeout(() => {
       timer = null;
     }, wait);
@@ -44,12 +43,9 @@ function debounce(func, wait = 0) {
 function debounce(func, wait = 0) {
   let timer = null;
   return function (...args) {
-    if (timer) {
-      clearTimeout(timer);
-    }
+    clearTimeout(timer);
     timer = setTimeout(() => {
       func.apply(this, args);
-      timer = null;
     }, wait);
   };
 }

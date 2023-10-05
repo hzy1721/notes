@@ -1,6 +1,6 @@
 # 可迭代对象
 
-**可迭代对象**是可以在 `for...of` 循环中使用的对象。可以将任何对象通过定制变为可迭代对象。
+可迭代对象是可以在 `for...of` 循环中使用的对象。
 
 可迭代的内建对象：
 
@@ -11,6 +11,8 @@
 - `arguments`
 - `TypedArray`
 - `NodeList`
+
+可以将任何对象通过添加 `[Symbol.iterator]` 方法变为可迭代对象。
 
 ## Symbol.iterator
 
@@ -49,19 +51,20 @@ for (let num of range) {
 
 可迭代对象就是实现了 `Symbol.iterator` 方法的对象。
 
-除了 `for...of`，还有其他场合会用到 `Symbol.iterator` 返回的迭代器对象：
+## 用途
 
-- 解构赋值 (destructuring)
-- 扩展运算符 (spread operator)
+- `for...of`
+- 扩展 `...`
+- 解构 `{ xxx } = obj` `[xxx] = arr`
 - `yield*`
 
-## 可迭代 v.s. 类数组
+## 可迭代对象 v.s. 类数组对象
 
-- 可迭代 (Iterable)：实现了 `Symbol.iterator` 方法。
-- 类数组 (Array-like)：有索引和 `length` 属性。
+两者没有必然联系，前者是迭代器模式的实现，后者是对数组的模拟，有 `length` 属性但是缺少相应的原型方法。
 
-有的对象即是可迭代、又是类数组，比如 `String`。
+- 可迭代对象 (Iterable)：
+  - 实现了 `Symbol.iterator` 方法
+- 类数组对象 (Array-like)：
+  - 有索引和 `length` 属性
 
-可迭代不一定是类数组，类数组不一定是可迭代。
-
-`Array.from()` 可以把一个可迭代或类数组对象转换为数组。
+`Array.from()` 把可迭代对象或类数组对象转换为数组。

@@ -78,3 +78,5 @@ function countDigitOne(n: number): number {
   return res;
 }
 ```
+
+## 快速幂
