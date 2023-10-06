@@ -88,4 +88,21 @@ export default [
     collapsible: true,
     collapsed: true,
   },
+  {
+    text: '前端',
+    items: [
+      { text: '函数', link: '/code/fe/function' },
+      { text: '生成器', link: '/code/fe/generator' },
+      { text: '对象', link: '/code/fe/object' },
+      { text: 'Proxy', link: '/code/fe/proxy' },
+      { text: '防抖节流', link: '/code/fe/debounce-throttle' },
+      { text: 'Map', link: '/code/fe/map' },
+      { text: '数组', link: '/code/fe/array' },
+      { text: 'Promise', link: '/code/fe/promise' },
+      { text: 'Date', link: '/code/fe/date' },
+      { text: 'setInterval', link: '/code/fe/set-interval' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
 ];
