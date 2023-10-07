@@ -11,7 +11,6 @@ function isObject(value) {
 function jsonToMatrix(arr) {
   const m = arr.length;
   const map = new Map();
-
   const dfs = (value, row, name) => {
     if (!isObject(value)) {
       let data = map.get(name);
@@ -31,11 +30,9 @@ function jsonToMatrix(arr) {
       dfs(value[key], row, name ? `${name}.${key}` : `${key}`);
     }
   };
-
   for (let i = 0; i < m; ++i) {
     dfs(arr[i], i);
   }
-
   const pairs = Array.from(map).sort((a, b) => a[0].localeCompare(b[0]));
   const n = pairs.length;
   const res = new Array(m + 1).fill(0).map(() => new Array(n));
@@ -130,8 +127,8 @@ function jsonParse(str) {
 
 ## 检查是否是类的对象实例
 
-```ts
-function isObject(value: any): boolean {
+```js
+function isObject(value) {
   const type = typeof value;
   return (type === 'object' && type !== null) || type === 'function';
 }
@@ -144,10 +141,7 @@ const primitiveClassFunction = {
   symbol: Symbol,
 };
 
-function checkPrimitiveInstanceOf(
-  value: number | string | boolean | null | undefined | bigint | symbol,
-  classFunction: Function
-): boolean {
+function checkPrimitiveInstanceOf(value, classFunction) {
   const Ctor = primitiveClassFunction[typeof value];
   return (
     Ctor !== undefined &&
@@ -155,7 +149,7 @@ function checkPrimitiveInstanceOf(
   );
 }
 
-function checkIfInstanceOf(obj: any, classFunction: any): boolean {
+function checkIfInstanceOf(obj, classFunction) {
   if (typeof classFunction !== 'function') {
     return false;
   }
@@ -168,32 +162,24 @@ function checkIfInstanceOf(obj: any, classFunction: any): boolean {
 
 ## 完全相等的 JSON 字符串
 
-```ts
-type JSONValue =
-  | null
-  | boolean
-  | number
-  | string
-  | JSONValue[]
-  | { [key: string]: JSONValue };
-
+```js
 const arrayTag = '[object Array]';
 const objectTag = '[object Object]';
 
-function getTag(value: JSONValue): string {
+function getTag(value) {
   return Object.prototype.toString.call(value);
 }
 
-function areDeeplyEqual(o1: JSONValue, o2: JSONValue): boolean {
-  const o1Tag = getTag(o1);
-  const o2Tag = getTag(o2);
-  if (o1Tag !== o2Tag) {
+function areDeeplyEqual(o1, o2) {
+  const tag1 = getTag(o1);
+  const tag2 = getTag(o2);
+  if (tag1 !== tag2) {
     return false;
   }
-  if (![arrayTag, objectTag].includes(o1Tag)) {
+  if (![arrayTag, objectTag].includes(tag1)) {
     return o1 === o2;
   }
-  if (o1Tag === arrayTag) {
+  if (tag1 === arrayTag) {
     return (
       o1.length === o2.length &&
       o1.every((_, i) => areDeeplyEqual(o1[i], o2[i]))
@@ -210,20 +196,12 @@ function areDeeplyEqual(o1: JSONValue, o2: JSONValue): boolean {
 
 ## 将对象转换为 JSON 字符串
 
-```ts
-type JSONValue =
-  | null
-  | boolean
-  | number
-  | string
-  | JSONValue[]
-  | { [key: string]: JSONValue };
-
-function isJSONObject(value: JSONValue): boolean {
+```js
+function isJSONObject(value) {
   return typeof value === 'object' && value !== null;
 }
 
-function jsonStringify(object: JSONValue): string {
+function jsonStringify(object) {
   if (typeof object === 'number' || typeof object === 'boolean') {
     return String(object);
   }
@@ -245,24 +223,15 @@ function jsonStringify(object: JSONValue): string {
 
 ## 两个对象之间的差异
 
-```ts
-type JSONValue =
-  | null
-  | boolean
-  | number
-  | string
-  | JSONValue[]
-  | { [key: string]: JSONValue };
-type Obj = Record<string, JSONValue> | Array<JSONValue>;
-
+```js
 const arrayTag = '[object Array]';
 const objectTag = '[object Object]';
 
-function getTag(value: JSONValue): string {
+function getTag(value) {
   return Object.prototype.toString.call(value);
 }
 
-function jsonValueDiff(val1: JSONValue, val2: JSONValue): Obj | undefined {
+function jsonValueDiff(val1, val2) {
   if (val1 === undefined || val2 === undefined) {
     return undefined;
   }
@@ -274,9 +243,9 @@ function jsonValueDiff(val1: JSONValue, val2: JSONValue): Obj | undefined {
   if (![arrayTag, objectTag].includes(tag1)) {
     return val1 === val2 ? undefined : [val1, val2];
   }
-  const result: Record<string, JSONValue> = {};
+  const result = {};
   if (tag1 === arrayTag) {
-    (val1 as JSONValue[]).forEach((el, i) => {
+    val1.forEach((el, i) => {
       const diff = jsonValueDiff(val1[i], val2[i]);
       if (diff !== undefined) {
         result[i] = diff;
@@ -294,42 +263,33 @@ function jsonValueDiff(val1: JSONValue, val2: JSONValue): Obj | undefined {
   return Object.keys(result).length ? result : undefined;
 }
 
-function objDiff(obj1: Obj, obj2: Obj): Obj {
+function objDiff(obj1, obj2) {
   return jsonValueDiff(obj1, obj2) ?? {};
 }
 ```
 
 ## 精简对象
 
-```ts
-type JSONValue =
-  | null
-  | boolean
-  | number
-  | string
-  | JSONValue[]
-  | { [key: string]: JSONValue };
-type Obj = Record<string, JSONValue> | Array<JSONValue>;
-
-function isObject(value: JSONValue): boolean {
+```js
+function isObject(value) {
   return (
     (typeof value === 'object' && value !== null) ||
     typeof value === 'function'
   );
 }
 
-function compactObject(obj: Obj): Obj {
+function compactObject(obj) {
   if (!isObject(obj)) {
     return obj;
   }
   if (Array.isArray(obj)) {
-    return obj.filter(Boolean).map(el => compactObject(el as Obj));
+    return obj.filter(Boolean).map(el => compactObject(el));
   }
-  const result: Record<string, JSONValue> = {};
+  const result = {};
   Object.keys(obj).forEach(key => {
     const value = obj[key];
     if (value) {
-      result[key] = compactObject(value as Obj);
+      result[key] = compactObject(value);
     }
   });
   return result;
@@ -338,24 +298,16 @@ function compactObject(obj: Obj): Obj {
 
 ## 深度合并两个对象
 
-```ts
-type JSONValue =
-  | null
-  | boolean
-  | number
-  | string
-  | JSONValue[]
-  | { [key: string]: JSONValue };
-
+```js
 const objectTag = '[object Object]';
 
-function getTag(value: JSONValue): string {
+function getTag(value) {
   return Object.prototype.toString.call(value);
 }
 
-function deepMerge(obj1: JSONValue, obj2: JSONValue): JSONValue {
+function deepMerge(obj1, obj2) {
   if (getTag(obj1) === objectTag && getTag(obj2) === objectTag) {
-    const result: Record<string, JSONValue> = {};
+    const result = {};
     Object.keys(obj1)
       .concat(Object.keys(obj2))
       .forEach(key => {
@@ -385,31 +337,12 @@ function deepMerge(obj1: JSONValue, obj2: JSONValue): JSONValue {
 
 ## 将 undefined 转为 null
 
-```ts
-type JSONValue =
-  | null
-  | boolean
-  | number
-  | string
-  | JSONValue[]
-  | { [key: string]: JSONValue };
-type Value =
-  | undefined
-  | null
-  | boolean
-  | number
-  | string
-  | Value[]
-  | { [key: string]: Value };
-
-type Obj1 = Record<string, Value> | Array<Value>;
-type Obj2 = Record<string, JSONValue> | Array<JSONValue>;
-
-function isJSONObject(value: Value): boolean {
+```js
+function isJSONObject(value) {
   return typeof value === 'object' && value !== null;
 }
 
-function undefinedValueToNull(value: Value): JSONValue {
+function undefinedValueToNull(value) {
   if (value === undefined) {
     return null;
   }
@@ -419,38 +352,26 @@ function undefinedValueToNull(value: Value): JSONValue {
   if (Array.isArray(value)) {
     return value.map(undefinedValueToNull);
   }
-  const result: Record<string, JSONValue> = {};
+  const result = {};
   Object.keys(value).forEach(key => {
     result[key] = undefinedValueToNull(value[key]);
   });
   return result;
 }
 
-function undefinedToNull(obj: Obj1): Obj2 {
-  return undefinedValueToNull(obj) as Obj2;
+function undefinedToNull(obj) {
+  return undefinedValueToNull(obj);
 }
 ```
 
 ## 深度对象筛选
 
-```ts
-type JSONValue =
-  | null
-  | boolean
-  | number
-  | string
-  | JSONValue[]
-  | { [key: string]: JSONValue };
-type Obj = Record<string, JSONValue> | Array<JSONValue>;
-
-function isJSONObject(value: JSONValue): boolean {
+```js
+function isJSONObject(value) {
   return typeof value === 'object' && value !== null;
 }
 
-function deepFilterValue(
-  value: JSONValue,
-  fn: Function
-): JSONValue | undefined {
+function deepFilterValue(value, fn) {
   if (!isJSONObject(value)) {
     return fn(value) ? value : undefined;
   }
@@ -460,7 +381,7 @@ function deepFilterValue(
       .filter(el => el !== undefined);
     return result.length ? result : undefined;
   }
-  const result: Record<string, JSONValue> = {};
+  const result = {};
   Object.keys(value).forEach(key => {
     const val = deepFilterValue(value[key], fn);
     if (val !== undefined) {
@@ -470,7 +391,108 @@ function deepFilterValue(
   return Object.keys(result).length ? result : undefined;
 }
 
-function deepFilter(obj: Obj, fn: Function): Obj | undefined {
-  return deepFilterValue(obj, fn) as Obj | undefined;
+function deepFilter(obj, fn) {
+  return deepFilterValue(obj, fn);
+}
+```
+
+## 使用方法链的计算器
+
+```js
+class Calculator {
+  result = undefined;
+
+  constructor(value) {
+    this.result = value;
+  }
+
+  add(value) {
+    this.result += value;
+    return this;
+  }
+
+  subtract(value) {
+    this.result -= value;
+    return this;
+  }
+
+  multiply(value) {
+    this.result *= value;
+    return this;
+  }
+
+  divide(value) {
+    if (value === 0) {
+      throw new Error('Division by zero is not allowed');
+    }
+    this.result /= value;
+    return this;
+  }
+
+  power(value) {
+    if (value === 0) {
+      this.result = 1;
+    } else {
+      const base = this.result;
+      for (let i = 1; i < Math.abs(value); ++i) {
+        this.result *= base;
+      }
+      if (value < 0) {
+        this.result = 1 / this.result;
+      }
+    }
+    return this;
+  }
+
+  getResult() {
+    return this.result;
+  }
+}
+```
+
+## 判断对象是否为空
+
+```js
+function isEmpty(obj) {
+  if (Array.isArray(obj)) {
+    return obj.length === 0;
+  }
+  return Object.keys(obj).length === 0;
+}
+```
+
+## 从两个数组中创建对象
+
+```js
+function createObject(keysArr, valuesArr) {
+  const result = {};
+  const { length } = keysArr;
+  for (let i = 0; i < length; ++i) {
+    const key = String(keysArr[i]);
+    const value = valuesArr[i];
+    if (!(key in result)) {
+      result[key] = value;
+    }
+  }
+  return result;
+}
+```
+
+## 对象反转
+
+```js
+function invertObject(obj) {
+  const result = {};
+  Object.keys(obj).forEach(val => {
+    const key = String(obj[val]);
+    if (!(key in result)) {
+      result[key] = val;
+    } else if (!Array.isArray(result[key])) {
+      result[key] = [result[key], val];
+    } else {
+      result[key].push(val);
+    }
+  });
+  return result;
 }
 ```

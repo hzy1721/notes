@@ -2,12 +2,8 @@
 
 ## 日期范围生成器
 
-```ts
-function* dateRangeGenerator(
-  start: string,
-  end: string,
-  step: number
-): Generator<string> {
+```js
+function* dateRangeGenerator(start, end, step) {
   const startDate = new Date(start);
   const endDate = new Date(end);
   for (
@@ -18,4 +14,14 @@ function* dateRangeGenerator(
     yield date.toISOString().slice(0, 10);
   }
 }
+```
+
+## 下一天
+
+```js
+Date.prototype.nextDay = function () {
+  const date = new Date(this);
+  date.setDate(date.getDate() + 1);
+  return date.toISOString().slice(0, 10);
+};
 ```

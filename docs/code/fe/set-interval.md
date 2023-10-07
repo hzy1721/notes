@@ -2,21 +2,14 @@
 
 ## 自定义间隔
 
-```ts
-type Timer = ReturnType<typeof setTimeout>;
-
+```js
 let nextId = 0;
-const intervals = new Map<number, Timer>();
+const intervals = new Map();
 
-function customInterval(
-  fn: Function,
-  delay: number,
-  period: number
-): number {
+function customInterval(fn, delay, period) {
   const id = nextId++;
-  let timer: Timer | undefined = undefined;
+  let timer = undefined;
   let count = 0;
-
   const launchTask = () => {
     timer = setTimeout(() => {
       fn();
@@ -25,13 +18,11 @@ function customInterval(
     intervals.set(id, timer);
     count += 1;
   };
-
   launchTask();
-
   return id;
 }
 
-function customClearInterval(id: number): void {
+function customClearInterval(id) {
   clearTimeout(intervals.get(id));
 }
 ```

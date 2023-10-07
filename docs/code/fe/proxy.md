@@ -7,7 +7,6 @@ class MultiTreeNode {
   value = undefined;
   parent = undefined;
   key = undefined;
-
   constructor(value, parent, key) {
     this.value = value;
     this.parent = parent;
@@ -94,16 +93,7 @@ class ImmutableHelper {
 
 ## 使对象不可变
 
-```ts
-type JSONValue =
-  | null
-  | boolean
-  | number
-  | string
-  | JSONValue[]
-  | { [key: string]: JSONValue };
-type Obj = Array<JSONValue> | Record<string, JSONValue>;
-
+```js
 const arrayMutableMethods = [
   'pop',
   'push',
@@ -114,23 +104,23 @@ const arrayMutableMethods = [
   'reverse',
 ];
 
-function isJSONObject(value: JSONValue): boolean {
+function isJSONObject(value) {
   return typeof value === 'object' && value !== null;
 }
 
-function createProxy(obj: Obj): Obj {
+function createProxy(obj) {
   const isArr = Array.isArray(obj);
   return new Proxy(obj, {
     set(target, key, newVal, receiver) {
       if (isArr && !isNaN(Number(key))) {
-        throw `Error Modifying Index: ${key as string}`;
+        throw `Error Modifying Index: ${key}`;
       }
-      throw `Error Modifying: ${key as string}`;
+      throw `Error Modifying: ${key}`;
     },
     get(target, key, receiver) {
-      if (isArr && arrayMutableMethods.includes(key as string)) {
+      if (isArr && arrayMutableMethods.includes(key)) {
         return function () {
-          throw `Error Calling Method: ${key as string}`;
+          throw `Error Calling Method: ${key}`;
         };
       }
       const res = Reflect.get(target, key, receiver);
@@ -139,7 +129,24 @@ function createProxy(obj: Obj): Obj {
   });
 }
 
-function makeImmutable(obj: Obj): Obj {
+function makeImmutable(obj) {
   return createProxy(obj);
+}
+```
+
+## 无穷方法对象
+
+```js
+function createInfiniteObject() {
+  return new Proxy(
+    {},
+    {
+      get(target, key, receiver) {
+        return function () {
+          return key;
+        };
+      },
+    }
+  );
 }
 ```

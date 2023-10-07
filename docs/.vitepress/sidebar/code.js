@@ -101,6 +101,7 @@ export default [
       { text: 'Promise', link: '/code/fe/promise' },
       { text: 'Date', link: '/code/fe/date' },
       { text: 'setInterval', link: '/code/fe/set-interval' },
+      { text: '字符串', link: '/code/fe/string' },
     ],
     collapsible: true,
     collapsed: true,

@@ -19,7 +19,6 @@ class QueryBatcher {
     return new Promise(async resolve => {
       this.keys.push(key);
       this.map.set(key, resolve);
-
       const callAndLanuchTimer = () => {
         const { keys } = this;
         this.queryMultiple(keys).then(results => {
@@ -36,7 +35,6 @@ class QueryBatcher {
           }
         }, this.delay);
       };
-
       if (!this.timer) {
         callAndLanuchTimer();
       }
@@ -47,11 +45,9 @@ class QueryBatcher {
 
 ## 函数防抖
 
-```ts
-type F = (...args: number[]) => void;
-
-function debounce(fn: F, t: number): F {
-  let timer: ReturnType<typeof setTimeout> | undefined = undefined;
+```js
+function debounce(fn, t) {
+  let timer = undefined;
   return function (...args) {
     clearTimeout(timer);
     timer = setTimeout(() => {
@@ -63,13 +59,10 @@ function debounce(fn: F, t: number): F {
 
 ## 节流
 
-```ts
-type F = (...args: number[]) => void;
-
-function throttle(fn: F, t: number): F {
-  let timer: any = undefined;
-  let latestArgs: any = undefined;
-
+```js
+function throttle(fn, t) {
+  let timer = undefined;
+  let latestArgs = undefined;
   return function (...args) {
     const callAndLaunchTimer = args => {
       fn.apply(this, args);
@@ -81,7 +74,6 @@ function throttle(fn: F, t: number): F {
         }
       }, t);
     };
-
     if (!timer) {
       callAndLaunchTimer(args);
     } else {

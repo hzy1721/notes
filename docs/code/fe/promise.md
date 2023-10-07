@@ -2,10 +2,8 @@
 
 ## Promise 对象池
 
-```ts
-type F = () => Promise<any>;
-
-function promisePool(functions: F[], n: number): Promise<any> {
+```js
+function promisePool(functions, n) {
   const { length } = functions;
   if (length === 0) {
     return Promise.resolve([]);
@@ -15,7 +13,7 @@ function promisePool(functions: F[], n: number): Promise<any> {
   let count = 0;
   let nextIndex = initCount;
   return new Promise(resolve => {
-    const nextTask = (index: number) => {
+    const nextTask = index => {
       if (index >= length) {
         return;
       }
@@ -36,10 +34,8 @@ function promisePool(functions: F[], n: number): Promise<any> {
 
 ## 有时间限制的 Promise 对象
 
-```ts
-type Fn = (...params: any[]) => Promise<any>;
-
-function timeLimit(fn: Fn, t: number): Fn {
+```js
+function timeLimit(fn, t) {
   return function (...args) {
     return new Promise(async (resolve, reject) => {
       let done = false;
@@ -62,12 +58,10 @@ function timeLimit(fn: Fn, t: number): Fn {
 
 ## 并行执行异步函数
 
-```ts
-type Fn<T> = () => Promise<T>;
-
-function promiseAll<T>(functions: Fn<T>[]): Promise<T[]> {
+```js
+function promiseAll(functions) {
   const { length } = functions;
-  const results = new Array<T>(length);
+  const results = new Array(length);
   let count = 0;
   return new Promise((resolve, reject) => {
     functions.forEach(async (fn, index) => {
@@ -87,17 +81,11 @@ function promiseAll<T>(functions: Fn<T>[]): Promise<T[]> {
 
 ## 转换回调函数为 Promise 函数
 
-```ts
-type CallbackFn = (
-  next: (data: number, error: string) => void,
-  ...args: number[]
-) => void;
-type Promisified = (...args: number[]) => Promise<number>;
-
-function promisify(fn: CallbackFn): Promisified {
+```js
+function promisify(fn) {
   return async function (...args) {
     return new Promise((resolve, reject) => {
-      const cb = (data: number, error: string): void => {
+      const cb = (data, error) => {
         if (error) {
           reject(error);
         }
@@ -111,23 +99,13 @@ function promisify(fn: CallbackFn): Promisified {
 
 ## 并行执行 Promise 以获取独有的结果
 
-```ts
-type FulfilledObj = {
-  status: 'fulfilled';
-  value: string;
-};
-type RejectedObj = {
-  status: 'rejected';
-  reason: string;
-};
-type Obj = FulfilledObj | RejectedObj;
-
-function promiseAllSettled(functions: Function[]): Promise<Obj[]> {
+```js
+function promiseAllSettled(functions) {
   const { length } = functions;
   if (length === 0) {
     return Promise.resolve([]);
   }
-  const results = new Array<Obj>(length);
+  const results = new Array(length);
   let count = 0;
   return new Promise(resolve => {
     functions.forEach((fn, i) => {
@@ -144,6 +122,49 @@ function promiseAllSettled(functions: Function[]): Promise<Obj[]> {
           }
         });
     });
+  });
+}
+```
+
+## 睡眠函数
+
+```js
+async function sleep(millis) {
+  return new Promise(resolve => setTimeout(resolve, millis));
+}
+```
+
+## 两个 Promise 对象相加
+
+```js
+async function addTwoPromises(promise1, promise2) {
+  return new Promise(async resolve => {
+    const [res1, res2] = await Promise.all([promise1, promise2]);
+    resolve(res1 + res2);
+  });
+}
+```
+
+## 延迟每个 Promise 对象的解析
+
+```js
+function delayAll(functions, ms) {
+  return functions.map(fn => {
+    return function (...args) {
+      return new Promise((resolve, reject) => {
+        fn()
+          .then(value => {
+            setTimeout(() => {
+              resolve(value);
+            }, ms);
+          })
+          .catch(error => {
+            setTimeout(() => {
+              reject(error);
+            }, ms);
+          });
+      });
+    };
   });
 }
 ```

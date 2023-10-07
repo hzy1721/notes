@@ -2,22 +2,19 @@
 
 ## 有时间限制的缓存
 
-```ts
+```js
 class CacheNode {
-  value: number;
+  value = undefined;
   expired = false;
-
-  constructor(value: number) {
+  constructor(value) {
     this.value = value;
   }
 }
 
 class TimeLimitedCache {
-  map: Map<number, CacheNode> = new Map();
+  map = new Map();
 
-  constructor() {}
-
-  set(key: number, value: number, duration: number): boolean {
+  set(key, value, duration) {
     const oldNode = this.map.get(key);
     const newNode = new CacheNode(value);
     this.map.set(key, newNode);
@@ -27,7 +24,7 @@ class TimeLimitedCache {
     return oldNode !== undefined && !oldNode.expired;
   }
 
-  get(key: number): number {
+  get(key) {
     const node = this.map.get(key);
     if (node && !node.expired) {
       return node.value;
@@ -35,7 +32,7 @@ class TimeLimitedCache {
     return -1;
   }
 
-  count(): number {
+  count() {
     let res = 0;
     for (const node of this.map.values()) {
       if (!node.expired) {
@@ -49,21 +46,15 @@ class TimeLimitedCache {
 
 ## 事件发射器
 
-```ts
-type Callback = (...args: any[]) => any;
-type Subscription = {
-  unsubscribe: () => void;
-};
-
+```js
 class EventEmitter {
-  eventHandlers: Map<string, Callback[]> = new Map();
+  eventHandlers = new Map();
 
-  subscribe(eventName: string, callback: Callback): Subscription {
+  subscribe(eventName, callback) {
     if (!this.eventHandlers.has(eventName)) {
       this.eventHandlers.set(eventName, []);
     }
     this.eventHandlers.get(eventName).push(callback);
-
     return {
       unsubscribe: () => {
         const handlers = this.eventHandlers.get(eventName);
@@ -75,7 +66,7 @@ class EventEmitter {
     };
   }
 
-  emit(eventName: string, args: any[] = []): any[] {
+  emit(eventName, args = []) {
     const handlers = this.eventHandlers.get(eventName);
     if (!handlers || !handlers.length) {
       return [];
