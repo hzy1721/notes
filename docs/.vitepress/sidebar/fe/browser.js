@@ -52,6 +52,7 @@ export default [
     items: [
       { text: 'AJAX', link: '/fe/browser/network/ajax' },
       { text: 'XMLHttpRequest', link: '/fe/browser/network/xhr' },
+      { text: 'fetch', link: '/fe/browser/network/fetch' },
       { text: '跨域', link: '/fe/browser/network/cross-origin' },
       { text: 'JSONP', link: '/fe/browser/network/jsonp' },
       { text: 'CORS', link: '/fe/browser/network/cors' },

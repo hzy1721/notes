@@ -1,4 +1,4 @@
-# 版本变迁
+# 版本
 
 ## React 18.0 (2022.03)
 
@@ -35,7 +35,7 @@
    - 组件第一次挂载时，会额外 unmount 和 mount 一次
    - 第二次 mount 使用与第一次 mount 相同的状态
    - 为了测试未来的新功能
-7. 新的 Hooks
+7. 新 Hooks
    - useId
      - 生成 client 和 server 一致的唯一 ID
      - 主要用于组件库生成 a11y ID
@@ -45,7 +45,7 @@
      - 并发地同步外部数据源，省去了自己用 useEffect 同步数据
      - 主要用于库，而不是应用
    - useInsertionEffect
-     - DOM 更新后，layout effect 执行前触发
+     - layout effect 执行前触发
      - 用于 css-in-js 库
    - useTransition
      - 上面提到过

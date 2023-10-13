@@ -5,7 +5,7 @@ export default [
       { text: '组件与 JSX', link: '/fe/react-stack/react/component' },
       { text: '生命周期', link: '/fe/react-stack/react/lifecycle' },
       {
-        text: '版本变迁',
+        text: '版本',
         link: '/fe/react-stack/react/version-history',
       },
       {
@@ -191,12 +191,12 @@ export default [
     text: '状态管理',
     items: [
       {
-        text: 'Redux',
-        link: '/fe/react-stack/state/redux',
-      },
-      {
         text: 'Zustand',
         link: '/fe/react-stack/state/zustand',
+      },
+      {
+        text: 'Redux',
+        link: '/fe/react-stack/state/redux',
       },
     ],
     collapsible: true,

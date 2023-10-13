@@ -239,3 +239,24 @@ function partial(fn, args) {
   };
 }
 ```
+
+## 参数不定、可链式调用的加法函数
+
+```js
+function add(...args) {
+  let sum = 0;
+
+  const addInner = (...args) => {
+    if (!args.length) {
+      return sum;
+    }
+    sum += args.reduce((res, num) => res + num, 0);
+    return addInner;
+  };
+
+  return addInner(...args);
+}
+
+console.log(add(1)(2, 3)()); // 6
+console.log(add(1, 2)(3)(4)()); // 10
+```

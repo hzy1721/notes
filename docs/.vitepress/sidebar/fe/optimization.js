@@ -1,20 +1,15 @@
 export default [
   {
-    text: '性能问题',
+    text: '调试技巧',
     items: [
-      { text: '内存泄漏', link: '/fe/optimization/issue/memory-leak' },
       {
-        text: '回流与重绘',
-        link: '/fe/optimization/issue/reflow-repaint',
+        text: 'Chrome DevTools',
+        link: '/fe/optimization/debug/chrome-devtools',
       },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: '前端监控',
-    items: [
-      { text: '性能指标', link: '/fe/optimization/monitor/web-vitals' },
+      {
+        text: 'Performance',
+        link: '/fe/optimization/debug/devtools/performance',
+      },
     ],
     collapsible: true,
     collapsed: true,
@@ -59,16 +54,21 @@ export default [
     collapsed: true,
   },
   {
-    text: '调试技巧',
+    text: '性能问题',
     items: [
+      { text: '内存泄漏', link: '/fe/optimization/issue/memory-leak' },
       {
-        text: 'DevTools',
-        link: '/fe/optimization/debug/devtools/devtools',
+        text: '回流与重绘',
+        link: '/fe/optimization/issue/reflow-repaint',
       },
-      {
-        text: 'Performance',
-        link: '/fe/optimization/debug/devtools/performance',
-      },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '前端监控',
+    items: [
+      { text: '性能指标', link: '/fe/optimization/monitor/web-vitals' },
     ],
     collapsible: true,
     collapsed: true,

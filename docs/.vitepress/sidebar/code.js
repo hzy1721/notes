@@ -102,6 +102,7 @@ export default [
       { text: 'Date', link: '/code/fe/date' },
       { text: 'setInterval', link: '/code/fe/set-interval' },
       { text: '字符串', link: '/code/fe/string' },
+      { text: 'hooks', link: '/code/fe/hooks' },
     ],
     collapsible: true,
     collapsed: true,
