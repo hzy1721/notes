@@ -15,12 +15,6 @@ export default [
     collapsed: true,
   },
   {
-    text: '微前端',
-    items: [],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
     text: '移动端',
     items: [
       { text: 'H5', link: '/fe/library/mobile/h5' },

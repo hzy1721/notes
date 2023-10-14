@@ -36,4 +36,10 @@ export default [
     collapsible: true,
     collapsed: true,
   },
+  {
+    text: '微前端',
+    items: [],
+    collapsible: true,
+    collapsed: true,
+  },
 ];

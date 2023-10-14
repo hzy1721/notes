@@ -1,5 +1,7 @@
 # HTTPS
 
+> HTTP + TLS
+
 ## HTTP 缺点
 
 HTTP 是不加密的明文传输，带来了三大风险：

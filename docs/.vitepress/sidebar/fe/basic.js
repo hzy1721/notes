@@ -135,11 +135,6 @@ export default [
     items: [
       { text: 'Promise', link: '/fe/basic/js/promise' },
       { text: 'Promise 静态方法', link: '/fe/basic/js/promise-static' },
-      { text: '手写 Promise', link: '/fe/basic/js/own-promise' },
-      {
-        text: '手写 Promise 静态方法',
-        link: '/fe/basic/js/own-promise-static',
-      },
     ],
     collapsible: true,
     collapsed: true,
@@ -147,9 +142,9 @@ export default [
   {
     text: 'JS：正则',
     items: [
-      { text: '正则表达式', link: '/fe/basic/regexp/regexp' },
-      { text: '字符串方法', link: '/fe/basic/regexp/string-method' },
+      { text: 'RegExp', link: '/fe/basic/regexp/regexp' },
       { text: 'RegExp 方法', link: '/fe/basic/regexp/regexp-method' },
+      { text: 'String 方法', link: '/fe/basic/regexp/string-method' },
       { text: '常用正则', link: '/fe/basic/regexp/common-regexp' },
     ],
     collapsible: true,

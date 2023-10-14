@@ -1,6 +1,6 @@
 # 手写 Promise 静态方法
 
-## all
+## Promise.all
 
 ```js
 Promise.all = iterable => {
@@ -24,7 +24,7 @@ Promise.all = iterable => {
 };
 ```
 
-## allSettled
+## Promise.allSettled
 
 ```js
 Promise.allSettled = iterable => {
@@ -57,7 +57,7 @@ Promise.allSettled = iterable => {
 };
 ```
 
-## any
+## Promise.any
 
 ```js
 Promise.any = iterable => {
@@ -82,26 +82,26 @@ Promise.any = iterable => {
 };
 ```
 
-## race
+## Promise.race
 
 ```js
 Promise.race = iterable => {
   return new Promise((resolve, reject) => {
-    for (let promise of iterable) {
+    for (const promise of iterable) {
       Promise.resolve(promise).then(resolve).catch(reject);
     }
   });
 };
 ```
 
-## resolve
+## Promise.resolve
 
 ```js
 Promise.resolve = value => new Promise(resolve => resolve(value));
 ```
 
-## reject
+## Promise.reject
 
 ```js
-Promise.reject = value => new Promise((_, reject) => reject(value));
+Promise.reject = value => new Promise((resolve, reject) => reject(value));
 ```

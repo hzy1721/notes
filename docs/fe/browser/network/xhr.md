@@ -34,20 +34,20 @@ xhr.timeout = 10000; // 10 秒
 - `json`：响应类型为 `JSON` (自动解析为对象)
 
 ```js
-xhr.responseType = "json";
+xhr.responseType = 'json';
 ```
 
 设置 Request Header：
 
 ```js
-xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader('Content-Type', 'application/json');
 ```
 
 部分 Header 由浏览器管理，不可设置，比如 `Referer`、`Host`。后面设置的同名 Header 不会覆盖前面的，而是添加到值后面，以逗号 `,` 分隔。
 
 ```js
-xhr.setRequestHeader("X-Auth", "123");
-xhr.setRequestHeader("X-Auth", "456");
+xhr.setRequestHeader('X-Auth', '123');
+xhr.setRequestHeader('X-Auth', '456');
 // X-Auth: 123, 456
 ```
 
@@ -76,7 +76,7 @@ xhr.onload = function () {
   }
 };
 xhr.onerror = function () {
-  alert("Request failed");
+  alert('Request failed');
 };
 xhr.onprogress = function (event) {
   // event.loaded —— 已经下载了多少字节
@@ -99,7 +99,7 @@ xhr.onprogress = function (event) {
 获取除 `Set-Cookie` 和 `Set-Cookie2` 之外的的 Response Header：
 
 ```js
-xhr.getResponseHeader("Content-Type");
+xhr.getResponseHeader('Content-Type');
 // application/json
 xhr.getAllResponseHeaders();
 // Cache-Control: max-age=31536000
@@ -157,11 +157,11 @@ xhr.send([body]);
   // 从表单预填充 FormData
   let formData = new FormData(document.forms.person);
   // 附加一个字段
-  formData.append("middle", "Lee");
+  formData.append('middle', 'Lee');
 
   // 发送出去
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "/article/xmlhttprequest/post/user");
+  xhr.open('POST', '/article/xmlhttprequest/post/user');
   xhr.onload = () => alert(xhr.response);
   xhr.send(formData);
 </script>
@@ -172,11 +172,11 @@ xhr.send([body]);
 ```js
 let xhr = new XMLHttpRequest();
 let json = JSON.stringify({
-  name: "John",
-  surname: "Smith",
+  name: 'John',
+  surname: 'Smith',
 });
-xhr.open("POST", "/submit");
-xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+xhr.open('POST', '/submit');
+xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 xhr.send(json);
 ```
 
@@ -210,7 +210,7 @@ try {
   }
 } catch (err) {
   // 代替 onerror
-  alert("Request failed");
+  alert('Request failed');
 }
 ```
 
@@ -246,12 +246,12 @@ try {
     // 跟踪完成：无论成功与否
     xhr.onloadend = function () {
       if (xhr.status == 200) {
-        console.log("success");
+        console.log('success');
       } else {
-        console.log("error " + this.status);
+        console.log('error ' + this.status);
       }
     };
-    xhr.open("POST", "/article/xmlhttprequest/post/upload");
+    xhr.open('POST', '/article/xmlhttprequest/post/upload');
     xhr.send(file);
   }
 </script>

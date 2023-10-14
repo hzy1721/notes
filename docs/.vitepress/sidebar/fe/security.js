@@ -17,7 +17,12 @@ export default [
   },
   {
     text: '安全策略',
-    items: [{ text: 'CSP', link: '/fe/security/policy/csp' }],
+    items: [
+      { text: '同源策略与跨域', link: '/fe/security/policy/cross-origin' },
+      { text: 'JSONP', link: '/fe/security/policy/jsonp' },
+      { text: 'CORS', link: '/fe/security/policy/cors' },
+      { text: 'CSP', link: '/fe/security/policy/csp' },
+    ],
     collapsible: true,
     collapsed: true,
   },

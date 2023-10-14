@@ -99,12 +99,12 @@ function combinationSum(candidates: number[], target: number): number[][] {
 
 ## 全排列
 
-```ts
-function permute(nums: number[]): number[][] {
-  const res: number[][] = [];
+```js
+function permute(nums) {
   const n = nums.length;
-  const vis = new Array<boolean>(n).fill(false);
-  const stack: number[] = [];
+  const vis = new Array(n).fill(false);
+  const res = [];
+  const stack = [];
 
   const dfs = () => {
     if (stack.length === n) {
@@ -112,13 +112,46 @@ function permute(nums: number[]): number[][] {
       return;
     }
     for (let i = 0; i < n; ++i) {
-      if (!vis[i]) {
-        stack.push(nums[i]);
-        vis[i] = true;
-        dfs();
-        vis[i] = false;
-        stack.pop();
+      if (vis[i]) {
+        continue;
       }
+      stack.push(nums[i]);
+      vis[i] = true;
+      dfs();
+      vis[i] = false;
+      stack.pop();
+    }
+  };
+
+  dfs();
+  return res;
+}
+```
+
+## 全排列 II
+
+```js
+function permuteUnique(nums) {
+  nums.sort((a, b) => a - b);
+  const n = nums.length;
+  const vis = new Array(n).fill(false);
+  const res = [];
+  const stack = [];
+
+  const dfs = () => {
+    if (stack.length === n) {
+      res.push(stack.slice());
+      return;
+    }
+    for (let i = 0; i < n; ++i) {
+      if (vis[i] || (i > 0 && nums[i] === nums[i - 1] && !vis[i - 1])) {
+        continue;
+      }
+      stack.push(nums[i]);
+      vis[i] = true;
+      dfs();
+      vis[i] = false;
+      stack.pop();
     }
   };
 

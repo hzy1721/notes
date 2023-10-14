@@ -72,7 +72,10 @@ export default [
   },
   {
     text: '算法：一题多解',
-    items: [{ text: '接雨水', link: '/code/algorithm/trapping-rain' }],
+    items: [
+      { text: '接雨水', link: '/code/algorithm/trapping-rain' },
+      { text: '接雨水 II', link: '/code/algorithm/trapping-rain-2' },
+    ],
     collapsible: true,
     collapsed: true,
   },
@@ -103,6 +106,12 @@ export default [
       { text: 'setInterval', link: '/code/fe/set-interval' },
       { text: '字符串', link: '/code/fe/string' },
       { text: 'hooks', link: '/code/fe/hooks' },
+      {
+        text: '手写 Promise 静态方法',
+        link: '/code/fe/own-promise-static',
+      },
+      { text: '手写 Promise', link: '/code/fe/own-promise' },
+      { text: '事件循环', link: '/code/fe/event-loop' },
     ],
     collapsible: true,
     collapsed: true,

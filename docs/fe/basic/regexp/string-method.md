@@ -1,8 +1,32 @@
 # 字符串方法
 
-`String` 有一些方法接收正则表达式。
+```js
+const str = '1 2 3';
+str.search(/[1-3]/g); // 0
+str.match(/[1-3]/);
+// ['1', index: 0, input: '1 2 3', groups: undefined]
+str.match(/[1-3]/g);
+// ['1', '2', '3']
+Array.from(str.matchAll(/[1-3]/g));
+// [
+//   ['1', index: 0, input: '1 2 3', groups: undefined],
+//   ['2', index: 2, input: '1 2 3', groups: undefined],
+//   ['3', index: 4, input: '1 2 3', groups: undefined],
+// ]
+str.replace(/[1-3]/, '[$&]'); // '[1] 2 3'
+str.replaceAll(/[1-3]/g, (match, index, input, groups) => {
+  console.log(match, index, input, groups);
+  // 1 0 1 2 3 undefined
+  // 2 2 1 2 3 undefined
+  // 3 4 1 2 3 undefined
+  return `[${match}]`;
+});
+// '[1] [2] [3]'
+```
 
 ## search
+
+第一个匹配结果的起始索引。
 
 ```js
 search(regexp);
@@ -12,10 +36,7 @@ search(regexp);
   - `RegExp` 对象或拥有 `Symbol.search` 方法的对象
   - 否则通过 `new RegExp(regexp)` 转为 `RegExp` 对象
 
-返回结果：
-
-- 匹配成功：匹配结果的开始索引
-- 无匹配：返回 `-1`
+返回结果：匹配结果的起始索引或 `-1` (匹配失败)。
 
 ## match
 
@@ -30,9 +51,13 @@ match(regexp);
 
 返回结果：
 
-- 有修饰符 `g`：返回所有匹配结果的数组，不包括捕获组
-- 没有修饰符 `g`：返回第一个匹配结果的数组 `res` 和捕获组
-  - 与 `RegExp.prototype.exec` 的返回结果相同
+- 没有修饰符 `g`：与 `exec` 的结果相同
+  - `res[0]`：匹配结果
+  - `res[1...N]`：N 个捕获组
+  - `res.index`：匹配的起始索引
+  - `res.input`：原始字符串
+  - `res.groups`：命名捕获组
+- 有修饰符 `g`：所有匹配结果字符串的数组，相当于多次调用 `exec` 只取 `res[0]`
 - 无匹配项：返回 `null`
 
 ## matchAll
@@ -48,10 +73,12 @@ matchAll(regexp);
 
 返回结果：
 
-- 可迭代对象，元素是单个匹配结果的数组 `res` 和相应捕获组
+- 所有匹配结果的可迭代对象，元素是 `exec` 的返回结果
   - `res[0]`：匹配结果
-  - `res.index`：匹配位置
-  - `res.input`：原字符串
+  - `res[1...N]`：N 个捕获组
+  - `res.index`：匹配的起始索引
+  - `res.input`：原始字符串
+  - `res.groups`：命名捕获组
 
 ## replace
 
@@ -64,8 +91,8 @@ replace(pattern, replacement);
   - 拥有 `Symbol.replace` 方法的对象，通常是 `RegExp`
   - 否则转为字符串
 - `replacement`：
-  - 字符串：用于代替匹配结果，支持一些转义序列 (如下表)
-  - 函数：每次匹配成功时调用，返回值作为替换结果 (函数接收的参数如下)
+  - 字符串：用于代替匹配结果，支持转义序列
+  - 函数：每次匹配成功时调用，返回值作为替换结果
 
 | 转义序列  | 含义                   |
 | --------- | ---------------------- |
@@ -77,16 +104,11 @@ replace(pattern, replacement);
 | `$$`      | 字符 `$`               |
 
 ```js
-function replacer(match, p1, p2, /* …, */ pN, offset, string, groups) {
+// 对应于 res[0]、res[1..N]、index、input、groups
+function replacer(match, p1, p2, /* …, */ pN, index, input, groups) {
   return replacement;
 }
 ```
-
-- `match`：匹配结果，类似 `$&`
-- `p1, p2, …, pN`：捕获组
-- `offset`：匹配结果的开始索引
-- `string`：原字符串
-- `groups`：命名捕获组
 
 ## replaceAll
 
