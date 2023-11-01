@@ -168,3 +168,56 @@ function delayAll(functions, ms) {
   });
 }
 ```
+
+## 异步加法
+
+```js
+function asyncAdd(a, b, cb) {
+  setTimeout(() => {
+    cb(null, a + b);
+  }, Math.random() * 1000);
+}
+
+const map = new Map();
+
+function sum(...nums) {
+  const n = nums.length;
+  let count = 0;
+  nums.sort((a, b) => a - b);
+  const key = nums.join('+');
+  if (map.has(key)) {
+    return Promise.resolve(map.get(key));
+  }
+  return new Promise((resolve, reject) => {
+    const add = () => {
+      if (nums.length >= 2) {
+        const a = nums.pop();
+        const b = nums.pop();
+        asyncAdd(a, b, (error, res) => {
+          if (error) {
+            reject(error);
+          }
+          nums.push(res);
+          if (++count === n - 1) {
+            map.set(key, nums[0]);
+            resolve(nums[0]);
+          } else {
+            add();
+          }
+        });
+      }
+    };
+    for (let i = 0; i < n / 2; ++i) {
+      add();
+    }
+  });
+}
+
+async function total() {
+  const res1 = await sum(1, 2, 3, 4, 5, 6, 4);
+  const res2 = await sum(1, 2, 3, 4, 5, 6, 4);
+  return [res1, res2];
+}
+
+console.log(await total());
+```

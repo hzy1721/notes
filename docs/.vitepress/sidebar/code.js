@@ -112,6 +112,7 @@ export default [
       },
       { text: '手写 Promise', link: '/code/fe/own-promise' },
       { text: '事件循环', link: '/code/fe/event-loop' },
+      { text: 'DFS', link: '/code/fe/dfs' },
     ],
     collapsible: true,
     collapsed: true,

@@ -2,16 +2,12 @@
 
 ## 二叉树的最近公共祖先
 
-```ts
-function lowestCommonAncestor(
-  root: TreeNode | null,
-  p: TreeNode | null,
-  q: TreeNode | null
-): TreeNode | null {
-  let res: TreeNode | null = null;
+```js
+function lowestCommonAncestor(root, p, q) {
+  let res = undefined;
 
-  const dfs = (root: TreeNode | null): [boolean, boolean] => {
-    if (!root || res) {
+  const dfs = root => {
+    if (res || !root) {
       return [false, false];
     }
     const [leftHasP, leftHasQ] = dfs(root.left);

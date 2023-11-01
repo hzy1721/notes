@@ -1,5 +1,14 @@
 # FAQ
 
+## 为什么要引入 hooks
+
+[Making Sense of React Hooks - Dan Abramov](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889)
+
+- 为了在不同组件间更方便地复用有状态的逻辑
+  - 复用无状态的 UI 可以用 FC
+  - 复用状态 + UI 或单纯的状态逻辑需要额外的组件嵌套
+  - hooks 避免了过多的组件嵌套、HOC、生命周期函数的冗余逻辑
+
 ## 什么是单向数据流
 
 父组件直接传递数据给子组件，子组件通过发送消息的方式传递数据给父组件，数据的流动方向始终为从上到下，避免父子组件同时修改数据，造成逻辑混乱，无法排查哪里修改了数据。

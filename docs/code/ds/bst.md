@@ -130,3 +130,36 @@ function kthSmallest(root: TreeNode | null, k: number): number {
   return bst.kthSmallest(k);
 }
 ```
+
+## 二叉搜索树的最近公共祖先
+
+```js
+function lowestCommonAncestor(root, p, q) {
+  let res = undefined;
+
+  const dfs = root => {
+    if (res || !root) {
+      return [false, false];
+    }
+    let [leftHasP, leftHasQ] = [false, false];
+    let [rightHasP, rightHasQ] = [false, false];
+    if (root.val < p.val && root.val < q.val) {
+      [rightHasP, rightHasQ] = dfs(root.right);
+    } else if (p.val < root.val && q.val < root.val) {
+      [leftHasP, leftHasQ] = dfs(root.left);
+    } else {
+      [leftHasP, leftHasQ] = dfs(root.left);
+      [rightHasP, rightHasQ] = dfs(root.right);
+    }
+    const hasP = root === p || leftHasP || rightHasP;
+    const hasQ = root === q || leftHasQ || rightHasQ;
+    if (!res && hasP && hasQ) {
+      res = root;
+    }
+    return [hasP, hasQ];
+  };
+
+  dfs(root);
+  return res;
+}
+```

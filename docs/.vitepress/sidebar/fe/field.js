@@ -1,5 +1,11 @@
 export default [
   {
+    text: 'Electron',
+    items: [{ text: '概述', link: '/fe/field/electron/intro' }],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: '组件库',
     items: [
       { text: '概述', link: '/fe/field/component-library/overview' },
@@ -38,7 +44,7 @@ export default [
   },
   {
     text: '微前端',
-    items: [],
+    items: [{ text: '方案', link: '/fe/field/microfe/solutions' }],
     collapsible: true,
     collapsed: true,
   },

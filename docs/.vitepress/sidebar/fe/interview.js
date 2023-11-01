@@ -63,7 +63,6 @@ export default [
         text: '检测循环引用',
         link: '/fe/interview/code/detect-cycle',
       },
-      { text: '层级关系转换', link: '/fe/interview/code/hierarchy' },
     ],
     collapsible: true,
     collapsed: true,

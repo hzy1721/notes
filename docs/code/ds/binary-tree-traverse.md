@@ -2,11 +2,11 @@
 
 ## 二叉树的前序遍历
 
-```ts
-function preorderTraversal(root: TreeNode | null): number[] {
-  const res: number[] = [];
-  const stack: TreeNode[] = [];
+```js
+function preorderTraversal(root) {
+  const res = [];
   let curr = root;
+  const stack = [];
   while (curr || stack.length) {
     while (curr) {
       res.push(curr.val);
@@ -22,11 +22,11 @@ function preorderTraversal(root: TreeNode | null): number[] {
 
 ## 二叉树的中序遍历
 
-```ts
-function inorderTraversal(root: TreeNode | null): number[] {
-  const res: number[] = [];
-  const stack: TreeNode[] = [];
+```js
+function inorderTraversal(root) {
+  const res = [];
   let curr = root;
+  const stack = [];
   while (curr || stack.length) {
     while (curr) {
       stack.push(curr);

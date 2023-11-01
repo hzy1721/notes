@@ -2,13 +2,13 @@
 
 ## 无重复字符的最长子串
 
-```ts
-function lengthOfLongestSubstring(s: string): number {
-  const set = new Set<string>();
-  const n = s.length;
-  let j = 0;
+```js
+function lengthOfLongestSubstring(s) {
   let res = 0;
-  for (let i = 0; i < n && j < n; ++i) {
+  const n = s.length;
+  const set = new Set();
+  let j = 0;
+  for (let i = 0; i < n; ++i) {
     if (i > 0) {
       set.delete(s[i - 1]);
     }
