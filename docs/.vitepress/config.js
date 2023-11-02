@@ -126,7 +126,6 @@ export default {
           { text: '语言', link: '/fe/basic/' },
           // { text: 'V8', link: '/fe/v8/' },
           { text: '浏览器', link: '/fe/browser/' },
-          { text: 'Node', link: '/fe/node/' },
           { text: '面试', link: '/fe/interview/' },
         ],
       },

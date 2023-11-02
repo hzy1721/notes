@@ -1,7 +1,31 @@
 export default [
   {
+    text: 'Node',
+    items: [
+      { text: 'nvm', link: '/fe/field/node/nvm' },
+      { text: 'process', link: '/fe/field/node/process' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: 'Electron',
-    items: [{ text: '概述', link: '/fe/field/electron/intro' }],
+    items: [
+      { text: '概述', link: '/fe/field/electron/intro' },
+      { text: '进程模型', link: '/fe/field/electron/process' },
+      { text: '测试', link: '/fe/field/electron/test' },
+      { text: '调试', link: '/fe/field/electron/debug' },
+      { text: '打包', link: '/fe/field/electron/package' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: 'Electron Forge',
+    items: [
+      { text: '概述', link: '/fe/field/electron/forge/intro' },
+      { text: '签名', link: '/fe/field/electron/forge/sign' },
+    ],
     collapsible: true,
     collapsed: true,
   },
@@ -45,6 +69,12 @@ export default [
   {
     text: '微前端',
     items: [{ text: '方案', link: '/fe/field/microfe/solutions' }],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '浏览器插件',
+    items: [],
     collapsible: true,
     collapsed: true,
   },

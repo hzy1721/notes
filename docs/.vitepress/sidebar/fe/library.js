@@ -73,4 +73,16 @@ export default [
     collapsible: true,
     collapsed: true,
   },
+  {
+    text: '包管理器',
+    items: [{ text: 'npm', link: '/fe/library/pm/npm' }],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: 'monorepo',
+    items: [],
+    collapsible: true,
+    collapsed: true,
+  },
 ];

@@ -1,6 +1,6 @@
 export default [
   {
-    text: '调试技巧',
+    text: '调试',
     items: [
       {
         text: 'Chrome DevTools',
@@ -9,6 +9,10 @@ export default [
       {
         text: 'Performance',
         link: '/fe/optimization/debug/devtools/performance',
+      },
+      {
+        text: 'VSCode',
+        link: '/fe/optimization/debug/vscode',
       },
     ],
     collapsible: true,
