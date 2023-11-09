@@ -13,9 +13,11 @@ export default [
     items: [
       { text: '概述', link: '/fe/field/electron/intro' },
       { text: '进程模型', link: '/fe/field/electron/process' },
-      { text: '测试', link: '/fe/field/electron/test' },
       { text: '调试', link: '/fe/field/electron/debug' },
+      { text: '测试', link: '/fe/field/electron/test' },
       { text: '打包', link: '/fe/field/electron/package' },
+      { text: '发布', link: '/fe/field/electron/publish' },
+      { text: '更新', link: '/fe/field/electron/update' },
     ],
     collapsible: true,
     collapsed: true,

@@ -68,4 +68,10 @@ export default [
     collapsible: true,
     collapsed: true,
   },
+  {
+    text: 'Chromium',
+    items: [],
+    collapsible: true,
+    collapsed: true,
+  },
 ];

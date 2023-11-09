@@ -12,3 +12,5 @@ npm config set registry https://registry.npmmirror.com
 ## install
 
 - `--verbose`：日志级别
+
+## version

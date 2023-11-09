@@ -185,4 +185,10 @@ export default [
     collapsible: true,
     collapsed: true,
   },
+  {
+    text: 'Rust',
+    items: [{ text: '概述', link: '/fe/basic/rust/intro' }],
+    collapsible: true,
+    collapsed: true,
+  },
 ];
