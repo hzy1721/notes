@@ -75,7 +75,10 @@ export default [
   },
   {
     text: '包管理器',
-    items: [{ text: 'npm', link: '/fe/library/pm/npm' }],
+    items: [
+      { text: 'npm', link: '/fe/library/pm/npm' },
+      { text: 'yarn', link: '/fe/library/pm/yarn' },
+    ],
     collapsible: true,
     collapsed: true,
   },

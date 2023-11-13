@@ -69,6 +69,18 @@ export default [
     collapsed: true,
   },
   {
+    text: 'Web Worker',
+    items: [
+      { text: '概述', link: '/fe/browser/worker/intro' },
+      {
+        text: 'Channel Messaging',
+        link: '/fe/browser/worker/channel-messaging',
+      },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: 'Chromium',
     items: [],
     collapsible: true,

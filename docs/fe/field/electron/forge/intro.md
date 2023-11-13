@@ -8,7 +8,16 @@ Electron 脚手架。
 npm i -D @electron-forge/cli
 ```
 
-## create-electron-app
+## 创建项目
+
+```sh
+npm init electron-app@latest my-app -- --template=webpack-typescript
+```
+
+模板：
+
+- webpack
+- webpack-typescript
 
 ## import 项目
 

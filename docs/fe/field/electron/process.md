@@ -54,7 +54,11 @@ const win = new BrowserWindow({
 
 ### contextIsolation
 
-preload 脚本与页面是隔离的，无法直接在 `window` 上设置属性。
+出于安全原因，preload 脚本与页面是隔离的，二者访问的 `window` 不是同一个。
+
+需要使用 `contextBridge` 进行变量的传递，相比直接设置 `window` 有更多限制、更加安全。
+
+尽管 `contextBridge` 提供了安全方面的限制，但开发者还需要尽可能收缩权限，避免直接传递功能强大的 IPC 函数。
 
 ### contextBridge
 
@@ -70,10 +74,25 @@ console.log(window.myAPI);
 // => { desktop: true }
 ```
 
-## 进程间通信
+### TS 支持
 
-- `ipcMain`
-- `ipcRenderer`
+通过 `contextBridge` 传递的属性需要手动添加类型定义。
+
+```ts
+// preload.ts
+contextBridge.exposeInMainWorld('electronAPI', {
+  loadPreferences: () => ipcRenderer.invoke('load-prefs'),
+});
+// renderer.d.ts
+export interface IElectronAPI {
+  loadPreferences: () => Promise<void>;
+}
+declare global {
+  interface Window {
+    electronAPI: IElectronAPI;
+  }
+}
+```
 
 ## 创建子进程
 

@@ -13,7 +13,13 @@ export default [
     items: [
       { text: '概述', link: '/fe/field/electron/intro' },
       { text: '进程模型', link: '/fe/field/electron/process' },
+      { text: 'IPC', link: '/fe/field/electron/ipc' },
+      { text: 'MessagePort', link: '/fe/field/electron/message-port' },
+      { text: '进程沙箱', link: '/fe/field/electron/sandbox' },
       { text: '调试', link: '/fe/field/electron/debug' },
+      { text: '无障碍', link: '/fe/field/electron/a11y' },
+      { text: '安全', link: '/fe/field/electron/security' },
+      { text: '性能', link: '/fe/field/electron/performance' },
       { text: '测试', link: '/fe/field/electron/test' },
       { text: '打包', link: '/fe/field/electron/package' },
       { text: '发布', link: '/fe/field/electron/publish' },
