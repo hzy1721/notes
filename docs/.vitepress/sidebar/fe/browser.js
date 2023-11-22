@@ -52,7 +52,7 @@ export default [
     items: [
       { text: 'AJAX', link: '/fe/browser/network/ajax' },
       { text: 'XMLHttpRequest', link: '/fe/browser/network/xhr' },
-      { text: 'fetch', link: '/fe/browser/network/fetch' },
+      { text: 'Fetch API', link: '/fe/browser/network/fetch' },
     ],
     collapsible: true,
     collapsed: true,

@@ -1,8 +1,16 @@
-# fetch
+# Fetch API
+
+XHR 更强大、更灵活的替代品，浏览器、Node 17.5+ 原生支持。
+
+## fetch()
+
+## Request
+
+## Response
 
 ## AbortController
 
-中止 fetch 请求 (不支持 XHR)。
+中止 fetch 请求。
 
 ```js
 let controller = undefined;

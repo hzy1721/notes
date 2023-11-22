@@ -21,7 +21,6 @@ export default [
       { text: '安全', link: '/fe/field/electron/security' },
       { text: '性能', link: '/fe/field/electron/performance' },
       { text: '测试', link: '/fe/field/electron/test' },
-      { text: '打包', link: '/fe/field/electron/package' },
       { text: '发布', link: '/fe/field/electron/publish' },
       { text: '更新', link: '/fe/field/electron/update' },
     ],
@@ -32,6 +31,7 @@ export default [
     text: 'Electron Forge',
     items: [
       { text: '概述', link: '/fe/field/electron/forge/intro' },
+      { text: '打包-构建-发布', link: '/fe/field/electron/forge/build' },
       { text: '签名', link: '/fe/field/electron/forge/sign' },
     ],
     collapsible: true,

@@ -14,6 +14,7 @@ import feBrowserSidebar from './sidebar/fe/browser';
 import feNodeSidebar from './sidebar/fe/node';
 import feInterviewSidebar from './sidebar/fe/interview';
 import feMobileSidebar from './sidebar/fe/mobile';
+import serverLangSidebar from './sidebar/server/lang';
 import basicSidebar from './sidebar/basic';
 // import dlSidebar from './sidebar/ai/dl';
 // import tpSidebar from './sidebar/ai/tp';
@@ -131,7 +132,10 @@ export default {
       },
       {
         text: '后端',
-        items: [{ text: '服务端', link: '/fe/server/' }],
+        items: [
+          { text: '服务端', link: '/fe/server/' },
+          { text: '语言', link: '/server/lang/' },
+        ],
       },
       { text: '基础', link: '/basic/' },
       // {
@@ -157,6 +161,7 @@ export default {
       '/fe/node/': feNodeSidebar,
       '/fe/interview/': feInterviewSidebar,
       '/fe/mobile/': feMobileSidebar,
+      '/server/lang/': serverLangSidebar,
       '/basic/': basicSidebar,
       // '/ai/dl/': dlSidebar,
       // '/ai/tp/': tpSidebar,
