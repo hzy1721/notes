@@ -1,0 +1,25 @@
+# \<input\>
+
+- type
+  - text
+  - number
+  - password
+  - radio
+  - checkbox
+  - color
+  - month
+  - week
+  - date
+  - datetime-local
+  - time
+  - email
+  - tel
+  - button
+  - file
+  - hidden
+  - image
+  - range
+  - reset
+  - search
+  - url
+  - submit

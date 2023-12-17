@@ -113,6 +113,72 @@ export default [
       { text: '手写 Promise', link: '/code/fe/own-promise' },
       { text: '事件循环', link: '/code/fe/event-loop' },
       { text: 'DFS', link: '/code/fe/dfs' },
+      {
+        text: '防抖节流',
+        link: '/code/fe/old/debounce-throttle',
+      },
+      {
+        text: '深拷贝',
+        link: '/code/fe/old/clone-deep',
+      },
+      { text: '函数', link: '/code/fe/old/function' },
+      { text: '数组', link: '/code/fe/old/array' },
+      { text: 'URL', link: '/code/fe/old/url' },
+      { text: '正则', link: '/code/fe/old/regexp' },
+      { text: 'Promise', link: '/code/fe/old/promise' },
+      { text: 'DOM', link: '/code/fe/old/dom' },
+      { text: 'deepCompare', link: '/code/fe/old/deep-compare' },
+      { text: '事件', link: '/code/fe/old/event' },
+      {
+        text: '并发请求',
+        link: '/code/fe/old/concurrent-requests',
+      },
+      {
+        text: '有序数组去重',
+        link: '/code/fe/old/sorted-array-unique',
+      },
+      { text: 'EventBus', link: '/code/fe/old/eventbus' },
+      { text: '运算符', link: '/code/fe/old/operator' },
+      {
+        text: 'JSON 节点路径',
+        link: '/code/fe/old/json-node-path',
+      },
+      {
+        text: '内置函数',
+        link: '/code/fe/old/builtin-function',
+      },
+      { text: 'DOM 转对象', link: '/code/fe/old/dom-to-object' },
+      {
+        text: 'n 个异步操作按序执行',
+        link: '/code/fe/old/async-serial-execution',
+      },
+      {
+        text: '手写 class 继承',
+        link: '/code/fe/old/class-extends',
+      },
+      {
+        text: '检测循环引用',
+        link: '/code/fe/old/detect-cycle',
+      },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '校招笔试',
+    items: [
+      {
+        text: '腾讯 2021 秋招',
+        link: '/code/exam/tencent-2021-fall',
+      },
+      {
+        text: '美团 2021 校招 (10)',
+        link: '/code/exam/meituan-2021-10',
+      },
+      {
+        text: '京东 2019 春招前端',
+        link: '/code/exam/jd-2019-spring-fe',
+      },
     ],
     collapsible: true,
     collapsed: true,

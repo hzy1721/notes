@@ -19,7 +19,7 @@ export default [
     items: [
       { text: 'H5', link: '/fe/library/mobile/h5' },
       { text: '小程序', link: '/fe/library/mobile/miniapp' },
-      { text: '跨端', link: '/fe/library/mobile/app' },
+      { text: 'App', link: '/fe/library/mobile/app' },
     ],
     collapsible: true,
     collapsed: true,
@@ -27,9 +27,15 @@ export default [
   {
     text: 'TypeScript',
     items: [
+      { text: '概述', link: '/fe/library/ts/intro' },
+      { text: '类型', link: '/fe/library/ts/types' },
+      { text: '类型工具', link: '/fe/library/ts/tools' },
+      { text: '类型标注', link: '/fe/library/ts/anno' },
+      { text: '类型收缩', link: '/fe/library/ts/narrow' },
       { text: 'keyof', link: '/fe/library/ts/keyof' },
       { text: 'never', link: '/fe/library/ts/never' },
       { text: 'ThisType', link: '/fe/library/ts/thistype' },
+      { text: 'tsconfig', link: '/fe/library/ts/tsconfig' },
     ],
     collapsible: true,
     collapsed: true,
