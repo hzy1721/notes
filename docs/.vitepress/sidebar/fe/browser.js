@@ -19,7 +19,7 @@ export default [
     collapsed: true,
   },
   {
-    text: '浏览器：DOM',
+    text: 'DOM',
     items: [
       { text: 'Node', link: '/fe/browser/dom/node' },
       { text: '查询元素', link: '/fe/browser/dom/query-element' },
@@ -38,7 +38,7 @@ export default [
     collapsed: true,
   },
   {
-    text: '浏览器：事件',
+    text: '事件',
     items: [
       { text: '事件', link: '/fe/browser/event' },
       { text: '事件委托', link: '/fe/browser/event-delegation' },
@@ -48,7 +48,7 @@ export default [
     collapsed: true,
   },
   {
-    text: '浏览器：网络',
+    text: '网络',
     items: [
       { text: 'AJAX', link: '/fe/browser/network/ajax' },
       { text: 'XMLHttpRequest', link: '/fe/browser/network/xhr' },
@@ -58,7 +58,7 @@ export default [
     collapsed: true,
   },
   {
-    text: '浏览器：存储',
+    text: '存储',
     items: [
       { text: 'cookie', link: '/fe/browser/cookie' },
       { text: 'localStorage', link: '/fe/browser/localstorage' },
@@ -77,6 +77,12 @@ export default [
         link: '/fe/browser/worker/channel-messaging',
       },
     ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: 'WASM',
+    items: [],
     collapsible: true,
     collapsed: true,
   },

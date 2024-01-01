@@ -25,48 +25,8 @@ export default [
     collapsed: true,
   },
   {
-    text: 'TypeScript',
-    items: [
-      { text: '概述', link: '/fe/library/ts/intro' },
-      { text: '类型', link: '/fe/library/ts/types' },
-      { text: '类型工具', link: '/fe/library/ts/tools' },
-      { text: '类型标注', link: '/fe/library/ts/anno' },
-      { text: '类型收缩', link: '/fe/library/ts/narrow' },
-      { text: 'keyof', link: '/fe/library/ts/keyof' },
-      { text: 'never', link: '/fe/library/ts/never' },
-      { text: 'ThisType', link: '/fe/library/ts/thistype' },
-      { text: 'tsconfig', link: '/fe/library/ts/tsconfig' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: 'webpack',
-    items: [{ text: '概述', link: '/fe/library/webpack/overview' }],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: 'CSS 方案',
-    items: [
-      { text: '预处理器', link: '/fe/library/css-solution/preprocessor' },
-      { text: 'Tailwind', link: '/fe/library/css-solution/tailwind' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
     text: '网络请求',
     items: [{ text: 'Axios', link: '/fe/library/request/axios' }],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: '语法检查',
-    items: [
-      { text: 'ESLint', link: '/fe/library/lint/eslint' },
-      { text: 'Prettier', link: '/fe/library/lint/prettier' },
-    ],
     collapsible: true,
     collapsed: true,
   },
@@ -75,15 +35,6 @@ export default [
     items: [
       { text: '静态资源', link: '/fe/library/deploy/static' },
       { text: '前端网关', link: '/fe/library/deploy/gateway' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: '包管理器',
-    items: [
-      { text: 'npm', link: '/fe/library/pm/npm' },
-      { text: 'yarn', link: '/fe/library/pm/yarn' },
     ],
     collapsible: true,
     collapsed: true,

@@ -29,6 +29,7 @@ export default [
   {
     text: '鉴权',
     items: [
+      { text: '登录注册', link: '/fe/security/auth/login' },
       { text: 'session', link: '/fe/security/auth/session' },
       { text: 'token', link: '/fe/security/auth/token' },
       { text: 'JWT', link: '/fe/security/auth/jwt' },

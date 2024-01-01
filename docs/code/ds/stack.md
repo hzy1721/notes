@@ -2,6 +2,8 @@
 
 ## 有效的括号
 
+::: code-group
+
 ```ts
 const braceMap = new Map([
   ['(', ')'],
@@ -25,6 +27,32 @@ function isValid(s: string): boolean {
   return stack.length === 0;
 }
 ```
+
+```java
+class Solution {
+    private Map<Character, Character> map = new HashMap();
+
+    public Solution() {
+        map.put(')', '(');
+        map.put('}', '{');
+        map.put(']', '[');
+    }
+
+    public boolean isValid(String s) {
+        Deque<Character> stack = new LinkedList();
+        for (char c : s.toCharArray()) {
+            if (!map.containsKey(c)) {
+                stack.offerLast(c);
+            } else if (stack.pollLast() != map.get(c)) {
+                return false;
+            }
+        }
+        return stack.isEmpty();
+    }
+}
+```
+
+:::
 
 ## 最小栈
 

@@ -203,8 +203,15 @@ export default [
     collapsed: true,
   },
   {
-    text: 'SSR',
-    items: [{ text: 'Next', link: '/fe/react/ssr/next' }],
+    text: 'Next',
+    items: [
+      { text: '概述', link: '/fe/react/next/' },
+      { text: '路由', link: '/fe/react/next/route' },
+      { text: '服务端组件', link: '/fe/react/next/server-component' },
+      { text: '客户端组件', link: '/fe/react/next/client-component' },
+      { text: 'Image', link: '/fe/react/next/image' },
+      { text: 'Script', link: '/fe/react/next/script' },
+    ],
     collapsible: true,
     collapsed: true,
   },

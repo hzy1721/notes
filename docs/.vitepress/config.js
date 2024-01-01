@@ -10,7 +10,7 @@ import feFieldSidebar from './sidebar/fe/field';
 import feSecuritySidebar from './sidebar/fe/security';
 import fePerfSidebar from './sidebar/fe/perf';
 import feMobileSidebar from './sidebar/fe/mobile';
-import fePcClientSidebar from './sidebar/fe/pc-client';
+import fePcClientSidebar from './sidebar/fe/desktop';
 
 import serverJavaSidebar from './sidebar/server/java';
 import serverGoSidebar from './sidebar/server/go';
@@ -42,7 +42,7 @@ export default {
           { text: '安全', link: '/fe/security/' },
           { text: '性能', link: '/fe/perf/' },
           { text: '移动端', link: '/fe/mobile/' },
-          { text: 'PC 客户端', link: '/fe/pc-client/' },
+          { text: 'PC 客户端', link: '/fe/desktop/' },
         ],
       },
       {
@@ -75,7 +75,7 @@ export default {
       '/fe/security': feSecuritySidebar,
       '/fe/perf/': fePerfSidebar,
       '/fe/mobile/': feMobileSidebar,
-      '/fe/pc-client/': fePcClientSidebar,
+      '/fe/desktop/': fePcClientSidebar,
 
       '/server/java/': serverJavaSidebar,
       '/server/go/': serverGoSidebar,

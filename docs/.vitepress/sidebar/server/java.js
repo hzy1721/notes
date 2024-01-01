@@ -1,5 +1,14 @@
 export default [
   {
+    text: 'Java',
+    items: [
+      { text: '数据类型', link: '/server/java/java/data-types' },
+      { text: '集合', link: '/server/java/java/collection' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: 'Spring Boot',
     items: [
       { text: '概述', link: '/server/java/spring/boot/intro' },
@@ -20,12 +29,6 @@ export default [
       { text: '控制反转', link: '/server/java/spring/framework/ioc' },
       { text: '依赖注入', link: '/server/java/spring/framework/di' },
     ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: 'Java',
-    items: [{ text: 'jar', link: '/server/java/lang/jar' }],
     collapsible: true,
     collapsed: true,
   },
