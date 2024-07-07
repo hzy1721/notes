@@ -25,7 +25,7 @@ export default [
     collapsed: true,
   },
   {
-    text: 'React：hooks',
+    text: 'React - hooks',
     items: [
       { text: 'hooks', link: '/fe/react/react/hooks/hooks' },
       {
@@ -84,7 +84,7 @@ export default [
     collapsed: true,
   },
   {
-    text: 'React：组件',
+    text: 'React - 组件',
     items: [
       {
         text: 'Fragment',
@@ -107,7 +107,7 @@ export default [
     collapsed: true,
   },
   {
-    text: 'React：函数',
+    text: 'React - 函数',
     items: [
       {
         text: 'createContext',
@@ -128,7 +128,7 @@ export default [
     collapsed: true,
   },
   {
-    text: 'React：原理',
+    text: 'React - 原理',
     items: [
       {
         text: 'build your own react',
@@ -139,12 +139,22 @@ export default [
     collapsed: true,
   },
   {
-    text: 'React：优化',
+    text: 'React - 优化',
     items: [
       {
         text: '减少渲染次数',
         link: '/fe/react/react/reduce-render',
       },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: 'React - TS',
+    items: [
+      { text: '概述', link: '/fe/react/ts/overview' },
+      { text: 'createElement', link: '/fe/react/ts/create-element' },
+      { text: 'React 元素', link: '/fe/react/ts/react-element' },
     ],
     collapsible: true,
     collapsed: true,
@@ -167,22 +177,10 @@ export default [
     collapsed: true,
   },
   {
-    text: 'TypeScript',
-    items: [
-      { text: '概述', link: '/fe/react/ts/overview' },
-      { text: 'createElement', link: '/fe/react/ts/create-element' },
-      { text: 'React 元素', link: '/fe/react/ts/react-element' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
     text: '路由',
     items: [
-      {
-        text: 'React Router',
-        link: '/fe/react/router/react-router',
-      },
+      { text: '概述', link: '/fe/react/router/' },
+      { text: 'React Router', link: '/fe/react/router/react-router' },
     ],
     collapsible: true,
     collapsed: true,
@@ -190,14 +188,26 @@ export default [
   {
     text: '状态管理',
     items: [
-      {
-        text: 'Zustand',
-        link: '/fe/react/state/zustand',
-      },
-      {
-        text: 'Redux',
-        link: '/fe/react/state/redux',
-      },
+      { text: '概述', link: '/fe/react/state/' },
+      { text: 'Redux', link: '/fe/react/state/redux' },
+      { text: 'Immer', link: '/fe/react/state/immer' },
+      { text: 'Mobx', link: '/fe/react/state/mobx' },
+      { text: 'Zustand', link: '/fe/react/state/zustand' },
+      { text: 'Recoil', link: '/fe/react/state/recoil' },
+      { text: 'Jotai', link: '/fe/react/state/jotai' },
+      { text: 'Valtio', link: '/fe/react/state/valtio' },
+      { text: 'Hox', link: '/fe/react/state/hox' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '网络请求',
+    items: [
+      { text: '概述', link: '/fe/react/fetch/' },
+      { text: 'Axios', link: '/fe/react/fetch/axios' },
+      { text: 'useRequest', link: '/fe/react/fetch/use-request' },
+      { text: 'SWR', link: '/fe/react/fetch/swr' },
     ],
     collapsible: true,
     collapsed: true,
@@ -207,6 +217,7 @@ export default [
     items: [
       { text: '概述', link: '/fe/react/next/' },
       { text: '路由', link: '/fe/react/next/route' },
+      { text: '请求', link: '/fe/react/next/fetch' },
       { text: '服务端组件', link: '/fe/react/next/server-component' },
       { text: '客户端组件', link: '/fe/react/next/client-component' },
       { text: 'Image', link: '/fe/react/next/image' },

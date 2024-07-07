@@ -25,12 +25,6 @@ export default [
     collapsed: true,
   },
   {
-    text: '网络请求',
-    items: [{ text: 'Axios', link: '/fe/library/request/axios' }],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
     text: '前端部署',
     items: [
       { text: '静态资源', link: '/fe/library/deploy/static' },

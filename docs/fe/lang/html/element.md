@@ -110,36 +110,6 @@
 106. `<video>`
 107. `<wbr>`
 
-## 表格
-
-1. `<table>`
-2. `<thead>`
-3. `<tbody>`
-4. `<tfoot>`
-5. `<tr>`
-6. `<th>`
-7. `<td>`
-
-```html
-<table>
-  <thead>
-    <tr>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td></td>
-    </tr>
-  </tfoot>
-</table>
-```
-
 ## 表单
 
 1. `<form>`

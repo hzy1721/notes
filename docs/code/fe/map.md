@@ -33,8 +33,7 @@ class TimeLimitedCache {
   }
 
   count() {
-    return Array.from(this.map.values()).filter(node => !node.expired)
-      .length;
+    return Array.from(this.map.values()).filter((node) => !node.expired).length;
   }
 }
 ```
@@ -59,7 +58,7 @@ class EventEmitter {
         if (handlers?.length) {
           this.map.set(
             eventName,
-            handlers.filter(cb => cb !== callback)
+            handlers.filter((cb) => cb !== callback)
           );
         }
       },
@@ -68,7 +67,7 @@ class EventEmitter {
 
   emit(eventName, args = []) {
     const handlers = this.map.get(eventName) ?? [];
-    return handlers.map(cb => cb.apply(this, args));
+    return handlers.map((cb) => cb.apply(this, args));
   }
 }
 ```
@@ -84,7 +83,7 @@ class EventBus {
     if (!handlers) {
       this.map.set(event, (handlers = []));
     }
-    if (!handlers.find(node => node.cb === callback)) {
+    if (!handlers.find((node) => node.cb === callback)) {
       handlers.push({ cb: callback, once });
     }
   }
@@ -94,7 +93,7 @@ class EventBus {
     if (handlers?.length) {
       this.map.set(
         event,
-        handlers.filter(node => node.cb !== callback)
+        handlers.filter((node) => node.cb !== callback)
       );
     }
   }
@@ -105,7 +104,7 @@ class EventBus {
       handlers.forEach(({ cb }) => cb.apply(this, args));
       this.map.set(
         event,
-        handlers.filter(node => !node.once)
+        handlers.filter((node) => !node.once)
       );
     }
   }
@@ -121,7 +120,7 @@ class EventBus {
 ```js
 function convert(list) {
   const res = [];
-  const map = new Map(list.map(node => [node.key, node]));
+  const map = new Map(list.map((node) => [node.key, node]));
   for (const node of list) {
     const { key, parentKey } = node;
     // 非法情况：循环引用，key 是 0

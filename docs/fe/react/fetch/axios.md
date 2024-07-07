@@ -1,13 +1,13 @@
-# axios
+# Axios
 
 调用 `axios` 函数发送请求，传入配置对象 `config`，返回 promise。
 
 ```js
 axios(config)
-  .then(res => {
+  .then((res) => {
     // 请求成功
   })
-  .catch(err => {
+  .catch((err) => {
     // 请求失败
   });
 ```

@@ -9,6 +9,8 @@ Electron 基于 Chromium 构建，也采用了类似的多进程架构。
 
 Electron 进程分为 main 和 renderer 两类。
 
+![](./assets/main_renderer.awebp)
+
 ## 主进程 main
 
 每个 Electron 应用只有 1 个主进程，是应用的入口，运行在 Node 环境。
@@ -25,6 +27,8 @@ Electron 进程分为 main 和 renderer 两类。
 不能：
 
 - 访问和操作 DOM
+
+![](./assets/main_renderer_api.awebp)
 
 ## 渲染进程 renderer
 

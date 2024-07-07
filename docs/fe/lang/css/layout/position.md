@@ -14,3 +14,12 @@ CSS 中的 `position` 规则用于定位，有以下取值：
 - relatively positioned：relative
 - absolutely positioned：absolute、fixed
 - stickily positioned：sticky
+
+```css
+.demo {
+  position: relative;
+  position: absolute;
+  position: fixed;
+  position: sticky;
+}
+```

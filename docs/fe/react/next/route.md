@@ -23,12 +23,12 @@ Next 有 2 种路由模式，都是基于文件系统的路由：
 | `[...folder]`    | catch-all 动态路由      |
 | `[[...folder]]`  | 可选 catch-all 动态路由 |
 | `(folder)`       | 路由组                  |
-| `_folder`        | 私有路由                |
 | `@folder`        | 并行路由                |
 | `(.)folder`      | 同层拦截路由            |
 | `(..)folder`     | 向上一层拦截路由        |
 | `(..)(..)folder` | 向上两层拦截路由        |
-| `(...)folder`    | 向上拦截到根路由        |
+| `(...)folder`    | 根拦截路由              |
+| `_folder`        | 私有路由                |
 
 ### 动态路由
 
@@ -60,7 +60,7 @@ Next 有 2 种路由模式，都是基于文件系统的路由：
 
 ### 拦截路由
 
-在另一个路由之上展示当前页面。
+在当前页面之上展示另一个路由内容，比如查看图片对话框、登录注册对话框、购物车对话框。
 
 ## 文件
 
@@ -76,7 +76,7 @@ Next 有 2 种路由模式，都是基于文件系统的路由：
 | page         | 页面             |
 | global-error | 全局错误处理     |
 | default      | 并行路由默认页面 |
-| route        | 服务端接口       |
+| route        | 接口函数         |
 
 ```jsx
 import Layout from './layout';
@@ -169,6 +169,56 @@ export default function RootLayout({ children }) {
 
 并行路由也可以包含子路由，如果 slot 没有定义导航的目标路由，会保持导航前的页面，如果刷新页面，会尝试渲染相应 slot 的 default，如果不存在则展示 404。
 
+### route
+
+接口函数，不能与 page 共存。
+
+支持 7 种主流 HTTP 方法：GET、POST、PUT、PATCH、DELETE、HEAD、OPTIONS。
+
+返回 Response 对象的 GET 函数会自动缓存。以下情况不会缓存：
+
+- 使用 Request 对象
+- 使用除 GET 外的其他 HTTP 方法
+- 使用 cookies、headers 等动态函数
+- 在 segment config option 中指定不缓存
+
+## 中间件
+
+在根目录的 middleware 中命名导出 middleware 函数来定义中间件。
+
+- 重定向
+- 重写响应
+- 设置请求头
+- 设置响应 cookie
+- 设置响应头
+
+```ts
+export function middleware(request: NextRequest) {
+  // 针对不同的路由做不同的处理
+  if (request.nextUrl.pathname.startsWith('/about')) {
+    return NextResponse.rewrite(new URL('/about-2', request.url));
+  }
+
+  if (request.nextUrl.pathname.startsWith('/dashboard')) {
+    return NextResponse.rewrite(new URL('/dashboard/user', request.url));
+  }
+}
+
+export const config = {
+  matcher: [
+    // 只对满足要求的路由执行中间件，支持正则
+    {
+      source: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+      // 跳过 prefetch 请求
+      missing: [
+        { type: 'header', key: 'next-router-prefetch' },
+        { type: 'header', key: 'purpose', value: 'prefetch' },
+      ],
+    },
+  ],
+};
+```
+
 ## 元数据
 
 | 文件              | 含义              |
@@ -186,6 +236,12 @@ export default function RootLayout({ children }) {
 不包含 `page.tsx` 或 `route.tsx` 的目录是不可路由的，不会包含在路由内。
 
 因此可以自由地组织目录结构，只要不包含上面两个文件即可，比如组件目录 `components`、接口目录 `services`。
+
+其他文件有 3 种放置位置：
+
+- 项目根目录
+- app 根目录
+- 各个路由的目录
 
 ## 导航
 
@@ -247,3 +303,9 @@ const pathname = usePathname();
 访问过路由和 prefetch 路由的 RSC Payload 会被缓存在客户端的内存中，并在后续导航中尽可能复用缓存，以减少请求数。
 
 回退、前进时会复用缓存，并保留滚动的位置。
+
+## 国际化
+
+locale：语言和相关格式偏好的 ID，比如 `en-US`、`zh-CN`。
+
+定义动态路由 `app/[lang]`，然后在中间件中根据路由参数中的 locale 展示不同的内容。

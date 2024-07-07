@@ -1,23 +1,23 @@
 export default [
-  {
-    text: '浏览器',
-    items: [
-      {
-        text: '输入 URL',
-        link: '/fe/browser/after-input-url',
-      },
-      { text: '事件循环', link: '/fe/browser/event-loop' },
-      { text: '回流和重绘', link: '/fe/browser/reflow-repaint' },
-      {
-        text: '不同标签页通信',
-        link: '/fe/browser/tab-communication',
-      },
-      { text: 'Web Worker', link: '/fe/browser/web-worker' },
-      { text: 'Service Worker', link: '/fe/browser/service-worker' },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
+  // {
+  //   text: '浏览器',
+  //   items: [
+  //     {
+  //       text: '输入 URL',
+  //       link: '/fe/browser/after-input-url',
+  //     },
+  //     { text: '事件循环', link: '/fe/browser/event-loop' },
+  //     { text: '回流和重绘', link: '/fe/browser/reflow-repaint' },
+  //     {
+  //       text: '不同标签页通信',
+  //       link: '/fe/browser/tab-communication',
+  //     },
+  //     { text: 'Web Worker', link: '/fe/browser/web-worker' },
+  //     { text: 'Service Worker', link: '/fe/browser/service-worker' },
+  //   ],
+  //   collapsible: true,
+  //   collapsed: true,
+  // },
   {
     text: 'DOM',
     items: [
@@ -51,8 +51,10 @@ export default [
     text: '网络',
     items: [
       { text: 'AJAX', link: '/fe/browser/network/ajax' },
-      { text: 'XMLHttpRequest', link: '/fe/browser/network/xhr' },
-      { text: 'Fetch API', link: '/fe/browser/network/fetch' },
+      { text: 'XHR', link: '/fe/browser/network/xhr' },
+      { text: 'fetch', link: '/fe/browser/network/fetch' },
+      { text: 'Response', link: '/fe/browser/network/response' },
+      { text: 'ReadableStream', link: '/fe/browser/network/readable-stream' },
     ],
     collapsible: true,
     collapsed: true,
@@ -68,28 +70,28 @@ export default [
     collapsible: true,
     collapsed: true,
   },
-  {
-    text: 'Web Worker',
-    items: [
-      { text: '概述', link: '/fe/browser/worker/intro' },
-      {
-        text: 'Channel Messaging',
-        link: '/fe/browser/worker/channel-messaging',
-      },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: 'WASM',
-    items: [],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: 'Chromium',
-    items: [],
-    collapsible: true,
-    collapsed: true,
-  },
+  // {
+  //   text: 'Web Worker',
+  //   items: [
+  //     { text: '概述', link: '/fe/browser/worker/intro' },
+  //     {
+  //       text: 'Channel Messaging',
+  //       link: '/fe/browser/worker/channel-messaging',
+  //     },
+  //   ],
+  //   collapsible: true,
+  //   collapsed: true,
+  // },
+  // {
+  //   text: 'WASM',
+  //   items: [],
+  //   collapsible: true,
+  //   collapsed: true,
+  // },
+  // {
+  //   text: 'Chromium',
+  //   items: [],
+  //   collapsible: true,
+  //   collapsed: true,
+  // },
 ];

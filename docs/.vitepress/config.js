@@ -37,31 +37,31 @@ export default {
           { text: '浏览器', link: '/fe/browser/' },
           { text: '工程化', link: '/fe/engineer/' },
           { text: 'React', link: '/fe/react/' },
-          { text: 'Vue', link: '/fe/vue/' },
+          // { text: 'Vue', link: '/fe/vue/' },
           { text: '方向', link: '/fe/field/' },
-          { text: '安全', link: '/fe/security/' },
-          { text: '性能', link: '/fe/perf/' },
-          { text: '移动端', link: '/fe/mobile/' },
+          // { text: '安全', link: '/fe/security/' },
+          // { text: '性能', link: '/fe/perf/' },
+          // { text: '移动端', link: '/fe/mobile/' },
           { text: 'PC 客户端', link: '/fe/desktop/' },
         ],
       },
-      {
-        text: '后端',
-        items: [
-          { text: 'Java', link: '/server/java/' },
-          { text: 'Go', link: '/server/go/' },
-          { text: 'Node', link: '/server/node/' },
-          { text: '存储', link: '/server/storage/' },
-        ],
-      },
-      {
-        text: '客户端',
-        items: [
-          { text: '鸿蒙', link: '/client/harmony/' },
-          { text: '安卓', link: '/client/android/' },
-          { text: 'iOS', link: '/client/ios/' },
-        ],
-      },
+      // {
+      //   text: '后端',
+      //   items: [
+      //     { text: 'Java', link: '/server/java/' },
+      //     { text: 'Go', link: '/server/go/' },
+      //     { text: 'Node', link: '/server/node/' },
+      //     { text: '存储', link: '/server/storage/' },
+      //   ],
+      // },
+      // {
+      //   text: '客户端',
+      //   items: [
+      //     { text: '鸿蒙', link: '/client/harmony/' },
+      //     { text: '安卓', link: '/client/android/' },
+      //     { text: 'iOS', link: '/client/ios/' },
+      //   ],
+      // },
       { text: '基础', link: '/basic/' },
       { text: '算法', link: '/code/' },
     ],
@@ -105,5 +105,8 @@ export default {
         isCustomElement: (tag) => customElements.includes(tag),
       },
     },
+  },
+  vite: {
+    assetsInclude: ['**/*.awebp'],
   },
 };

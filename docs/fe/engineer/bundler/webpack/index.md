@@ -1,4 +1,4 @@
-# 概述
+# webpack
 
 基于 JS 的主流打包器（bundler），通过 loader 和 plugin 支持语法转译、混淆、压缩等功能。
 

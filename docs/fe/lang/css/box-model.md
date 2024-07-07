@@ -1,4 +1,4 @@
-# 盒子模型
+# 盒模型
 
 ![](assets/box-model.png)
 
@@ -6,6 +6,17 @@ CSS 属性 `box-sizing` 支持 `content-box` 和 `border-box`。
 
 - `content-box`：只包括 content
 - `border-box`：包括 content、padding、border
+
+```css
+.box {
+  box-sizing: border-box;
+  margin: 10px;
+  border: 1px solid black;
+  padding: 5px;
+  width: 100px;
+  height: 50px;
+}
+```
 
 ## margin 重叠
 

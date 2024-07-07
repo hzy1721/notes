@@ -2,7 +2,9 @@
 
 ## 安装
 
-官网安装（rustup、rustc、cargo 等工具）：https://www.rust-lang.org/tools/install
+rustup、rustc、cargo 等工具。
+
+https://www.rust-lang.org/tools/install
 
 ```sh
 # 更新 Rust
@@ -12,6 +14,8 @@ rustup update
 VSCode 插件：rust-analyzer
 
 ## cargo
+
+包管理器。
 
 | 用途             | 命令          |
 | ---------------- | ------------- |

@@ -3,7 +3,7 @@
 有 3 种方式使用 CSS：
 
 - 内联：`<p style="..."></p>`
-- 外链：`<link ref="stylesheet" href="style.css">`
+- 外链：`<link rel="stylesheet" href="style.css">`
 - 嵌入：`<style> ... </style>`
 
 优先级从高到低：

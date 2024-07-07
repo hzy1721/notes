@@ -4,6 +4,8 @@ export default [
     items: [
       { text: '概述', link: '/fe/desktop/electron/' },
       { text: '进程模型', link: '/fe/desktop/electron/process' },
+      { text: '生命周期', link: '/fe/desktop/electron/lifecycle' },
+      { text: '浏览器窗口', link: '/fe/desktop/electron/window' },
       { text: 'IPC', link: '/fe/desktop/electron/ipc' },
       { text: 'MessagePort', link: '/fe/desktop/electron/message-port' },
       { text: '进程沙箱', link: '/fe/desktop/electron/sandbox' },
