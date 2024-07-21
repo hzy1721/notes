@@ -1,7 +1,16 @@
 export default [
   {
     text: 'canvas',
-    items: [{ text: 'fabric', link: '/fe/field/canvas/fabric' }],
+    items: [
+      { text: '&lt;canvas&gt;', link: '/fe/field/canvas/html-canvas' },
+      { text: 'Fabric.js', link: '/fe/field/canvas/fabric' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '富文本',
+    items: [{ text: 'ProseMirror', link: '/fe/field/rich-text/prose-mirror' }],
     collapsible: true,
     collapsed: true,
   },
