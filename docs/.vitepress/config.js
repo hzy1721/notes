@@ -45,15 +45,15 @@ export default {
           { text: 'PC 客户端', link: '/fe/desktop/' },
         ],
       },
-      // {
-      //   text: '后端',
-      //   items: [
-      //     { text: 'Java', link: '/server/java/' },
-      //     { text: 'Go', link: '/server/go/' },
-      //     { text: 'Node', link: '/server/node/' },
-      //     { text: '存储', link: '/server/storage/' },
-      //   ],
-      // },
+      {
+        text: '后端',
+        items: [
+          // { text: 'Java', link: '/server/java/' },
+          // { text: 'Go', link: '/server/go/' },
+          { text: 'Node.js', link: '/server/node/' },
+          { text: '存储', link: '/server/storage/' },
+        ],
+      },
       // {
       //   text: '客户端',
       //   items: [
@@ -93,7 +93,7 @@ export default {
     socialLinks: [{ icon: 'github', link: 'https://github.com/hzy1721/notes' }],
   },
   lastUpdated: true,
-  appearance: false,
+  appearance: true,
   markdown: {
     config: (md) => {
       md.use(mathjax3);

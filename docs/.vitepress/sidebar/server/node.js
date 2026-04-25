@@ -1,5 +1,14 @@
 export default [
   {
+    text: 'Node.js',
+    items: [
+      { text: '模块系统', link: '/server/node/module-system' },
+      { text: '文件系统', link: '/server/node/file-system' },
+    ],
+    collapsible: true,
+    collapsed: false,
+  },
+  {
     text: 'Nest',
     items: [
       { text: '概述', link: '/server/node/nest/' },
