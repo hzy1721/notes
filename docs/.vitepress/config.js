@@ -14,12 +14,17 @@ import fePcClientSidebar from './sidebar/fe/desktop';
 
 import serverJavaSidebar from './sidebar/server/java';
 import serverGoSidebar from './sidebar/server/go';
+import serverPythonSidebar from './sidebar/server/python';
 import serverNodeSidebar from './sidebar/server/node';
 import serverStorageSidebar from './sidebar/server/storage';
 
 import clientHarmonySidebar from './sidebar/client/harmony';
 import clientAndroidSidebar from './sidebar/client/android';
 import clientIosSidebar from './sidebar/client/ios';
+import clientH5Sidebar from './sidebar/client/h5';
+import clientMiniappSidebar from './sidebar/client/miniapp';
+import clientRnSidebar from './sidebar/client/rn';
+import clientFlutterSidebar from './sidebar/client/flutter';
 
 import basicSidebar from './sidebar/basic';
 
@@ -46,11 +51,23 @@ export default {
         ],
       },
       {
+        text: '移动端',
+        items: [
+          { text: 'iOS', link: '/client/ios/' },
+          { text: 'Android', link: '/client/android/' },
+          { text: 'H5', link: '/client/h5/' },
+          { text: '小程序', link: '/client/miniapp/' },
+          { text: 'RN', link: '/client/rn/' },
+          { text: 'Flutter', link: '/client/flutter/' },
+        ],
+      },
+      {
         text: '后端',
         items: [
-          // { text: 'Java', link: '/server/java/' },
-          // { text: 'Go', link: '/server/go/' },
           { text: 'Node.js', link: '/server/node/' },
+          { text: 'Python', link: '/server/python/' },
+          { text: 'Go', link: '/server/go/' },
+          { text: 'Java', link: '/server/java/' },
           { text: '存储', link: '/server/storage/' },
         ],
       },
@@ -79,12 +96,17 @@ export default {
 
       '/server/java/': serverJavaSidebar,
       '/server/go/': serverGoSidebar,
+      '/server/python/': serverPythonSidebar,
       '/server/node/': serverNodeSidebar,
       '/server/storage/': serverStorageSidebar,
 
       '/client/harmony/': clientHarmonySidebar,
       '/client/android/': clientAndroidSidebar,
       '/client/ios/': clientIosSidebar,
+      '/client/h5/': clientH5Sidebar,
+      '/client/miniapp/': clientMiniappSidebar,
+      '/client/rn/': clientRnSidebar,
+      '/client/flutter/': clientFlutterSidebar,
 
       '/basic/': basicSidebar,
 
