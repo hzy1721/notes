@@ -1,7 +1,8 @@
 import mathjax3 from 'markdown-it-mathjax3';
 import customElements from './customElements';
 
-import feLangSidebar from './sidebar/fe/lang';
+import feHtmlcssSidebar from './sidebar/fe/htmlcss';
+import feJstsSidebar from './sidebar/fe/jsts';
 import feBrowserSidebar from './sidebar/fe/browser';
 import feEngineerSidebar from './sidebar/fe/engineer';
 import feReactSidebar from './sidebar/fe/react';
@@ -10,7 +11,10 @@ import feFieldSidebar from './sidebar/fe/field';
 import feSecuritySidebar from './sidebar/fe/security';
 import fePerfSidebar from './sidebar/fe/perf';
 import feMobileSidebar from './sidebar/fe/mobile';
-import fePcClientSidebar from './sidebar/fe/desktop';
+import feElectronSidebar from './sidebar/fe/electron';
+import feTauriSidebar from './sidebar/fe/tauri';
+import feAiSidebar from './sidebar/fe/ai';
+import feTestSidebar from './sidebar/fe/test';
 
 import serverJavaSidebar from './sidebar/server/java';
 import serverGoSidebar from './sidebar/server/go';
@@ -36,9 +40,17 @@ export default {
   themeConfig: {
     nav: [
       {
+        text: 'AI',
+        items: [
+          { text: 'Agent', link: '/fe/ai/agent/' },
+          { text: 'Claude Code', link: '/fe/ai/claude-code/' },
+        ],
+      },
+      {
         text: '前端',
         items: [
-          { text: '语言', link: '/fe/lang/' },
+          { text: 'HTML / CSS', link: '/fe/lang/html/common-elements' },
+          { text: 'JS / TS', link: '/fe/lang/js/data-type' },
           { text: '浏览器', link: '/fe/browser/' },
           { text: '工程化', link: '/fe/engineer/' },
           { text: 'React', link: '/fe/react/' },
@@ -47,18 +59,25 @@ export default {
           // { text: '安全', link: '/fe/security/' },
           // { text: '性能', link: '/fe/perf/' },
           // { text: '移动端', link: '/fe/mobile/' },
-          { text: 'PC 客户端', link: '/fe/desktop/' },
+          { text: '测试', link: '/fe/test/' },
+        ],
+      },
+      {
+        text: '桌面端',
+        items: [
+          { text: 'Electron', link: '/fe/desktop/electron/' },
+          { text: 'Tauri', link: '/fe/desktop/tauri/' },
         ],
       },
       {
         text: '移动端',
         items: [
-          { text: 'iOS', link: '/client/ios/' },
-          { text: 'Android', link: '/client/android/' },
           { text: 'H5', link: '/client/h5/' },
           { text: '小程序', link: '/client/miniapp/' },
           { text: 'RN', link: '/client/rn/' },
           { text: 'Flutter', link: '/client/flutter/' },
+          { text: 'iOS', link: '/client/ios/' },
+          { text: 'Android', link: '/client/android/' },
         ],
       },
       {
@@ -83,7 +102,12 @@ export default {
       { text: '算法', link: '/code/' },
     ],
     sidebar: {
-      '/fe/lang/': feLangSidebar,
+      '/fe/lang/html/': feHtmlcssSidebar,
+      '/fe/lang/css/': feHtmlcssSidebar,
+      '/fe/lang/js/': feJstsSidebar,
+      '/fe/lang/ts/': feJstsSidebar,
+      '/fe/lang/regexp/': feJstsSidebar,
+      '/fe/lang/': feHtmlcssSidebar,
       '/fe/browser/': feBrowserSidebar,
       '/fe/engineer/': feEngineerSidebar,
       '/fe/react/': feReactSidebar,
@@ -92,7 +116,11 @@ export default {
       '/fe/security': feSecuritySidebar,
       '/fe/perf/': fePerfSidebar,
       '/fe/mobile/': feMobileSidebar,
-      '/fe/desktop/': fePcClientSidebar,
+      '/fe/desktop/electron/': feElectronSidebar,
+      '/fe/desktop/tauri/': feTauriSidebar,
+      '/fe/desktop/': feElectronSidebar,
+      '/fe/ai/': feAiSidebar,
+      '/fe/test/': feTestSidebar,
 
       '/server/java/': serverJavaSidebar,
       '/server/go/': serverGoSidebar,
