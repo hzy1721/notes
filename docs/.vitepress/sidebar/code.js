@@ -4,6 +4,7 @@ export default [
     items: [
       { text: '数组', link: '/code/ds/array' },
       { text: '链表', link: '/code/ds/list' },
+      { text: '双向链表', link: '/code/ds/doubly-linked-list' },
       { text: '栈', link: '/code/ds/stack' },
       { text: '单调栈', link: '/code/ds/monotonic-stack' },
       { text: '单调队列', link: '/code/ds/monotonic-queue' },
@@ -82,7 +83,6 @@ export default [
   {
     text: '算法：其他',
     items: [
-      { text: 'LRU', link: '/code/algorithm/lru' },
       { text: '摩尔投票法', link: '/code/algorithm/moore' },
       { text: '数飞机', link: '/code/algorithm/count-plane' },
       { text: '连连看', link: '/code/algorithm/link-game' },
