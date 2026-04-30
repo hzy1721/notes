@@ -23,7 +23,7 @@ export default [
       { text: 'N 叉树', link: '/code/ds/n-ary-tree' },
       { text: '字典树', link: '/code/ds/trie' },
       { text: '哈希表', link: '/code/ds/hash-table' },
-      { text: '图：拓扑排序', link: '/code/algorithm/topo-sort' },
+      { text: '拓扑排序', link: '/code/algorithm/topo-sort' },
       { text: '堆', link: '/code/ds/heap' },
     ],
     collapsible: true,
@@ -94,6 +94,7 @@ export default [
   {
     text: '前端',
     items: [
+      { text: '事件循环', link: '/code/fe/event-loop' },
       { text: '函数', link: '/code/fe/function' },
       { text: '生成器', link: '/code/fe/generator' },
       { text: '对象', link: '/code/fe/object' },
@@ -111,7 +112,6 @@ export default [
         link: '/code/fe/own-promise-static',
       },
       { text: '手写 Promise', link: '/code/fe/own-promise' },
-      { text: '事件循环', link: '/code/fe/event-loop' },
       { text: 'DFS', link: '/code/fe/dfs' },
       {
         text: '防抖节流',
