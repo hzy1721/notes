@@ -60,7 +60,7 @@ function detectCycle(head: ListNode | null): ListNode | null {
 ```ts
 function getIntersectionNode(
   headA: ListNode | null,
-  headB: ListNode | null
+  headB: ListNode | null,
 ): ListNode | null {
   if (!headA || !headB) {
     return null;
@@ -106,7 +106,7 @@ function isPalindrome(head: ListNode | null): boolean {
 ```ts
 function addTwoNumbers(
   l1: ListNode | null,
-  l2: ListNode | null
+  l2: ListNode | null,
 ): ListNode | null {
   let p1 = l1;
   let p2 = l2;
@@ -133,10 +133,7 @@ function addTwoNumbers(
 ## 删除链表的倒数第 N 个结点
 
 ```ts
-function removeNthFromEnd(
-  head: ListNode | null,
-  n: number
-): ListNode | null {
+function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
   const dummyHead = new ListNode(0, head);
   let p1 = dummyHead;
   let p2 = head;
@@ -157,7 +154,7 @@ function removeNthFromEnd(
 ```ts
 function mergeTwoLists(
   list1: ListNode | null,
-  list2: ListNode | null
+  list2: ListNode | null,
 ): ListNode | null {
   let p1 = list1;
   let p2 = list2;
@@ -176,6 +173,40 @@ function mergeTwoLists(
   p3.next = p1 ?? p2;
   return dummyHead.next;
 }
+```
+
+## 合并 K 个升序链表
+
+归并思想
+
+```js
+const mergeTwoLists = (head1, head2) => {
+  let p1 = head1;
+  let p2 = head2;
+  const dummyHead = new ListNode();
+  let p3 = dummyHead;
+  while (p1 && p2) {
+    if (p1.val <= p2.val) {
+      p3.next = p1;
+      p1 = p1.next;
+    } else {
+      p3.next = p2;
+      p2 = p2.next;
+    }
+    p3 = p3.next;
+  }
+  p3.next = p1 ?? p2;
+  return dummyHead.next;
+};
+
+const mergeKLists = (lists) => {
+  for (let len = 1; len < lists.length; len *= 2) {
+    for (let i = 0; i + len < lists.length; i += len * 2) {
+      lists[i] = mergeTwoLists(lists[i], lists[i + len]);
+    }
+  }
+  return lists[0] ?? null;
+};
 ```
 
 ## 排序链表

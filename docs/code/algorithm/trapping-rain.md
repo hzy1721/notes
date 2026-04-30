@@ -1,5 +1,29 @@
 # 接雨水
 
+## 双指针
+
+```js
+const trap = (height) => {
+  let left = 0;
+  let right = height.length - 1;
+  let leftMax = 0;
+  let rightMax = 0;
+  let res = 0;
+  while (left < right) {
+    leftMax = Math.max(leftMax, height[left]);
+    rightMax = Math.max(rightMax, height[right]);
+    if (height[left] < height[right]) {
+      res += leftMax - height[left];
+      left += 1;
+    } else {
+      res += rightMax - height[right];
+      right -= 1;
+    }
+  }
+  return res;
+};
+```
+
 ## 前缀最值
 
 ```js
@@ -16,31 +40,6 @@ function trap(height) {
   let res = 0;
   for (let i = 1; i < n - 1; ++i) {
     res += Math.min(leftMax[i], rightMax[i]) - height[i];
-  }
-  return res;
-}
-```
-
-## 双指针
-
-```js
-function trap(height) {
-  const n = height.length;
-  let left = 0;
-  let right = n - 1;
-  let leftMax = 0;
-  let rightMax = 0;
-  let res = 0;
-  while (left < right) {
-    leftMax = Math.max(leftMax, height[left]);
-    rightMax = Math.max(rightMax, height[right]);
-    if (height[left] <= height[right]) {
-      res += leftMax - height[left];
-      ++left;
-    } else {
-      res += rightMax - height[right];
-      --right;
-    }
   }
   return res;
 }
