@@ -4,18 +4,18 @@
 
 ::: code-group
 
-```ts
-function twoSum(nums: number[], target: number): number[] {
-  const map = new Map<number, number>();
-  for (const [index, num] of nums.entries()) {
-    const other = target - num;
+```js
+const twoSum = (nums, target) => {
+  const map = new Map();
+  for (let i = 0; i < nums.length; ++i) {
+    const other = target - nums[i];
     if (map.has(other)) {
-      return [map.get(other), index];
+      return [map.get(other), i];
     }
-    map.set(num, index);
+    map.set(nums[i], i);
   }
   return [0, 1];
-}
+};
 ```
 
 ```java

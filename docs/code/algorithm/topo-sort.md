@@ -2,13 +2,8 @@
 
 ## 课程表
 
-- 拓扑排序
-
 ```ts
-function canFinish(
-  numCourses: number,
-  prerequisites: number[][]
-): boolean {
+function canFinish(numCourses: number, prerequisites: number[][]): boolean {
   // 出边和入边集合
   const outEdgeMap = new Map<number, Set<number>>();
   const inEdgeMap = new Map<number, Set<number>>();
@@ -54,13 +49,10 @@ function canFinish(
 }
 ```
 
-- DFS 检查图中是否有环
+扩展方法：DFS 检查图中是否有环
 
 ```ts
-function canFinish(
-  numCourses: number,
-  prerequisites: number[][]
-): boolean {
+function canFinish(numCourses: number, prerequisites: number[][]): boolean {
   // 邻接表存储边
   const graph: number[][] = new Array(numCourses).fill(0).map(() => []);
   for (const [a, b] of prerequisites) {
