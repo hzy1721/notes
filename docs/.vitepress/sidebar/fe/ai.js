@@ -12,6 +12,7 @@ export default [
     text: '工具',
     items: [
       { text: '工具调用', link: '/fe/ai/agent/tool/' },
+      { text: 'MCP', link: '/fe/ai/agent/tool/mcp' },
     ],
     collapsible: true,
     collapsed: true,

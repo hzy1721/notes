@@ -92,7 +92,7 @@ export default [
     collapsed: true,
   },
   {
-    text: '前端',
+    text: '前端手写题',
     items: [
       { text: 'LazyMan', link: '/code/fe/lazyman' },
       { text: '函数', link: '/code/fe/function' },
@@ -159,25 +159,6 @@ export default [
       {
         text: '检测循环引用',
         link: '/code/fe/old/detect-cycle',
-      },
-    ],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: '校招笔试',
-    items: [
-      {
-        text: '腾讯 2021 秋招',
-        link: '/code/exam/tencent-2021-fall',
-      },
-      {
-        text: '美团 2021 校招 (10)',
-        link: '/code/exam/meituan-2021-10',
-      },
-      {
-        text: '京东 2019 春招前端',
-        link: '/code/exam/jd-2019-spring-fe',
       },
     ],
     collapsible: true,

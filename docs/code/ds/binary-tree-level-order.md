@@ -2,92 +2,126 @@
 
 ## 二叉树的层序遍历
 
+普通层序遍历。
+
 ```ts
-function levelOrder(root: TreeNode | null): number[][] {
-  const res: number[][] = [];
-  const queue: TreeNode[] = [];
+const levelOrder = (root) => {
+  const queue = [];
   if (root) {
     queue.push(root);
   }
+  const res = [];
   while (queue.length) {
-    const layer: number[] = [];
+    const layer = [];
     const len = queue.length;
     for (let i = 0; i < len; ++i) {
-      const curr = queue.shift();
-      layer.push(curr.val);
-      if (curr.left) {
-        queue.push(curr.left);
+      const node = queue.shift();
+      layer.push(node.val);
+      if (node.left) {
+        queue.push(node.left);
       }
-      if (curr.right) {
-        queue.push(curr.right);
+      if (node.right) {
+        queue.push(node.right);
       }
     }
     res.push(layer);
   }
   return res;
-}
+};
 ```
 
 ## 二叉树的层序遍历 II
 
-```ts
-function levelOrderBottom(root: TreeNode | null): number[][] {
-  const res: number[][] = [];
-  const queue: TreeNode[] = [];
+自底向上，push 改成 unshift。
+
+```js
+const levelOrderBottom = (root) => {
+  const queue = [];
   if (root) {
     queue.push(root);
   }
+  const res = [];
   while (queue.length) {
-    const layer: number[] = [];
+    const layer = [];
     const len = queue.length;
     for (let i = 0; i < len; ++i) {
-      const curr = queue.shift();
-      layer.push(curr.val);
-      if (curr.left) {
-        queue.push(curr.left);
+      const node = queue.shift();
+      layer.push(node.val);
+      if (node.left) {
+        queue.push(node.left);
       }
-      if (curr.right) {
-        queue.push(curr.right);
+      if (node.right) {
+        queue.push(node.right);
       }
     }
     res.unshift(layer);
   }
   return res;
-}
+};
 ```
 
 ## 二叉树的锯齿形层序遍历
 
+用一个变量标记每层的遍历方向。
+
 ```ts
-function zigzagLevelOrder(root: TreeNode | null): number[][] {
-  const res: number[][] = [];
-  const queue: TreeNode[] = [];
+const zigzagLevelOrder = (root) => {
+  const queue = [];
   if (root) {
     queue.push(root);
   }
+  const res = [];
   let leftToRight = true;
   while (queue.length) {
-    const layer: number[] = [];
+    const layer = [];
     const len = queue.length;
     for (let i = 0; i < len; ++i) {
-      const curr = queue.shift();
+      const node = queue.shift();
       if (leftToRight) {
-        layer.push(curr.val);
+        layer.push(node.val);
       } else {
-        layer.unshift(curr.val);
+        layer.unshift(node.val);
       }
-      if (curr.left) {
-        queue.push(curr.left);
+      if (node.left) {
+        queue.push(node.left);
       }
-      if (curr.right) {
-        queue.push(curr.right);
+      if (node.right) {
+        queue.push(node.right);
       }
     }
     res.push(layer);
     leftToRight = !leftToRight;
   }
   return res;
-}
+};
+```
+
+## 二叉树的右视图
+
+层序遍历，保存每层最后一个元素的值。
+
+```js
+const rightSideView = (root) => {
+  const queue = [];
+  if (root) {
+    queue.push(root);
+  }
+  const res = [];
+  while (queue.length) {
+    const len = queue.length;
+    res.push(queue[len - 1].val);
+    for (let i = 0; i < len; ++i) {
+      const node = queue.shift();
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+  }
+  return res;
+};
 ```
 
 ## 二叉树的序列化与反序列化
@@ -122,7 +156,7 @@ function deserialize(data: string): TreeNode | null {
   }
   const nodes: Array<TreeNode | null> = data
     .split(',')
-    .map(str => (str === 'null' ? null : new TreeNode(Number(str))));
+    .map((str) => (str === 'null' ? null : new TreeNode(Number(str))));
   let i = 1;
   const root = nodes[0];
   const queue: Array<TreeNode | null> = [root];
@@ -140,33 +174,5 @@ function deserialize(data: string): TreeNode | null {
     }
   }
   return root;
-}
-```
-
-## 二叉树的右视图
-
-```ts
-function rightSideView(root: TreeNode | null): number[] {
-  const res: number[] = [];
-  const queue: TreeNode[] = [];
-  if (root) {
-    queue.push(root);
-  }
-  while (queue.length) {
-    let last = 0;
-    const len = queue.length;
-    for (let i = 0; i < len; ++i) {
-      const node = queue.shift();
-      last = node.val;
-      if (node.left) {
-        queue.push(node.left);
-      }
-      if (node.right) {
-        queue.push(node.right);
-      }
-    }
-    res.push(last);
-  }
-  return res;
 }
 ```
