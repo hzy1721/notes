@@ -94,7 +94,7 @@ export default [
   {
     text: '前端',
     items: [
-      { text: '事件循环', link: '/code/fe/event-loop' },
+      { text: 'LazyMan', link: '/code/fe/lazyman' },
       { text: '函数', link: '/code/fe/function' },
       { text: '生成器', link: '/code/fe/generator' },
       { text: '对象', link: '/code/fe/object' },

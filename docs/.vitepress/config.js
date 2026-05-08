@@ -29,6 +29,7 @@ import clientH5Sidebar from './sidebar/client/h5';
 import clientMiniappSidebar from './sidebar/client/miniapp';
 import clientRnSidebar from './sidebar/client/rn';
 import clientFlutterSidebar from './sidebar/client/flutter';
+import clientCrossSidebar from './sidebar/client/cross';
 
 import basicSidebar from './sidebar/basic';
 
@@ -77,6 +78,12 @@ export default {
           { text: 'Flutter', link: '/client/flutter/' },
           { text: 'iOS', link: '/client/ios/' },
           { text: 'Android', link: '/client/android/' },
+        ],
+      },
+      {
+        text: '跨端',
+        items: [
+          { text: 'Rust', link: '/client/cross/rust' },
         ],
       },
       {
@@ -134,6 +141,7 @@ export default {
       '/client/miniapp/': clientMiniappSidebar,
       '/client/rn/': clientRnSidebar,
       '/client/flutter/': clientFlutterSidebar,
+      '/client/cross/': clientCrossSidebar,
 
       '/basic/': basicSidebar,
 

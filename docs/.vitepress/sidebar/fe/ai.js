@@ -9,6 +9,14 @@ export default [
     collapsed: true,
   },
   {
+    text: '工具',
+    items: [
+      { text: '工具调用', link: '/fe/ai/agent/tool/' },
+    ],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
     text: 'Claude Code',
     items: [{ text: '概述', link: '/fe/ai/agent/claude-code/' }],
     collapsible: true,

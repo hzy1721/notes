@@ -1,8 +1,8 @@
-# 事件循环
+# LazyMan
 
-## LazyMan
+## class 写法
 
-`class` 写法：通过 `new` 实例化
+通过 `new` 实例化
 
 ```js
 class LazyMan {
@@ -53,7 +53,9 @@ class LazyMan {
 }
 ```
 
-Promise 实现：任务返回 Promise、去掉 `nextTask`
+## class + Promise 实现
+
+任务返回 Promise、去掉 `nextTask`
 
 ```js
 class LazyMan {
@@ -104,7 +106,9 @@ class LazyMan {
 }
 ```
 
-函数写法：调用函数实例化
+## 函数写法
+
+调用函数实例化
 
 ```js
 const LazyMan = (name) => {
