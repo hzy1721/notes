@@ -9,6 +9,8 @@ import feBrowserSidebar from './sidebar/fe/browser';
 import feEngineerSidebar from './sidebar/fe/engineer';
 import feEngineerBasicsSidebar from './sidebar/fe/engineer-basics';
 import feEngineerBundlerSidebar from './sidebar/fe/engineer-bundler';
+import feEngineerCiCdSidebar from './sidebar/fe/engineer-ci-cd';
+import feEngineerPerfSidebar from './sidebar/fe/engineer-perf';
 import feReactSidebar from './sidebar/fe/react';
 import feVueSidebar from './sidebar/fe/vue';
 import feFieldSidebar from './sidebar/fe/field';
@@ -22,10 +24,20 @@ import feTauriSidebar from './sidebar/fe/tauri';
 import feAiSidebar from './sidebar/fe/ai';
 
 import serverJavaSidebar from './sidebar/server/java';
+import serverJavaLanguageSidebar from './sidebar/server/java-language';
+import serverJavaFrameworkSidebar from './sidebar/server/java-framework';
 import serverGoSidebar from './sidebar/server/go';
+import serverGoLanguageSidebar from './sidebar/server/go-language';
+import serverGinSidebar from './sidebar/server/gin';
 import serverPythonSidebar from './sidebar/server/python';
+import serverPythonLanguageSidebar from './sidebar/server/python-language';
+import serverPythonFrameworkSidebar from './sidebar/server/python-framework';
 import serverNodeSidebar from './sidebar/server/node';
-import serverStorageSidebar from './sidebar/server/storage';
+import serverNodeLanguageSidebar from './sidebar/server/node-language';
+import serverNodeFrameworkSidebar from './sidebar/server/node-framework';
+import serverDbSidebar from './sidebar/server/db';
+import serverCacheSidebar from './sidebar/server/cache';
+import serverMqSidebar from './sidebar/server/mq';
 
 import clientHarmonySidebar from './sidebar/client/harmony';
 import clientAndroidSidebar from './sidebar/client/android';
@@ -73,6 +85,8 @@ export default {
             items: [
               { text: '基础', link: '/fe/engineer/basics/' },
               { text: '打包', link: '/fe/engineer/bundler/' },
+              { text: 'CI/CD', link: '/fe/engineer/ci-cd/' },
+              { text: '性能优化', link: '/fe/engineer/perf/' },
             ],
           },
           // { text: 'Vue', link: '/fe/vue/' },
@@ -109,11 +123,42 @@ export default {
       {
         text: '后端',
         items: [
-          { text: 'Node.js', link: '/server/node/' },
-          { text: 'Python', link: '/server/python/' },
-          { text: 'Go', link: '/server/go/' },
-          { text: 'Java', link: '/server/java/' },
-          { text: '存储', link: '/server/storage/' },
+          {
+            text: 'Go',
+            items: [
+              { text: '语言', link: '/server/go/language-features/package-management/' },
+              { text: '框架', link: '/server/go/gin/' },
+            ],
+          },
+          {
+            text: 'Node',
+            items: [
+              { text: '语言', link: '/server/node/language/' },
+              { text: '框架', link: '/server/node/framework/' },
+            ],
+          },
+          {
+            text: 'Python',
+            items: [
+              { text: '语言', link: '/server/python/language/' },
+              { text: '框架', link: '/server/python/framework/' },
+            ],
+          },
+          {
+            text: 'Java',
+            items: [
+              { text: '语言', link: '/server/java/language/' },
+              { text: '框架', link: '/server/java/framework/' },
+            ],
+          },
+          {
+            text: '通用',
+            items: [
+              { text: 'DB', link: '/server/db/' },
+              { text: '缓存', link: '/server/cache/' },
+              { text: 'MQ', link: '/server/mq/' },
+            ],
+          },
         ],
       },
       {
@@ -141,6 +186,8 @@ export default {
       '/fe/browser/': feBrowserSidebar,
       '/fe/engineer/basics/': feEngineerBasicsSidebar,
       '/fe/engineer/bundler/': feEngineerBundlerSidebar,
+      '/fe/engineer/ci-cd/': feEngineerCiCdSidebar,
+      '/fe/engineer/perf/': feEngineerPerfSidebar,
       '/fe/engineer/': feEngineerSidebar,
       '/fe/react/': feReactSidebar,
       '/fe/vue/': feVueSidebar,
@@ -155,11 +202,21 @@ export default {
       '/fe/desktop/': feElectronSidebar,
       '/fe/ai/': feAiSidebar,
 
+      '/server/java/language/': serverJavaLanguageSidebar,
+      '/server/java/framework/': serverJavaFrameworkSidebar,
       '/server/java/': serverJavaSidebar,
+      '/server/go/language-features/': serverGoLanguageSidebar,
+      '/server/go/gin/': serverGinSidebar,
       '/server/go/': serverGoSidebar,
+      '/server/python/language/': serverPythonLanguageSidebar,
+      '/server/python/framework/': serverPythonFrameworkSidebar,
       '/server/python/': serverPythonSidebar,
+      '/server/node/language/': serverNodeLanguageSidebar,
+      '/server/node/framework/': serverNodeFrameworkSidebar,
       '/server/node/': serverNodeSidebar,
-      '/server/storage/': serverStorageSidebar,
+      '/server/db/': serverDbSidebar,
+      '/server/cache/': serverCacheSidebar,
+      '/server/mq/': serverMqSidebar,
 
       '/client/harmony/': clientHarmonySidebar,
       '/client/android/': clientAndroidSidebar,

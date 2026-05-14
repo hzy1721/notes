@@ -61,4 +61,16 @@ export default [
     collapsible: true,
     collapsed: true,
   },
+  {
+    text: 'CI/CD',
+    items: [],
+    collapsible: true,
+    collapsed: true,
+  },
+  {
+    text: '性能优化',
+    items: [],
+    collapsible: true,
+    collapsed: true,
+  },
 ];
