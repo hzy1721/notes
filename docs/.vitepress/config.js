@@ -1,20 +1,25 @@
 import mathjax3 from 'markdown-it-mathjax3';
 import customElements from './customElements';
 
-import feHtmlcssSidebar from './sidebar/fe/htmlcss';
-import feJstsSidebar from './sidebar/fe/jsts';
+import feHtmlSidebar from './sidebar/fe/html';
+import feCssSidebar from './sidebar/fe/css';
+import feJsSidebar from './sidebar/fe/js';
+import feTsSidebar from './sidebar/fe/ts';
 import feBrowserSidebar from './sidebar/fe/browser';
 import feEngineerSidebar from './sidebar/fe/engineer';
+import feEngineerBasicsSidebar from './sidebar/fe/engineer-basics';
+import feEngineerBundlerSidebar from './sidebar/fe/engineer-bundler';
 import feReactSidebar from './sidebar/fe/react';
 import feVueSidebar from './sidebar/fe/vue';
 import feFieldSidebar from './sidebar/fe/field';
+import feCanvasSidebar from './sidebar/fe/canvas';
+import feRichTextSidebar from './sidebar/fe/rich-text';
 import feSecuritySidebar from './sidebar/fe/security';
 import fePerfSidebar from './sidebar/fe/perf';
 import feMobileSidebar from './sidebar/fe/mobile';
 import feElectronSidebar from './sidebar/fe/electron';
 import feTauriSidebar from './sidebar/fe/tauri';
 import feAiSidebar from './sidebar/fe/ai';
-import feTestSidebar from './sidebar/fe/test';
 
 import serverJavaSidebar from './sidebar/server/java';
 import serverGoSidebar from './sidebar/server/go';
@@ -42,24 +47,45 @@ export default {
     nav: [
       {
         text: 'AI',
-        items: [
-          { text: 'Agent', link: '/fe/ai/agent/' },
-        ],
+        items: [{ text: 'Agent', link: '/fe/ai/agent/' }],
       },
       {
         text: '前端',
         items: [
-          { text: 'HTML / CSS', link: '/fe/lang/html/common-elements' },
-          { text: 'JS / TS', link: '/fe/lang/js/data-type' },
-          { text: '浏览器', link: '/fe/browser/' },
-          { text: '工程化', link: '/fe/engineer/' },
-          { text: 'React', link: '/fe/react/' },
+          {
+            text: '基础',
+            items: [
+              { text: 'HTML', link: '/fe/lang/html/common-elements' },
+              { text: 'CSS', link: '/fe/lang/css/selector/' },
+              { text: 'JavaScript', link: '/fe/lang/js/data-type' },
+              { text: 'TypeScript', link: '/fe/lang/ts/intro' },
+              { text: '浏览器', link: '/fe/browser/' },
+            ],
+          },
+          {
+            text: '框架',
+            items: [
+              { text: 'React', link: '/fe/react/' },
+            ],
+          },
+          {
+            text: '工程化',
+            items: [
+              { text: '基础', link: '/fe/engineer/basics/' },
+              { text: '打包', link: '/fe/engineer/bundler/' },
+            ],
+          },
           // { text: 'Vue', link: '/fe/vue/' },
-          { text: '方向', link: '/fe/field/' },
+          {
+            text: '方向',
+            items: [
+              { text: 'Canvas', link: '/fe/field/canvas/html-canvas' },
+              { text: '富文本', link: '/fe/field/rich-text/prose-mirror' },
+            ],
+          },
           // { text: '安全', link: '/fe/security/' },
           // { text: '性能', link: '/fe/perf/' },
           // { text: '移动端', link: '/fe/mobile/' },
-          { text: '测试', link: '/fe/test/' },
         ],
       },
       {
@@ -81,12 +107,6 @@ export default {
         ],
       },
       {
-        text: '跨端',
-        items: [
-          { text: 'Rust', link: '/client/cross/rust' },
-        ],
-      },
-      {
         text: '后端',
         items: [
           { text: 'Node.js', link: '/server/node/' },
@@ -95,6 +115,10 @@ export default {
           { text: 'Java', link: '/server/java/' },
           { text: '存储', link: '/server/storage/' },
         ],
+      },
+      {
+        text: '底层',
+        items: [{ text: 'Rust', link: '/client/cross/rust' }],
       },
       // {
       //   text: '客户端',
@@ -108,16 +132,20 @@ export default {
       { text: '算法', link: '/code/' },
     ],
     sidebar: {
-      '/fe/lang/html/': feHtmlcssSidebar,
-      '/fe/lang/css/': feHtmlcssSidebar,
-      '/fe/lang/js/': feJstsSidebar,
-      '/fe/lang/ts/': feJstsSidebar,
-      '/fe/lang/regexp/': feJstsSidebar,
-      '/fe/lang/': feHtmlcssSidebar,
+      '/fe/lang/html/': feHtmlSidebar,
+      '/fe/lang/css/': feCssSidebar,
+      '/fe/lang/js/': feJsSidebar,
+      '/fe/lang/ts/': feTsSidebar,
+      '/fe/lang/regexp/': feJsSidebar,
+      '/fe/lang/': feHtmlSidebar,
       '/fe/browser/': feBrowserSidebar,
+      '/fe/engineer/basics/': feEngineerBasicsSidebar,
+      '/fe/engineer/bundler/': feEngineerBundlerSidebar,
       '/fe/engineer/': feEngineerSidebar,
       '/fe/react/': feReactSidebar,
       '/fe/vue/': feVueSidebar,
+      '/fe/field/canvas/': feCanvasSidebar,
+      '/fe/field/rich-text/': feRichTextSidebar,
       '/fe/field/': feFieldSidebar,
       '/fe/security': feSecuritySidebar,
       '/fe/perf/': fePerfSidebar,
@@ -126,7 +154,6 @@ export default {
       '/fe/desktop/tauri/': feTauriSidebar,
       '/fe/desktop/': feElectronSidebar,
       '/fe/ai/': feAiSidebar,
-      '/fe/test/': feTestSidebar,
 
       '/server/java/': serverJavaSidebar,
       '/server/go/': serverGoSidebar,

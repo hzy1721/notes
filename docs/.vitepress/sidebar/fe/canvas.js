@@ -8,10 +8,4 @@ export default [
     collapsible: true,
     collapsed: true,
   },
-  {
-    text: '富文本',
-    items: [{ text: 'ProseMirror', link: '/fe/field/rich-text/prose-mirror' }],
-    collapsible: true,
-    collapsed: true,
-  },
 ];
