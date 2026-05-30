@@ -28,14 +28,10 @@ export default [
     collapsed: true,
   },
   {
-    text: 'Claude Code',
-    items: [{ text: '概述', link: '/fe/ai/agent/claude-code/' }],
-    collapsible: true,
-    collapsed: true,
-  },
-  {
-    text: 'OpenClaw / Hermes',
-    items: [{ text: '概述', link: '/fe/ai/agent/openclaw/' }],
+    text: 'Mastra',
+    items: [
+      { text: 'Workflow', link: '/fe/ai/agent/mastra/workflow' },
+    ],
     collapsible: true,
     collapsed: true,
   },

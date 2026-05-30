@@ -22,6 +22,7 @@ import feMobileSidebar from './sidebar/fe/mobile';
 import feElectronSidebar from './sidebar/fe/electron';
 import feTauriSidebar from './sidebar/fe/tauri';
 import feAiSidebar from './sidebar/fe/ai';
+import feAiCodingSidebar from './sidebar/fe/ai-coding';
 
 import serverJavaSidebar from './sidebar/server/java';
 import serverJavaLanguageSidebar from './sidebar/server/java-language';
@@ -59,7 +60,10 @@ export default {
     nav: [
       {
         text: 'AI',
-        items: [{ text: 'Agent', link: '/fe/ai/agent/' }],
+        items: [
+          { text: 'AI Coding', link: '/fe/ai/coding/' },
+          { text: 'Agent 开发', link: '/fe/ai/agent/' },
+        ],
       },
       {
         text: '前端',
@@ -200,6 +204,7 @@ export default {
       '/fe/desktop/electron/': feElectronSidebar,
       '/fe/desktop/tauri/': feTauriSidebar,
       '/fe/desktop/': feElectronSidebar,
+      '/fe/ai/coding/': feAiCodingSidebar,
       '/fe/ai/': feAiSidebar,
 
       '/server/java/language/': serverJavaLanguageSidebar,
