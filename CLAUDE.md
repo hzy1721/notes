@@ -5,9 +5,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 常用命令
 
 ```sh
-yarn docs:dev      # 启动开发服务器
-yarn docs:build    # 生产构建
-yarn docs:serve    # 预览生产构建
+pnpm docs:dev      # 启动开发服务器
+pnpm docs:build    # 生产构建
+pnpm docs:serve    # 预览生产构建
 ```
 
 ## 项目架构
